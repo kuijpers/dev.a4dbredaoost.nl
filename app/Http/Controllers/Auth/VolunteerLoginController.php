@@ -9,7 +9,7 @@ class VolunteerLoginController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest:volunteer');
+        $this->middleware('guest:volunteer', ['except' => ['logout']]);
     }
 
 
@@ -43,5 +43,13 @@ class VolunteerLoginController extends Controller
         // If unsuccessful , then redirect back to the login with the form data
         return redirect()->back()->withInput($request->only('email', 'remember'));
     }
+
+    public function logout()
+    {
+        Auth::guard('volunteer')->logout();
+
+        return redirect('/');
+    }
+
 
 }

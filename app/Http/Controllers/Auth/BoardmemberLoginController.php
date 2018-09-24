@@ -9,7 +9,7 @@ class BoardmemberLoginController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest:boardmember');
+        $this->middleware('guest:boardmember', ['except' => ['logout']]);
     }
 
 
@@ -43,5 +43,13 @@ class BoardmemberLoginController extends Controller
         // If unsuccessful , then redirect back to the login with the form data
         return redirect()->back()->withInput($request->only('email', 'remember'));
     }
+
+    public function logout()
+    {
+        Auth::guard('boardmember')->logout();
+
+        return redirect('/');
+    }
+
 
 }
