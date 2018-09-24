@@ -14,7 +14,9 @@
                         </div>
                     @endif
 
-                    You are logged in BOARDMEMBER!
+                        @component('components.whoslogged')
+                        @endcomponent
+
                 </div>
             </div>
         </div>
