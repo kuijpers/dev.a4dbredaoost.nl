@@ -41,9 +41,29 @@ return [
             'provider' => 'users',
         ],
 
+        'boardmember' => [
+            'driver' => 'session',
+            'provider' => 'boardmembers',
+        ],
+
+        'volunteer' => [
+            'driver' => 'session',
+            'provider' => 'volunteers',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
+        ],
+
+        'api-boardmember' => [
+            'driver' => 'token',
+            'provider' => 'boardmembers',
+        ],
+
+        'api-volunteer' => [
+            'driver' => 'token',
+            'provider' => 'volunteers',
         ],
     ],
 
@@ -67,7 +87,15 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Models\User::class,
+        ],
+        'boardmembers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Boardmember::class,
+        ],
+        'volunteers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Volunteer::class,
         ],
 
         // 'users' => [
@@ -94,6 +122,18 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
+        'boardmembers' => [
+            'provider' => 'boardmembers',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
+        'volunteers' => [
+            'provider' => 'volunteers',
             'table' => 'password_resets',
             'expire' => 60,
         ],

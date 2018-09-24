@@ -17,4 +17,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'Main\HomeController@index')->name('home');
+
+
+
+Route::get('/vrijwilliger', 'Volunteer\HomeController@index')->name('volunteer.home');
+
+
+
+
+
+Route::get('/bestuur', 'Board\HomeController@index')->name('board.home');
