@@ -19,9 +19,20 @@ Auth::routes();
 
 Route::get('/home', 'Main\HomeController@index')->name('home');
 
+Route::prefix('vrijwilliger')->group(function(){
+    Route::get('/login', 'Auth\VolunteerLoginController@showLoginForm')->name('volunteer.login');
+    Route::post('/login', 'Auth\VolunteerLoginController@login')->name('volunteer.login.submit');
+    Route::get('/', 'Volunteer\HomeController@index')->name('volunteer.home');
+});
 
 
-Route::get('/vrijwilliger', 'Volunteer\HomeController@index')->name('volunteer.home');
+Route::prefix('bestuur')->group(function(){
+    Route::get('/login', 'Auth\BoardmemberLoginController@showLoginForm')->name('board.login');
+    Route::post('/login', 'Auth\BoardmemberLoginController@login')->name('board.login.submit');
+    Route::get('/', 'Board\HomeController@index')->name('board.home');
+});
+
+
 
 
 
