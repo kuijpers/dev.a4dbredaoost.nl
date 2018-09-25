@@ -23,7 +23,7 @@ Route::get('/home', 'Main\HomeController@index')->name('home');
 
 Route::prefix('deelnemer')->group(function(){
 //    Login / log out routes
-    Route::get('/logout', 'Auth\LoginController@userLogout')->name('user.logout');
+    Route::post('/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 });
 
 
@@ -32,7 +32,7 @@ Route::prefix('vrijwilliger')->group(function(){
 //    Login / log out routes
     Route::get('/login', 'Auth\VolunteerLoginController@showLoginForm')->name('volunteer.login');
     Route::post('/login', 'Auth\VolunteerLoginController@login')->name('volunteer.login.submit');
-    Route::get('/logout', 'Auth\VolunteerLoginController@logout')->name('volunteer.logout');
+    Route::post('/logout', 'Auth\VolunteerLoginController@logout')->name('volunteer.logout');
 //    Page routes
     Route::get('/', 'Volunteer\HomeController@index')->name('volunteer.home');
 });
@@ -42,7 +42,7 @@ Route::prefix('bestuur')->group(function(){
 //    Login / log out routes
     Route::get('/login', 'Auth\BoardmemberLoginController@showLoginForm')->name('board.login');
     Route::post('/login', 'Auth\BoardmemberLoginController@login')->name('board.login.submit');
-    Route::get('/logout', 'Auth\BoardmemberLoginController@logout')->name('board.logout');
+    Route::post('/logout', 'Auth\BoardmemberLoginController@logout')->name('board.logout');
 //    Page routes
     Route::get('/', 'Board\HomeController@index')->name('board.home');
 });
