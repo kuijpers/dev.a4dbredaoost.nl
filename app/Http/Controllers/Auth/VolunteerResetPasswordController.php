@@ -49,5 +49,12 @@ class VolunteerResetPasswordController extends Controller
     {
         return Password::broker('volunteer');
     }
+    // Show the reset view
+    public function showResetForm(Request $request, $token = null)
+    {
+        return view('auth.passwords.reset-volunteer')->with(
+            ['token' => $token, 'email' => $request->email]
+        );
+    }
 
 }

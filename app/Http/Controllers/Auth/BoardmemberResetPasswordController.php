@@ -49,5 +49,13 @@ class BoardmemberResetPasswordController extends Controller
     {
         return Password::broker('boardmember');
     }
+    // Show the reset view
+    public function showResetForm(Request $request, $token = null)
+    {
+        return view('auth.passwords.reset-boardmember')->with(
+            ['token' => $token, 'email' => $request->email]
+        );
+    }
+
 
 }
