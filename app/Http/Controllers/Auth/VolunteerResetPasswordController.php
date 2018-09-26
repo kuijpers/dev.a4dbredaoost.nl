@@ -47,7 +47,7 @@ class VolunteerResetPasswordController extends Controller
     // The broker to use
     protected function broker()
     {
-        return Password::broker('volunteer');
+        return Password::broker('volunteers');
     }
     // Show the reset view
     public function showResetForm(Request $request, $token = null)

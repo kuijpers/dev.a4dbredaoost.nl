@@ -36,5 +36,10 @@ class BoardmemberForgotPasswordController extends Controller
     {
         return view('auth.passwords.email-boardmember');
     }
+    // The broker to use
+    protected function broker()
+    {
+        return Password::broker('boardmembers');
+    }
 
 }

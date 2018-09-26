@@ -36,4 +36,9 @@ class VolunteerForgotPasswordController extends Controller
     {
         return view('auth.passwords.email-volunteer');
     }
+    // The broker to use
+    protected function broker()
+    {
+        return Password::broker('volunteers');
+    }
 }
