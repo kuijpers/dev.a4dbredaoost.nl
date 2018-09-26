@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Notifications\BoardmemberResetPasswordNotification;
 
 class Boardmember extends Authenticatable
 {
@@ -36,4 +37,10 @@ class Boardmember extends Authenticatable
         'password',
         'remember_token',
     ];
+    // Send notification to reset password
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new BoardmemberResetPasswordNotification($token));
+    }
+
 }
