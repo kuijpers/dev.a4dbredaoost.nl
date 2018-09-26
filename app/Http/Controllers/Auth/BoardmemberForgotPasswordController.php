@@ -31,4 +31,10 @@ class BoardmemberForgotPasswordController extends Controller
     {
         $this->middleware('guest:boardmember');
     }
+    // Show view
+    public function showLinkRequestForm()
+    {
+        return view('auth.passwords.email-boardmember');
+    }
+
 }

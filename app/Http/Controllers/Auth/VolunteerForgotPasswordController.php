@@ -31,4 +31,9 @@ class VolunteerForgotPasswordController extends Controller
     {
         $this->middleware('guest:volunteer');
     }
+    // Show view
+    public function showLinkRequestForm()
+    {
+        return view('auth.passwords.email-volunteer');
+    }
 }
