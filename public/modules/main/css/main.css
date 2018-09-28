@@ -1,0 +1,60 @@
+
+/* Section a css*/
+.section-a .jumbotron {
+    background-image: url("../../a4dbo/img/pexels-photo-1379655.jpeg")!important;
+    background-position: 0px -575px;
+    margin-bottom: 0px !important;
+    border-radius: 0 !important;
+}
+
+.section-a .jumbotron .jumbofill {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+}
+
+.section-a .jumbotron .jumbofill::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .9;
+    z-index: -1;
+    background-color: #ffffff;);
+    border-radius: 10px;
+}
+
+/* Section b css*/
+.section-b .social-media{
+    color: #ffffff;
+    font-size: 35px ;
+    text-align: center;
+    padding: 5px;
+    text-decoration: none !important;
+}
+
+.section-b .social-media .card{
+    border: none !important;
+}
+
+/* Section c css*/
+.section-c{
+    padding: 25px;
+}
+
+.section-c .info-block{
+    padding: 20px;
+    text-align: center;
+}
+
+/* Section d css*/
+.section-d{
+    padding: 40px;
+}
+
+.section-d .card{
+    margin: 10px;
+}
+
