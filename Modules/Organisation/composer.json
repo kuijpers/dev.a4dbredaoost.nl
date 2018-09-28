@@ -1,0 +1,15 @@
+{
+    "name": "nwidart/organisation",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Modules\\Organisation\\": ""
+        }
+    }
+}

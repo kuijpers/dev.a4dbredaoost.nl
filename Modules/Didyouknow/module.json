@@ -1,0 +1,16 @@
+{
+    "name": "Didyouknow",
+    "alias": "didyouknow",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Didyouknow\\Providers\\DidyouknowServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}
