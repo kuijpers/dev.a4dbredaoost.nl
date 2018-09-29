@@ -1,0 +1,14 @@
+.section-a {
+    min-height: 150px;
+    padding:    20px;
+}
+
+.img-thumbnail{
+    height: auto !important;
+    width: auto !important;
+    max-height: 150px !important;
+    max-width: 250px !important;
+}
+
+
+
