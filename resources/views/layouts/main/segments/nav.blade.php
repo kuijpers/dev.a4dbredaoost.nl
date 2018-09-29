@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-success">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="{{ route('main.main.index') }}">
         <img src="{{ asset('img/logo-a4d.png') }}" width="35" height="35" class="d-inline-block align-top" alt="">
         A4D Breda Oost
     </a>
@@ -10,40 +10,40 @@
     <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ route('main.main.index') }}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdownWieZijnWij" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Wie zijn wij</a>
+                <a class="nav-link dropdown-toggle" href="#" id="dropdownWieZijnWij" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Wie zijn wij</a>
                 <div class="dropdown-menu" aria-labelledby="dropdownWieZijnWij">
-                    <a class="dropdown-item" href="#">De organisatie</a>
-                    <a class="dropdown-item" href="#">Het bestuur</a>
-                    <a class="dropdown-item" href="#">Tijdlijn</a>
+                    <a class="dropdown-item" href="{{ route('main.organisation.index') }}">De organisatie</a>
+                    <a class="dropdown-item" href="{{ route('main.board.index') }}">Het bestuur</a>
+                    <a class="dropdown-item" href="{{ route('main.timeline.index') }}">Tijdlijn</a>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Sponsors</a>
+                <a class="nav-link" href="{{ route('main.sponsors.index') }}">Sponsors</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Nieuws</a>
+                <a class="nav-link" href="{{ route('main.news.index') }}">Nieuws</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Kalender</a>
+                <a class="nav-link" href="{{ route('main.calendar.index') }}">Kalender</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Wist u dat?</a>
+                <a class="nav-link" href="{{ route('main.didyouknow.index') }}">Wist u dat?</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdownContact" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contact</a>
                 <div class="dropdown-menu" aria-labelledby="dropdownContact">
-                    <a class="dropdown-item" href="#">Mail ons</a>
-                    <a class="dropdown-item" href="#">Veelgestelde vragen</a>
-                    <a class="dropdown-item" href="#">Privacyverklaring</a>
+                    <a class="dropdown-item" href="{{ route('main.contact.index') }}">Mail ons</a>
+                    <a class="dropdown-item" href="{{ route('main.faq.index') }}">Veelgestelde vragen</a>
+                    <a class="dropdown-item" href="{{ route('main.privacy.index') }}">Privacyverklaring</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="search-drop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Zoeken</a>
                 <div class="dropdown-menu search-drop" aria-labelledby="search-drop">
-                    <form class="form-inline" method="POST" action="#">
+                    <form class="form-inline" method="POST" action="{{ route('main.search.index') }}">
                         {{ csrf_field() }}
                         <input name="search" class="form-control mx-2 my-1" type="text" placeholder="Zoek op!">
                         <button type="submit" class="btn btn-light mx-2 my-1">Zoeken</button>
