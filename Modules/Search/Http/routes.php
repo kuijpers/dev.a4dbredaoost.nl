@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['middleware' => 'web', 'prefix' => 'search', 'namespace' => 'Modules\Search\Http\Controllers'], function()
+Route::group(['middleware' => 'web', 'prefix' => 'zoeken', 'namespace' => 'Modules\Search\Http\Controllers'], function()
 {
-    Route::get('/', 'SearchController@index');
+    Route::get('/', 'SearchController@index')->name('main.search.index');
 });

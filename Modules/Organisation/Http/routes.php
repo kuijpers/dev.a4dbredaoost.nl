@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['middleware' => 'web', 'prefix' => 'organisation', 'namespace' => 'Modules\Organisation\Http\Controllers'], function()
+Route::group(['middleware' => 'web', 'prefix' => 'organisatie', 'namespace' => 'Modules\Organisation\Http\Controllers'], function()
 {
-    Route::get('/', 'OrganisationController@index');
+    Route::get('/', 'OrganisationController@index')->name('main.organisation.index');
 });

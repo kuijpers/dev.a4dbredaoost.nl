@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['middleware' => 'web', 'prefix' => 'didyouknow', 'namespace' => 'Modules\Didyouknow\Http\Controllers'], function()
+Route::group(['middleware' => 'web', 'prefix' => 'weetjes', 'namespace' => 'Modules\Didyouknow\Http\Controllers'], function()
 {
-    Route::get('/', 'DidyouknowController@index');
+    Route::get('/', 'DidyouknowController@index')->name('main.didyouknow.index');
 });

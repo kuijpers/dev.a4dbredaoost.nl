@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['middleware' => 'web', 'prefix' => 'news', 'namespace' => 'Modules\News\Http\Controllers'], function()
+Route::group(['middleware' => 'web', 'prefix' => 'nieuws', 'namespace' => 'Modules\News\Http\Controllers'], function()
 {
-    Route::get('/', 'NewsController@index');
+    Route::get('/', 'NewsController@index')->name('main.news.index');
 });
