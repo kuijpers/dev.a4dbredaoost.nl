@@ -28,6 +28,6 @@
         &copy; 2018 A4D Breda-oost
         <br>
         <br>
-        <a href="#" class="text-white">Credits</a>
+        <a href="{{ route('main.credits.index') }}" class="text-white">Credits</a>
     </div>
 </div>

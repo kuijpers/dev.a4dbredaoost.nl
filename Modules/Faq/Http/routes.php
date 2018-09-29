@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['middleware' => 'web', 'prefix' => 'faq', 'namespace' => 'Modules\Faq\Http\Controllers'], function()
+Route::group(['middleware' => 'web', 'prefix' => 'veelgestelde-vragen', 'namespace' => 'Modules\Faq\Http\Controllers'], function()
 {
-    Route::get('/', 'FaqController@index');
+    Route::get('/', 'FaqController@index')->name('main.faq.index');
 });

@@ -1,0 +1,28 @@
+
+/* Section a css*/
+.section-a{
+
+}
+
+#contact_map{
+    height: 375px;
+}
+
+/* Section b css*/
+.section-b .social-media{
+    color: #ffffff;
+    font-size: 35px ;
+    text-align: center;
+    padding: 5px;
+    text-decoration: none !important;
+}
+
+.section-b .social-media .card{
+    border: none !important;
+}
+
+/* Section c css*/
+.section-c{
+
+}
+

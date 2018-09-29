@@ -1,0 +1,55 @@
+.section-a {
+    min-height: 150px;
+    padding:    20px;
+}
+
+
+/* timeline coloring */
+
+ul#timeline-menu li a {
+    color: #2e2e2e !important;
+}
+
+ul#timeline-menu li a:hover {
+    color: #6acf05 !important;
+    border-bottom: 5px solid #6acf05 !important;
+}
+
+section#timeline:before {
+    background-color: #6acf05 !important;
+}
+
+section#timeline > article > div.panel .panel-heading {
+    background-color: #6acf05 !important;
+}
+
+section#timeline div[class*="group"],
+section#timeline article div.panel div.badge {
+    -moz-box-shadow: 0 0 0 2px #6acf05 , inset 0 2px 0 rgba(0, 0, 0, 0.1), 0 3px 0 2px rgba(0, 0, 0, 0.15) !important;
+    -webkit-box-shadow: 0 0 0 2px #6acf05, inset 0 2px 0 rgba(0, 0, 0, 0.1), 0 3px 0 2px rgba(0, 0, 0, 0.15) !important;
+    box-shadow: 0 0 0 2px #6acf05, inset 0 2px 0 rgba(0, 0, 0, 0.1), 0 3px 0 2px rgba(0, 0, 0, 0.15) !important;
+}
+
+section#timeline div[class*="group"] {
+    background: #6acf05 !important;
+}
+
+section#timeline article div.panel div.badge {
+    color: #6acf05 !important;
+}
+
+section#timeline article div.panel div.badge:last-child {
+    background-color: #6acf05 !important;
+}
+
+
+a.mylink {
+    color: #6acf05 !important;
+}
+
+a.mylink:hover {
+    color: #4b9305 !important;
+}
+
+
+
