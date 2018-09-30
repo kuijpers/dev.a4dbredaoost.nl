@@ -76,7 +76,7 @@
 
             @else
             <li class="nav-item dropdown signin">
-                <a class="nav-link dropdown-toggle" href="#" id="search-drop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Inloggen</a>
+                <a class="nav-link dropdown-toggle {{ $errors->has('email') ? ' text-danger' : '' }}" href="#" id="search-drop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Inloggen</a>
                 <div class="dropdown-menu dropdown-menu-right search-drop" aria-labelledby="search-drop">
                     <form class="form-signin" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
@@ -84,41 +84,23 @@
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="sr-only">E-Mail Address</label>
-
-                            <div class="col-md-12">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email adres" required autofocus>
 
                                 @if ($errors->has('email'))
-                                    <span class="help-block">
+                                    <span class="help-block text-danger">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
-                            </div>
-                        </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="sr-only">Password</label>
 
-                            <div class="col-md-12">
                                 <input id="password" type="password" class="form-control" name="password" placeholder="Wachtwoord" required>
 
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
                         </div>
 
-
-
-                        {{--<label for="inputEmail" class="sr-only">Email adres</label>--}}
-                        {{--<input type="email" id="inputEmail" class="form-control" placeholder="Email adres" required autofocus>--}}
-                        {{--<label for="inputPassword" class="sr-only">Wachtwoord</label>--}}
-                        {{--<input type="password" id="inputPassword" class="form-control" placeholder="Wachtwoord" required>--}}
                         <div class="checkbox mb-3">
                             <label>
-                                <input type="checkbox" value="remember-me"> Onthouden
+                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
                             </label>
                         </div>
                         <button class="btn btn-lg btn-success btn-block" type="submit">Inloggen</button>
