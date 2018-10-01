@@ -53,18 +53,54 @@
         </ul>
 
         <ul class="nav navbar-nav justify-content-end">
+            @if (Auth::check())
+                <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    {{ Auth::user()->name }} <span class="caret"></span>
+                </a>
+
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <a class="dropdown-item" href="{{ route('user.logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+
+                        <form id="logout-form" action="{{ route('user.logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+                </ul>
+            </li>
+
+            @else
             <li class="nav-item dropdown signin">
-                <a class="nav-link dropdown-toggle" href="#" id="search-drop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Inloggen</a>
+                <a class="nav-link dropdown-toggle {{ $errors->has('email') ? ' text-danger' : '' }}" href="#" id="search-drop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Inloggen</a>
                 <div class="dropdown-menu dropdown-menu-right search-drop" aria-labelledby="search-drop">
-                    <form class="form-signin">
+                    <form class="form-signin" method="POST" action="{{ route('login') }}">
+                        {{ csrf_field() }}
                         <h1 class="h3 mb-3 font-weight-normal text-center">Inloggen</h1>
-                        <label for="inputEmail" class="sr-only">Email adres</label>
-                        <input type="email" id="inputEmail" class="form-control" placeholder="Email adres" required autofocus>
-                        <label for="inputPassword" class="sr-only">Wachtwoord</label>
-                        <input type="password" id="inputPassword" class="form-control" placeholder="Wachtwoord" required>
+
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="sr-only">E-Mail Address</label>
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email adres" required autofocus>
+
+                                @if ($errors->has('email'))
+                                    <span class="help-block text-danger">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+
+                            <label for="password" class="sr-only">Password</label>
+
+                                <input id="password" type="password" class="form-control" name="password" placeholder="Wachtwoord" required>
+
+                        </div>
+
                         <div class="checkbox mb-3">
                             <label>
-                                <input type="checkbox" value="remember-me"> Onthouden
+                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
                             </label>
                         </div>
                         <button class="btn btn-lg btn-success btn-block" type="submit">Inloggen</button>
@@ -78,6 +114,11 @@
                 <button type="button" class="btn btn-link nav-link" data-toggle="modal" data-target="#register">Registreren</button>
 
             </li>
+
+
+
+
+            @endif
         </ul>
     </div>
 </nav>
