@@ -8,7 +8,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form class="form-horizontal" method="POST" action="#">
+            <form class="form-horizontal" method="POST" action="{{ route('password.email') }}">
                 <div class="modal-body">
                     {{ csrf_field() }}
 
