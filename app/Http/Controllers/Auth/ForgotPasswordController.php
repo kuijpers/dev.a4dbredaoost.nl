@@ -29,4 +29,10 @@ class ForgotPasswordController extends Controller
     {
         $this->middleware('guest');
     }
+
+	protected function sendResetLinkResponse($response)
+	{
+		return back()->with('status', trans($response))
+			->with('success-message','Email is verstuurd. Check uw mailbox.');
+	}
 }

@@ -39,11 +39,11 @@
                             <div class="col-md-12">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ $email or old('email') }}" placeholder="Email adres" required autofocus>
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+                                {{--@if ($errors->has('email'))--}}
+                                    {{--<span class="help-block">--}}
+                                        {{--<strong>{{ $errors->first('email') }}</strong>--}}
+                                    {{--</span>--}}
+                                {{--@endif--}}
                             </div>
                         </div>
 
@@ -53,11 +53,11 @@
                             <div class="col-md-12">
                                 <input id="password" type="password" class="form-control" name="password" placeholder="Wachtwoord" required>
 
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
+                                {{--@if ($errors->has('password'))--}}
+                                    {{--<span class="help-block">--}}
+                                        {{--<strong>{{ $errors->first('password') }}</strong>--}}
+                                    {{--</span>--}}
+                                {{--@endif--}}
                             </div>
                         </div>
 
@@ -66,11 +66,11 @@
                             <div class="col-md-12">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Bevestig wachtwoord" required>
 
-                                @if ($errors->has('password_confirmation'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                    </span>
-                                @endif
+                                {{--@if ($errors->has('password_confirmation'))--}}
+                                    {{--<span class="help-block">--}}
+                                        {{--<strong>{{ $errors->first('password_confirmation') }}</strong>--}}
+                                    {{--</span>--}}
+                                {{--@endif--}}
                             </div>
                         </div>
 

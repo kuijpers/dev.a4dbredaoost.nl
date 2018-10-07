@@ -86,11 +86,6 @@
                             <label for="email" class="sr-only">E-Mail Address</label>
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email adres" required autofocus>
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block text-danger">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
 
                             <label for="login-password" class="sr-only">Password</label>
 
@@ -117,15 +112,4 @@
             @endif
         </ul>
     </div>
-
-    @if($errors->has('email'))
-
-        <div id="alert" class="alert alert-danger alert-dismissible fade show tosti" role="alert">
-            {{ $errors->first('email') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-
-    @endif
 </nav>
