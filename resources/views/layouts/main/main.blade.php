@@ -26,6 +26,8 @@
 @include('main.modals.password_reset')
 
 <body>
+@component('layouts.main.components.session-alert')
+@endcomponent
 <header>
 
     @include('layouts.main.segments.nav')

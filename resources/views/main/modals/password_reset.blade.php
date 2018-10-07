@@ -17,12 +17,6 @@
 
                         <div class="col-md-12">
                             <input type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                            @if ($errors->has('email'))
-                                <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                            @endif
                         </div>
                     </div>
                 </div>
