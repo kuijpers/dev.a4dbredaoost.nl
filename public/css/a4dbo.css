@@ -93,3 +93,14 @@ footer .footer-copyright{
     text-align: center !important;
     color: #ffffff;
 }
+
+/* Alerts */
+
+.tosti{
+    max-width: 300px;
+    position: absolute;
+    float: right;
+    right: 20px;
+    top: 70px;
+    z-index: 2500;
+}

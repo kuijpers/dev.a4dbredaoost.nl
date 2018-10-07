@@ -76,7 +76,7 @@
 
             @else
             <li class="nav-item dropdown signin">
-                <a class="nav-link dropdown-toggle {{ $errors->has('email') ? ' text-danger' : '' }}" href="#" id="search-drop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Inloggen</a>
+                <a class="nav-link dropdown-toggle" href="#" id="search-drop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Inloggen</a>
                 <div class="dropdown-menu dropdown-menu-right search-drop" aria-labelledby="search-drop">
                     <form class="form-signin" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
@@ -86,15 +86,10 @@
                             <label for="email" class="sr-only">E-Mail Address</label>
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email adres" required autofocus>
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block text-danger">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
 
-                            <label for="password" class="sr-only">Password</label>
+                            <label for="login-password" class="sr-only">Password</label>
 
-                                <input id="password" type="password" class="form-control" name="password" placeholder="Wachtwoord" required>
+                                <input id="login-password" type="password" class="form-control" name="password" placeholder="Wachtwoord" required>
 
                         </div>
 
@@ -114,10 +109,6 @@
                 <button type="button" class="btn btn-link nav-link" data-toggle="modal" data-target="#register">Registreren</button>
 
             </li>
-
-
-
-
             @endif
         </ul>
     </div>
