@@ -1,6 +1,3 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
-
-
 ## About dev.a4dbredaoost.nl
 
 dev.a4dbredaoost is a website built for a dutch organisation for 4 day hikes.
