@@ -1,4 +1,43 @@
 .section-a {
     min-height: 150px;
     padding:    20px;
-}
+    }
+
+#calendar .btn-primary{
+
+    background-color: #6acf05 !important;
+    border-color: #9aefad !important;
+
+    }
+
+/*.calender{*/
+/*background-image: url("/a4dbo/img/logo-a4d.png");*/
+/*background-position: center;*/
+/*background-repeat: no-repeat;*/
+/*background-size: cover;*/
+/*background-color: #cccccc;*/
+/*min-height: 100%;*/
+/*height: auto;*/
+/*}*/
+
+.container {  position: relative; }
+
+.container:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-image: url('/a4dbo/img/logo-a4d.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.15;
+    }
+
+.section-a {
+    position: relative;
+    z-index: 2;
+    }
