@@ -270,18 +270,59 @@
             <div class="tab-content" id="myTabContent">
 
                 <div class="tab-pane fade border border-top-0 rounded-bottom p-4 show active" id="socialmedia" role="tabpanel" aria-labelledby="socialmedia-tab">
-                    <h5>Werkgroep Social Media</h5>
-                    Uitleg over waarvoor deze werkgroep in het leven is geroepen.
-                    <div class="card mt-3" style="width: 18rem;">
-                        <div class="card-header">
-                            Wie zitten er in deze werkgroep
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Anke Verhagen</li>
-                            <li class="list-group-item">Ewout van Essen</li>
-                            <li class="list-group-item">Dennis Kuijpers</li>
-                        </ul>
+                    <div class="col-12">
+
+                        <h5>Werkgroep Social Media</h5>
+
+                        Social Media is niet meer weg te denken in de huidige samenleving.
+                        Wij willen hier dan, als organisatie, dan ook goed gebruik van maken.
+                        <br>
+                        Binnen deze werkgroep gaan we kijken wat de mogelijkheden zijn met Social Media.
+                        <br>
+                        Aangezien de veranderingen binnen Social Media zeer snel gaan is het vermoeden ook dat dit een vaste werkgroep zal gaan worden.
+                        Mocht je interesse hebben om deel te nemen in deze werkgroep stuur ons dan even een berichtje.
+                        <br>
+
                     </div>
+
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <div class="card mt-3" style="width: 18rem;">
+                                <div class="card-header">
+                                    Wie zitten er in deze werkgroep
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Anke Verhagen</li>
+                                    <li class="list-group-item">Ewout van Essen</li>
+                                    <li class="list-group-item">Dennis Kuijpers</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-md-7 offset-md-1">
+
+                            <h5>Social media waar op dit moment gebruik van wordt gemaakt.</h5>
+
+                            <ul>
+                                <li>
+                                    Deze website
+                                </li>
+                                <li>
+                                    Facebook
+                                </li>
+                                <li>
+                                    Twitter
+                                </li>
+                                <li>
+                                    Instagram
+                                </li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+
                 </div>
 
                 <div class="tab-pane fade border border-top-0 rounded-bottom p-4" id="sponsoring" role="tabpanel" aria-labelledby="sponsoring-tab">
