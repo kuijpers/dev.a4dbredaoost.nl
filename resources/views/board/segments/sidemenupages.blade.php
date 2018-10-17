@@ -1,10 +1,10 @@
 <div class="sidebar__menu">
     <div class="sidebar__utitle">Pages</div>
     <ul class="nav nav-menu">
-        <li><a href="{{ route('bootstrap/right/index') }}">
+        <li><a href="#">
                 <div class="nav-menu__ico"><i class="fa fa-fw fa-star"></i></div>
                 <div class="nav-menu__text"><span>Dashboard</span></div></a></li>
-        <li><a href="{{ route('bootstrap/right/products') }}">
+        <li><a href="#">
                 <div class="nav-menu__ico"><i class="fa fa-fw fa-cube"></i></div>
                 <div class="nav-menu__text"><span>Products</span></div></a></li>
         <li><a href="#">
@@ -12,16 +12,16 @@
                 <div class="nav-menu__text"><span>Mailbox</span></div>
                 <div class="nav-menu__right"><i class="fa fa-fw fa-angle-right arrow"></i></div></a>
             <ul class="nav nav-menu__second collapse">
-                <li><a href="{{ route('bootstrap/right/inbox') }}">Inbox</a></li>
-                <li><a href="{{ route('bootstrap/right/sent') }}">Sent</a></li>
-                <li><a href="{{ route('bootstrap/right/compose') }}">Compose</a></li>
+                <li><a href="#">Inbox</a></li>
+                <li><a href="#">Sent</a></li>
+                <li><a href="#">Compose</a></li>
             </ul>
         </li>
-        <li><a href="{{ route('bootstrap/right/orders') }}">
+        <li><a href="#">
                 <div class="nav-menu__ico"><i class="fa fa-fw fa-truck"></i></div>
                 <div class="nav-menu__text"><span>Orders</span></div>
                 <div class="nav-menu__right"><i class="badge badge-default">2</i></div></a></li>
-        <li><a href="{{ route('bootstrap/right/users') }}">
+        <li><a href="#">
                 <div class="nav-menu__ico"><i class="fa fa-fw fa-user"></i></div>
                 <div class="nav-menu__text"><span>Users</span></div></a></li>
         <li class="active opened"><a href="#">
@@ -29,8 +29,8 @@
                 <div class="nav-menu__text"><span>Other</span></div>
                 <div class="nav-menu__right"><i class="fa fa-fw fa-angle-right arrow"></i></div></a>
             <ul class="nav nav-menu__second collapse in">
-                <li class="active"><a href="{{ route('bootstrap/right/blank') }}">Blank</a></li>
-                <li><a href="{{ route('bootstrap/right/login') }}">Login</a></li>
+                <li class="active"><a href="#">Blank</a></li>
+                <li><a href="#">Login</a></li>
             </ul>
         </li>
     </ul>
@@ -41,11 +41,11 @@
                 <div class="nav-menu__text"><span>UI Elements</span></div>
                 <div class="nav-menu__right"><i class="fa fa-fw fa-angle-right arrow"></i></div></a>
             <ul class="nav nav-menu__second collapse">
-                <li><a href="{{ route('bootstrap/right/general') }}">General</a></li>
-                <li><a href="{{ route('bootstrap/right/panels') }}">Panels</a></li>
-                <li><a href="{{ route('bootstrap/right/tabs') }}">Tabs</a></li>
-                <li><a href="{{ route('bootstrap/right/modals') }}">Modals</a></li>
-                <li><a href="{{ route('bootstrap/right/buttons') }}">Buttons</a></li>
+                <li><a href="#">General</a></li>
+                <li><a href="#">Panels</a></li>
+                <li><a href="#">Tabs</a></li>
+                <li><a href="#">Modals</a></li>
+                <li><a href="#">Buttons</a></li>
             </ul>
         </li>
         <li><a href="#">
@@ -53,9 +53,9 @@
                 <div class="nav-menu__text"><span>Forms</span></div>
                 <div class="nav-menu__right"><i class="fa fa-fw fa-angle-right arrow"></i></div></a>
             <ul class="nav nav-menu__second collapse">
-                <li><a href="{{ route('bootstrap/right/controls') }}">Controls</a></li>
-                <li><a href="{{ route('bootstrap/right/validation') }}">Validation</a></li>
-                <li><a href="{{ route('bootstrap/right/texteditor') }}">Text Editor</a></li>
+                <li><a href="#">Controls</a></li>
+                <li><a href="#">Validation</a></li>
+                <li><a href="#">Text Editor</a></li>
             </ul>
         </li>
         <li><a href="#">
@@ -63,12 +63,12 @@
                 <div class="nav-menu__text"><span>Tables</span></div>
                 <div class="nav-menu__right"><i class="fa fa-fw fa-angle-right arrow"></i></div></a>
             <ul class="nav nav-menu__second collapse">
-                <li><a href="{{ route('bootstrap/right/table_static') }}">Static</a></li>
-                <li><a href="{{ route('bootstrap/right/table_sortable') }}">Sortable</a></li>
-                <li><a href="{{ route('bootstrap/right/table_data') }}">DataTable</a></li>
+                <li><a href="#">Static</a></li>
+                <li><a href="#">Sortable</a></li>
+                <li><a href="#">DataTable</a></li>
             </ul>
         </li>
-        <li><a href="{{ route('bootstrap/right/charts') }}">
+        <li><a href="#">
                 <div class="nav-menu__ico"><i class="fa fa-fw fa-pie-chart"></i></div>
                 <div class="nav-menu__text"><span>Charts</span></div></a>
         </li>

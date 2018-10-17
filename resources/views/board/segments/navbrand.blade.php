@@ -1,5 +1,5 @@
 <div class="navbar-header">
-    <a class="navbar-brand" href="{{ route('bootstrap/right/index') }}">
+    <a class="navbar-brand" href="#">
         <div class="logo text-nowrap">
             <div class="logo__img">
                 <i class="fa fa-chevron-right"></i>

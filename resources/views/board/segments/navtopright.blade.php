@@ -4,7 +4,7 @@
             <i class="fa fa-user-circle"></i>
         </a>
         <ul class="dropdown-menu dropdown-menu-right">
-            <div class="sidebar__utitle">Dennis Kuijpers</div>
+            <div class="sidebar__utitle">Hier auth name</div>
             <li><a href="#"><i class="fa fa-user-circle-o"></i>&nbsp; Profile</a></li>
             <li><a href="#"><i class="fa fa-cogs"></i>&nbsp; Settings</a></li>
             <li><a href="#"><i class="fa fa-power-off"></i>&nbsp; Log Out</a></li>
