@@ -2,3 +2,7 @@
     min-height: 150px;
     padding:    20px;
 }
+
+.btn{
+    white-space: normal !important;
+    }
