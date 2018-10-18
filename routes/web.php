@@ -67,5 +67,25 @@ Route::prefix('bestuur')->group(function(){
 
 //  Page routes
     Route::get('/', 'Board\HomeController@index')->name('board.home');
+
+
+
+
+    Route::get('/lid', 'Board\HomeController@index')->name('board.member');
+
+
+    Route::get('/lid/profiel', 'Board\MemberProfileController@index')->name('board.member.profile');
+
+
+
+
+    Route::get('/lid/instellingen', 'Board\MemberSettingsController@index')->name('board.member.settings');
+
+
+
+
+
+
+
 });
 
