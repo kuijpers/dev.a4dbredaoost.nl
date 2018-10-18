@@ -7,6 +7,15 @@ use App\Http\Controllers\Controller;
 
 class MemberSettingsController extends Controller
 {
+	/**
+	 * Create a new controller instance.
+	 *
+	 * @return void
+	 */
+	public function __construct()
+	{
+		$this->middleware('auth:boardmember');
+	}
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +23,7 @@ class MemberSettingsController extends Controller
      */
     public function index()
     {
-        //
+		return view('board.member.settings');
     }
 
     /**
