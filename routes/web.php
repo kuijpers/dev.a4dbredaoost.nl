@@ -71,13 +71,9 @@ Route::prefix('bestuur')->group(function(){
 
 
 
-    Route::get('/lid', 'Board\HomeController@index')->name('board.member');
-
+//    Route::get('/lid', 'Board\HomeController@index')->name('board.member');
 
     Route::get('/lid/profiel', 'Board\MemberProfileController@index')->name('board.member.profile');
-
-
-
 
     Route::get('/lid/instellingen', 'Board\MemberSettingsController@index')->name('board.member.settings');
 
