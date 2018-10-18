@@ -69,10 +69,3 @@ Route::prefix('bestuur')->group(function(){
     Route::get('/', 'Board\HomeController@index')->name('board.home');
 });
 
-
-
-
-
-
-
-Route::get('/bestuur', 'Board\HomeController@index')->name('board.home');
