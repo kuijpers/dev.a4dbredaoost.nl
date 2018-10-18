@@ -1,7 +1,7 @@
 @extends('layouts.board.main')
 
 @section('title')
-    Blank page
+    Dashboard
 @endsection
 
 @section('css')
