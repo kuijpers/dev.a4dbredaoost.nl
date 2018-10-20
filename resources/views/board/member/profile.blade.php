@@ -75,6 +75,16 @@
                         <div class="row">
 
                             <div class="col-md-6">
+                                Uw secondaire email is:
+                            </div>
+                            <div class="col-md-6">
+                                Not yet set
+                            </div>
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-6">
                                 Uw adres is:
                             </div>
                             <div class="col-md-6">
@@ -257,11 +267,11 @@
             <div class="col-md-3">
                 <div class="panel panel-success">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Quick links</h3>
+                        <h3 class="panel-title">Snelkoppelingen</h3>
                     </div>
                     <div class="panel-body">
                         <p>
-                        Hieronder staan uw quick links:
+                        Hieronder staan uw Snelkoppelingen:
                         </p>
 
                         <p>
