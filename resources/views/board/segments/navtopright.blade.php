@@ -5,8 +5,12 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-right">
             <div class="sidebar__utitle">{{ Auth::user()->name }}</div>
-            <li><a href="{{ route('board.member.profile') }}"><i class="fa fa-user-circle-o"></i>&nbsp; Profiel</a></li>
-            <li><a href="{{ route('board.member.settings') }}"><i class="fa fa-cogs"></i>&nbsp; Instellingen</a></li>
+            <li>
+                <a href="{{ route('board.member.profile') }}"><i class="fa fa-user-circle-o"></i>&nbsp; Profiel</a>
+            </li>
+            <li>
+                <a href="{{ route('board.member.settings') }}"><i class="fa fa-cogs"></i>&nbsp; Instellingen</a>
+            </li>
             <li>
                 <a href="{{ route('board.logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                     <i class="fa fa-power-off"></i>&nbsp; Uitloggen
