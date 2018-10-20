@@ -2,7 +2,7 @@
     <div class="header-navbar-mobile__menu">
         <button class="btn" type="button"><i class="fa fa-bars"></i></button>
     </div>
-    <div class="header-navbar-mobile__title"><span>Blank</span></div>
+    <div class="header-navbar-mobile__title"><span>@yield('title')</span></div>
     <div class="header-navbar-mobile__settings dropdown"><a class="btn dropdown-toggle" href="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle-o"></i></a>
         <ul class="dropdown-menu dropdown-menu-right">
             <li><a href="{{ route('board.member.profile') }}"><i class="fa fa-user-circle-o"></i>&nbsp; Profiel</a></li>
