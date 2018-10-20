@@ -30,11 +30,11 @@
 
                         <div class="row">
 
-                            <div class="col-md-6">
+                            <div class="col-sm-6">
                                 Profiel foto:
                             </div>
-                            <div class="col-md-6">
-                                <img src="{{asset("/board/css/img/nophoto.png")}}" class="" alt="Profiel foto">
+                            <div class="col-sm-6">
+                                <img src="{{asset("/board/css/img/nophoto.png")}}" class="img-fluid" alt="Profiel foto">
                             </div>
 
                         </div>
@@ -44,50 +44,50 @@
 
                         <div class="row">
 
-                            <div class="col-md-6">
+                            <div class="col-sm-6">
                                 Gebruikers ID:
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-sm-6">
                                 {{ Auth::user()->id }}
                             </div>
 
                         </div>
                         <div class="row">
 
-                            <div class="col-md-6">
+                            <div class="col-sm-6">
                                 Uw naam is:
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-sm-6">
                                 {{ Auth::user()->name }}
                             </div>
 
                         </div>
                         <div class="row">
 
-                            <div class="col-md-6">
+                            <div class="col-sm-6">
                                 Uw primaire email is:
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-sm-6">
                                 {{ Auth::user()->email }}
                             </div>
 
                         </div>
                         <div class="row">
 
-                            <div class="col-md-6">
+                            <div class="col-sm-6">
                                 Uw secondaire email is:
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-sm-6">
                                 Not yet set
                             </div>
 
                         </div>
                         <div class="row">
 
-                            <div class="col-md-6">
+                            <div class="col-sm-6">
                                 Uw adres is:
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-sm-6">
                                 {{ Auth::user()->address }}
                                 <br>
                                 {{ Auth::user()->postcode }}
@@ -98,20 +98,20 @@
                         </div>
                         <div class="row">
 
-                            <div class="col-md-6">
+                            <div class="col-sm-6">
                                 Uw telefoonnummer is:
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-sm-6">
                                 {{ Auth::user()->phone }}
                             </div>
 
                         </div>
                         <div class="row">
 
-                            <div class="col-md-6">
+                            <div class="col-sm-6">
                                 Uw geboortedatum is:
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-sm-6">
                                 {{ Carbon\Carbon::parse(Auth::user()->dob)->format('d-m-Y') }}
 
                             </div>
@@ -119,27 +119,27 @@
                         </div>
                         <div class="row">
 
-                            <div class="col-md-6">
+                            <div class="col-sm-6">
                                 Uw functie in het bestuur is:
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-sm-6">
                                 Webmaster (lid)
                             </div>
 
                         </div>
                         <div class="row">
 
-                            <div class="col-md-6">
+                            <div class="col-sm-6">
                                 Uw account is gemaakt op:
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-sm-6">
                                 {{ Auth::user()->created_at->format('d-m-Y H:i') }}
                             </div>
 
                         </div>
                         <div class="row">
 
-                            <div class="col-md-6">
+                            <div class="col-sm-6">
                                 <button class="btn btn-default" type="button">Update uw profiel</button>
                             </div>
 
