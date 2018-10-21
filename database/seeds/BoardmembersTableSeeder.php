@@ -52,6 +52,7 @@ class BoardmembersTableSeeder extends Seeder
 			],
 			[
 				'name' => 'Dennis Kuijpers',
+				'email' => 'member2@a4dbredaoost.ddns.net',
 				'secondary_email' => 'dennis@test.nl',
 				'password' => bcrypt('welkom'),
 				'address' => 'Heusdenhoutesestraat 222',
