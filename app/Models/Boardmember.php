@@ -20,11 +20,14 @@ class Boardmember extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'secondary_email',
         'password',
         'address',
         'postcode',
         'city',
+        'country',
         'phone',
+        'boardmember_title',
         'dob',
     ];
 
