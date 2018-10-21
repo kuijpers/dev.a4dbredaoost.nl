@@ -29,6 +29,7 @@ class Boardmember extends Authenticatable
         'phone',
         'boardmember_title',
         'dob',
+        'profile_img',
     ];
 
     /**

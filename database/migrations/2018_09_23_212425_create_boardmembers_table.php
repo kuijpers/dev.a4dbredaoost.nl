@@ -26,6 +26,7 @@ class CreateBoardmembersTable extends Migration
             $table->string('phone')->nullable();
             $table->string('boardmember_title')->default('member');
             $table->date('dob')->nullable();
+			$table->string('profile_img')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
