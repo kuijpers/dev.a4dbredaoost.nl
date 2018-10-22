@@ -1,7 +1,7 @@
 @extends('layouts.board.main')
 
 @section('title')
-    Bestuurslid -> Instellingen
+    {{ __('board_member_settings.page_title') }}
 @endsection
 
 @section('css')
@@ -48,27 +48,33 @@
                 <div class="col-md-4">
                     <div class="panel panel-danger">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Dashboard instellingen</h3>
+                            <h3 class="panel-title">
+                                {{ __('board_member_settings.your_dashboard_settings') }}
+                            </h3>
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
-                                <label class="col-sm-4 control-label">Theme :</label>
+                                <label class="col-sm-4 control-label">
+                                    {{ __('board_member_settings.your_dashboard_settings_theme') }} :
+                                </label>
                                 <div class="col-sm-8">
                                     <select class="selectpicker form-control" placeholder="Select">
-                                        <option>Light</option>
-                                        <option>Dark</option>
-                                        <option>Lilac</option>
+                                        <option value="light">Light</option>
+                                        <option value="dark">Dark</option>
+                                        <option value="lilac">Lilac</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
-                                <label class="col-sm-4 control-label">Taal :</label>
+                                <label class="col-sm-4 control-label">
+                                    {{ __('board_member_settings.your_dashboard_settings_language') }} :
+                                </label>
                                 <div class="col-sm-8">
                                     <select class="selectpicker form-control" placeholder="Select">
-                                        <option>Nederlands</option>
-                                        <option>Engels</option>
+                                        <option value="nl">Nederlands</option>
+                                        <option value="en" selected>English</option>
                                     </select>
                                 </div>
                             </div>
