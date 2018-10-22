@@ -9,7 +9,6 @@
                 <a href="{{ route('board.member.profile') }}">
                     <i class="fa fa-user-circle-o"></i>
                     {{ __('nav_overall.board_member_profile_nav') }}
-                    &nbsp; Profiel
                 </a>
             </li>
 
