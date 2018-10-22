@@ -1,7 +1,7 @@
 @extends('layouts.board.main')
 
 @section('title')
-    Bestuurslid -> Profiel
+    {{ __('board_member_profile.page_title') }}
 @endsection
 
 @section('css')
@@ -24,17 +24,21 @@
             <div class="col-md-5">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Dit is uw profiel</h3>
+                        <h3 class="panel-title">{{ __('board_member_profile.your_profile') }}</h3>
                     </div>
                     <div class="panel-body">
 
                         <div class="row">
 
                             <div class="col-sm-6">
-                                Profiel foto:
+                                {{ __('board_member_profile.your_profile_picture') }}
                             </div>
                             <div class="col-sm-6">
+                                @if(empty( Auth::user()->profile_img ))
                                 <img src="{{asset("/board/css/img/nophoto.png")}}" class="img-fluid" alt="Profiel foto">
+                                @else
+                                    <img src="{{asset("/board/css/img/Auth::user()->profile_img")}}" class="img-fluid" alt="Profiel foto">
+                                @endif
                             </div>
 
                         </div>
@@ -45,7 +49,7 @@
                         <div class="row">
 
                             <div class="col-sm-6">
-                                Gebruikers ID:
+                                {{ __('board_member_profile.your_user_id') }}
                             </div>
                             <div class="col-sm-6">
                                 {{ Auth::user()->id }}
@@ -55,7 +59,7 @@
                         <div class="row">
 
                             <div class="col-sm-6">
-                                Uw naam is:
+                                {{ __('board_member_profile.your_name') }}
                             </div>
                             <div class="col-sm-6">
                                 {{ Auth::user()->name }}
@@ -65,7 +69,7 @@
                         <div class="row">
 
                             <div class="col-sm-6">
-                                Uw primaire email is:
+                                {{ __('board_member_profile.your_primary_email') }}
                             </div>
                             <div class="col-sm-6">
                                 {{ Auth::user()->email }}
@@ -75,17 +79,21 @@
                         <div class="row">
 
                             <div class="col-sm-6">
-                                Uw secondaire email is:
+                                {{ __('board_member_profile.your_secondary_email') }}
                             </div>
                             <div class="col-sm-6">
-                                Not yet set
+                                @if(empty(Auth::user()->secondary_email))
+                                    {{ __('board_member_profile.your_secondary_email_empty') }}
+                                @else
+                                    {{Auth::user()->secondary_email}}
+                                @endif
                             </div>
 
                         </div>
                         <div class="row">
 
                             <div class="col-sm-6">
-                                Uw adres is:
+                                {{ __('board_member_profile.your_address') }}
                             </div>
                             <div class="col-sm-6">
                                 {{ Auth::user()->address }}
@@ -99,7 +107,7 @@
                         <div class="row">
 
                             <div class="col-sm-6">
-                                Uw telefoonnummer is:
+                                {{ __('board_member_profile.your_phonenumber') }}
                             </div>
                             <div class="col-sm-6">
                                 {{ Auth::user()->phone }}
@@ -109,7 +117,7 @@
                         <div class="row">
 
                             <div class="col-sm-6">
-                                Uw geboortedatum is:
+                                {{ __('board_member_profile.your_dob') }}
                             </div>
                             <div class="col-sm-6">
                                 {{ Carbon\Carbon::parse(Auth::user()->dob)->format('d-m-Y') }}
@@ -120,17 +128,17 @@
                         <div class="row">
 
                             <div class="col-sm-6">
-                                Uw functie in het bestuur is:
+                                {{ __('board_member_profile.your_jobtitle') }}
                             </div>
                             <div class="col-sm-6">
-                                Webmaster (lid)
+                                {{ __('board_member_profile.your_jobtitle_'.Auth::user()->boardmember_title ) }}
                             </div>
 
                         </div>
                         <div class="row">
 
                             <div class="col-sm-6">
-                                Uw account is gemaakt op:
+                                {{ __('board_member_profile.your_account_created_at') }}
                             </div>
                             <div class="col-sm-6">
                                 {{ Auth::user()->created_at->format('d-m-Y H:i') }}
@@ -140,7 +148,7 @@
                         <div class="row">
 
                             <div class="col-sm-6">
-                                <button class="btn btn-default" type="button">Update uw profiel</button>
+                                <button class="btn btn-default" type="button">{{ __('board_member_profile.button_update_your_profile') }}</button>
                             </div>
 
                         </div>
@@ -150,10 +158,18 @@
 
                 <div class="panel panel-danger">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Werkgroepen waar u in zit</h3>
+                        <h3 class="panel-title">
+                            {{ __('board_member_profile.your_workgroups') }}
+                        </h3>
                     </div>
                     <div class="panel-body">
                         <div class="col-md-12">
+
+                            {{--@if(empty(Auth::user()->workgroups))--}}
+
+                                {{ __('board_member_profile.your_workgroups_empty') }}
+
+                            {{--@else--}}
                             <ul>
                                 <li>
                                     Social Media
@@ -168,6 +184,8 @@
                                     Werkvoorbereiding
                                 </li>
                             </ul>
+
+                            {{--@endif--}}
                         </div>
 
                     </div>
@@ -179,10 +197,18 @@
 
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Authorisaties voor de website</h3>
+                        <h3 class="panel-title">
+                            {{ __('board_member_profile.your_authorizations_website') }}
+                        </h3>
                     </div>
                     <div class="panel-body">
                         <div class="col-md-12">
+
+                            {{--@if(empty(Auth::user()->website))--}}
+
+                                {{ __('board_member_profile.your_authorizations_website_empty') }}
+
+                            {{--@else--}}
                             <ul>
                                 <li>
                                     Auteur
@@ -200,6 +226,7 @@
                                     Super User
                                 </li>
                             </ul>
+                            {{--@endif--}}
                         </div>
 
                     </div>
@@ -207,10 +234,18 @@
 
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Authorisaties voor de vrijwilligers pagina</h3>
+                        <h3 class="panel-title">
+                            {{ __('board_member_profile.your_authorizations_volunteers') }}
+                        </h3>
                     </div>
                     <div class="panel-body">
                         <div class="col-md-12">
+
+                            {{--@if(empty(Auth::user()->volunteers))--}}
+
+                                {{ __('board_member_profile.your_authorizations_volunteers_empty') }}
+
+                            {{--@else--}}
                             <ul>
                                 <li>
                                     Auteur
@@ -228,6 +263,7 @@
                                     Super User
                                 </li>
                             </ul>
+                            {{--@endif--}}
                         </div>
 
                     </div>
@@ -235,10 +271,18 @@
 
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Authorisaties voor de bestuurs pagina</h3>
+                        <h3 class="panel-title">
+                            {{ __('board_member_profile.your_authorizations_board') }}
+                        </h3>
                     </div>
                     <div class="panel-body">
                         <div class="col-md-12">
+
+                            {{--@if(empty(Auth::user()->board))--}}
+
+                                {{ __('board_member_profile.your_authorizations_board_empty') }}
+
+                            {{--@else--}}
                             <ul>
                                 <li>
                                     Auteur
@@ -256,6 +300,7 @@
                                     Super User
                                 </li>
                             </ul>
+                            {{--@endif--}}
                         </div>
 
                     </div>
@@ -267,11 +312,20 @@
             <div class="col-md-3">
                 <div class="panel panel-success">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Snelkoppelingen</h3>
+                        <h3 class="panel-title">
+                            {{ __('board_member_profile.your_quicklinks') }}
+                        </h3>
                     </div>
                     <div class="panel-body">
+
+                        {{--@if(empty(Auth::user()->quicklinks))--}}
+
+                            <p>
+                                {{ __('board_member_profile.your_quicklinks_empty') }}
+                            </p>
+                       {{--@else--}}
                         <p>
-                        Hieronder staan uw Snelkoppelingen:
+                            {{ __('board_member_profile.your_quicklinks_comment') }}
                         </p>
 
                         <p>
@@ -309,6 +363,7 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            {{--@endif--}}
                         </p>
 
                     </div>
