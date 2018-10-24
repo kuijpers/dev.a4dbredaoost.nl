@@ -1,7 +1,9 @@
 @extends('layouts.board.main')
 
 @section('title')
+
     Dashboard
+
 @endsection
 
 @section('css')
