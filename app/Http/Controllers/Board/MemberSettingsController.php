@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Board;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 
 class MemberSettingsController extends Controller
 {
@@ -24,6 +26,7 @@ class MemberSettingsController extends Controller
     public function index()
     {
 		return view('board.member.settings');
+
     }
 
     /**
