@@ -10,7 +10,11 @@
     <link href="http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous" />
 
-    <link href="{{asset("/board/css/right.lilac.css")}}" rel="stylesheet">
+    @if(isset($settings->boardmembers_theme))
+    <link href="{{asset("/board/css/right.".$settings->boardmembers_theme.".css")}}" rel="stylesheet">
+    @else
+        <link href="{{asset("/board/css/right.light.css")}}" rel="stylesheet">
+    @endif
 
     <link href="{{asset("/board/libs/jquery.scrollbar/jquery.scrollbar.css")}}" rel="stylesheet">
 
