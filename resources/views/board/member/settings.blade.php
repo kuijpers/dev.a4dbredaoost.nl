@@ -26,7 +26,6 @@
 @endsection
 
 @section('content')
-
     <div class="container-fluid half-padding">
         <div class="template template__blank">
             <div class="row">
@@ -38,9 +37,6 @@
                         </div>
                         <div class="panel-body">
                             <p>This is a blank page.</p>
-                            @component('components.whoslogged')
-                            @endcomponent
-
                         </div>
                     </div>
                 </div>
@@ -59,8 +55,8 @@
                                 </label>
                                 <div class="col-sm-8">
                                     <select class="selectpicker form-control" placeholder="Select">
-                                        <option value="light">Light</option>
-                                        <option value="dark">Dark</option>
+                                        <option value="light" >Light</option>
+                                        <option value="dark" >Dark</option>
                                         <option value="lilac">Lilac</option>
                                     </select>
                                 </div>
