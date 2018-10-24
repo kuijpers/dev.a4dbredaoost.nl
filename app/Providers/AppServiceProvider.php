@@ -16,6 +16,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
+        view()->composer('layouts.board.main', function($view){
+
+        	$view->with('settings', \App\Models\BoardmembersDashboardSettings::settings());
+		});
     }
 
     /**
