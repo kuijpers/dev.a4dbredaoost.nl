@@ -104,3 +104,8 @@ footer .footer-copyright{
     top: 70px;
     z-index: 2500;
 }
+
+.card-text a:hover{
+    color: #ffffff;
+    text-decoration: underline;
+    }
