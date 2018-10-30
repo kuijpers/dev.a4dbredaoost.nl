@@ -78,10 +78,11 @@ Route::prefix('bestuur')->group(function(){
     Route::get('/lid/instellingen', 'Board\MemberSettingsController@index')->name('board.member.settings');
 
 
-
-
-
-
-
 });
 
+
+Route::prefix('api')->group(function(){
+
+	Route::post('/board/member/settings/theme-select', 'Board\MemberSettingsController@post_theme');
+
+});
