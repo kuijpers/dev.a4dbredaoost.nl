@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        view()->composer('layouts.board.main', function($view){
+        view()->composer('board.*', function($view){
 
         	$view->with('settings', \App\Models\BoardmembersDashboardSettings::settings());
 		});
