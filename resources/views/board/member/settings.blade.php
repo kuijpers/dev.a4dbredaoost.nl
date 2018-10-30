@@ -55,9 +55,10 @@
                                 </label>
                                 <div class="col-sm-8">
                                     <select class="selectpicker form-control" placeholder="Select">
-                                        <option value="light" >Light</option>
-                                        <option value="dark" >Dark</option>
-                                        <option value="lilac">Lilac</option>
+                                        <option value="light" @if($settings->boardmembers_theme == 'light') selected @endif >Light</option>
+                                        {{--<option value="light" @if($settings->boardmembers_theme == 'gray') selected @endif >Gray</option>--}}
+                                        <option value="dark" @if($settings->boardmembers_theme == 'dark') selected @endif >Dark</option>
+                                        <option value="lilac" @if($settings->boardmembers_theme == 'lilac') selected @endif >Lilac</option>
                                     </select>
                                 </div>
                             </div>
