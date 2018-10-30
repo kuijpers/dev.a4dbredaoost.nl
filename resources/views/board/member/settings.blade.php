@@ -23,6 +23,8 @@
 
     <script src="{{asset("/board/libs/bootstrap-select/js/bootstrap-select.min.js")}}"></script>
 
+    <script src="{{asset("/board/js/settings/select_theme.js")}}"></script>
+
 @endsection
 
 @section('content')
@@ -54,7 +56,7 @@
                                     {{ __('board_member_settings.your_dashboard_settings_theme') }} :
                                 </label>
                                 <div class="col-sm-8">
-                                    <select class="selectpicker form-control" placeholder="Select">
+                                    <select id="select_theme" class="selectpicker form-control" name="select_theme">
                                         <option value="light" @if($settings->boardmembers_theme == 'light') selected @endif >Light</option>
                                         {{--<option value="light" @if($settings->boardmembers_theme == 'gray') selected @endif >Gray</option>--}}
                                         <option value="dark" @if($settings->boardmembers_theme == 'dark') selected @endif >Dark</option>
@@ -69,7 +71,7 @@
                                     {{ __('board_member_settings.your_dashboard_settings_language') }} :
                                 </label>
                                 <div class="col-sm-8">
-                                    <select class="selectpicker form-control" placeholder="Select">
+                                    <select class="selectpicker form-control">
                                         <option value="nl">Nederlands</option>
                                         <option value="en" selected>English</option>
                                     </select>
