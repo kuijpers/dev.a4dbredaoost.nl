@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 class MemberSettingsController extends Controller
 {
+
 	/**
 	 * Create a new controller instance.
 	 *
@@ -18,7 +19,9 @@ class MemberSettingsController extends Controller
 	{
 		$this->middleware('auth:boardmember');
 	}
-    /**
+
+
+	/**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -29,69 +32,62 @@ class MemberSettingsController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+	/**
+	 *
+	 *	Give the user the settings they would like to have
+	 *
+	 *
+	 */
+	public function post_theme(Request $request)
+	{
+		// Check if settings are made for this user
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+		if(\App\Models\BoardmembersDashboardSettings::settings())
+		{
+			// When this user already has settings
+			// We have to update the settings in another method
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+			if(static::update_theme($request->message))
+			{
+				$response = array(
+					'status' => 'success',
+				);
+				return response()->json($response);
+			};
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+		}
+		// When settings are not made for this user
+		// We have to create the settings in database
+		else
+		{
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+			$new_theme = new \App\Models\BoardmembersDashboardSettings;
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+			$new_theme->boardmembers_id = Auth::user()->id;
+
+			$new_theme->boardmembers_theme = $request->message;
+
+			$new_theme->save();
+
+		}
+
+	}
+
+	/**
+	 *
+	 *	Update the settings for this user because he is not completely satisfied
+	 *
+	 *
+	 */
+
+	public function update_theme($theme)
+	{
+
+		\App\Models\BoardmembersDashboardSettings::where('boardmembers_id', Auth::user()->id)
+			->update(['boardmembers_theme' => $theme]);
+
+		return TRUE;
+
+	}
+
 }
