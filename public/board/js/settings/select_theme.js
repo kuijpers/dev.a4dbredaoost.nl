@@ -8,7 +8,9 @@ $(document).ready(function() {
 
 		themeChange(selected_theme);
 
+		setTimeout(function(){
 			location.reload();
+		},100);
 
 	});
 
