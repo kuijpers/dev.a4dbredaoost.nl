@@ -8,10 +8,6 @@ $(document).ready(function() {
 
 		themeChange(selected_theme);
 
-		setTimeout(function(){
-			location.reload();
-		},100);
-
 	});
 
 
@@ -29,7 +25,11 @@ $(document).ready(function() {
 			complete: function(data) {
 				var Resp = data.responseText;
 				console.log(Resp);
-			}		})
+			},
+			success: function() {
+				location.reload();
+			}
+		})
 
 	}
 
