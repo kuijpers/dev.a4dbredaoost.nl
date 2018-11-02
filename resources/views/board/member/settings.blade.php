@@ -11,6 +11,8 @@
 
     <link href="{{asset("/board/libs/bootstrap-select/css/bootstrap-select.min.css")}}" rel="stylesheet">
 
+    <link href="{{asset("/board/libs/flagstrap/dist/css/flags.css")}}" rel="stylesheet">
+
 @endsection
 
 @section('jstop')
@@ -23,7 +25,11 @@
 
     <script src="{{asset("/board/libs/bootstrap-select/js/bootstrap-select.min.js")}}"></script>
 
+    <script src="{{asset("/board/libs/flagstrap/dist/js/jquery.flagstrap.js")}}"></script>
+
     <script src="{{asset("/board/js/settings/select_theme.js")}}"></script>
+
+    <script src="{{asset("/board/js/settings/select_language.js")}}"></script>
 
 @endsection
 
@@ -55,7 +61,7 @@
                                 <label class="col-sm-4 control-label">
                                     {{ __('board_member_settings.your_dashboard_settings_theme') }} :
                                 </label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-6">
                                     <select id="select_theme" class="selectpicker form-control" name="select_theme">
                                         <option value="light" @if($settings->boardmembers_theme == 'light') selected @endif >Light</option>
                                         {{--<option value="light" @if($settings->boardmembers_theme == 'gray') selected @endif >Gray</option>--}}
@@ -65,19 +71,29 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="panel-body">
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label">
-                                    {{ __('board_member_settings.your_dashboard_settings_language') }} :
-                                </label>
-                                <div class="col-sm-8">
-                                    <select class="selectpicker form-control">
-                                        <option value="nl">Nederlands</option>
-                                        <option value="en" selected>English</option>
-                                    </select>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label text-left">
+                                        {{ __('board_member_settings.your_dashboard_settings_language') }} :
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <div id="select_language"
+                                             data-input-name="language"
+                                        @if(isset($settings->boardmembers_language))
+                                             data-selected-country="{{$settings->boardmembers_language}}"
+                                         @else
+                                             data-selected-country="nl"
+                                         @endif
+
+                                             data-button-size="btn-md btn-block"
+                                             data-button-type="btn-default"
+                                             data-scrollable-height="250px">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
                         </div>
+
                         <div class="panel-body">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                Vestibulum tincidunt est vitae ultrices accumsan.
