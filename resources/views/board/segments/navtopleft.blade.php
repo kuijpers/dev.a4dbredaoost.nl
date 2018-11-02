@@ -14,7 +14,7 @@
             <li><a href="#"><span>Sponsors</span></a></li>
             <li><a href="#"><span>Nieuws</span></a></li>
             <li><a href="#"><span>Kalender</span></a></li>
-            <li><a href="#"><span>Wist u dat</span></a></li>
+            <li><a href="{{ route('board.didyouknow.index') }}"><span>Wist u dat</span></a></li>
             <li>&nbsp;&nbsp;&nbsp;&nbsp;  Contact</li>
             <li class="divider" role="separator"></li>
             <li><a href="#"><span>&nbsp;&nbsp;  Mail ons</span></a></li>
