@@ -25,6 +25,7 @@ class CreateBoardmembersTable extends Migration
             $table->string('country')->default('Nederland');
             $table->string('phone')->nullable();
             $table->string('boardmember_title')->default('member');
+            $table->string('group')->default('board');
             $table->date('dob')->nullable();
 			$table->string('profile_img')->nullable();
             $table->rememberToken();
