@@ -22,6 +22,12 @@ class BoardmembersTableSeeder extends Seeder
 				'boardmember_title' => 'president',
 			],
 			[
+				'name' => 'Vice-President Organisation',
+				'email' => 'vice-president@a4dbredaoost.ddns.net',
+				'password' => bcrypt('welkom'),
+				'boardmember_title' => 'vice-president',
+			],
+			[
 				'name' => 'Secretary Organisation',
 				'email' => 'secretary@a4dbredaoost.ddns.net',
 				'password' => bcrypt('welkom'),
