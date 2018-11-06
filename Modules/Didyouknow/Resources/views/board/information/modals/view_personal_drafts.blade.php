@@ -1,0 +1,50 @@
+    <div class="modal fade" id="view_personal_drafts" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title text-danger">Deze staat voor u open.</h4>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-10 col-lg-offset-1">
+                        <div class="modal-title-message">
+                            <h5 class="text-primary">Hieronder vindt u de titel en de informatie die erbij hoort.</h5>
+                        </div>
+                    </div>
+
+                    <div class="col-md-10 col-lg-offset-1">
+                        <div class="modal-body">
+
+                            <div class="col-md-12 text-primary">
+                                <h5>De titel van de informatie</h5>
+                            </div>
+                            <div class="col-md-12 view_personal_title">
+                                Hier komt de tekst te staan van de titel.
+                                <hr>
+                            </div>
+                            <div class="col-md-12 text-primary">
+                                <h5>Hier hoort de volgende tekst bij</h5>
+                            </div>
+                            <div class="col-md-12 view_personal_body">
+                                Hier komt de tekst te staan van de info die bij de titel hoort
+                                <hr>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-10 col-lg-offset-1">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+

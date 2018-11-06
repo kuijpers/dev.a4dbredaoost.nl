@@ -23,6 +23,8 @@
 {{--Modal JS scripts--}}
     <script src="{{asset("/modules/board/js/modals/view_author_drafts.js")}}"></script>
 
+    <script src="{{asset("/modules/board/js/modals/personal_drafts.js")}}"></script>
+
 
 
 @endsection

@@ -1,4 +1,7 @@
-@include('didyouknow::board.information.modals.view_author_drafts')
+@include('didyouknow::board.information.modals.view_personal_drafts')
+@include('didyouknow::board.information.modals.edit_personal_drafts')
+@include('didyouknow::board.information.modals.delete_personal_drafts')
+
 
 <div class="tab-pane active" id="draft" role="tabpanel">
     @if(isset($personal_drafts))
@@ -38,15 +41,32 @@
                                 </td>
                                 <td>
                                     <div class="btn-group btn-group-xs" role="group">
-                                        <button type="button" class="btn btn-info">
+                                        {{-- View the data in Modal--}}
+                                        <button type="button" class="btn btn-info"
+                                                data-toggle="modal"
+                                                data-target="#view_personal_drafts"
+                                                data-title="{{$personal_draft->title}}"
+                                                data-body="{{$personal_draft->body}}"
+                                        >
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                             Bekijk
                                         </button>
-                                        <button type="button" class="btn btn-warning">
-                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        {{-- Edit the data in Modal --}}
+                                        <button type="button" class="btn btn-warning"
+                                                data-toggle="modal"
+                                                data-target="#edit_personal_drafts"
+                                                data-title="{{$personal_draft->title}}"
+                                                data-body="{{$personal_draft->body}}"
+                                        >
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
                                             Wijzig
                                         </button>
-                                        <button type="button" class="btn btn-danger">
+                                        {{-- Delete/archive the data thru Modal--}}
+                                        <button type="button" class="btn btn-danger"
+                                                data-toggle="modal"
+                                                data-target="#delete_personal_drafts"
+                                                data-title="{{$personal_draft->title}}"
+                                        >
                                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                                             Verwijder
                                         </button>

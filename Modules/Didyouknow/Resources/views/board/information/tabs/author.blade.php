@@ -1,3 +1,5 @@
+@include('didyouknow::board.information.modals.view_author_drafts')
+
 <div class="tab-pane" id="author" role="tabpanel">
 
     @if(isset($author_drafts))
