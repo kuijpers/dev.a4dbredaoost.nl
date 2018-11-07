@@ -25,9 +25,13 @@ class DidyouknowInformationController extends Controller
 
 		$author_drafts = static::get_author_draft();
 
+		$author_approved = static::get_author_approved();
+
 
         return view('didyouknow::board.information.index')
-			->with(compact('personal_drafts', 'author_drafts'));
+			->with(compact('personal_drafts',
+							'author_drafts',
+							'author_approved'));
     }
 
 	/**
@@ -113,4 +117,15 @@ class DidyouknowInformationController extends Controller
 		return $author_draft;
 	}
 
+	public function get_author_approved()
+	{
+		$author_draft = Didyouknow_information::where('draft', '=', 1)
+			->where('author_approve', '=', 1)
+			->where('editor_approve', '=', 0)
+			->where('publisher_approve', '=', 0)
+			->where('archived', '=', 0)
+			->get();
+
+		return $author_draft;
+	}
 }
