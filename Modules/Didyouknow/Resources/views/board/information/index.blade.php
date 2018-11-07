@@ -9,7 +9,7 @@
 @endsection
 
 @section('css')
-
+    <link href="{{asset("/board/libs/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css")}}" rel="stylesheet">
 @endsection
 
 @section('jstop')
@@ -21,9 +21,13 @@
     <script src="{{asset("/modules/board/js/selectall_approved.js")}}"></script>
 
 {{--Modal JS scripts--}}
-    <script src="{{asset("/modules/board/js/modals/view_author_drafts.js")}}"></script>
+    <script src="{{asset("/modules/board/js/modals/delete_article.js")}}"></script>
+
+    <script src="{{asset("/modules/board/js/modals/author_drafts.js")}}"></script>
 
     <script src="{{asset("/modules/board/js/modals/personal_drafts.js")}}"></script>
+
+    <script src="{{asset("/modules/board/js/modals/author_approved.js")}}"></script>
 
 
 
@@ -73,7 +77,7 @@
                         {{-- Call for personal drafts --}}
                         <li class="active" role="presentation">
                             <a href="#draft" aria-controls="draft" role="tab" data-toggle="tab">
-                                Drafts &nbsp;
+                                Concept &nbsp;
                                 @if($personal_drafts->count()==0)
                                     <span class="label label-default">{{$personal_drafts->count()}}</span>
                                 @else
@@ -98,7 +102,11 @@
                         <li role="presentation">
                             <a href="#editor" aria-controls="editor" role="tab" data-toggle="tab">
                                 Editor &nbsp;
-                                <span class="label label-primary">5</span>
+                                @if($author_drafts->count()==0)
+                                    <span class="label label-default">{{$author_approved->count()}}</span>
+                                @else
+                                    <span class="label label-primary">{{$author_approved->count()}}</span>
+                                @endif
                             </a>
                         </li>
 
