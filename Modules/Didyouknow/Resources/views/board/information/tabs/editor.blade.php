@@ -18,7 +18,7 @@
                                 Auteur
                             </th>
                             <th>
-                                Goedgekeurd
+                                Auteur ok
                             </th>
                             <th>
                                 Editor
