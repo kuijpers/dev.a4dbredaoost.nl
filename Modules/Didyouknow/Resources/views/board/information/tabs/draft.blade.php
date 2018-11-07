@@ -1,6 +1,6 @@
 @include('didyouknow::board.information.modals.view_personal_drafts')
 @include('didyouknow::board.information.modals.edit_personal_drafts')
-@include('didyouknow::board.information.modals.delete_personal_drafts')
+@include('didyouknow::board.information.modals.delete_article')
 
 
 <div class="tab-pane active" id="draft" role="tabpanel">
@@ -64,7 +64,7 @@
                                         {{-- Delete/archive the data thru Modal--}}
                                         <button type="button" class="btn btn-danger"
                                                 data-toggle="modal"
-                                                data-target="#delete_personal_drafts"
+                                                data-target="#delete_article"
                                                 data-title="{{$personal_draft->title}}"
                                         >
                                             <i class="fa fa-trash-o" aria-hidden="true"></i>
@@ -81,7 +81,7 @@
             </div>
         @else
             <div class="alert alert-info text-center" role="alert">
-                <i class="alert-ico fa fa-fw fa-exclamation"></i>Er staan geen drafts onder uw naam in de database.
+                <i class="alert-ico fa fa-fw fa-exclamation"></i>Er staan geen concepten onder uw naam in de database.
             </div>
         @endif
 
