@@ -102,7 +102,7 @@
                         <li role="presentation">
                             <a href="#editor" aria-controls="editor" role="tab" data-toggle="tab">
                                 Editor &nbsp;
-                                @if($author_drafts->count()==0)
+                                @if($author_approved->count()==0)
                                     <span class="label label-default">{{$author_approved->count()}}</span>
                                 @else
                                     <span class="label label-primary">{{$author_approved->count()}}</span>
@@ -113,16 +113,24 @@
                         {{-- Call for writings that will need approval for publishing --}}
                         <li role="presentation">
                             <a href="#redacteur" aria-controls="redacteur" role="tab" data-toggle="tab">
-                                Redacteur &nbsp;
-                                <span class="label label-primary">5</span>
+                                Redacteur &nbsp; &nbsp;
+                                @if($editor_approved->count()==0)
+                                    <span class="label label-default">{{$editor_approved->count()}}</span>
+                                @else
+                                    <span class="label label-primary">{{$editor_approved->count()}}</span>
+                                @endif
                             </a>
                         </li>
 
                         {{-- These writings are now published on the website --}}
                         <li role="presentation">
                             <a href="#gepubliceerd" aria-controls="gepubliceerd" role="tab" data-toggle="tab">
-                                Gepubliceerd &nbsp;
-                                <span class="label label-success">5</span>
+                                Gepubliceerd  &nbsp; &nbsp;
+                                @if($publisher_approved->count()==0)
+                                    <span class="label label-default">{{$publisher_approved->count()}}</span>
+                                @else
+                                    <span class="label label-primary">{{$publisher_approved->count()}}</span>
+                                @endif
                             </a>
                         </li>
 
@@ -130,7 +138,11 @@
                         <li role="presentation">
                             <a href="#archief" aria-controls="archief" role="tab" data-toggle="tab">
                                 Archief &nbsp;
-                                <span class="label label-danger">5</span>
+                                @if($archived->count()==0)
+                                    <span class="label label-default">{{$archived->count()}}</span>
+                                @else
+                                    <span class="label label-primary">{{$archived->count()}}</span>
+                                @endif
                             </a>
                         </li>
 
