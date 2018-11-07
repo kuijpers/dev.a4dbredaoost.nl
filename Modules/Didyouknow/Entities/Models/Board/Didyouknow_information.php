@@ -31,5 +31,19 @@ class Didyouknow_information extends Model
 		return $model::where('id',$this->author)->first()->name;
 	}
 
+	public function getEditorName($group)
+	{
+		$model = '\App\Models\\'.$group;
+
+		return $model::where('id',$this->editor)->first()->name;
+	}
+
+	public function getPublisherName($group)
+	{
+		$model = '\App\Models\\'.$group;
+
+		return $model::where('id',$this->publisher)->first()->name;
+	}
+
 
 }
