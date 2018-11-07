@@ -27,11 +27,20 @@ class DidyouknowInformationController extends Controller
 
 		$author_approved = static::get_author_approved();
 
+		$editor_approved = static::get_editor_approved();
+
+		$publisher_approved = static::get_publisher_approved();
+
+		$archived = static::get_archived();
+
 
         return view('didyouknow::board.information.index')
 			->with(compact('personal_drafts',
 							'author_drafts',
-							'author_approved'));
+							'author_approved',
+							'editor_approved',
+							'publisher_approved',
+							'archived'));
     }
 
 	/**
@@ -103,7 +112,7 @@ class DidyouknowInformationController extends Controller
 		return $personal_draft;
 	}
 
-	// Get all author approved data that still requires editing
+	// Get all author drafts that still require approval from author to continue
 
 	public function get_author_draft()
 	{
@@ -117,15 +126,59 @@ class DidyouknowInformationController extends Controller
 		return $author_draft;
 	}
 
+	// Get all author approved data that still requires editing
+
 	public function get_author_approved()
 	{
-		$author_draft = Didyouknow_information::where('draft', '=', 1)
+		$author_approved = Didyouknow_information::where('draft', '=', 1)
 			->where('author_approve', '=', 1)
 			->where('editor_approve', '=', 0)
 			->where('publisher_approve', '=', 0)
 			->where('archived', '=', 0)
 			->get();
 
-		return $author_draft;
+		return $author_approved;
+	}
+
+	// Get all editor approved data that still requires approval from publisher
+
+	public function get_editor_approved()
+	{
+		$editor_approved = Didyouknow_information::where('draft', '=', 1)
+			->where('author_approve', '=', 1)
+			->where('editor_approve', '=', 1)
+			->where('publisher_approve', '=', 0)
+			->where('archived', '=', 0)
+			->get();
+
+		return $editor_approved;
+	}
+
+	// Get all editor approved data that still requires approval from publisher
+
+	public function get_publisher_approved()
+	{
+		$publisher_approved = Didyouknow_information::where('draft', '=', 1)
+			->where('author_approve', '=', 1)
+			->where('editor_approve', '=', 1)
+			->where('publisher_approve', '=', 1)
+			->where('archived', '=', 0)
+			->get();
+
+		return $publisher_approved;
+	}
+
+	// Get all editor approved data that still requires approval from publisher
+
+	public function get_archived()
+	{
+		$archived = Didyouknow_information::where('draft', '=', 1)
+			->where('author_approve', '=', 1)
+			->where('editor_approve', '=', 1)
+			->where('publisher_approve', '=', 1)
+			->where('archived', '=', 1)
+			->get();
+
+		return $archived;
 	}
 }
