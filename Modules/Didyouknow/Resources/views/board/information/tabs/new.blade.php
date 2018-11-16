@@ -22,7 +22,7 @@
         <div class="row">
             <div class="form-group col-md-10 col-md-offset-1">
                 <label for="new_article"><strong>@lang('didyouknow::board/tabs.tab_new_information')</strong></label>
-                <textarea id="new_article" class="form-control" placeholder="@lang('didyouknow::board/tabs.tab_new_information')" rows="10"></textarea>
+                <textarea id="new_article" class="form-control summernote" placeholder="@lang('didyouknow::board/tabs.tab_new_information')" rows="10"></textarea>
             </div>
         </div>
 

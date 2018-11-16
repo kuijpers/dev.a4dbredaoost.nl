@@ -62,7 +62,7 @@
 
                             <div class="col-md-12 author_approved_body">
 
-                                <textarea name="body" class="form-control" rows="10" id="author_approved_body"></textarea>
+                                <textarea name="body" class="form-control summernote" rows="10" id="author_approved_body"></textarea>
 
                             </div>
 
