@@ -17,6 +17,8 @@
 
 <script src="{{asset("/board/js/main.js")}}"></script>
 
+<script src="{{asset("/board/js/tooltip.js")}}"></script>
+
 <!-- Start Additional JS -->
 @yield('jsbottom')
 <!-- End Additional JS -->

@@ -7,25 +7,25 @@
         @if($author_drafts->isNotEmpty())
             <div class="template__table_static template__table_responsive">
                 <div class="scrollable scrollbar-macosx">
-                    <table class="table">
+                    <table class="table table-condensed">
                         <thead>
-                        <tr>
-                            <th>
-                                Titel
-                            </th>
-                            <th>
-                                Auteur
-                            </th>
-                            <th>
-                                Datum aangemaakt
-                            </th>
-                            <th>
-                                Laatste update
-                            </th>
-                            <th>
-                                &nbsp;
-                            </th>
-                        </tr>
+                            <tr>
+                                <th>
+                                    @lang('didyouknow::board/tabs.tab_table_title_title')
+                                </th>
+                                <th>
+                                    @lang('didyouknow::board/tabs.tab_table_title_who')
+                                </th>
+                                <th>
+                                    @lang('didyouknow::board/tabs.tab_table_title_creation_date')
+                                </th>
+                                <th>
+                                    @lang('didyouknow::board/tabs.tab_table_title_last_update')
+                                </th>
+                                <th>
+                                    &nbsp;
+                                </th>
+                            </tr>
                         </thead>
                         <tbody>
                         @foreach($author_drafts as $author_draft)
@@ -35,8 +35,8 @@
                                     {{$author_draft->title}}
                                 </td>
                                 <td>
+                                    <strong> @lang('didyouknow::board/tabs.tab_nav_author') : </strong>
                                     {{$author_draft->getAuthorName($author_draft->author_group)}}
-                                    {{--{{$author_draft->author_group}}--}}
                                 </td>
                                 <td>
                                     {{$author_draft->created_at->format('d-m-Y H:m:i')}}
@@ -47,6 +47,8 @@
                                 <td>
                                     <div class="btn-group btn-group-xs" role="group">
                                         <button type="button" class="btn btn-info"
+                                                data-hoover="tooltip"
+                                                title="Bekijk"
                                                 data-toggle="modal"
                                                 data-target="#view_author_drafts"
                                                 data-title="{{$author_draft->title}}"
@@ -54,7 +56,6 @@
                                                 >
 
                                             <i class="fa fa-eye" aria-hidden="true"></i>
-                                            Bekijk
                                         </button>
                                     </div>
                                 </td>

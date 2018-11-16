@@ -1,10 +1,3 @@
-/*
- *
- *   Right - Responsive Admin Template
- *   v 0.3.0
- *   http://adminbootstrap.com
- *
- */
 
 $(document).ready(function() {
 	quickmenu($('.quickmenu__item.active'));

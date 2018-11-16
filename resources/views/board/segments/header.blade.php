@@ -15,12 +15,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous" />
     {{--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">--}}
 
-    @if(isset($settings->boardmembers_theme))
-    <link href="{{asset("/board/css/right.".$settings->boardmembers_theme.".css")}}" rel="stylesheet">
-    @else
-        <link href="{{asset("/board/css/right.light.css")}}" rel="stylesheet">
-    @endif
-
     <link href="{{asset("/board/css/nav-dropdown.css")}}" rel="stylesheet">
 
     <link href="{{asset("/board/libs/jquery.scrollbar/jquery.scrollbar.css")}}" rel="stylesheet">
@@ -33,6 +27,12 @@
     <!-- Start Additional CSS -->
     @yield('css')
     <!-- End Additional CSS -->
+
+    @if(isset($settings->boardmembers_theme))
+        <link href="{{asset("/board/css/right.".$settings->boardmembers_theme.".css")}}" rel="stylesheet">
+    @else
+        <link href="{{asset("/board/css/right.light.css")}}" rel="stylesheet">
+    @endif
 
     <!-- Start Additional CSS -->
     @yield('jstop')

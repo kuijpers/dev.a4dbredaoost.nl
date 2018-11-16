@@ -8,20 +8,14 @@
         @if($author_approved->isNotEmpty())
             <div class="template__table_static template__table_responsive">
                 <div class="scrollable scrollbar-macosx">
-                    <table class="table">
+                    <table class="table table-condensed">
                         <thead>
                         <tr>
                             <th>
-                                Titel
+                                @lang('didyouknow::board/tabs.tab_table_title_title')
                             </th>
                             <th>
-                                Auteur
-                            </th>
-                            <th>
-                                Auteur ok
-                            </th>
-                            <th>
-                                Editor
+                                @lang('didyouknow::board/tabs.tab_table_title_who')
                             </th>
                             <th>
                                 Datum aangemaakt
@@ -42,15 +36,10 @@
                                     {{$author_approve->title}}
                                 </td>
                                 <td>
+                                    <strong>@lang('didyouknow::board/tabs.tab_nav_author')</strong> :
                                     {{$author_approve->getAuthorName($author_approve->author_group)}}
-                                </td>
-                                <td class="text-center">
-                                    <div class="checkbox checkbox-success">
-                                        <input id="ch2" type="checkbox" checked="checked" disabled>
-                                        <label for="ch2"></label>
-                                    </div>
-                                </td>
-                                <td>
+                                    <br>
+                                    <strong>@lang('didyouknow::board/tabs.tab_nav_editor')</strong> :
                                     @if(!empty($author_approve->editor))
                                         {{$author_approve->getEditorName($author_approve->editor_group)}}
                                     @else
@@ -67,6 +56,8 @@
                                     <div class="btn-group btn-group-xs" role="group">
                                         {{-- View the data in Modal--}}
                                         <button type="button" class="btn btn-info"
+                                                data-hoover="tooltip"
+                                                title="@lang('didyouknow::board/buttons.tab_tooltip_view')"
                                                 data-toggle="modal"
                                                 data-target="#view_author_approved"
                                                 data-title="{{$author_approve->title}}"
@@ -74,26 +65,27 @@
                                                 data-author="{{$author_approve->getAuthorName($author_approve->author_group)}}"
                                         >
                                             <i class="fa fa-eye" aria-hidden="true"></i>
-                                            Bekijk
                                         </button>
                                         {{-- Edit the data in Modal --}}
                                         <button type="button" class="btn btn-warning"
+                                                data-hoover="tooltip"
+                                                title="@lang('didyouknow::board/buttons.tab_tooltip_edit')"
                                                 data-toggle="modal"
                                                 data-target="#edit_author_approved"
                                                 data-title="{{$author_approve->title}}"
                                                 data-body="{{$author_approve->body}}"
                                         >
                                             <i class="fa fa-eye" aria-hidden="true"></i>
-                                            Wijzig
                                         </button>
                                         {{-- Delete/archive the data thru Modal--}}
                                         <button type="button" class="btn btn-danger"
+                                                data-hoover="tooltip"
+                                                title="@lang('didyouknow::board/buttons.tab_tooltip_delete')"
                                                 data-toggle="modal"
                                                 data-target="#delete_article"
                                                 data-title="{{$author_approve->title}}"
                                         >
                                             <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                            Verwijder
                                         </button>
                                     </div>
                                 </td>
@@ -106,7 +98,8 @@
             </div>
         @else
             <div class="alert alert-info text-center" role="alert">
-                <i class="alert-ico fa fa-fw fa-exclamation"></i>Op dit moment is er geen data beschikbaar.
+                <i class="alert-ico fa fa-fw fa-exclamation"></i>
+                @lang('didyouknow::board/tabs.tab_data_no_data')
             </div>
         @endif
     @endif

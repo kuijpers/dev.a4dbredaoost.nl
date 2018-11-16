@@ -1,68 +1,93 @@
 <div class="tab-pane" id="new" role="tabpanel">
 
     <form class="form-group">
+
         <div class="row">
-            <div class="form-group col-md-8">
-                <label for="didyouknow">De titel.</label>
-                <input type="text" class="form-control" placeholder="Hier een titel.">
+            <div class="form-group  col-md-10 col-md-offset-1">
+                <label for="titel">
+                    <strong>@lang('didyouknow::board/tabs.tab_new_title')</strong>
+                </label>
+                <input id="titel" type="text" class="form-control" placeholder="@lang('didyouknow::board/tabs.tab_new_title')">
             </div>
         </div>
+
         <div class="row">
-            <div class="form-group col-md-8">
-                <label for="exampleInputPassword1">Dan hier de informatie....</label>
-                <textarea class="form-control" placeholder="En zo is het" rows="7"></textarea>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-8 text-right">
-                <br>
-                <button type="submit" class="btn btn-warning btn-sm">Live preview</button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-8">
+
+            <div class="col-md-10 col-md-offset-1">
                 <hr>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-10 col-md-offset-1">
+                <label for="new_article"><strong>@lang('didyouknow::board/tabs.tab_new_information')</strong></label>
+                <textarea id="new_article" class="form-control" placeholder="@lang('didyouknow::board/tabs.tab_new_information')" rows="10"></textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group  col-md-10 col-md-offset-1 text-right">
+                <br>
+                <button type="submit" class="btn btn-warning btn-sm">
+                    @lang('didyouknow::board/buttons.tab_new_button_live_preview')
+                </button>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-12">
+                <hr>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="form-group  col-md-10 col-md-offset-1">
 
                 <div class="row">
                     <div class="col-md-3">
+
                         <label>
-                            <input type="checkbox" id="selectall_approved"> Check all
+                            <input type="checkbox" id="selectall_approved">
+                            @lang('didyouknow::board/general.checkbox_check_all')
                         </label>
+
+                    </div>
+
+                    <div class="col-md-3">
+
+                        <label>
+                            <input class="approved" type="checkbox" name="approve[]">
+                            @lang('didyouknow::board/general.checkbox_author_approval')
+                        </label>
+
                     </div>
                     <div class="col-md-3">
-                        <ul class="list-unstyled">
-                            <li>
-                                <label>
-                                    <input class="approved" type="checkbox" name="approve[]"> Draft
-                                </label>
-                            </li>
-                            <li>
-                                <label>
-                                    <input class="approved" type="checkbox" name="approve[]"> Author Approval
-                                </label>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3">
-                        <ul class="list-unstyled">
-                            <li>
-                                <label>
-                                    <input class="approved" type="checkbox" name="approve[]"> Editor Approval.
-                                </label>
-                            </li>
-                            <li>
-                                <label>
-                                    <input class="approved" type="checkbox" name="approve[]"> Publisher Approval
-                                </label>
-                            </li>
-                        </ul>
+
+                        <label>
+                            <input class="approved" type="checkbox" name="approve[]">
+                            @lang('didyouknow::board/general.checkbox_editor_approval')
+                        </label>
+
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="row">
-            <div class="form-group col-md-8">
-                <button type="submit" class="btn btn-success">Submit</button>
+
+            <div class="col-md-12">
+                <hr>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="form-group col-md-10 col-md-offset-1">
+                <button type="submit" class="btn btn-success">
+                    @lang('didyouknow::board/buttons.modal_button_submit')
+                </button>
             </div>
         </div>
     </form>
