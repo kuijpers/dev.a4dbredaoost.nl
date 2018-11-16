@@ -62,7 +62,7 @@
 
                             <div class="col-md-12 view_personal_body">
 
-                                <textarea name="body" class="form-control" rows="10" id="personal_body"></textarea>
+                                <textarea name="body" class="form-control summernote" rows="10" id="personal_body"></textarea>
 
                             </div>
 

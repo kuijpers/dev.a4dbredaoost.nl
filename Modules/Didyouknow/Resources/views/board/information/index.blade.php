@@ -71,6 +71,8 @@
 
     <script src="{{asset("/modules/didyouknow/js/modals/new_article.js")}}"></script>
 
+    <script src="{{asset("/modules/didyouknow/js/modals/didyouknow_information_modals.js")}}"></script>
+
 
 @endsection
 
