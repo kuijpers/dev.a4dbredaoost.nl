@@ -55,23 +55,7 @@
 
     <script src="{{asset("/modules/didyouknow/js/selectall_approved.js")}}"></script>
 
-    <script src="{{asset("/modules/didyouknow/js/modals/delete_article.js")}}"></script>
-
-    <script src="{{asset("/modules/didyouknow/js/modals/author_drafts.js")}}"></script>
-
-    <script src="{{asset("/modules/didyouknow/js/modals/personal_drafts.js")}}"></script>
-
-    <script src="{{asset("/modules/didyouknow/js/modals/author_approved.js")}}"></script>
-
-    <script src="{{asset("/modules/didyouknow/js/modals/editor_approved.js")}}"></script>
-
-    <script src="{{asset("/modules/didyouknow/js/modals/publisher_approved.js")}}"></script>
-
-    <script src="{{asset("/modules/didyouknow/js/modals/archived.js")}}"></script>
-
-    <script src="{{asset("/modules/didyouknow/js/modals/new_article.js")}}"></script>
-
-    <script src="{{asset("/modules/didyouknow/js/modals/didyouknow_information_modals.js")}}"></script>
+    <script src="{{asset("/modules/didyouknow/js/didyouknow_information_modals.js")}}"></script>
 
 
 @endsection
