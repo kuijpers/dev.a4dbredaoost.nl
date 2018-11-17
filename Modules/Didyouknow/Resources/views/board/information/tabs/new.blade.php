@@ -7,7 +7,7 @@
                 <label for="titel">
                     <strong>@lang('didyouknow::board/tabs.tab_new_title')</strong>
                 </label>
-                <input id="titel" type="text" class="form-control" placeholder="@lang('didyouknow::board/tabs.tab_new_title')">
+                <input id="titel" name="title" type="text" class="form-control" placeholder="@lang('didyouknow::board/tabs.tab_new_title')">
             </div>
         </div>
 
@@ -22,14 +22,14 @@
         <div class="row">
             <div class="form-group col-md-10 col-md-offset-1">
                 <label for="new_article"><strong>@lang('didyouknow::board/tabs.tab_new_information')</strong></label>
-                <textarea id="new_article" class="form-control summernote" placeholder="@lang('didyouknow::board/tabs.tab_new_information')" rows="10"></textarea>
+                <textarea id="new_article" name="body" class="form-control summernote" placeholder="@lang('didyouknow::board/tabs.tab_new_information')" rows="10"></textarea>
             </div>
         </div>
 
         <div class="row">
             <div class="form-group  col-md-10 col-md-offset-1 text-right">
                 <br>
-                <button type="submit" class="btn btn-warning btn-sm">
+                <button id="live_preview" type="submit" class="btn btn-warning btn-sm">
                     @lang('didyouknow::board/buttons.tab_new_button_live_preview')
                 </button>
             </div>
@@ -85,7 +85,7 @@
         </div>
         <div class="row">
             <div class="form-group col-md-10 col-md-offset-1">
-                <button type="submit" class="btn btn-success">
+                <button id="submit_new" type="submit" class="btn btn-success">
                     @lang('didyouknow::board/buttons.modal_button_submit')
                 </button>
             </div>
