@@ -1,4 +1,6 @@
-
+/**
+ *  @todo : fix functions for ajax calls to get data from DB. To many of the same requests
+ */
 	// NEW article
 
 	$('#new_article').summernote({
@@ -6,6 +8,7 @@
 		minHeight: null,             // set minimum height of editor
 		maxHeight: null,             // set maximum height of editor
 		focus: true,                 // set focus to editable area after initializing summernote
+		dialogsInBody: true,
 		placeholder: 'Write text here.......',
 
 		codemirror: {
@@ -23,8 +26,11 @@
 			['color', ['color']],
 			['para', ['ul', 'ol', 'paragraph']],
 			['height', ['height']]
-		]
+		],
+
+		lineHeight: 1
 	});
+
 
 	// VIEW files
 
@@ -137,34 +143,162 @@
 
 	});
 
-	// EDIT files
+// EDIT files
 
 	$('#edit_personal_drafts').on('show.bs.modal', function(e) {
 
+			// console.log($(e.relatedTarget).data('id'));
 
-		$(this).find('#personal_title').attr('value', $(e.relatedTarget).data('title'));
+	// Set all variables
 
-		$body = $(e.relatedTarget).attr('data-body');
-		$(this).find('#personal_body').text($body);
+		// Get ID from button / link
 
-		add_summernote();
+		var id = $(e.relatedTarget).data('id');
+
+			// For testing comment out above and comment in below
+
+		// var id = 122;
+
+		// Set url to use
+			var url= "/api/board/information/"+ id +"/edit";
+
+		// Get Token
+			var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+
+			// Show content of variable
+			// console.log(url);
+
+		// Show content of variable
+		// console.log(id);
+
+		// Clear out summernote field
+		// $('.summernote').summernote();
+		// $('.summernote').summernote('reset');
+		// $('.summernote').summernote('destroy');
+
+
+		$.ajax({
+			type: "POST",
+			url: url,
+			data: {
+				_token: CSRF_TOKEN,
+				id: id
+				},
+			dataType: 'JSON',
+			complete: function(data) {
+				var Resp = data.responseText;
+				 // console.log(Resp);
+			},
+			success: function(data){
+				// If message returns negative then we need to close the modal and set a danger alert
+				jQuery.each(data.errors, function(key, value){
+					$('#edit_personal_drafts').modal('hide');
+					jQuery('.alert-danger').show();
+					jQuery('.alert-danger').append('<p class="remove-alert">'+value+'</p>'); /** @todo Make sure that the alert will have a language variable !! Returned value is: id_not_found .**/
+					$('.tosti').delay( 5000 ).fadeOut( 'slow' );
+				});
+
+				// If message returns with data then we can add the data to the correct fields
+				jQuery.each(data.success, function(key, value) {
+
+					var title_id	=	$("#title");
+
+					var title		=	value['title'];
+
+					var body		=	value['body'];
+
+					// console.log(title);
+
+					title_id.val(title);
+
+					// add_summernote(body);
+
+					init_summernote();
+
+					$('.summernote').summernote('code', body);
+
+
+				});
+			}
+		});
+
+		$( ".remove-alert" ).remove();
 
 	});
 
 
-
 	$('#edit_author_approved').on('show.bs.modal', function(e) {
 
+		 // console.log($(e.relatedTarget).data('id'));
 
-		$(this).find('#author_approved_title').attr('value', $(e.relatedTarget).data('title'));
+		// Set all variables
 
-		$body = $(e.relatedTarget).attr('data-body');;
-		$(this).find('#author_approved_body').text($body)
+		// Get ID from button / link
 
-		add_summernote();
+		var id = $(e.relatedTarget).data('id');
+
+		// For testing comment out above and comment in below
+
+		// var id = 122;
+
+		// Set url to use
+		var url= "/api/board/information/"+ id +"/edit";
+
+		// Get Token
+		var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
 
-		$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+		// Show content of variable
+		// console.log(id);
+
+		// Clear out summernote field
+		// $('.summernote').summernote();
+		// $('.summernote').summernote('reset');
+		// $('.summernote').summernote('destroy');
+
+		$.ajax({
+			type: "POST",
+			url: url,
+			data: {
+				_token: CSRF_TOKEN,
+				id: id
+			},
+			dataType: 'JSON',
+			complete: function(data) {
+				var Resp = data.responseText;
+				// console.log(Resp);
+			},
+			success: function(data){
+				// If message returns negative then we need to close the modal and set a danger alert
+				jQuery.each(data.errors, function(key, value){
+					$('#edit_author_approved').modal('hide');
+					jQuery('.alert-danger').show();
+					jQuery('.alert-danger').append('<p class="remove-alert">'+value+'</p>'); /** @todo Make sure that the alert will have a language variable !! Returned value is: id_not_found .**/
+					$('.tosti').delay( 5000 ).fadeOut( 'slow' );
+				});
+
+				// If message returns with data then we can add the data to the correct fields
+				jQuery.each(data.success, function(key, value) {
+
+					var title_id	=	$("#title");
+
+					var title		=	value['title'];
+
+					var body		=	value['body'];
+
+					console.log(body);
+
+					title_id.val(title);
+
+					add_summernote(body);
+
+				});
+			}
+		});
+
+		$( ".remove-alert" ).remove();
+
 	});
 
 
@@ -249,13 +383,54 @@
 
 	// REQUIRED FUNCTIONS
 
-	function add_summernote(){
-		$(document).ready(function() {
+	function init_summernote(){
+
+		$('.summernote').summernote();
+
+		$('.summernote').summernote({
+			height: 200,                 // set editor height
+			minHeight: 200,             // set minimum height of editor
+			maxHeight: null,             // set maximum height of editor
+			focus: true,                 // set focus to editable area after initializing summernote
+			dialogsInBody: true,
+			lineHeight:1,
+
+			codemirror: {
+				theme: 'hopscotch',
+				mode: 'htmlmixed',
+				lineWrapping: true,
+				scrollbarStyle: "simple"
+			},
+
+			toolbar: [
+				// [groupName, [list of button]]
+				['style', ['bold', 'italic', 'underline', 'clear']],
+				['font', ['strikethrough', 'superscript', 'subscript']],
+				['fontsize', ['fontsize']],
+				['color', ['color']],
+				['para', ['ul', 'ol', 'paragraph']],
+				['height', ['height']]
+			]
+		});
+	}
+
+	function add_summernote(body){
+
+			// console.log(body);
+
+			$(document).ready(function() {
+				// Clear out summernote field
+				$('.summernote').summernote();
+				$('.summernote').summernote('reset');
+				$('.summernote').summernote('destroy');
+
+
 			$('.summernote').summernote({
 				height: 200,                 // set editor height
-				minHeight: null,             // set minimum height of editor
+				minHeight: 200,             // set minimum height of editor
 				maxHeight: null,             // set maximum height of editor
 				focus: true,                 // set focus to editable area after initializing summernote
+				dialogsInBody: true,
 
 				codemirror: {
 					theme: 'hopscotch',
@@ -274,10 +449,15 @@
 					['height', ['height']]
 				]
 			});
+
+				console.log(body);
+
+				$('.summernote').summernote('lineHeight', 1);
+				$('.summernote').summernote('code', body);
 		});
 	}
 
-
+/** @todo : make it more flexible by adding variables to the reqquest function **/
 
 	function show_publish_dates(){
 
@@ -298,7 +478,7 @@
 
 	}
 
-
+/** @todo : make it more flexible by adding variables to the reqquest function **/
 
 	function show_timepickers_div(){
 
@@ -322,7 +502,7 @@
 
 	}
 
-
+/** @todo : make it more flexible by adding variables to the reqquest function **/
 
 	function add_time_pickers(){
 
@@ -332,7 +512,7 @@
 			});
 		});
 
-
+/** @todo : make it more flexible by adding variables to the reqquest function **/
 		$(function () {
 			$('#datetimepicker6').datetimepicker();
 			$('#datetimepicker7').datetimepicker({
@@ -347,7 +527,7 @@
 		});
 	}
 
-
+/** @todo : make it more flexible by adding variables to the reqquest function **/
 
 	function checkbox_set_show_publish_dates(){
 
@@ -381,7 +561,7 @@
 		});
 	}
 
-
+/** @todo : make it more flexible by adding variables to the reqquest function **/
 
 	function checkbox_set_show_timepickers_div(){
 
