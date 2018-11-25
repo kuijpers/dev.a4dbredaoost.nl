@@ -76,6 +76,10 @@
 	Route::group(['middleware' => 'web', 'prefix' => 'api', 'namespace' => 'Modules\Didyouknow\Http\Controllers\Board'], function()
 	{
 
-		Route::post('information/create', 'DidyouknowInformationController@store')->name('api.didyouknow.information.store');
+		Route::post('board/information/create', 'DidyouknowInformationController@store')->name('api.didyouknow.information.store');
+
+
+
+		Route::post('board/information/{id}/edit', 'DidyouknowInformationController@edit')->name('api.didyouknow.information.edit');
 
 	});
