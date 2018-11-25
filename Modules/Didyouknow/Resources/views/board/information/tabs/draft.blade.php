@@ -34,10 +34,10 @@
                                     {{$personal_draft->title}}
                                 </td>
                                 <td>
-                                    {{$personal_draft->created_at->format('d-m-Y H:m:i')}}
+                                    {{$personal_draft->created_at->format('d-m-Y H:i:s')}}
                                 </td>
                                 <td>
-                                    {{$personal_draft->updated_at->format('d-m-Y H:m:i')}}
+                                    {{$personal_draft->updated_at->format('d-m-Y H:i:s')}}
                                 </td>
                                 <td>
                                     <div class="btn-group btn-group-xs" role="group">
@@ -52,17 +52,18 @@
                                         >
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </button>
+
                                         {{-- Edit the data in Modal --}}
                                         <button type="button" class="btn btn-warning"
                                                 data-hoover="tooltip"
                                                 title="@lang('didyouknow::board/buttons.tab_tooltip_edit')"
                                                 data-toggle="modal"
                                                 data-target="#edit_personal_drafts"
-                                                data-title="{{$personal_draft->title}}"
-                                                data-body="{{$personal_draft->body}}"
+                                                data-id="{{$personal_draft->id}}"
                                         >
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </button>
+
                                         {{-- Delete/archive the data thru Modal--}}
                                         <button type="button" class="btn btn-danger"
                                                 data-hoover="tooltip"

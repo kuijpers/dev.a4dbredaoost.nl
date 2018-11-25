@@ -2,6 +2,7 @@
 @include('didyouknow::board.information.modals.edit_author_approved')
 
 <div class="tab-pane" id="editor" role="tabpanel">
+    {{--{{dd($author_approved)}}--}}
 
     @if(isset($author_approved))
         {{--{{dd( $author_approved )}}--}}
@@ -47,10 +48,10 @@
                                     @endif
                                 </td>
                                 <td>
-                                    {{$author_approve->created_at->format('d-m-Y H:m:i')}}
+                                    {{$author_approve->created_at->format('d-m-Y H:i:s')}}
                                 </td>
                                 <td>
-                                    {{$author_approve->updated_at->format('d-m-Y H:m:i')}}
+                                    {{$author_approve->updated_at->format('d-m-Y H:i:s')}}
                                 </td>
                                 <td>
                                     <div class="btn-group btn-group-xs" role="group">
@@ -72,8 +73,7 @@
                                                 title="@lang('didyouknow::board/buttons.tab_tooltip_edit')"
                                                 data-toggle="modal"
                                                 data-target="#edit_author_approved"
-                                                data-title="{{$author_approve->title}}"
-                                                data-body="{{$author_approve->body}}"
+                                                data-id="{{$author_approve->id}}"
                                         >
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </button>

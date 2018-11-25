@@ -33,7 +33,7 @@
 
                 <div class="row">
 
-                    <div class="col-md-10 col-lg-offset-1">
+                    <div class="col-md-12">
                         <div class="modal-body">
 
                             <div class="col-md-12 text-primary">
@@ -45,7 +45,7 @@
                             </div>
 
                             <div class="col-md-12 author_approved_title">
-                                <input name="title" type="text" class="form-control span6" id="author_approved_title">
+                                <input name="title" type="text" class="form-control span6" id="title">
                             </div>
 
                             <div class="col-md-12">
@@ -117,7 +117,6 @@
                                 </div>
 
                             </div>
-
 
                         </div>
                     </div>

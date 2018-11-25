@@ -39,10 +39,10 @@
                                     {{$author_draft->getAuthorName($author_draft->author_group)}}
                                 </td>
                                 <td>
-                                    {{$author_draft->created_at->format('d-m-Y H:m:i')}}
+                                    {{$author_draft->created_at->format('d-m-Y H:i:s')}}
                                 </td>
                                 <td>
-                                    {{$author_draft->updated_at->format('d-m-Y H:m:i')}}
+                                    {{$author_draft->updated_at->format('d-m-Y H:i:s')}}
                                 </td>
                                 <td>
                                     <div class="btn-group btn-group-xs" role="group">

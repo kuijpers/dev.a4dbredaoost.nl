@@ -34,6 +34,8 @@
         <link href="{{asset("/board/css/right.light.css")}}" rel="stylesheet">
     @endif
 
+    <link href="{{asset("/board/css/alert.css")}}" rel="stylesheet">
+
     <!-- Start Additional CSS -->
     @yield('jstop')
     <!-- End Additional CSS -->
