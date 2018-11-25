@@ -1,0 +1,9 @@
+.tosti{
+	max-width: 500px;
+	width: 300px;
+	position: absolute;
+	float: right;
+	right: 100px;
+	top: 10px;
+	z-index: 5000;
+	}
