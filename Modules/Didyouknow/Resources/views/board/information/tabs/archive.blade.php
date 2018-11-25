@@ -53,13 +53,13 @@
                                 </td>
                                 <td>
                                     <strong>@lang('didyouknow::board/tabs.tab_table_title_published_from') :</strong>
-                                    {{Carbon\Carbon::parse($archive->publish_date_start)->format('d-m-Y H:i')}}
+                                    {{Carbon\Carbon::parse($archive->publish_date_start)->format('d-m-Y H:i:s')}}
                                     <br>
                                     <strong>@lang('didyouknow::board/tabs.tab_table_title_published_till') :</strong>
-                                    @if(Carbon\Carbon::parse($archive->publish_date_end)->format('d-m-Y H:i')<= Carbon\Carbon::parse($archive->publish_date_start)->format('d-m-Y H:i'))
+                                    @if(Carbon\Carbon::parse($archive->publish_date_end)->format('d-m-Y H:i:s')<= Carbon\Carbon::parse($archive->publish_date_start)->format('d-m-Y H:i:s'))
                                         @lang('didyouknow::board/tabs.tab_table_title_published_forever')
                                     @else
-                                        {{Carbon\Carbon::parse($archive->publish_date_end)->format('d-m-Y H:i')}}
+                                        {{Carbon\Carbon::parse($archive->publish_date_end)->format('d-m-Y H:i:s')}}
                                     @endif
                                 </td>
                                 <td>
@@ -81,12 +81,12 @@
                                                 data-author="{{$archive->getAuthorName($archive->author_group)}}"
                                                 data-editor="{{$archive->getEditorName($archive->author_group)}}"
                                                 data-publisher="{{$archive->getPublisherName($archive->author_group)}}"
-                                                data-start="{{Carbon\Carbon::parse($archive->publish_date_start)->format('d-m-Y H:i')}}"
+                                                data-start="{{Carbon\Carbon::parse($archive->publish_date_start)->format('d-m-Y H:i:s')}}"
                                                 data-end=
-                                                @if(Carbon\Carbon::parse($archive->publish_date_end)->format('d-m-Y H:i')<= Carbon\Carbon::parse($archive->publish_date_start)->format('d-m-Y H:i'))
+                                                @if(Carbon\Carbon::parse($archive->publish_date_end)->format('d-m-Y H:i:s')<= Carbon\Carbon::parse($archive->publish_date_start)->format('d-m-Y H:i:s'))
                                                         "@lang('didyouknow::board/tabs.tab_table_title_published_forever')"
                                         @else
-                                            {{Carbon\Carbon::parse($archive->publish_date_end)->format('d-m-Y H:i')}}
+                                            {{Carbon\Carbon::parse($archive->publish_date_end)->format('d-m-Y H:i:s')}}
                                                 @endif
                                         >
                                             <i class="fa fa-eye" aria-hidden="true"></i>
@@ -99,12 +99,12 @@
                                                 data-target="#edit_archive"
                                                 data-title="{{$archive->title}}"
                                                 data-body="{{$archive->body}}"
-                                                data-start="{{Carbon\Carbon::parse($archive->publish_date_start)->format('d-m-Y H:i')}}"
+                                                data-start="{{Carbon\Carbon::parse($archive->publish_date_start)->format('d-m-Y H:i:s')}}"
                                                 data-end=
-                                                @if(Carbon\Carbon::parse($archive->publish_date_end)->format('d-m-Y H:i')<= Carbon\Carbon::parse($archive->publish_date_start)->format('d-m-Y H:i'))
+                                                @if(Carbon\Carbon::parse($archive->publish_date_end)->format('d-m-Y H:i:s')<= Carbon\Carbon::parse($archive->publish_date_start)->format('d-m-Y H:i:s'))
                                                         "@lang('didyouknow::board/tabs.tab_table_title_published_forever')"
                                         @else
-                                            {{Carbon\Carbon::parse($archive->publish_date_end)->format('d-m-Y H:i')}}
+                                            {{Carbon\Carbon::parse($archive->publish_date_end)->format('d-m-Y v')}}
                                                 @endif
                                         >
                                             <i class="fa fa-eye" aria-hidden="true"></i>
