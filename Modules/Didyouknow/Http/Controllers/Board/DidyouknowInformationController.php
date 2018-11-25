@@ -59,6 +59,55 @@ class DidyouknowInformationController extends Controller
 	 */
 	public function store(Request $request)
 	{
+		$validator = \Validator::make($request->all(), [
+			'title' => 'required|max:255',
+			'body' => 'required',
+			'author_approved' => 'required|boolean',
+			'editor_approved' => 'required|boolean',
+		]);
+
+		if ($validator->fails())
+			{
+				return response()->json(['errors'=>$validator->errors()->all()]);
+			}
+
+
+		$new_article = new Didyouknow_information;
+		// title
+			$new_article->title = $request->title;
+		// body
+			$new_article->body = $request->body;
+		// draft = 1
+			$new_article->draft = 1;
+		// author
+			$new_article->author = Auth::user()->id;
+		// author_group
+			$new_article->author_group = Auth::user()->group;
+		// author_approve
+		if($request->author_approved == 1){
+
+			$new_article->author_approve = $request->author_approved;
+
+			if($request->editor_approved == 1){
+
+				// editor
+					$new_article->editor = Auth::user()->id;
+				// editor_group
+				$new_article->editor_group = Auth::user()->group;
+				// editor_approve
+				$new_article->editor_approve = $request->editor_approved;
+
+			}
+
+		}
+
+		$new_article->save();
+
+
+		return response()->json(['success'=>['message'=>'Record is successfully added']]);
+
+
+
 	}
 
 	/**
@@ -74,9 +123,21 @@ class DidyouknowInformationController extends Controller
 	 * Show the form for editing the specified resource.
 	 * @return Response
 	 */
-	public function edit()
+	public function edit($id)
 	{
-		return view('didyouknow::board.information.edit');
+
+		// get the data
+		$result = Didyouknow_information::find($id);
+
+		if(empty($result)){
+
+			return response()->json(['errors'=>['message'=>'id_not_found']]);
+
+		}else{
+			return response()->json(['success'=>[$result]]);
+		}
+
+
 	}
 
 	/**
