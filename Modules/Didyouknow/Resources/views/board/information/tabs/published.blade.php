@@ -54,20 +54,20 @@
                                 </td>
                                 <td>
                                     <strong>@lang('didyouknow::board/tabs.tab_table_title_published_from') :</strong>
-                                    {{Carbon\Carbon::parse($publisher_approve->publish_date_start)->format('d-m-Y H:i')}}
+                                    {{Carbon\Carbon::parse($publisher_approve->publish_date_start)->format('d-m-Y H:i:s')}}
                                     <br>
                                     <strong>@lang('didyouknow::board/tabs.tab_table_title_published_till') :</strong>
-                                    @if(Carbon\Carbon::parse($publisher_approve->publish_date_end)->format('d-m-Y H:i')<= Carbon\Carbon::parse($publisher_approve->publish_date_start)->format('d-m-Y H:i'))
+                                    @if(Carbon\Carbon::parse($publisher_approve->publish_date_end)->format('d-m-Y H:i')<= Carbon\Carbon::parse($publisher_approve->publish_date_start)->format('d-m-Y H:i:s'))
                                         @lang('didyouknow::board/tabs.tab_table_title_published_forever')
                                     @else
-                                        {{Carbon\Carbon::parse($publisher_approve->publish_date_end)->format('d-m-Y H:i')}}
+                                        {{Carbon\Carbon::parse($publisher_approve->publish_date_end)->format('d-m-Y H:i:s')}}
                                     @endif
                                 </td>
                                 <td>
-                                    {{$publisher_approve->created_at->format('d-m-Y H:m:i')}}
+                                    {{$publisher_approve->created_at->format('d-m-Y H:i:s')}}
                                 </td>
                                 <td>
-                                    {{$publisher_approve->updated_at->format('d-m-Y H:m:i')}}
+                                    {{$publisher_approve->updated_at->format('d-m-Y H:i:s')}}
                                 </td>
                                 <td>
                                     <div class="btn-group btn-group-xs" role="group">
@@ -82,12 +82,12 @@
                                                 data-author="{{$publisher_approve->getAuthorName($publisher_approve->author_group)}}"
                                                 data-editor="{{$publisher_approve->getEditorName($publisher_approve->author_group)}}"
                                                 data-publisher="{{$publisher_approve->getPublisherName($publisher_approve->author_group)}}"
-                                                data-start="{{Carbon\Carbon::parse($publisher_approve->publish_date_start)->format('d-m-Y H:i')}}"
+                                                data-start="{{Carbon\Carbon::parse($publisher_approve->publish_date_start)->format('d-m-Y H:i:s')}}"
                                                 data-end=
-                                                @if(Carbon\Carbon::parse($publisher_approve->publish_date_end)->format('d-m-Y H:i')<= Carbon\Carbon::parse($publisher_approve->publish_date_start)->format('d-m-Y H:i'))
+                                                @if(Carbon\Carbon::parse($publisher_approve->publish_date_end)->format('d-m-Y H:i:s')<= Carbon\Carbon::parse($publisher_approve->publish_date_start)->format('d-m-Y H:i:s'))
                                                     "Geen eind datum"
                                                 @else
-                                                    {{Carbon\Carbon::parse($publisher_approve->publish_date_end)->format('d-m-Y H:i')}}
+                                                    {{Carbon\Carbon::parse($publisher_approve->publish_date_end)->format('d-m-Y H:i:s')}}
                                                 @endif
                                         >
                                             <i class="fa fa-eye" aria-hidden="true"></i>
@@ -100,12 +100,12 @@
                                                 data-target="#edit_publisher_approved"
                                                 data-title="{{$publisher_approve->title}}"
                                                 data-body="{{$publisher_approve->body}}"
-                                                data-start="{{Carbon\Carbon::parse($publisher_approve->publish_date_start)->format('d-m-Y H:i')}}"
+                                                data-start="{{Carbon\Carbon::parse($publisher_approve->publish_date_start)->format('d-m-Y H:i:s')}}"
                                                 data-end=
-                                                @if(Carbon\Carbon::parse($publisher_approve->publish_date_end)->format('d-m-Y H:i')<= Carbon\Carbon::parse($publisher_approve->publish_date_start)->format('d-m-Y H:i'))
+                                                @if(Carbon\Carbon::parse($publisher_approve->publish_date_end)->format('d-m-Y H:i:s')<= Carbon\Carbon::parse($publisher_approve->publish_date_start)->format('d-m-Y H:i:s'))
                                                         "Geen eind datum"
                                                 @else
-                                                    {{Carbon\Carbon::parse($publisher_approve->publish_date_end)->format('d-m-Y H:i')}}
+                                                    {{Carbon\Carbon::parse($publisher_approve->publish_date_end)->format('d-m-Y H:i:s')}}
                                                 @endif
                                         >
                                             <i class="fa fa-eye" aria-hidden="true"></i>
@@ -131,7 +131,8 @@
             </div>
         @else
             <div class="alert alert-info text-center" role="alert">
-                <i class="alert-ico fa fa-fw fa-exclamation"></i>Op dit moment is er geen data beschikbaar.
+                <i class="alert-ico fa fa-fw fa-exclamation"></i>
+                @lang('didyouknow::board/tabs.tab_data_no_data')
             </div>
         @endif
     @endif
