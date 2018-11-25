@@ -57,11 +57,12 @@
 
     <script src="{{asset("/modules/didyouknow/js/didyouknow_information_modals.js")}}"></script>
 
+    <script src="{{asset("/modules/didyouknow/js/didyouknow_information_ajax.js")}}"></script>
+
 
 @endsection
 
 @section('content')
-
 
     {{--{{dd( $author_approved )}}--}}
     <div class="row">
