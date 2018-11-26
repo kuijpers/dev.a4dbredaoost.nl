@@ -1,4 +1,10 @@
 <div class="sidebar__menu">
+
+    <div class="alert alert-danger">
+       !!! Not yet working !!!
+    </div>
+
+
     <div class="sidebar__btn"><a class="btn btn-block btn-default" href="#">Compose Mail</a></div>
     <div class="sidebar__title">Mail</div>
     <ul class="nav nav-menu">

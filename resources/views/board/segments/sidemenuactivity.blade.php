@@ -1,4 +1,11 @@
 <div class="sidebar__menu">
+
+    <div class="alert alert-danger">
+        !!! Not yet working !!!
+    </div>
+
+
+
     <div class="sidebar__title">Recent activity</div>
     <div class="ra-widget">
         <div class="ra-widget__cont">
