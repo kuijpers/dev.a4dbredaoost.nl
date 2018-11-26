@@ -90,7 +90,7 @@
                         <a href="#">Settings</a>
                     </li>
                     <li>
-                        <a href="#">Informatie</a>
+                        <a href="{{ route('board.didyouknow.information.index') }}">Informatie</a>
                     </li>
                     <li>
                         <a href="#">Stellingen</a>
