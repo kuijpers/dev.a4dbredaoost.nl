@@ -212,11 +212,7 @@
 
 					title_id.val(title);
 
-					// add_summernote(body);
-
-					init_summernote();
-
-					$('.summernote').summernote('code', body);
+					add_summernote(body);
 
 
 				});
@@ -382,37 +378,6 @@
 	});
 
 	// REQUIRED FUNCTIONS
-
-	function init_summernote(){
-
-		$('.summernote').summernote();
-
-		$('.summernote').summernote({
-			height: 200,                 // set editor height
-			minHeight: 200,             // set minimum height of editor
-			maxHeight: null,             // set maximum height of editor
-			focus: true,                 // set focus to editable area after initializing summernote
-			dialogsInBody: true,
-			lineHeight:1,
-
-			codemirror: {
-				theme: 'hopscotch',
-				mode: 'htmlmixed',
-				lineWrapping: true,
-				scrollbarStyle: "simple"
-			},
-
-			toolbar: [
-				// [groupName, [list of button]]
-				['style', ['bold', 'italic', 'underline', 'clear']],
-				['font', ['strikethrough', 'superscript', 'subscript']],
-				['fontsize', ['fontsize']],
-				['color', ['color']],
-				['para', ['ul', 'ol', 'paragraph']],
-				['height', ['height']]
-			]
-		});
-	}
 
 	function add_summernote(body){
 
