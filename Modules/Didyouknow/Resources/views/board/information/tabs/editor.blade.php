@@ -55,15 +55,24 @@
                                 </td>
                                 <td>
                                     <div class="btn-group btn-group-xs" role="group">
+                                        @php
+
+                                            $author_approve_list=[
+                                            	'id'        => $author_approve->id,
+                                            	'title'     => $author_approve->title,
+                                            	'body'      => $author_approve->body,
+                                            ];
+
+                                        $author_approve_modal = json_encode($author_approve_list);
+
+                                        @endphp
                                         {{-- View the data in Modal--}}
                                         <button type="button" class="btn btn-info"
                                                 data-hoover="tooltip"
                                                 title="@lang('didyouknow::board/buttons.tab_tooltip_view')"
                                                 data-toggle="modal"
                                                 data-target="#view_author_approved"
-                                                data-title="{{$author_approve->title}}"
-                                                data-body="{{$author_approve->body}}"
-                                                data-author="{{$author_approve->getAuthorName($author_approve->author_group)}}"
+                                                data-info = "{{$author_approve_modal}}"
                                         >
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </button>
@@ -73,7 +82,7 @@
                                                 title="@lang('didyouknow::board/buttons.tab_tooltip_edit')"
                                                 data-toggle="modal"
                                                 data-target="#edit_author_approved"
-                                                data-id="{{$author_approve->id}}"
+                                                data-info = "{{$author_approve_modal}}"
                                         >
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </button>

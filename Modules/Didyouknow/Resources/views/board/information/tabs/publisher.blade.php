@@ -57,16 +57,25 @@
                                 </td>
                                 <td>
                                     <div class="btn-group btn-group-xs" role="group">
+                                        @php
+                                            $editor_approve_list=[
+                                            	'id'        => $editor_approve->id,
+                                            	'title'     => $editor_approve->title,
+                                            	'body'      => $editor_approve->body,
+                                            	'author'    => $editor_approve->getAuthorName($editor_approve->author_group),
+                                            	'editor'    => $editor_approve->getEditorName($editor_approve->editor_group),
+                                            ];
+
+                                        $editor_approve_modal = json_encode($editor_approve_list);
+
+                                        @endphp
                                         {{-- View the data in Modal--}}
                                         <button type="button" class="btn btn-info"
                                                 data-hoover="tooltip"
                                                 title="@lang('didyouknow::board/buttons.tab_tooltip_view')"
                                                 data-toggle="modal"
                                                 data-target="#view_editor_approved"
-                                                data-title="{{$editor_approve->title}}"
-                                                data-body="{{$editor_approve->body}}"
-                                                data-author="{{$editor_approve->getAuthorName($editor_approve->author_group)}}"
-                                                data-editor="{{$editor_approve->getEditorName($editor_approve->author_group)}}"
+                                                data-info = "{{$editor_approve_modal}}"
                                         >
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </button>
@@ -76,8 +85,7 @@
                                                 title="@lang('didyouknow::board/buttons.tab_tooltip_edit')"
                                                 data-toggle="modal"
                                                 data-target="#edit_editor_approved"
-                                                data-title="{{$editor_approve->title}}"
-                                                data-body="{{$editor_approve->body}}"
+                                                data-info = "{{$editor_approve_modal}}"
                                         >
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </button>

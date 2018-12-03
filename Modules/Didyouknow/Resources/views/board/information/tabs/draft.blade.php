@@ -41,14 +41,24 @@
                                 </td>
                                 <td>
                                     <div class="btn-group btn-group-xs" role="group">
+                                        @php
+
+                                            $personal_draft_list=[
+                                            	'id'        => $personal_draft->id,
+                                            	'title'     => $personal_draft->title,
+                                            	'body'      => $personal_draft->body,
+                                            ];
+
+                                            $personal_draft_modal = json_encode($personal_draft_list);
+
+                                        @endphp
                                         {{-- View the data in Modal--}}
                                         <button type="button" class="btn btn-info"
                                                 data-hoover="tooltip"
                                                 title="@lang('didyouknow::board/buttons.tab_tooltip_view')"
                                                 data-toggle="modal"
                                                 data-target="#view_personal_drafts"
-                                                data-title="{{$personal_draft->title}}"
-                                                data-body="{{$personal_draft->body}}"
+                                                data-info = "{{$personal_draft_modal}}"
                                         >
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </button>
@@ -59,7 +69,7 @@
                                                 title="@lang('didyouknow::board/buttons.tab_tooltip_edit')"
                                                 data-toggle="modal"
                                                 data-target="#edit_personal_drafts"
-                                                data-id="{{$personal_draft->id}}"
+                                                data-info = "{{$personal_draft_modal}}"
                                         >
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </button>

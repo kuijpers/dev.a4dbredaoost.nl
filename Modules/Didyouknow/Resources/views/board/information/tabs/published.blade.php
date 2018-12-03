@@ -71,24 +71,34 @@
                                 </td>
                                 <td>
                                     <div class="btn-group btn-group-xs" role="group">
+                                        @php
+                                            if(Carbon\Carbon::parse($publisher_approve->publish_date_end)->format('d-m-Y H:i:s')<= Carbon\Carbon::parse($publisher_approve->publish_date_start)->format('d-m-Y H:i:s')){
+                                                $end_date = __('didyouknow::board/tabs.tab_table_title_published_forever');
+                                            }else{
+                                                $end_date = Carbon\Carbon::parse($publisher_approve->publish_date_end)->format('d-m-Y H:i:s');
+                                            }
+
+                                            $publisher_approve_list=[
+                                            	'id'        => $publisher_approve->id,
+                                            	'title'     => $publisher_approve->title,
+                                            	'body'      => $publisher_approve->body,
+                                            	'author'    => $publisher_approve->getAuthorName($publisher_approve->author_group),
+                                            	'editor'    => $publisher_approve->getEditorName($publisher_approve->editor_group),
+                                            	'publisher' => $publisher_approve->getPublisherName($publisher_approve->publisher_group),
+                                            	'start'     => Carbon\Carbon::parse($publisher_approve->publish_date_start)->format('d-m-Y H:i:s'),
+                                            	'end'       => $end_date
+                                            ];
+
+                                        $publisher_approve_modal = json_encode($publisher_approve_list);
+
+                                        @endphp
                                         {{-- View the data in Modal--}}
                                         <button type="button" class="btn btn-info"
                                                 data-hoover="tooltip"
                                                 title="Bekijk"
                                                 data-toggle="modal"
                                                 data-target="#view_publisher_approved"
-                                                data-title="{{$publisher_approve->title}}"
-                                                data-body="{{$publisher_approve->body}}"
-                                                data-author="{{$publisher_approve->getAuthorName($publisher_approve->author_group)}}"
-                                                data-editor="{{$publisher_approve->getEditorName($publisher_approve->author_group)}}"
-                                                data-publisher="{{$publisher_approve->getPublisherName($publisher_approve->author_group)}}"
-                                                data-start="{{Carbon\Carbon::parse($publisher_approve->publish_date_start)->format('d-m-Y H:i:s')}}"
-                                                data-end=
-                                                @if(Carbon\Carbon::parse($publisher_approve->publish_date_end)->format('d-m-Y H:i:s')<= Carbon\Carbon::parse($publisher_approve->publish_date_start)->format('d-m-Y H:i:s'))
-                                                    "Geen eind datum"
-                                                @else
-                                                    {{Carbon\Carbon::parse($publisher_approve->publish_date_end)->format('d-m-Y H:i:s')}}
-                                                @endif
+                                                data-info = "{{$publisher_approve_modal}}"
                                         >
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </button>
@@ -98,15 +108,7 @@
                                                 title="Wijzig"
                                                 data-toggle="modal"
                                                 data-target="#edit_publisher_approved"
-                                                data-title="{{$publisher_approve->title}}"
-                                                data-body="{{$publisher_approve->body}}"
-                                                data-start="{{Carbon\Carbon::parse($publisher_approve->publish_date_start)->format('d-m-Y H:i:s')}}"
-                                                data-end=
-                                                @if(Carbon\Carbon::parse($publisher_approve->publish_date_end)->format('d-m-Y H:i:s')<= Carbon\Carbon::parse($publisher_approve->publish_date_start)->format('d-m-Y H:i:s'))
-                                                        "Geen eind datum"
-                                                @else
-                                                    {{Carbon\Carbon::parse($publisher_approve->publish_date_end)->format('d-m-Y H:i:s')}}
-                                                @endif
+                                                data-info = "{{$publisher_approve_modal}}"
                                         >
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </button>

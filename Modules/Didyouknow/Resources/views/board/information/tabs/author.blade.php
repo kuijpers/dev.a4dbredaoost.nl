@@ -46,13 +46,24 @@
                                 </td>
                                 <td>
                                     <div class="btn-group btn-group-xs" role="group">
+                                        @php
+
+                                            $author_draft_list=[
+                                            	'id'        => $author_draft->id,
+                                            	'title'     => $author_draft->title,
+                                            	'body'      => $author_draft->body,
+                                            ];
+
+                                        $author_draft_modal = json_encode($author_draft_list);
+
+                                        @endphp
+                                        {{-- View the data in Modal--}}
                                         <button type="button" class="btn btn-info"
                                                 data-hoover="tooltip"
                                                 title="Bekijk"
                                                 data-toggle="modal"
                                                 data-target="#view_author_drafts"
-                                                data-title="{{$author_draft->title}}"
-                                                data-body="{{$author_draft->body}}"
+                                                data-info = "{{$author_draft_modal}}"
                                                 >
 
                                             <i class="fa fa-eye" aria-hidden="true"></i>

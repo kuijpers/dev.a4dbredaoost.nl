@@ -70,24 +70,34 @@
                                 </td>
                                 <td>
                                     <div class="btn-group btn-group-xs" role="group">
+                                        @php
+                                            if(Carbon\Carbon::parse($archive->publish_date_end)->format('d-m-Y H:i:s')<= Carbon\Carbon::parse($archive->publish_date_start)->format('d-m-Y H:i:s')){
+                                                $end_date = __('didyouknow::board/tabs.tab_table_title_published_forever');
+                                            }else{
+                                                $end_date = Carbon\Carbon::parse($archive->publish_date_end)->format('d-m-Y H:i:s');
+                                            }
+
+                                            $archive_list=[
+                                            	'id'        => $archive->id,
+                                            	'title'     => $archive->title,
+                                            	'body'      => $archive->body,
+                                            	'author'    => $archive->getAuthorName($archive->author_group),
+                                            	'editor'    => $archive->getEditorName($archive->editor_group),
+                                            	'publisher' => $archive->getPublisherName($archive->publisher_group),
+                                            	'start'     => Carbon\Carbon::parse($archive->publish_date_start)->format('d-m-Y H:i:s'),
+                                            	'end'       => $end_date
+                                            ];
+
+                                        $archive_modal = json_encode($archive_list);
+
+                                        @endphp
                                         {{-- View the data in Modal--}}
                                         <button type="button" class="btn btn-info"
                                                 data-hoover="tooltip"
                                                 title="@lang('didyouknow::board/buttons.tab_tooltip_view')"
                                                 data-toggle="modal"
                                                 data-target="#view_archive"
-                                                data-title="{{$archive->title}}"
-                                                data-body="{{$archive->body}}"
-                                                data-author="{{$archive->getAuthorName($archive->author_group)}}"
-                                                data-editor="{{$archive->getEditorName($archive->author_group)}}"
-                                                data-publisher="{{$archive->getPublisherName($archive->author_group)}}"
-                                                data-start="{{Carbon\Carbon::parse($archive->publish_date_start)->format('d-m-Y H:i:s')}}"
-                                                data-end=
-                                                @if(Carbon\Carbon::parse($archive->publish_date_end)->format('d-m-Y H:i:s')<= Carbon\Carbon::parse($archive->publish_date_start)->format('d-m-Y H:i:s'))
-                                                        "@lang('didyouknow::board/tabs.tab_table_title_published_forever')"
-                                        @else
-                                            {{Carbon\Carbon::parse($archive->publish_date_end)->format('d-m-Y H:i:s')}}
-                                                @endif
+                                                data-info = "{{$archive_modal}}"
                                         >
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </button>
@@ -97,15 +107,7 @@
                                                 title="@lang('didyouknow::board/buttons.tab_tooltip_edit')"
                                                 data-toggle="modal"
                                                 data-target="#edit_archive"
-                                                data-title="{{$archive->title}}"
-                                                data-body="{{$archive->body}}"
-                                                data-start="{{Carbon\Carbon::parse($archive->publish_date_start)->format('d-m-Y H:i:s')}}"
-                                                data-end=
-                                                @if(Carbon\Carbon::parse($archive->publish_date_end)->format('d-m-Y H:i:s')<= Carbon\Carbon::parse($archive->publish_date_start)->format('d-m-Y H:i:s'))
-                                                        "@lang('didyouknow::board/tabs.tab_table_title_published_forever')"
-                                        @else
-                                            {{Carbon\Carbon::parse($archive->publish_date_end)->format('d-m-Y v')}}
-                                                @endif
+                                                data-info = "{{$archive_modal}}"
                                         >
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </button>
