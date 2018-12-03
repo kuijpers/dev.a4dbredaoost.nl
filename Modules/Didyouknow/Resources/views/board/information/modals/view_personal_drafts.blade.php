@@ -37,48 +37,48 @@
                                 </h5>
                             </div>
 
-                            <div class="col-md-12 view_personal_title">
-                                Hier komt de tekst te staan van de titel en
-                                deze word door JS aangepast en is dus niet zichtbaar op de pagina.
-                                <hr>
+                                <div class="col-md-12 view_personal_title">
+                                    Hier komt de tekst te staan van de titel en
+                                    deze word door JS aangepast en is dus niet zichtbaar op de pagina.
+                                    <hr>
+                                </div>
+
+                                <div class="col-md-12 text-primary">
+                                    <h5>
+                                        @lang('didyouknow::board/modals.modal_view_information_body')
+                                    </h5>
+                                </div>
+
+                                <div class="col-md-12 view_personal_body">
+                                    Hier komt de tekst te staan van de info die bij de titel hoort en
+                                    deze word door JS aangepast en is dus niet zichtbaar op de pagina.
+                                </div>
+
+                                <div class="col-md-12">
+                                    <hr>
+                                </div>
+
+
                             </div>
-
-                            <div class="col-md-12 text-primary">
-                                <h5>
-                                    @lang('didyouknow::board/modals.modal_view_information_body')
-                                </h5>
-                            </div>
-
-                            <div class="col-md-12 view_personal_body">
-                                Hier komt de tekst te staan van de info die bij de titel hoort en
-                                deze word door JS aangepast en is dus niet zichtbaar op de pagina.
-                            </div>
-
-                            <div class="col-md-12">
-                                <hr>
-                            </div>
-
-
                         </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-10 col-lg-offset-1">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                    @lang('didyouknow::board/buttons.modal_button_close')
+                                </button>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
-
-                <div class="row">
-
-                    <div class="col-md-10 col-lg-offset-1">
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">
-                                @lang('didyouknow::board/buttons.modal_button_close')
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
-
             </div>
         </div>
-    </div>
 
 
 

@@ -239,7 +239,6 @@ class DidyouknowInformationController extends Controller
 			->where('publisher_approve', '=', 1)
 			->where('archived', '=', 1)
 			->get();
-
 		return $archived;
 	}
 }
