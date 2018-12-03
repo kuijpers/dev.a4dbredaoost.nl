@@ -1,5 +1,6 @@
 /**
- *  @todo : fix functions for ajax calls to get data from DB. To many of the same requests
+ * 	Set-up the data required to display in the modals
+ * 	Data needs to be send as a JSON string via buttons
  */
 	// NEW article
 
@@ -31,282 +32,166 @@
 		lineHeight: 1
 	});
 
-
-	// VIEW files
+	// PERSONAL DRAFTS
 
 	$('#view_personal_drafts').on('show.bs.modal', function(e) {
 
-		$title = $(e.relatedTarget).attr('data-title');
-		$(this).find('.view_personal_title').text($title);
+		console.log($(e.relatedTarget).data('info'));
 
-		$body = $(e.relatedTarget).attr('data-body');
-		$(this).find('.view_personal_body').text($body);
+		var info 			= $(e.relatedTarget).data('info');
 
-	});
+		var title		=	info['title'];
+
+		var body		=	info['body'];
 
 
+		// console.log(info);
 
-	$('#view_author_drafts').on('show.bs.modal', function(e) {
+		$(this).find('.view_personal_title').text(title);
 
-		$title = $(e.relatedTarget).attr('data-title');
-		$(this).find('.view_author_title').text($title);
-
-		$body = $(e.relatedTarget).attr('data-body');
-		$(this).find('.view_author_body').text($body);
+		$(this).find('.view_personal_body').html(body);
 
 	});
-
-
-
-	$('#view_author_approved').on('show.bs.modal', function(e) {
-
-		$title = $(e.relatedTarget).attr('data-title');
-		$(this).find('.view_author_approved_title').text($title);
-
-		$body = $(e.relatedTarget).attr('data-body');
-		$(this).find('.view_author_approved_body').text($body);
-
-		$author = $(e.relatedTarget).attr('data-author');
-		$(this).find('.view_author_approved_author').text($author);
-
-	});
-
-
-
-	$('#view_editor_approved').on('show.bs.modal', function(e) {
-
-		$title = $(e.relatedTarget).attr('data-title');
-		$(this).find('.view_editor_approved_title').text($title);
-
-		$body = $(e.relatedTarget).attr('data-body');
-		$(this).find('.view_editor_approved_body').text($body);
-
-		$author = $(e.relatedTarget).attr('data-author');
-		$(this).find('.view_editor_approved_author').text($author);
-
-		$editor = $(e.relatedTarget).attr('data-editor');
-		$(this).find('.view_editor_approved_editor').text($editor);
-
-	});
-
-
-
-	$('#view_publisher_approved').on('show.bs.modal', function(e) {
-
-		$title = $(e.relatedTarget).attr('data-title');
-		$(this).find('.view_publisher_approved_title').text($title);
-
-		$body = $(e.relatedTarget).attr('data-body');
-		$(this).find('.view_publisher_approved_body').text($body);
-
-		$author = $(e.relatedTarget).attr('data-author');
-		$(this).find('.view_publisher_approved_author').text($author);
-
-		$editor = $(e.relatedTarget).attr('data-editor');
-		$(this).find('.view_publisher_approved_editor').text($editor);
-
-		$publisher = $(e.relatedTarget).attr('data-publisher');
-		$(this).find('.view_publisher_approved_publisher').text($publisher);
-
-		$start = $(e.relatedTarget).attr('data-start');
-		$(this).find('.view_publisher_approved_start').text($start);
-
-		$end = $(e.relatedTarget).attr('data-end');
-		$(this).find('.view_publisher_approved_end').text($end);
-
-	});
-
-
-
-	$('#view_archive').on('show.bs.modal', function(e) {
-
-		$title = $(e.relatedTarget).attr('data-title');
-		$(this).find('.view_archived_title').text($title);
-
-		$body = $(e.relatedTarget).attr('data-body');
-		$(this).find('.view_archived_body').text($body);
-
-		$author = $(e.relatedTarget).attr('data-author');
-		$(this).find('.view_archived_author').text($author);
-
-		$editor = $(e.relatedTarget).attr('data-editor');
-		$(this).find('.view_archived_editor').text($editor);
-
-		$publisher = $(e.relatedTarget).attr('data-publisher');
-		$(this).find('.view_archived_publisher').text($publisher);
-
-		$start = $(e.relatedTarget).attr('data-start');
-		$(this).find('.view_archived_start').text($start);
-
-		$end = $(e.relatedTarget).attr('data-end');
-		$(this).find('.view_archived_end').text($end);
-
-	});
-
-// EDIT files
 
 	$('#edit_personal_drafts').on('show.bs.modal', function(e) {
 
-			// console.log($(e.relatedTarget).data('id'));
 
-	// Set all variables
+		console.log($(e.relatedTarget).data('info'));
 
-		// Get ID from button / link
+		var info 			= $(e.relatedTarget).data('info');
 
-		var id = $(e.relatedTarget).data('id');
+		var title		=	info['title'];
 
-			// For testing comment out above and comment in below
+		var title_id	=	$("#edit_personal_drafts_title");
 
-		// var id = 122;
+		var body		=	info['body'];
 
-		// Set url to use
-			var url= "/api/board/information/"+ id +"/edit";
+		var body_id		=	'#edit_personal_drafts_body';
 
-		// Get Token
-			var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+		// console.log(title);
 
+		title_id.val(title);
 
-			// Show content of variable
-			// console.log(url);
+		add_summernote(body_id,body);
 
-		// Show content of variable
-		// console.log(id);
-
-		// Clear out summernote field
-		// $('.summernote').summernote();
-		// $('.summernote').summernote('reset');
-		// $('.summernote').summernote('destroy');
-
-
-		$.ajax({
-			type: "POST",
-			url: url,
-			data: {
-				_token: CSRF_TOKEN,
-				id: id
-				},
-			dataType: 'JSON',
-			complete: function(data) {
-				var Resp = data.responseText;
-				 // console.log(Resp);
-			},
-			success: function(data){
-				// If message returns negative then we need to close the modal and set a danger alert
-				jQuery.each(data.errors, function(key, value){
-					$('#edit_personal_drafts').modal('hide');
-					jQuery('.alert-danger').show();
-					jQuery('.alert-danger').append('<p class="remove-alert">'+value+'</p>'); /** @todo Make sure that the alert will have a language variable !! Returned value is: id_not_found .**/
-					$('.tosti').delay( 5000 ).fadeOut( 'slow' );
-				});
-
-				// If message returns with data then we can add the data to the correct fields
-				jQuery.each(data.success, function(key, value) {
-
-					var title_id	=	$("#title");
-
-					var title		=	value['title'];
-
-					var body		=	value['body'];
-
-					// console.log(title);
-
-					title_id.val(title);
-
-					add_summernote(body);
-
-
-				});
-			}
-		});
-
-		$( ".remove-alert" ).remove();
 
 	});
 
+	// AUTHOR DRAFTS
+-
+	$('#view_author_drafts').on('show.bs.modal', function(e) {
+
+		console.log($(e.relatedTarget).data('info'));
+
+		var info 			= $(e.relatedTarget).data('info');
+
+		var title		=	info['title'];
+
+		var body		=	info['body'];
+
+
+		// console.log(info);
+
+		$(this).find('.view_author_title').text(title);
+
+		$(this).find('.view_author_body').html(body);
+
+	});
+
+	// AUTHOR APPROVED
+
+	$('#view_author_approved').on('show.bs.modal', function(e) {
+
+		console.log($(e.relatedTarget).data('info'));
+
+		var info 			= $(e.relatedTarget).data('info');
+
+		var title		=	info['title'];
+
+		var body		=	info['body'];
+
+		var author		=	info['author'];
+
+
+		// console.log(info);
+
+		$(this).find('.view_author_approved_title').text(title);
+
+		$(this).find('.view_author_approved_body').html(body);
+
+		$(this).find('.view_author_approved_author').text(author);
+
+	});
 
 	$('#edit_author_approved').on('show.bs.modal', function(e) {
 
-		 // console.log($(e.relatedTarget).data('id'));
 
-		// Set all variables
+		console.log($(e.relatedTarget).data('info'));
 
-		// Get ID from button / link
+		var info 			= $(e.relatedTarget).data('info');
 
-		var id = $(e.relatedTarget).data('id');
+		var title		=	info['title'];
 
-		// For testing comment out above and comment in below
+		var title_id	=	$("#edit_author_approved_title");
 
-		// var id = 122;
+		var body		=	info['body'];
 
-		// Set url to use
-		var url= "/api/board/information/"+ id +"/edit";
+		var body_id		=	'#edit_author_approved_body';
 
-		// Get Token
-		var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+		// console.log(title);
+		// console.log(title);
 
+		title_id.val(title);
 
-		// Show content of variable
-		// console.log(id);
-
-		// Clear out summernote field
-		// $('.summernote').summernote();
-		// $('.summernote').summernote('reset');
-		// $('.summernote').summernote('destroy');
-
-		$.ajax({
-			type: "POST",
-			url: url,
-			data: {
-				_token: CSRF_TOKEN,
-				id: id
-			},
-			dataType: 'JSON',
-			complete: function(data) {
-				var Resp = data.responseText;
-				// console.log(Resp);
-			},
-			success: function(data){
-				// If message returns negative then we need to close the modal and set a danger alert
-				jQuery.each(data.errors, function(key, value){
-					$('#edit_author_approved').modal('hide');
-					jQuery('.alert-danger').show();
-					jQuery('.alert-danger').append('<p class="remove-alert">'+value+'</p>'); /** @todo Make sure that the alert will have a language variable !! Returned value is: id_not_found .**/
-					$('.tosti').delay( 5000 ).fadeOut( 'slow' );
-				});
-
-				// If message returns with data then we can add the data to the correct fields
-				jQuery.each(data.success, function(key, value) {
-
-					var title_id	=	$("#title");
-
-					var title		=	value['title'];
-
-					var body		=	value['body'];
-
-					console.log(body);
-
-					title_id.val(title);
-
-					add_summernote(body);
-
-				});
-			}
-		});
-
-		$( ".remove-alert" ).remove();
+		add_summernote(body_id,body);
 
 	});
 
+	// EDITOR APPROVED
 
+	$('#view_editor_approved').on('show.bs.modal', function(e) {
+
+		console.log($(e.relatedTarget).data('info'));
+
+		var info 			= $(e.relatedTarget).data('info');
+
+		var title		=	info['title'];
+
+		var body		=	info['body'];
+
+		var author		=	info['author'];
+
+		var editor		=	info['editor'];
+
+
+		// console.log(info);
+
+		$(this).find('.view_editor_approved_title').text(title);
+
+		$(this).find('.view_editor_approved_body').html(body);
+
+		$(this).find('.view_editor_approved_author').text(author);
+
+		$(this).find('.view_editor_approved_editor').text(editor);
+
+	});
 
 	$( "#edit_editor_approved" ).on('shown.bs.modal', function(e){
 
+		console.log($(e.relatedTarget).data('info'));
 
-		$title = $(e.relatedTarget).attr('data-title');
-		$(this).find('.edit_editor_approved_title').text($title);
+		var info 			= $(e.relatedTarget).data('info');
 
-		$body = $(e.relatedTarget).attr('data-body');
-		$(this).find('.edit_editor_approved_body').text($body);
+		var title		=	info['title'];
+
+		var body		=	info['body'];
+
+
+		// console.log(info);
+
+		$(this).find('.edit_editor_approved_title').text(title);
+
+		$(this).find('.edit_editor_approved_body').html(body);
 
 		add_time_pickers();
 
@@ -322,37 +207,133 @@
 
 	});
 
+	// PUBLISHER APPROVED
 
+	$('#view_publisher_approved').on('show.bs.modal', function(e) {
+
+		console.log($(e.relatedTarget).data('info'));
+
+		var info 			= $(e.relatedTarget).data('info');
+
+		var title		=	info['title'];
+
+		var body		=	info['body'];
+
+		var author		=	info['author'];
+
+		var editor		=	info['editor'];
+
+		var publisher	=	info['publisher'];
+
+		var start		=	info['start'];
+
+		var end			=	info['end'];
+
+
+		// console.log(info);
+
+		$(this).find('.view_publisher_approved_title').text(title);
+
+		$(this).find('.view_publisher_approved_body').html(body);
+
+		$(this).find('.view_publisher_approved_author').text(author);
+
+		$(this).find('.view_publisher_approved_editor').text(editor);
+
+		$(this).find('.view_publisher_approved_publisher').text(publisher);
+
+		$(this).find('.view_publisher_approved_start').text(start);
+
+		$(this).find('.view_publisher_approved_end').text(end);
+
+	});
 
 	$('#edit_publisher_approved').on('show.bs.modal', function(e) {
 
-		$title = $(e.relatedTarget).attr('data-title');
-		$(this).find('.edit_publisher_approved_title').text($title);
+		console.log($(e.relatedTarget).data('info'));
 
-		$body = $(e.relatedTarget).attr('data-body');
-		$(this).find('.edit_publisher_approved_body').text($body);
+		var info 			= $(e.relatedTarget).data('info');
 
-		$start = $(e.relatedTarget).attr('data-start');
-		$(this).find('.edit_publisher_approved_start').text($start);
+		var title		=	info['title'];
 
-		$end = $(e.relatedTarget).attr('data-end');
-		$(this).find('.edit_publisher_approved_end').text($end);
+		var body		=	info['body'];
+
+		var start		=	info['start'];
+
+		var end			=	info['end'];
+
+
+		// console.log(info);
+
+		$(this).find('.edit_publisher_approved_title').text(title);
+
+		$(this).find('.edit_publisher_approved_body').html(body);
+
+		$(this).find('.edit_publisher_approved_start').text(start);
+
+		$(this).find('.edit_publisher_approved_end').text(end);
 
 	});
 
+	// ARCHIVED
 
+	$('#view_archive').on('show.bs.modal', function(e) {
+
+		 console.log($(e.relatedTarget).data('info'));
+
+		 var info 			= $(e.relatedTarget).data('info');
+
+			var title		=	info['title'];
+
+			var body		=	info['body'];
+
+			var author		=	info['author'];
+
+			var editor		=	info['editor'];
+
+			var publisher	=	info['publisher'];
+
+			var start		=	info['start'];
+
+			var end			=	info['end'];
+
+
+		 // console.log(info);
+
+		$(this).find('.view_archived_title').text(title);
+
+		$(this).find('.view_archived_body').html(body);
+
+		$(this).find('.view_archived_author').text(author);
+
+		$(this).find('.view_archived_editor').text(editor);
+
+		$(this).find('.view_archived_publisher').text(publisher);
+
+		$(this).find('.view_archived_start').text(start);
+
+		$(this).find('.view_archived_end').text(end);
+
+	});
 
 	$('#edit_archive').on('show.bs.modal', function(e) {
 
+		// console.log($(e.relatedTarget).data('info'));
 
-		$title = $(e.relatedTarget).attr('data-title');
-		$(this).find('.edit_archive_title').text($title);
+		var info 		= $(e.relatedTarget).data('info');
 
-		$body = $(e.relatedTarget).attr('data-body');
-		$(this).find('.edit_archive_body').text($body);
+		var title		=	info['title'];
+
+		var body		=	info['body'];
+
+
+		$(this).find('.edit_archive_title').text(title);
+
+		$(this).find('.edit_archive_body').text(body);
 
 
 	});
+
 
 	// DELETE / DESTROY files
 
@@ -377,20 +358,21 @@
 		$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
 	});
 
+
 	// REQUIRED FUNCTIONS
 
-	function add_summernote(body){
+	function add_summernote(body_id,body){
 
-			// console.log(body);
+			console.log(body_id,'->',body);
 
 			$(document).ready(function() {
 				// Clear out summernote field
-				$('.summernote').summernote();
-				$('.summernote').summernote('reset');
-				$('.summernote').summernote('destroy');
+				$(body_id).summernote();
+				$(body_id).summernote('reset');
+				$(body_id).summernote('destroy');
 
 
-			$('.summernote').summernote({
+			$(body_id).summernote({
 				height: 200,                 // set editor height
 				minHeight: 200,             // set minimum height of editor
 				maxHeight: null,             // set maximum height of editor
@@ -415,10 +397,11 @@
 				]
 			});
 
-				console.log(body);
+				console.log(body_id,'->',body);
+				// console.log($('.summernote'));
 
-				$('.summernote').summernote('lineHeight', 1);
-				$('.summernote').summernote('code', body);
+				$(body_id).summernote('lineHeight', 1);
+				$(body_id).summernote('code', body);
 		});
 	}
 
