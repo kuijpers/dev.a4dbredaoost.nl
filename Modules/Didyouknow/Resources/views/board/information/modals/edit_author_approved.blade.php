@@ -45,7 +45,7 @@
                             </div>
 
                             <div class="col-md-12 author_approved_title">
-                                <input name="title" type="text" class="form-control span6" id="title">
+                                <input name="title" type="text" class="form-control span6" id="edit_author_approved_title">
                             </div>
 
                             <div class="col-md-12">
@@ -62,7 +62,7 @@
 
                             <div class="col-md-12 author_approved_body">
 
-                                <textarea name="body" class="form-control summernote" rows="10" id="author_approved_body"></textarea>
+                                <textarea name="body" class="form-control summernote" rows="10" id="edit_author_approved_body"></textarea>
 
                             </div>
 
