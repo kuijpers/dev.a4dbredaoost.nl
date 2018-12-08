@@ -16,6 +16,10 @@
 		'modal_view_approved_editor' 		=> 'Approved by editor',
 		'modal_view_approved_publisher' 	=> 'Approved by publisher',
 
+		'modal_view_process_author' 		=> 'In process by author',
+		'modal_view_process_editor' 		=> 'In process by editor',
+		'modal_view_process_publisher' 		=> 'In process by publisher',
+
 
 		'modal_view_publish_from' 			=> 'Published from',
 		'modal_view_publish_till' 			=> 'Published till',
