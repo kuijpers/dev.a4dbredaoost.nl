@@ -79,7 +79,8 @@
             </div>
         @else
             <div class="alert alert-info text-center" role="alert">
-                <i class="alert-ico fa fa-fw fa-exclamation"></i>Op dit moment is er geen data beschikbaar.
+                <i class="alert-ico fa fa-fw fa-exclamation"></i>
+                @lang('didyouknow::board/tabs.tab_data_no_concepts')
             </div>
         @endif
     @endif
