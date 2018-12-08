@@ -36,7 +36,7 @@ class CreateDidyouknowTable extends Migration
 			$table->datetime('publish_date_start')->nullable();
 			$table->datetime('publish_date_end')->nullable();
 
-			$table->boolean('archived')->default(0);
+			$table->softDeletes();
 
             $table->timestamps();
         });
@@ -64,7 +64,7 @@ class CreateDidyouknowTable extends Migration
 			$table->datetime('publish_date_start')->nullable();
 			$table->datetime('publish_date_end')->nullable();
 
-			$table->boolean('archived')->default(0);
+			$table->softDeletes();
 
 			$table->timestamps();
 		});
@@ -78,5 +78,6 @@ class CreateDidyouknowTable extends Migration
     public function down()
     {
         Schema::dropIfExists('didyouknow');
+        Schema::dropIfExists('didyouknow_information');
     }
 }
