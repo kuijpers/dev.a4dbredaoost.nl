@@ -106,8 +106,6 @@ class DidyouknowInformationController extends Controller
 
 		return response()->json(['success'=>['message'=>'Record is successfully added']]);
 
-
-
 	}
 
 	/**
@@ -123,21 +121,8 @@ class DidyouknowInformationController extends Controller
 	 * Show the form for editing the specified resource.
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit()
 	{
-
-		// get the data
-		$result = Didyouknow_information::find($id);
-
-		if(empty($result)){
-
-			return response()->json(['errors'=>['message'=>'id_not_found']]);
-
-		}else{
-			return response()->json(['success'=>[$result]]);
-		}
-
-
 	}
 
 	/**
@@ -147,6 +132,62 @@ class DidyouknowInformationController extends Controller
 	 */
 	public function update(Request $request)
 	{
+		switch ($request->type) {
+
+			case "edit_personal_drafts":
+				// Validate the incoming data
+					$validator = \Validator::make($request->all(), [
+						'title' => 'required|max:255',
+						'body' => 'required',
+						'author_approved' => 'required|boolean',
+					]);
+					// When validation is incorrect send an error message
+					if ($validator->fails())
+						{
+							return response()->json(['errors'=>$validator->errors()->all()]);
+						}
+
+				// Update data in DB
+
+					Didyouknow_information::where('id', $request->id)
+					->update([
+						'title'=> $request->title,
+						'body'=> $request->body,
+						'author_approve' => $request->author_approved,
+					]);
+
+
+					// Send an response that it went well
+				return response()->json(['success'=>['message'=>'Record is successfully updated']]);
+			break;
+
+			case "blue":
+					echo "Your favorite color is blue!";
+			break;
+
+			case "green":
+					echo "Your favorite color is green!";
+			break;
+
+			default:
+				// If the type isn't listed send an error message
+					return response()->json(['errors'=>'Something went wrong']);
+			}
+
+		// If everything goes wrong send an error message
+		return response()->json(['errors'=>'Something went wrong']);
+
+	}
+
+	/**
+	 * Remove the specified resource from storage.
+	 * @return Response
+	 */
+	public function delete($id)
+	{
+		Didyouknow_information::find($id)->delete();
+
+		return redirect()->back();
 	}
 
 	/**
@@ -165,7 +206,7 @@ class DidyouknowInformationController extends Controller
 			->where('author_approve', '=', 0)
 			->where('editor_approve', '=', 0)
 			->where('publisher_approve', '=', 0)
-			->where('archived', '=', 0)
+			//->where('deleted_at', '=', NULL)
 			->where('author', '=', Auth::user()->id)
 			->where('author_group', '=', Auth::user()->group)
 			->get();
@@ -181,7 +222,7 @@ class DidyouknowInformationController extends Controller
 			->where('author_approve', '=', 0)
 			->where('editor_approve', '=', 0)
 			->where('publisher_approve', '=', 0)
-			->where('archived', '=', 0)
+			//->where('deleted_at', '=', NULL)
 			->get();
 
 		return $author_draft;
@@ -195,7 +236,7 @@ class DidyouknowInformationController extends Controller
 			->where('author_approve', '=', 1)
 			->where('editor_approve', '=', 0)
 			->where('publisher_approve', '=', 0)
-			->where('archived', '=', 0)
+			//->where('deleted_at', '=', NULL)
 			->get();
 
 		return $author_approved;
@@ -209,7 +250,7 @@ class DidyouknowInformationController extends Controller
 			->where('author_approve', '=', 1)
 			->where('editor_approve', '=', 1)
 			->where('publisher_approve', '=', 0)
-			->where('archived', '=', 0)
+			//->where('deleted_at', '=', NULL)
 			->get();
 
 		return $editor_approved;
@@ -223,7 +264,7 @@ class DidyouknowInformationController extends Controller
 			->where('author_approve', '=', 1)
 			->where('editor_approve', '=', 1)
 			->where('publisher_approve', '=', 1)
-			->where('archived', '=', 0)
+			//->where('deleted_at', '=', NULL)
 			->get();
 
 		return $publisher_approved;
@@ -233,12 +274,7 @@ class DidyouknowInformationController extends Controller
 
 	public function get_archived()
 	{
-		$archived = Didyouknow_information::where('draft', '=', 1)
-			->where('author_approve', '=', 1)
-			->where('editor_approve', '=', 1)
-			->where('publisher_approve', '=', 1)
-			->where('archived', '=', 1)
-			->get();
+		$archived = Didyouknow_information::onlyTrashed()->get();
 		return $archived;
 	}
 }
