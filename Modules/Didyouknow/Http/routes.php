@@ -38,7 +38,7 @@
 		Route::patch('information/{id}', 'DidyouknowInformationController@update')->name('board.didyouknow.information.update');
 
 
-		Route::delete('information/{id}', 'DidyouknowInformationController@delete')->name('board.didyouknow.information.delete');
+		Route::get('information/{id}/delete', 'DidyouknowInformationController@delete')->name('board.didyouknow.information.delete');
 
 
 
@@ -78,8 +78,9 @@
 
 		Route::post('board/information/create', 'DidyouknowInformationController@store')->name('api.didyouknow.information.store');
 
+		Route::post('board/information/update', 'DidyouknowInformationController@update')->name('api.didyouknow.information.update');
 
 
-		Route::post('board/information/{id}/edit', 'DidyouknowInformationController@edit')->name('api.didyouknow.information.edit');
+		//Route::post('board/information/{id}/edit', 'DidyouknowInformationController@edit')->name('api.didyouknow.information.edit');
 
 	});
