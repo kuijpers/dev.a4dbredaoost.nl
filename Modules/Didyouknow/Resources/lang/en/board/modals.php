@@ -41,6 +41,12 @@
 
 		'modal_change_publish_period'		=> 'Period ',
 
+		// Alerts
+
+		'modal_change_alert_success'		=> '<strong>Well done!&thinsp;</strong>You successfully read this important alert message. ',
+
+		'modal_change_alert_fail'			=> '<strong>Oh snap!&thinsp;</strong>Change a few things up and try submitting again. ',
+
 		// ARCHIVED
 		'modal_archive_roll_back'			=> 'Do wish to roll back this article ?',
 

@@ -35,7 +35,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                             <i class="alert-ico fa fa-fw fa-check"></i>
-                            <strong>Well done!&thinsp;</strong>You successfully read this important alert message.
+                            @lang('didyouknow::board/modals.modal_change_alert_success')
                         </div>
                     </div>
 
@@ -45,7 +45,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                             <i class="alert-ico fa fa-fw fa-ban"></i>
-                            <strong>Oh snap!&thinsp;</strong>Change a few things up and try submitting again.
+                            @lang('didyouknow::board/modals.modal_change_alert_fail')
                         </div>
                     </div>
 
