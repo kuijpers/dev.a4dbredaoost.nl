@@ -60,6 +60,10 @@
 
 		var info 			= $(e.relatedTarget).data('info');
 
+		var article		=	info['id'];
+
+		var article_id	=	$("#edit_personal_drafts_id");
+
 		var title		=	info['title'];
 
 		var title_id	=	$("#edit_personal_drafts_title");
@@ -70,10 +74,11 @@
 
 		// console.log(title);
 
+		article_id.val(article);
+
 		title_id.val(title);
 
 		add_summernote(body_id,body);
-
 
 	});
 
@@ -339,9 +344,18 @@
 
 	$('#delete_article').on('show.bs.modal', function(e) {
 
-		$title = $(e.relatedTarget).attr('data-title');
-		$(this).find('.modal-title').text($title);
+		// console.log($(e.relatedTarget).data('info'));
 
+		var info 		= $(e.relatedTarget).data('info');
+
+		var title		=	info['title'];
+
+		var body		=	info['body'];
+
+
+		$(this).find('.delete_title').text(title);
+
+		$(this).find('.delete_body').html('<p>' + body + '</p>');
 
 
 		$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
