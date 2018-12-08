@@ -4,8 +4,14 @@ namespace Modules\Didyouknow\Entities\Models\Board;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Didyouknow_information extends Model
 {
+	use SoftDeletes;
+
+	protected $dates = ['deleted_at'];
+
 	protected $fillable = [
 		'title',
 		'body',
@@ -26,23 +32,41 @@ class Didyouknow_information extends Model
 
 	public function getAuthorName($group)
 	{
-		$model = '\App\Models\\'.$group;
 
-		return $model::where('id',$this->author)->first()->name;
+		if (!empty($group)){
+
+				$model = '\App\Models\\' . $group;
+
+				return $model::where('id', $this->author)->first()->name;
+			}
+		else{
+			return '';
+		}
+
 	}
 
 	public function getEditorName($group)
 	{
-		$model = '\App\Models\\'.$group;
+			if (!empty($group)){
+				$model = '\App\Models\\' . $group;
 
-		return $model::where('id',$this->editor)->first()->name;
+				return $model::where('id', $this->editor)->first()->name;
+			}
+			else{
+				return '';
+			}
 	}
 
 	public function getPublisherName($group)
 	{
-		$model = '\App\Models\\'.$group;
+		if (!empty($group)){
+				$model = '\App\Models\\' . $group;
 
-		return $model::where('id',$this->publisher)->first()->name;
+				return $model::where('id', $this->publisher)->first()->name;
+			}
+		else{
+			return '';
+		}
 	}
 
 
