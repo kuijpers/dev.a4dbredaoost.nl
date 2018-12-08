@@ -9,7 +9,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">
-                    Put title here
+                    &nbsp;
                 </h4>
             </div>
             <div class="modal-body">
@@ -18,6 +18,17 @@
                         <strong>@lang('didyouknow::board/modals.modal_edit_title')&thinsp;</strong>
                     </h4>
                     @lang('didyouknow::board/modals.modal_edit_body')
+                </div>
+                <hr>
+                <div class="modal-content">
+                    <div class="padding-md">
+                        <h4 class="delete_title">
+                            Hier tekst
+                        </h4>
+                        <div class="delete_body margin-top-lg">
+                            Test
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
