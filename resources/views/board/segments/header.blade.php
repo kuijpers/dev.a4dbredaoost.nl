@@ -36,6 +36,8 @@
 
     <link href="{{asset("/board/css/alert.css")}}" rel="stylesheet">
 
+    <link href="{{asset("/board/css/padding-margin_bs3.css")}}" rel="stylesheet">
+
     <!-- Start Additional CSS -->
     @yield('jstop')
     <!-- End Additional CSS -->
