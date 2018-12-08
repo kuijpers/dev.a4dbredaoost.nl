@@ -80,7 +80,7 @@
                                                 title="@lang('didyouknow::board/buttons.tab_tooltip_delete')"
                                                 data-toggle="modal"
                                                 data-target="#delete_article"
-                                                data-title="{{$personal_draft->title}}"
+                                                data-info = "{{$personal_draft_modal}}"
                                         >
                                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                                         </button>
