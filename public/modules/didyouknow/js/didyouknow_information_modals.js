@@ -117,6 +117,8 @@
 
 		var author		=	info['author'];
 
+		var editor		=	info['editor'];
+
 
 		// console.log(info);
 
@@ -125,6 +127,8 @@
 		$(this).find('.view_author_approved_body').html(body);
 
 		$(this).find('.view_author_approved_author').text(author);
+
+		$(this).find('.view_author_approved_editor').text(editor);
 
 	});
 
