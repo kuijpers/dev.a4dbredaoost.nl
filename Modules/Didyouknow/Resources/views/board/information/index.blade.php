@@ -57,7 +57,7 @@
 
     <script src="{{ Module::asset('didyouknow:js/selectall_approved.js') }}"></script>
 
-    <script src="{{asset("/modules/didyouknow/js/didyouknow_information_modals.js")}}"></script>
+    @include('didyouknow::board.segments.information_modals_js')
 
     @include('didyouknow::board.segments.information_ajaxCalls')
 
