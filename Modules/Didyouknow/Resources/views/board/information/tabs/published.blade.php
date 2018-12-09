@@ -1,6 +1,3 @@
-@include('didyouknow::board.information.modals.view_publisher_approved')
-@include('didyouknow::board.information.modals.edit_publisher_approved')
-
 <div class="tab-pane" id="published" role="tabpanel">
 
     @if(isset($publisher_approved))

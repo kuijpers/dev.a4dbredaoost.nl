@@ -1,6 +1,3 @@
-@include('didyouknow::board.information.modals.view_author_approved')
-@include('didyouknow::board.information.modals.edit_author_approved')
-
 <div class="tab-pane" id="editor" role="tabpanel">
     {{--{{dd($author_approved)}}--}}
 

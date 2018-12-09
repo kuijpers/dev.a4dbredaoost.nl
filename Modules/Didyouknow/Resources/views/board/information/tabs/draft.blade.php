@@ -1,8 +1,3 @@
-@include('didyouknow::board.information.modals.view_personal_drafts')
-@include('didyouknow::board.information.modals.edit_personal_drafts')
-@include('didyouknow::board.information.modals.delete_article')
-
-
 <div class="tab-pane active" id="draft" role="tabpanel">
     @if(isset($personal_drafts))
         {{--{{dd( $personal_drafts )}}--}}

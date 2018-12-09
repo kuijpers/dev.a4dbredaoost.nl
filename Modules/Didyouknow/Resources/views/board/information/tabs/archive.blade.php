@@ -1,7 +1,3 @@
-@include('didyouknow::board.information.modals.view_archive')
-@include('didyouknow::board.information.modals.edit_archive')
-@include('didyouknow::board.information.modals.destroy_article')
-
 <div class="tab-pane" id="archive" role="tabpanel">
 
     @if(isset($archived))
