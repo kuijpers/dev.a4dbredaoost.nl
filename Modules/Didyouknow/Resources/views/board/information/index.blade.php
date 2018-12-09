@@ -57,7 +57,7 @@
 
     <script src="{{asset("/modules/didyouknow/js/didyouknow_information_modals.js")}}"></script>
 
-    <script src="{{asset("/modules/didyouknow/js/didyouknow_information_ajax.js")}}"></script>
+    @include('didyouknow::board.segments.information_ajaxCalls')
 
 
 @endsection
@@ -66,34 +66,7 @@
 
 {{--Including all modals--}}
 
-    {{--Personal Drafts--}}
-    @include('didyouknow::board.information.modals.view_personal_drafts')
-    @include('didyouknow::board.information.modals.edit_personal_drafts')
-
-    {{--Author drafts--}}
-    @include('didyouknow::board.information.modals.view_author_drafts')
-
-    {{--Editor--}}
-    @include('didyouknow::board.information.modals.view_author_approved')
-    @include('didyouknow::board.information.modals.edit_author_approved')
-
-    {{--Publisher--}}
-    @include('didyouknow::board.information.modals.view_editor_approved')
-    @include('didyouknow::board.information.modals.edit_editor_approved')
-
-    {{--Published--}}
-    @include('didyouknow::board.information.modals.view_publisher_approved')
-    @include('didyouknow::board.information.modals.edit_publisher_approved')
-
-    {{--Archived--}}
-    @include('didyouknow::board.information.modals.view_archive')
-    @include('didyouknow::board.information.modals.edit_archive')
-
-    {{--Delete item--}}
-    @include('didyouknow::board.information.modals.delete_article')
-
-    {{--Destroy after deleted--}}
-    @include('didyouknow::board.information.modals.destroy_article')
+@include('didyouknow::board.segments.information_modals')
 
 
 
@@ -232,19 +205,7 @@
                     </ul>
                     <div class="tab-content">
 
-                        @include('didyouknow::board.information.tabs.draft')
-
-                        @include('didyouknow::board.information.tabs.author')
-
-                        @include('didyouknow::board.information.tabs.editor')
-
-                        @include('didyouknow::board.information.tabs.publisher')
-
-                        @include('didyouknow::board.information.tabs.published')
-
-                        @include('didyouknow::board.information.tabs.archive')
-
-                        @include('didyouknow::board.information.tabs.new')
+                        @include('didyouknow::board.segments.information_tabs')
 
                     </div>
                 </div>
