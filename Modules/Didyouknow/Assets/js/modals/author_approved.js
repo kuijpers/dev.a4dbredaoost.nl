@@ -1,52 +1,52 @@
+// AUTHOR APPROVED
+
 $('#view_author_approved').on('show.bs.modal', function(e) {
 
-	$title = $(e.relatedTarget).attr('data-title');
-	$(this).find('.view_author_approved_title').text($title);
+	console.log($(e.relatedTarget).data('info'));
 
-	$body = $(e.relatedTarget).attr('data-body');
-	$(this).find('.view_author_approved_body').text($body);
+	var info 			= $(e.relatedTarget).data('info');
 
-	$author = $(e.relatedTarget).attr('data-author');
-	$(this).find('.view_author_approved_author').text($author);
+	var title		=	info['title'];
+
+	var body		=	info['body'];
+
+	var author		=	info['author'];
+
+	var editor		=	info['editor'];
+
+
+	// console.log(info);
+
+	$(this).find('.view_author_approved_title').text(title);
+
+	$(this).find('.view_author_approved_body').html(body);
+
+	$(this).find('.view_author_approved_author').text(author);
+
+	$(this).find('.view_author_approved_editor').text(editor);
 
 });
-
 
 $('#edit_author_approved').on('show.bs.modal', function(e) {
 
 
-	$(this).find('#author_approved_title').attr('value', $(e.relatedTarget).data('title'));
+	console.log($(e.relatedTarget).data('info'));
 
-	$body = $(e.relatedTarget).attr('data-body');;
-	$(this).find('#author_approved_body').text($body)
+	var info 			= $(e.relatedTarget).data('info');
 
-	$(document).ready(function() {
-		$('#author_approved_body').summernote({
-			height: 200,                 // set editor height
-			minHeight: null,             // set minimum height of editor
-			maxHeight: null,             // set maximum height of editor
-			focus: true,                 // set focus to editable area after initializing summernote
+	var title		=	info['title'];
 
-			codemirror: {
-				theme: 'hopscotch',
-				mode: 'htmlmixed',
-				lineWrapping: true,
-				scrollbarStyle: "simple"
-			},
+	var title_id	=	$("#edit_author_approved_title");
 
-			toolbar: [
-				// [groupName, [list of button]]
-				['style', ['bold', 'italic', 'underline', 'clear']],
-				['font', ['strikethrough', 'superscript', 'subscript']],
-				['fontsize', ['fontsize']],
-				['color', ['color']],
-				['para', ['ul', 'ol', 'paragraph']],
-				['height', ['height']]
-			]
-		});
-	});
+	var body		=	info['body'];
 
+	var body_id		=	'#edit_author_approved_body';
 
-	$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+	// console.log(title);
+	// console.log(title);
+
+	title_id.val(title);
+
+	add_summernote(body_id,body);
+
 });
-

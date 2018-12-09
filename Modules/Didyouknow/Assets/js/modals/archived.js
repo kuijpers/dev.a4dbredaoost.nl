@@ -1,37 +1,58 @@
+// ARCHIVED
+
 $('#view_archive').on('show.bs.modal', function(e) {
 
-	$title = $(e.relatedTarget).attr('data-title');
-	$(this).find('.view_archived_title').text($title);
+	console.log($(e.relatedTarget).data('info'));
 
-	$body = $(e.relatedTarget).attr('data-body');
-	$(this).find('.view_archived_body').text($body);
+	var info 			= $(e.relatedTarget).data('info');
 
-	$author = $(e.relatedTarget).attr('data-author');
-	$(this).find('.view_archived_author').text($author);
+	var title		=	info['title'];
 
-	$editor = $(e.relatedTarget).attr('data-editor');
-	$(this).find('.view_archived_editor').text($editor);
+	var body		=	info['body'];
 
-	$publisher = $(e.relatedTarget).attr('data-publisher');
-	$(this).find('.view_archived_publisher').text($publisher);
+	var author		=	info['author'];
 
-	$start = $(e.relatedTarget).attr('data-start');
-	$(this).find('.view_archived_start').text($start);
+	var editor		=	info['editor'];
 
-	$end = $(e.relatedTarget).attr('data-end');
-	$(this).find('.view_archived_end').text($end);
+	var publisher	=	info['publisher'];
+
+	var start		=	info['start'];
+
+	var end			=	info['end'];
+
+
+	// console.log(info);
+
+	$(this).find('.view_archived_title').text(title);
+
+	$(this).find('.view_archived_body').html(body);
+
+	$(this).find('.view_archived_author').text(author);
+
+	$(this).find('.view_archived_editor').text(editor);
+
+	$(this).find('.view_archived_publisher').text(publisher);
+
+	$(this).find('.view_archived_start').text(start);
+
+	$(this).find('.view_archived_end').text(end);
 
 });
 
-
 $('#edit_archive').on('show.bs.modal', function(e) {
 
+	// console.log($(e.relatedTarget).data('info'));
 
-	$title = $(e.relatedTarget).attr('data-title');
-	$(this).find('.edit_archive_title').text($title);
+	var info 		= $(e.relatedTarget).data('info');
 
-	$body = $(e.relatedTarget).attr('data-body');
-	$(this).find('.edit_archive_body').text($body);
+	var title		=	info['title'];
+
+	var body		=	info['body'];
+
+
+	$(this).find('.edit_archive_title').text(title);
+
+	$(this).find('.edit_archive_body').text(body);
 
 
 });

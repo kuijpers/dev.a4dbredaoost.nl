@@ -1,55 +1,49 @@
-	$('#view_personal_drafts').on('show.bs.modal', function(e) {
+// PERSONAL DRAFTS
 
-		$title = $(e.relatedTarget).attr('data-title');
-		$(this).find('.view_personal_title').text($title);
+$('#view_personal_drafts').on('show.bs.modal', function(e) {
 
-		$body = $(e.relatedTarget).attr('data-body');
-		$(this).find('.view_personal_body').text($body);
+	console.log($(e.relatedTarget).data('info'));
 
-	});
+	var info 			= $(e.relatedTarget).data('info');
 
+	var title		=	info['title'];
 
-
-
-
-	$('#edit_personal_drafts').on('show.bs.modal', function(e) {
+	var body		=	info['body'];
 
 
-		$(this).find('#personal_title').attr('value', $(e.relatedTarget).data('title'));
+	// console.log(info);
 
-		$body = $(e.relatedTarget).attr('data-body');
-		$(this).find('#personal_body').text($body);
+	$(this).find('.view_personal_title').text(title);
 
-		add_summernote();
+	$(this).find('.view_personal_body').html(body);
 
-	});
+});
 
-	function add_summernote(){
-		$(document).ready(function() {
-			$('#personal_body').summernote({
-				height: 200,                 // set editor height
-				minHeight: null,             // set minimum height of editor
-				maxHeight: null,             // set maximum height of editor
-				focus: true,                 // set focus to editable area after initializing summernote
-
-				codemirror: {
-					theme: 'hopscotch',
-					mode: 'htmlmixed',
-					lineWrapping: true,
-					scrollbarStyle: "simple"
-				},
-
-				toolbar: [
-					// [groupName, [list of button]]
-					['style', ['bold', 'italic', 'underline', 'clear']],
-					['font', ['strikethrough', 'superscript', 'subscript']],
-					['fontsize', ['fontsize']],
-					['color', ['color']],
-					['para', ['ul', 'ol', 'paragraph']],
-					['height', ['height']]
-				]
-			});
-		});
-	}
+$('#edit_personal_drafts').on('show.bs.modal', function(e) {
 
 
+	console.log($(e.relatedTarget).data('info'));
+
+	var info 			= $(e.relatedTarget).data('info');
+
+	var article		=	info['id'];
+
+	var article_id	=	$("#edit_personal_drafts_id");
+
+	var title		=	info['title'];
+
+	var title_id	=	$("#edit_personal_drafts_title");
+
+	var body		=	info['body'];
+
+	var body_id		=	'#edit_personal_drafts_body';
+
+	// console.log(title);
+
+	article_id.val(article);
+
+	title_id.val(title);
+
+	add_summernote(body_id,body);
+
+});
