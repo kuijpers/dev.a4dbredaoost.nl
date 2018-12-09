@@ -1,155 +1,206 @@
+/**
+ * 	Set-up the data required to display in the modals
+ * 	Data needs to be send as a JSON string via buttons
+ */
+	// NEW article
 
-	// VIEW files
+	$('#new_article').summernote({
+		height: 200,                 // set editor height
+		minHeight: null,             // set minimum height of editor
+		maxHeight: null,             // set maximum height of editor
+		focus: true,                 // set focus to editable area after initializing summernote
+		dialogsInBody: true,
+		placeholder: 'Write text here.......',
+
+		codemirror: {
+			theme: 'hopscotch',
+			mode: 'htmlmixed',
+			lineWrapping: true,
+			scrollbarStyle: "simple"
+		},
+
+		toolbar: [
+			// [groupName, [list of button]]
+			['style', ['bold', 'italic', 'underline', 'clear']],
+			['font', ['strikethrough', 'superscript', 'subscript']],
+			['fontsize', ['fontsize']],
+			['color', ['color']],
+			['para', ['ul', 'ol', 'paragraph']],
+			['height', ['height']]
+		],
+
+		lineHeight: 1
+	});
+
+	// PERSONAL DRAFTS
 
 	$('#view_personal_drafts').on('show.bs.modal', function(e) {
 
-		$title = $(e.relatedTarget).attr('data-title');
-		$(this).find('.view_personal_title').text($title);
+		console.log($(e.relatedTarget).data('info'));
 
-		$body = $(e.relatedTarget).attr('data-body');
-		$(this).find('.view_personal_body').text($body);
+		var info 			= $(e.relatedTarget).data('info');
 
-	});
+		var title		=	info['title'];
+
+		var body		=	info['body'];
 
 
+		// console.log(info);
 
-	$('#view_author_drafts').on('show.bs.modal', function(e) {
+		$(this).find('.view_personal_title').text(title);
 
-		$title = $(e.relatedTarget).attr('data-title');
-		$(this).find('.view_author_title').text($title);
-
-		$body = $(e.relatedTarget).attr('data-body');
-		$(this).find('.view_author_body').text($body);
+		$(this).find('.view_personal_body').html(body);
 
 	});
-
-
-
-	$('#view_author_approved').on('show.bs.modal', function(e) {
-
-		$title = $(e.relatedTarget).attr('data-title');
-		$(this).find('.view_author_approved_title').text($title);
-
-		$body = $(e.relatedTarget).attr('data-body');
-		$(this).find('.view_author_approved_body').text($body);
-
-		$author = $(e.relatedTarget).attr('data-author');
-		$(this).find('.view_author_approved_author').text($author);
-
-	});
-
-
-
-	$('#view_editor_approved').on('show.bs.modal', function(e) {
-
-		$title = $(e.relatedTarget).attr('data-title');
-		$(this).find('.view_editor_approved_title').text($title);
-
-		$body = $(e.relatedTarget).attr('data-body');
-		$(this).find('.view_editor_approved_body').text($body);
-
-		$author = $(e.relatedTarget).attr('data-author');
-		$(this).find('.view_editor_approved_author').text($author);
-
-		$editor = $(e.relatedTarget).attr('data-editor');
-		$(this).find('.view_editor_approved_editor').text($editor);
-
-	});
-
-
-
-	$('#view_publisher_approved').on('show.bs.modal', function(e) {
-
-		$title = $(e.relatedTarget).attr('data-title');
-		$(this).find('.view_publisher_approved_title').text($title);
-
-		$body = $(e.relatedTarget).attr('data-body');
-		$(this).find('.view_publisher_approved_body').text($body);
-
-		$author = $(e.relatedTarget).attr('data-author');
-		$(this).find('.view_publisher_approved_author').text($author);
-
-		$editor = $(e.relatedTarget).attr('data-editor');
-		$(this).find('.view_publisher_approved_editor').text($editor);
-
-		$publisher = $(e.relatedTarget).attr('data-publisher');
-		$(this).find('.view_publisher_approved_publisher').text($publisher);
-
-		$start = $(e.relatedTarget).attr('data-start');
-		$(this).find('.view_publisher_approved_start').text($start);
-
-		$end = $(e.relatedTarget).attr('data-end');
-		$(this).find('.view_publisher_approved_end').text($end);
-
-	});
-
-
-
-	$('#view_archive').on('show.bs.modal', function(e) {
-
-		$title = $(e.relatedTarget).attr('data-title');
-		$(this).find('.view_archived_title').text($title);
-
-		$body = $(e.relatedTarget).attr('data-body');
-		$(this).find('.view_archived_body').text($body);
-
-		$author = $(e.relatedTarget).attr('data-author');
-		$(this).find('.view_archived_author').text($author);
-
-		$editor = $(e.relatedTarget).attr('data-editor');
-		$(this).find('.view_archived_editor').text($editor);
-
-		$publisher = $(e.relatedTarget).attr('data-publisher');
-		$(this).find('.view_archived_publisher').text($publisher);
-
-		$start = $(e.relatedTarget).attr('data-start');
-		$(this).find('.view_archived_start').text($start);
-
-		$end = $(e.relatedTarget).attr('data-end');
-		$(this).find('.view_archived_end').text($end);
-
-	});
-
-	// EDIT files
 
 	$('#edit_personal_drafts').on('show.bs.modal', function(e) {
 
 
-		$(this).find('#personal_title').attr('value', $(e.relatedTarget).data('title'));
+		console.log($(e.relatedTarget).data('info'));
 
-		$body = $(e.relatedTarget).attr('data-body');
-		$(this).find('#personal_body').text($body);
+		var info 			= $(e.relatedTarget).data('info');
 
-		add_summernote();
+		var article		=	info['id'];
+
+		var article_id	=	$("#edit_personal_drafts_id");
+
+		var title		=	info['title'];
+
+		var title_id	=	$("#edit_personal_drafts_title");
+
+		var body		=	info['body'];
+
+		var body_id		=	'#edit_personal_drafts_body';
+
+		// console.log(title);
+
+		article_id.val(article);
+
+		title_id.val(title);
+
+		add_summernote(body_id,body);
 
 	});
 
+	// AUTHOR DRAFTS
+-
+	$('#view_author_drafts').on('show.bs.modal', function(e) {
 
+		console.log($(e.relatedTarget).data('info'));
+
+		var info 			= $(e.relatedTarget).data('info');
+
+		var title		=	info['title'];
+
+		var body		=	info['body'];
+
+
+		// console.log(info);
+
+		$(this).find('.view_author_title').text(title);
+
+		$(this).find('.view_author_body').html(body);
+
+	});
+
+	// AUTHOR APPROVED
+
+	$('#view_author_approved').on('show.bs.modal', function(e) {
+
+		console.log($(e.relatedTarget).data('info'));
+
+		var info 			= $(e.relatedTarget).data('info');
+
+		var title		=	info['title'];
+
+		var body		=	info['body'];
+
+		var author		=	info['author'];
+
+		var editor		=	info['editor'];
+
+
+		// console.log(info);
+
+		$(this).find('.view_author_approved_title').text(title);
+
+		$(this).find('.view_author_approved_body').html(body);
+
+		$(this).find('.view_author_approved_author').text(author);
+
+		$(this).find('.view_author_approved_editor').text(editor);
+
+	});
 
 	$('#edit_author_approved').on('show.bs.modal', function(e) {
 
 
-		$(this).find('#author_approved_title').attr('value', $(e.relatedTarget).data('title'));
+		console.log($(e.relatedTarget).data('info'));
 
-		$body = $(e.relatedTarget).attr('data-body');;
-		$(this).find('#author_approved_body').text($body)
+		var info 			= $(e.relatedTarget).data('info');
 
-		add_summernote();
+		var title		=	info['title'];
 
+		var title_id	=	$("#edit_author_approved_title");
 
-		$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+		var body		=	info['body'];
+
+		var body_id		=	'#edit_author_approved_body';
+
+		// console.log(title);
+		// console.log(title);
+
+		title_id.val(title);
+
+		add_summernote(body_id,body);
+
 	});
 
+	// EDITOR APPROVED
 
+	$('#view_editor_approved').on('show.bs.modal', function(e) {
+
+		console.log($(e.relatedTarget).data('info'));
+
+		var info 			= $(e.relatedTarget).data('info');
+
+		var title		=	info['title'];
+
+		var body		=	info['body'];
+
+		var author		=	info['author'];
+
+		var editor		=	info['editor'];
+
+
+		// console.log(info);
+
+		$(this).find('.view_editor_approved_title').text(title);
+
+		$(this).find('.view_editor_approved_body').html(body);
+
+		$(this).find('.view_editor_approved_author').text(author);
+
+		$(this).find('.view_editor_approved_editor').text(editor);
+
+	});
 
 	$( "#edit_editor_approved" ).on('shown.bs.modal', function(e){
 
+		console.log($(e.relatedTarget).data('info'));
 
-		$title = $(e.relatedTarget).attr('data-title');
-		$(this).find('.edit_editor_approved_title').text($title);
+		var info 			= $(e.relatedTarget).data('info');
 
-		$body = $(e.relatedTarget).attr('data-body');
-		$(this).find('.edit_editor_approved_body').text($body);
+		var title		=	info['title'];
+
+		var body		=	info['body'];
+
+
+		// console.log(info);
+
+		$(this).find('.edit_editor_approved_title').text(title);
+
+		$(this).find('.edit_editor_approved_body').html(body);
 
 		add_time_pickers();
 
@@ -165,48 +216,160 @@
 
 	});
 
+	// PUBLISHER APPROVED
 
+	$('#view_publisher_approved').on('show.bs.modal', function(e) {
+
+		console.log($(e.relatedTarget).data('info'));
+
+		var info 			= $(e.relatedTarget).data('info');
+
+		var title		=	info['title'];
+
+		var body		=	info['body'];
+
+		var author		=	info['author'];
+
+		var editor		=	info['editor'];
+
+		var publisher	=	info['publisher'];
+
+		var start		=	info['start'];
+
+		var end			=	info['end'];
+
+
+		// console.log(info);
+
+		$(this).find('.view_publisher_approved_title').text(title);
+
+		$(this).find('.view_publisher_approved_body').html(body);
+
+		$(this).find('.view_publisher_approved_author').text(author);
+
+		$(this).find('.view_publisher_approved_editor').text(editor);
+
+		$(this).find('.view_publisher_approved_publisher').text(publisher);
+
+		$(this).find('.view_publisher_approved_start').text(start);
+
+		$(this).find('.view_publisher_approved_end').text(end);
+
+	});
 
 	$('#edit_publisher_approved').on('show.bs.modal', function(e) {
 
-		$title = $(e.relatedTarget).attr('data-title');
-		$(this).find('.edit_publisher_approved_title').text($title);
+		console.log($(e.relatedTarget).data('info'));
 
-		$body = $(e.relatedTarget).attr('data-body');
-		$(this).find('.edit_publisher_approved_body').text($body);
+		var info 			= $(e.relatedTarget).data('info');
 
-		$start = $(e.relatedTarget).attr('data-start');
-		$(this).find('.edit_publisher_approved_start').text($start);
+		var title		=	info['title'];
 
-		$end = $(e.relatedTarget).attr('data-end');
-		$(this).find('.edit_publisher_approved_end').text($end);
+		var body		=	info['body'];
+
+		var start		=	info['start'];
+
+		var end			=	info['end'];
+
+
+		// console.log(info);
+
+		$(this).find('.edit_publisher_approved_title').text(title);
+
+		$(this).find('.edit_publisher_approved_body').html(body);
+
+		$(this).find('.edit_publisher_approved_start').text(start);
+
+		$(this).find('.edit_publisher_approved_end').text(end);
 
 	});
 
+	// ARCHIVED
 
+	$('#view_archive').on('show.bs.modal', function(e) {
+
+		 console.log($(e.relatedTarget).data('info'));
+
+		 var info 			= $(e.relatedTarget).data('info');
+
+			var title		=	info['title'];
+
+			var body		=	info['body'];
+
+			var author		=	info['author'];
+
+			var editor		=	info['editor'];
+
+			var publisher	=	info['publisher'];
+
+			var start		=	info['start'];
+
+			var end			=	info['end'];
+
+
+		 // console.log(info);
+
+		$(this).find('.view_archived_title').text(title);
+
+		$(this).find('.view_archived_body').html(body);
+
+		$(this).find('.view_archived_author').text(author);
+
+		$(this).find('.view_archived_editor').text(editor);
+
+		$(this).find('.view_archived_publisher').text(publisher);
+
+		$(this).find('.view_archived_start').text(start);
+
+		$(this).find('.view_archived_end').text(end);
+
+	});
 
 	$('#edit_archive').on('show.bs.modal', function(e) {
 
+		// console.log($(e.relatedTarget).data('info'));
 
-		$title = $(e.relatedTarget).attr('data-title');
-		$(this).find('.edit_archive_title').text($title);
+		var info 		= $(e.relatedTarget).data('info');
 
-		$body = $(e.relatedTarget).attr('data-body');
-		$(this).find('.edit_archive_body').text($body);
+		var title		=	info['title'];
+
+		var body		=	info['body'];
+
+
+		$(this).find('.edit_archive_title').text(title);
+
+		$(this).find('.edit_archive_body').text(body);
 
 
 	});
+
 
 	// DELETE / DESTROY files
 
 	$('#delete_article').on('show.bs.modal', function(e) {
 
-		$title = $(e.relatedTarget).attr('data-title');
-		$(this).find('.modal-title').text($title);
+		// console.log($(e.relatedTarget).data('info'));
+
+		var info 		= $(e.relatedTarget).data('info');
+
+		var id			=	info['id'];
+
+		var title		=	info['title'];
+
+		var body		=	info['body'];
+
+		//var href		= window.location.protocol+ '://' + window.location.hostname + '/bestuur/weetjes/information/'+ id + '/delete';
+
+		var href		= 'information/'+ id + '/delete';
+
+		console.log(href);
+
+		$(this).find('.delete_title').text(title);
+
+		$(this).find('.delete_body').html('<p>' + body + '</p>');
 
 
-
-		$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+		$(this).find('.btn-ok').attr('href', href);
 	});
 
 
@@ -220,15 +383,26 @@
 		$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
 	});
 
+
 	// REQUIRED FUNCTIONS
 
-	function add_summernote(){
-		$(document).ready(function() {
-			$('.summernote').summernote({
+	function add_summernote(body_id,body){
+
+			console.log(body_id,'->',body);
+
+			$(document).ready(function() {
+				// Clear out summernote field
+				$(body_id).summernote();
+				$(body_id).summernote('reset');
+				$(body_id).summernote('destroy');
+
+
+			$(body_id).summernote({
 				height: 200,                 // set editor height
-				minHeight: null,             // set minimum height of editor
+				minHeight: 200,             // set minimum height of editor
 				maxHeight: null,             // set maximum height of editor
 				focus: true,                 // set focus to editable area after initializing summernote
+				dialogsInBody: true,
 
 				codemirror: {
 					theme: 'hopscotch',
@@ -247,10 +421,16 @@
 					['height', ['height']]
 				]
 			});
+
+				console.log(body_id,'->',body);
+				// console.log($('.summernote'));
+
+				$(body_id).summernote('lineHeight', 1);
+				$(body_id).summernote('code', body);
 		});
 	}
 
-
+/** @todo : make it more flexible by adding variables to the reqquest function **/
 
 	function show_publish_dates(){
 
@@ -271,7 +451,7 @@
 
 	}
 
-
+/** @todo : make it more flexible by adding variables to the reqquest function **/
 
 	function show_timepickers_div(){
 
@@ -295,7 +475,7 @@
 
 	}
 
-
+/** @todo : make it more flexible by adding variables to the reqquest function **/
 
 	function add_time_pickers(){
 
@@ -305,7 +485,7 @@
 			});
 		});
 
-
+/** @todo : make it more flexible by adding variables to the reqquest function **/
 		$(function () {
 			$('#datetimepicker6').datetimepicker();
 			$('#datetimepicker7').datetimepicker({
@@ -320,7 +500,7 @@
 		});
 	}
 
-
+/** @todo : make it more flexible by adding variables to the reqquest function **/
 
 	function checkbox_set_show_publish_dates(){
 
@@ -354,7 +534,7 @@
 		});
 	}
 
-
+/** @todo : make it more flexible by adding variables to the reqquest function **/
 
 	function checkbox_set_show_timepickers_div(){
 

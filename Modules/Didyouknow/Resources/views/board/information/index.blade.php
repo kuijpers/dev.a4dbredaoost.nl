@@ -53,7 +53,9 @@
 
 {{--Modal JS scripts--}}
 
-    <script src="{{asset("/modules/didyouknow/js/selectall_approved.js")}}"></script>
+    {{--<script src="{{asset("/modules/didyouknow/js/selectall_approved.js")}}"></script>--}}
+
+    <script src="{{ Module::asset('didyouknow:js/selectall_approved.js') }}"></script>
 
     <script src="{{asset("/modules/didyouknow/js/didyouknow_information_modals.js")}}"></script>
 
