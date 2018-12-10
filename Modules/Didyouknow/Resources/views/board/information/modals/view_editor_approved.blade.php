@@ -78,6 +78,16 @@
                                 </div>
                             </div>
 
+                            <div class="col-md-12">
+                                <div class="col-md-4 text-primary">
+                                    @lang('didyouknow::board/modals.modal_view_process_publisher')
+                                </div>
+                                <div class="col-md-4 view_editor_approved_publisher">
+                                    Hier komt de naam van de editor te staan en
+                                    deze word door JS aangepast en is dus niet zichtbaar op de pagina.
+                                </div>
+                            </div>
+
 
                         </div>
                     </div>
