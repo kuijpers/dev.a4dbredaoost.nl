@@ -14,6 +14,8 @@ $('#view_editor_approved').on('show.bs.modal', function(e) {
 
 	var editor		=	info['editor'];
 
+	var publisher	=	info['publisher'];
+
 
 	// console.log(info);
 
@@ -25,6 +27,8 @@ $('#view_editor_approved').on('show.bs.modal', function(e) {
 
 	$(this).find('.view_editor_approved_editor').text(editor);
 
+	$(this).find('.view_editor_approved_publisher').text(publisher);
+
 });
 
 $( "#edit_editor_approved" ).on('shown.bs.modal', function(e){
@@ -33,20 +37,28 @@ $( "#edit_editor_approved" ).on('shown.bs.modal', function(e){
 
 	var info 			= $(e.relatedTarget).data('info');
 
+	var article		=	info['id'];
+
+	var article_id	=	'#edit_editor_approved_id';
+
 	var title		=	info['title'];
 
+	var title_id	=	'#edit_editor_approved_title';
+
 	var body		=	info['body'];
+
+	var body_id		=	'#edit_editor_approved_body';
 
 
 	// console.log(info);
 
-	$(this).find('.edit_editor_approved_title').text(title);
+	$(article_id).val(article);
 
-	$(this).find('.edit_editor_approved_body').html(body);
+	$(title_id).val(title);
 
 	add_time_pickers();
 
-	add_summernote();
+	add_summernote(body_id,body);
 
 	checkbox_set_show_publish_dates();
 

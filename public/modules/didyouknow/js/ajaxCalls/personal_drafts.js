@@ -4,17 +4,19 @@ $(document).ready(function() {
 
 		e.preventDefault();
 
-		var url			=	"/api/board/information/update";
+		var edit_type		=	'edit_personal_drafts';
 
-		var id_field	=	$('#edit_personal_drafts_id');
+		var url				=	"/api/board/information/update";
 
-		var title_field	=	$('#edit_personal_drafts_title');
+		var id_field		=	$('#edit_personal_drafts_id');
 
-		var body_field	=	$('#edit_personal_drafts_body');
+		var title_field		=	$('#edit_personal_drafts_title');
 
-		var author_approved = $("#author_approved").prop("checked") ? 1 : 0;
+		var body_field		=	$('#edit_personal_drafts_body');
 
-		var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+		var author_approved = 	$("#author_approved").prop("checked") ? 1 : 0;
+
+		var CSRF_TOKEN 		= 	$('meta[name="csrf-token"]').attr('content');
 
 
 		$.ajax({
@@ -22,7 +24,7 @@ $(document).ready(function() {
 			method: 'post',
 			data: {
 				_token: CSRF_TOKEN,
-				type: 'edit_personal_drafts',
+				type: edit_type,
 				id: id_field.val(),
 				title: title_field.val(),
 				body: body_field.val(),
