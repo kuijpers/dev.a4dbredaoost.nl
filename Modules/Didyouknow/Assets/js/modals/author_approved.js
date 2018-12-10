@@ -34,18 +34,23 @@ $('#edit_author_approved').on('show.bs.modal', function(e) {
 
 	var info 			= $(e.relatedTarget).data('info');
 
+	var article		=	info['id'];
+
+	var article_id	=	'#edit_author_approved_id';
+
 	var title		=	info['title'];
 
-	var title_id	=	$("#edit_author_approved_title");
+	var title_id	=	'#edit_author_approved_title';
 
 	var body		=	info['body'];
 
 	var body_id		=	'#edit_author_approved_body';
 
 	// console.log(title);
-	// console.log(title);
 
-	title_id.val(title);
+	$(article_id).val(article);
+
+	$(title_id).val(title);
 
 	add_summernote(body_id,body);
 
