@@ -1,8 +1,5 @@
-<script src="{{asset("/modules/didyouknow/js/didyouknow_information_ajax.js")}}"></script>
-
 {{--
-        * 	Set-up the data required to display in the modals
-        * 	Data needs to be send as a JSON string via buttons
+        * Make ajax request to update data in DB
 --}}
 
 {{--Personal Drafts--}}
