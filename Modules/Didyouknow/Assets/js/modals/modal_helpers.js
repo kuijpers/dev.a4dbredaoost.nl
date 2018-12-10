@@ -44,19 +44,23 @@ function add_summernote(body_id,body){
 	});
 }
 
+// Var's are
+//
+
+
 /** @todo : make it more flexible by adding variables to the reqquest function **/
 
 function show_publish_dates(){
 
-	$('input#edit_editor_approved_approve_publish').bootstrapSwitch();
+	$('input#approve_to_publish').bootstrapSwitch();
 
-	$('input#edit_editor_approved_approve_publish').on('switchChange.bootstrapSwitch', function () {
+	$('input#approve_to_publish').on('switchChange.bootstrapSwitch', function () {
 
-		var hidden = $("#edit_editor_approved_approve_period_block");
+		var hidden = $("#approve_period_block");
 
 		// @todo on state switch reset the state of next switch to unchecked
 
-		if ($('input#edit_editor_approved_approve_publish').bootstrapSwitch('state')) {
+		if ($('input#approve_to_publish').bootstrapSwitch('state')) {
 			hidden.fadeIn("slow");
 		} else {
 			hidden.fadeOut("slow");
@@ -69,16 +73,16 @@ function show_publish_dates(){
 
 function show_timepickers_div(){
 
-	$('input#edit_editor_approved_approve_select_period').bootstrapSwitch();
+	$('input#approve_select_period').bootstrapSwitch();
 
-	$('input#edit_editor_approved_approve_select_period').on('switchChange.bootstrapSwitch', function () {
+	$('input#approve_select_period').on('switchChange.bootstrapSwitch', function () {
 
-		var period 	= $("#edit_editor_approved_approve_period_period");
-		var forever = $("#edit_editor_approved_approve_period_forever");
+		var period 	= $("#approve_period_period");
+		var forever = $("#approve_period_forever");
 
 		// @todo clear timepickers on change
 
-		if ($('input#edit_editor_approved_approve_select_period').bootstrapSwitch('state')) {
+		if ($('input#approve_select_period').bootstrapSwitch('state')) {
 			period.fadeIn("slow");
 			forever.fadeOut("slow");
 		} else {
@@ -94,22 +98,22 @@ function show_timepickers_div(){
 function add_time_pickers(){
 
 	$(function () {
-		$('#datetimepicker1').datetimepicker({
+		$('#approve_forever').datetimepicker({
 			locale: 'nl'
 		});
 	});
 
 	/** @todo : make it more flexible by adding variables to the reqquest function **/
 	$(function () {
-		$('#datetimepicker6').datetimepicker();
-		$('#datetimepicker7').datetimepicker({
+		$('#approve_from').datetimepicker();
+		$('#approve_till').datetimepicker({
 			useCurrent: false //Important! See issue #1075
 		});
-		$("#datetimepicker6").on("dp.change", function (e) {
-			$('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+		$("#approve_from").on("dp.change", function (e) {
+			$('#approve_till').data("DateTimePicker").minDate(e.date);
 		});
-		$("#datetimepicker7").on("dp.change", function (e) {
-			$('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+		$("#approve_till").on("dp.change", function (e) {
+			$('#approve_from').data("DateTimePicker").maxDate(e.date);
 		});
 	});
 }
@@ -122,8 +126,8 @@ function checkbox_set_show_publish_dates(){
 
 
 		// Get the form fields and hidden div
-		var checkbox = $("#edit_editor_approved_approve_publish");
-		var period_block = $("#edit_editor_approved_approve_period_block");
+		var checkbox = $("#approve_to_publish");
+		var period_block = $("#approve_period_block");
 
 		// Hide the fields.
 		// Use JS to do this in case the user doesn't have JS
@@ -156,9 +160,9 @@ function checkbox_set_show_timepickers_div(){
 
 
 		// Get the form fields and hidden div
-		var checkbox = $("#edit_editor_approved_approve_select_period");
-		var period = $("#edit_editor_approved_approve_period_period");
-		var forever = $("#edit_editor_approved_approve_period_forever");
+		var checkbox = $("#approve_select_period");
+		var period = $("#approve_period_period");
+		var forever = $("#approve_period_forever");
 
 		// Hide the fields.
 		// Use JS to do this in case the user doesn't have JS
