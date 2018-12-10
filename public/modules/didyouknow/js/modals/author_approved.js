@@ -55,3 +55,7 @@ $('#edit_author_approved').on('show.bs.modal', function(e) {
 	add_summernote(body_id,body);
 
 });
+
+$('#edit_author_approved').on('hidden.bs.modal', function () {
+	location.reload();
+});

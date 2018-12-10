@@ -69,3 +69,7 @@ $( "#edit_editor_approved" ).on('shown.bs.modal', function(e){
 	show_timepickers_div();
 
 });
+
+$('#edit_editor_approved').on('hidden.bs.modal', function () {
+	location.reload();
+});
