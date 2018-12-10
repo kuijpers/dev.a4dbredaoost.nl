@@ -47,3 +47,7 @@ $('#edit_personal_drafts').on('show.bs.modal', function(e) {
 	add_summernote(body_id,body);
 
 });
+
+$('#edit_personal_drafts').on('hidden.bs.modal', function () {
+	location.reload();
+});
