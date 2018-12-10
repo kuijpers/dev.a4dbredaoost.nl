@@ -161,8 +161,32 @@ class DidyouknowInformationController extends Controller
 				return response()->json(['success'=>['message'=>'Record is successfully updated']]);
 			break;
 
-			case "blue":
-					echo "Your favorite color is blue!";
+			case "edit_author_approved":
+				// Validate the incoming data
+					$validator = \Validator::make($request->all(), [
+						'title' => 'required|max:255',
+						'body' => 'required',
+						'editor_approved' => 'required|boolean',
+					]);
+					// When validation is incorrect send an error message
+					if ($validator->fails())
+						{
+							return response()->json(['errors'=>$validator->errors()->all()]);
+						}
+
+					// Update data in DB
+					Didyouknow_information::where('id', $request->id)
+						->update([
+							'title'=> $request->title,
+							'body'=> $request->body,
+							'editor' => Auth::user()->id,
+							'editor_group' => Auth::user()->group,
+							'editor_approve' => $request->editor_approved,
+						]);
+
+
+					// Send an response that it went well
+					return response()->json(['success'=>['message'=>'Record is successfully updated']]);
 			break;
 
 			case "green":
