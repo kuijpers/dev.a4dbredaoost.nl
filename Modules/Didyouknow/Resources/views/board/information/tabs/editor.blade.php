@@ -1,6 +1,4 @@
 <div class="tab-pane" id="editor" role="tabpanel">
-    {{--{{dd($author_approved)}}--}}
-
     @if(isset($author_approved))
         {{--{{dd( $author_approved )}}--}}
         @if($author_approved->isNotEmpty())

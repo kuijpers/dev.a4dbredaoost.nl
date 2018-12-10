@@ -1,7 +1,6 @@
 <div class="tab-pane" id="publisher" role="tabpanel">
 
     @if(isset($editor_approved))
-        {{--{{dd( $publisher_approved )}}--}}
         @if($editor_approved->isNotEmpty())
             <div class="template__table_static template__table_responsive">
                 <div class="scrollable scrollbar-macosx">
@@ -61,6 +60,7 @@
                                             	'body'      => $editor_approve->body,
                                             	'author'    => $editor_approve->getAuthorName($editor_approve->author_group),
                                             	'editor'    => $editor_approve->getEditorName($editor_approve->editor_group),
+                                            	'publisher' => $editor_approve->getPublisherName($editor_approve->publisher_group),
                                             ];
 
                                         $editor_approve_modal = json_encode($editor_approve_list);
@@ -92,7 +92,7 @@
                                                 title="@lang('didyouknow::board/buttons.tab_tooltip_delete')"
                                                 data-toggle="modal"
                                                 data-target="#delete_article"
-                                                data-title="{{$editor_approve->title}}"
+                                                data-info = "{{$editor_approve_modal}}"
                                         >
                                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                                         </button>
