@@ -189,6 +189,10 @@ class DidyouknowInformationController extends Controller
 					return response()->json(['success'=>['message'=>'Record is successfully updated']]);
 			break;
 
+			case "edit_editor_approved":
+					echo "Your favorite color is green!";
+			break;
+
 			case "green":
 					echo "Your favorite color is green!";
 			break;
@@ -218,8 +222,13 @@ class DidyouknowInformationController extends Controller
 	 * Remove the specified resource from storage.
 	 * @return Response
 	 */
-	public function destroy()
+	public function destroy($id)
 	{
+
+		Didyouknow_information::find($id)->forcedelete();
+
+		return redirect()->back();
+
 	}
 
 	// Get the drafts that are started by the auth::user
