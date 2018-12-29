@@ -8,8 +8,10 @@ use Illuminate\Routing\Controller;
 
 use Auth;
 
-//use Modules\Didyouknow\Entities\Models\Main\Didyouknow;
+use Carbon\Carbon;
+
 use Modules\Didyouknow\Entities\Models\Board\Didyouknow_information;
+use Modules\Didyouknow\Entities\Models\Board\Didyouknow_settings;
 
 class DidyouknowInformationController extends Controller
 {
@@ -33,6 +35,10 @@ class DidyouknowInformationController extends Controller
 
 		$archived = static::get_archived();
 
+		$title_setting = static::get_settings('set title');
+
+		$body_setting = static::get_settings('set body');
+
 
         return view('didyouknow::board.information.index')
 			->with(compact('personal_drafts',
@@ -40,7 +46,10 @@ class DidyouknowInformationController extends Controller
 							'author_approved',
 							'editor_approved',
 							'publisher_approved',
-							'archived'));
+							'archived',
+							'title_setting',
+							'body_setting'
+				));
     }
 
 	/**
@@ -71,8 +80,9 @@ class DidyouknowInformationController extends Controller
 				return response()->json(['errors'=>$validator->errors()->all()]);
 			}
 
-
 		$new_article = new Didyouknow_information;
+		// slug
+			$new_article->slug = str_slug($request->title, '-');
 		// title
 			$new_article->title = $request->title;
 		// body
@@ -151,9 +161,10 @@ class DidyouknowInformationController extends Controller
 
 					Didyouknow_information::where('id', $request->id)
 					->update([
-						'title'=> $request->title,
-						'body'=> $request->body,
-						'author_approve' => $request->author_approved,
+						'slug'				=>str_slug($request->title, '-'),
+						'title'				=> $request->title,
+						'body'				=> $request->body,
+						'author_approve' 	=> $request->author_approved,
 					]);
 
 
@@ -177,11 +188,12 @@ class DidyouknowInformationController extends Controller
 					// Update data in DB
 					Didyouknow_information::where('id', $request->id)
 						->update([
-							'title'=> $request->title,
-							'body'=> $request->body,
-							'editor' => Auth::user()->id,
-							'editor_group' => Auth::user()->group,
-							'editor_approve' => $request->editor_approved,
+							'slug'				=>str_slug($request->title, '-'),
+							'title'				=> $request->title,
+							'body'				=> $request->body,
+							'editor' 			=> Auth::user()->id,
+							'editor_group' 		=> Auth::user()->group,
+							'editor_approve' 	=> $request->editor_approved,
 						]);
 
 
@@ -190,7 +202,114 @@ class DidyouknowInformationController extends Controller
 			break;
 
 			case "edit_editor_approved":
-					echo "Your favorite color is green!";
+
+				// Validate the incoming data
+					$validator_1 = \Validator::make($request->all(), [
+						'title' => 'required|max:255',
+						'body' => 'required',
+						'publisher_approved' => 'required|boolean',
+//						'select_period' => 'required|boolean',
+					]);
+					// When validation is incorrect send an error message
+					if ($validator_1->fails())
+						{
+							return response()->json(['errors'=>$validator_1->errors()->all()]);
+						}
+
+					// Now that we know that the 'publisher_approved' and
+					// the 'select_period' are valid we can check for the dates
+
+					if($request->publisher_approved == 1 && $request->select_period == 0){
+
+						$validator_2 = \Validator::make($request->all(), [
+							'publish_date_start' => 'required|date',
+						]);
+
+					}elseif($request->publisher_approved == 1 && $request->select_period == 1){
+
+						$validator_2 = \Validator::make($request->all(), [
+							'publish_date_start' => 'required|date',
+							'publish_date_end'=> 'required|date',
+						]);
+
+					}
+					// When validation is incorrect send an error message
+					// This error message will contain the values of
+					// publish_date_start and/or publish_date_end
+					if (isset($validator_2) && $validator_2->fails())
+						{
+							return response()->json(['errors'=>$validator_2->errors()->all()]);
+						}
+
+					$select_period	=	$request->select_period;
+
+					$publisher_approved	=	$request->publisher_approved;
+
+//					$publish_date_start	=	$request->publish_date_start;
+//					$publish_date_start	=	Carbon::createFromFormat('Y-m-d H:i', $request->publish_date_start);
+					$publish_date_start	=	Carbon::parse($request->publish_date_start)->format('Y-m-d H:i');
+
+//					$publish_date_end	=	$request->publish_date_end;
+					if(!empty($request->publish_date_end)){
+						$publish_date_end	=	Carbon::parse($request->publish_date_end)->format('Y-m-d H:i');
+					}else{
+						$publish_date_end = NULL;
+					}
+
+
+					// If everything is valid make sure start and end date
+					// are empty when it is not yet approved
+					if($publisher_approved == 0){
+						$publish_date_start = NULL;
+						$publish_date_end = NULL;
+					}
+
+					if($publisher_approved == 0 && $select_period == 0){
+						$publish_date_end = NULL;
+					}
+
+					Didyouknow_information::where('id', $request->id)
+						->update([
+							'slug'					=>str_slug($request->title, '-'),
+							'title'					=> $request->title,
+							'body'					=> $request->body,
+							'publisher' 			=> Auth::user()->id,
+							'publisher_group' 		=> Auth::user()->group,
+							'publisher_approve' 	=> $publisher_approved,
+							'publish_date_start'	=> $publish_date_start,
+							'publish_date_end'		=> $publish_date_end,
+						]);
+
+					// Send an response that it went well
+					return response()->json(['success'=>['message'=>'Record is successfully updated']]);
+
+			break;
+
+			case "edit_publisher_approved":
+				// Validate the incoming data
+					$validator = \Validator::make($request->all(), [
+						'publisher_approved' => 'required|boolean',
+					]);
+					// When validation is incorrect send an error message
+					if ($validator->fails())
+						{
+							return response()->json(['errors'=>$validator->errors()->all()]);
+						}
+
+					// Update data in DB
+
+					Didyouknow_information::where('id', $request->id)
+						->update([
+							'publisher_approve' => $request->publisher_approved,
+							'publish_date_start' => NULL,
+							'publish_date_end' => NULL,
+						]);
+
+
+					// Send an response that it went well
+					return response()->json(['success'=>['message'=>'Record is successfully updated']]);
+
+
 			break;
 
 			case "green":
@@ -222,13 +341,35 @@ class DidyouknowInformationController extends Controller
 	 * Remove the specified resource from storage.
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy(Request $request)
 	{
+		// Validation is required
 
-		Didyouknow_information::find($id)->forcedelete();
+
+		Didyouknow_information::withTrashed()->where('id','=', $request->id)->forcedelete();
 
 		return redirect()->back();
 
+	}
+
+	public function restore(Request $request)
+	{
+		// Validate the incoming data
+			$validator = \Validator::make($request->all(), [
+				'id' => 'required|exists:didyouknow_information',
+				'roll_back' => 'required|boolean',
+			]);
+			// When validation is incorrect send an error message
+			if ($validator->fails())
+				{
+					return response()->json(['errors'=>$validator->errors()->all()]);
+				}
+
+
+
+		Didyouknow_information::withTrashed()->where('id','=', $request->id)->restore();
+
+		return response()->json(['success'=>['message'=>'Record is successfully restored']]);
 	}
 
 	// Get the drafts that are started by the auth::user
@@ -239,7 +380,6 @@ class DidyouknowInformationController extends Controller
 			->where('author_approve', '=', 0)
 			->where('editor_approve', '=', 0)
 			->where('publisher_approve', '=', 0)
-			//->where('deleted_at', '=', NULL)
 			->where('author', '=', Auth::user()->id)
 			->where('author_group', '=', Auth::user()->group)
 			->get();
@@ -255,7 +395,6 @@ class DidyouknowInformationController extends Controller
 			->where('author_approve', '=', 0)
 			->where('editor_approve', '=', 0)
 			->where('publisher_approve', '=', 0)
-			//->where('deleted_at', '=', NULL)
 			->get();
 
 		return $author_draft;
@@ -269,7 +408,6 @@ class DidyouknowInformationController extends Controller
 			->where('author_approve', '=', 1)
 			->where('editor_approve', '=', 0)
 			->where('publisher_approve', '=', 0)
-			//->where('deleted_at', '=', NULL)
 			->get();
 
 		return $author_approved;
@@ -283,7 +421,6 @@ class DidyouknowInformationController extends Controller
 			->where('author_approve', '=', 1)
 			->where('editor_approve', '=', 1)
 			->where('publisher_approve', '=', 0)
-			//->where('deleted_at', '=', NULL)
 			->get();
 
 		return $editor_approved;
@@ -297,7 +434,6 @@ class DidyouknowInformationController extends Controller
 			->where('author_approve', '=', 1)
 			->where('editor_approve', '=', 1)
 			->where('publisher_approve', '=', 1)
-			//->where('deleted_at', '=', NULL)
 			->get();
 
 		return $publisher_approved;
@@ -309,5 +445,15 @@ class DidyouknowInformationController extends Controller
 	{
 		$archived = Didyouknow_information::onlyTrashed()->get();
 		return $archived;
+	}
+
+	public function get_settings($name){
+
+		$result	=	Didyouknow_settings::where('name', '=', $name)
+			->select('value_bool',
+				'value_text')
+			->get();
+
+		return $result;
 	}
 }

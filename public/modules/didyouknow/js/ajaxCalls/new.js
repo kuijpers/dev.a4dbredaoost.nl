@@ -13,10 +13,12 @@ $(document).ready(function() {
 		var body = $('#new_article').val();
 
 
-		var author_approved = $("#author_approved").prop("checked") ? 1 : 0;
+		var author_approved = 	$("#create_new_author_approved").prop("checked") ? 1 : 0;
 
-		var editor_approved = $("#editor_approved").prop("checked") ? 1 : 0;
+		var editor_approved = 	$("#create_new_editor_approved").prop("checked") ? 1 : 0;
 
+	console.log('author -> ' + author_approved);
+	console.log('editor -> ' + editor_approved);
 
 		create_new_article(title , body , author_approved , editor_approved);
 

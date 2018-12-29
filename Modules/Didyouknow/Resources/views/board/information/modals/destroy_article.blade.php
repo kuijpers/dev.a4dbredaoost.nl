@@ -1,15 +1,11 @@
-<?php
-  /**
-   * @todo Make form or hyperlink to delete page with id as var.
-   */
-
-?>
 <div class="modal fade" id="destroy_article" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">
-                    Put title here
+                    <div id="destroy-title">
+                        Put title here
+                    </div>
                 </h4>
             </div>
             <div class="modal-body">

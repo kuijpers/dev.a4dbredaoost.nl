@@ -4,8 +4,14 @@ namespace Modules\Didyouknow\Entities\Models\Main;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Didyouknow_information extends Model
 {
+	use SoftDeletes;
+
+	protected $dates = ['deleted_at'];
+
 	protected $fillable = [
 		'title',
 		'body',

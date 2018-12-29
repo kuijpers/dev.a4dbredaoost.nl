@@ -30,12 +30,12 @@
             @foreach($didyouknow_information as $information)
             <div class="col-md-8 offset-md-2 mt-5 mb-2">
                 <h4>{{$information->title}}</h4>
-                {{$information->body}}
+                {!!$information->body!!}
             </div>
             @endforeach
         @else
 
-            No data available !!!!!
+            No data available !!!!
 
         @endif
 

@@ -2,7 +2,7 @@
 
 $('#view_archive').on('show.bs.modal', function(e) {
 
-	console.log($(e.relatedTarget).data('info'));
+	// console.log($(e.relatedTarget).data('info'));
 
 	var info 			= $(e.relatedTarget).data('info');
 
@@ -21,7 +21,7 @@ $('#view_archive').on('show.bs.modal', function(e) {
 	var end			=	info['end'];
 
 
-	// console.log(info);
+	 // console.log(info);
 
 	$(this).find('.view_archived_title').text(title);
 
@@ -45,14 +45,23 @@ $('#edit_archive').on('show.bs.modal', function(e) {
 
 	var info 		= $(e.relatedTarget).data('info');
 
+	var article		=	info['id'];
+
+	var article_id	=	'#edit_archived_id';
+
 	var title		=	info['title'];
+
+	var title_id	=	'.edit_archive_title';
 
 	var body		=	info['body'];
 
+	var body_id		=	'.edit_archive_body';
 
-	$(this).find('.edit_archive_title').text(title);
+	$(article_id).val(article);
 
-	$(this).find('.edit_archive_body').text(body);
+	$(this).find(title_id).text(title);
+
+	$(this).find(body_id).html(body);
 
 
 });

@@ -1,8 +1,3 @@
-<?php
-	/**
-	 * @todo make connection with DB-> Var's are: title , body , editor_approval(checkbox) , publisher_approval(checkbox)
-	 */
-?>
     <div class="modal fade" id="edit_editor_approved" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -228,7 +223,7 @@
                                         <div class='col-sm-5'>
                                             <div class="form-group">
                                                 <div class='input-group date' id='approve_forever'>
-                                                    <input type='text' class="form-control" >
+                                                    <input type='text' class="form-control" data-format="yyyy-MM-dd hh:mm:ss">
                                                     <span class="input-group-addon">
                                                         <span class="glyphicon glyphicon-calendar"></span>
                                                     </span>
@@ -255,7 +250,7 @@
                                         <div class='col-md-5'>
                                             <div class="form-group">
                                                 <div class='input-group date' id='approve_from'>
-                                                    <input type='text' class="form-control" />
+                                                    <input type='text' class="form-control" data-format="yyyy-MM-dd hh:mm:ss" />
                                                     <span class="input-group-addon">
                                                         <span class="glyphicon glyphicon-calendar"></span>
                                                     </span>
@@ -266,7 +261,7 @@
                                         <div class='col-md-5'>
                                             <div class="form-group">
                                                 <div class='input-group date' id='approve_till'>
-                                                    <input type='text' class="form-control" />
+                                                    <input type='text' class="form-control" data-format="yyyy-MM-dd hh:mm:ss" />
                                                     <span class="input-group-addon">
                                                         <span class="glyphicon glyphicon-calendar"></span>
                                                     </span>
@@ -288,23 +283,23 @@
 
                     </div>
 
-                <div class="row">
+                    <div class="row">
 
-                    <div class="col-md-10 col-lg-offset-1">
-                        <div class="modal-footer">
+                        <div class="col-md-10 col-lg-offset-1">
+                            <div class="modal-footer">
 
-                            <button type="button" class="btn btn-default" data-dismiss="modal">
-                                @lang('didyouknow::board/buttons.modal_button_cancel')
-                            </button>
-                            <button type="submit" class="btn btn-success">
-                                @lang('didyouknow::board/buttons.modal_button_save')
-                            </button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                    @lang('didyouknow::board/buttons.modal_button_cancel')
+                                </button>
+                                <button id="edit_editor_approved_submit" type="submit" class="btn btn-success">
+                                    @lang('didyouknow::board/buttons.modal_button_save')
+                                </button>
 
+                            </div>
                         </div>
+
                     </div>
-
-                </div>
-
+                </form>
             </div>
 
         </div>

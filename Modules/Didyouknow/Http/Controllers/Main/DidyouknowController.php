@@ -28,34 +28,18 @@ class DidyouknowController extends Controller
 			->where('editor_approve', '=', 1)
 			->where('publisher_approve', '=', 1)
 			->where('publish_date_start', '<=', Carbon::now())
-			->whereRaw('publish_date_start >= publish_date_end')
-			->where('archived', '=', 0)
+			//->whereRaw('publish_date_start >= publish_date_end')
+			->where('publish_date_start', '>=', 'publish_date_end')
 			->get();
 
-
-
     	// Statements
-
-    	// Temporary data
 		$didyouknows = Didyouknow::where('draft', '=', 1)
 				->where('author_approve', '=', 1)
 				->where('editor_approve', '=', 1)
 				->where('publisher_approve', '=', 1)
 				->where('publish_date_start', '<=', Carbon::now())
 				->whereRaw('publish_date_start <= publish_date_end')
-				->where('archived', '=', 0)
 				->get();
-		// Constant data
-		$didyouknows_1 = Didyouknow::where('draft', '=', 1)
-			->where('author_approve', '=', 1)
-			->where('editor_approve', '=', 1)
-			->where('publisher_approve', '=', 1)
-			->where('publish_date_start', '<=', Carbon::now())
-			->whereRaw('publish_date_start >= publish_date_end')
-			->where('archived', '=', 0)
-			->get();
-
-		$didyouknows = $didyouknows->merge($didyouknows_1);
 
         return view('didyouknow::main.index')->with(compact('didyouknows', 'didyouknow_information'));
     }

@@ -2,10 +2,19 @@
 
 $('#destroy_article').on('show.bs.modal', function(e) {
 
-	$title = $(e.relatedTarget).attr('data-title');
-	$(this).find('.modal-title').text($title);
+	console.log($(e.relatedTarget).data('info'));
 
+	var info 		= $(e.relatedTarget).data('info');
 
+	var id			=	info['id'];
 
-	$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+	var title		=	info['title'];
+
+	var href		= '/api/board/information/'+ id + '/destroy';
+
+	console.log(href);
+
+	$(this).find('#destroy-title').text(title);
+
+	$(this).find('.btn-ok').attr('href', href);
 });

@@ -38,9 +38,6 @@
 		Route::patch('information/{id}', 'DidyouknowInformationController@update')->name('board.didyouknow.information.update');
 
 
-		Route::get('information/{id}/delete', 'DidyouknowInformationController@delete')->name('board.didyouknow.information.delete');
-
-
 
 
 		Route::get('/', 'DidyouknowController@index')->name('board.didyouknow.index');
@@ -59,6 +56,9 @@
 
 
 		Route::delete('/{id}', 'DidyouknowController@delete')->name('board.didyouknow.delete');
+
+
+		Route::delete('/{id}', 'DidyouknowController@destroy')->name('board.didyouknow.destroy');
 
 
 
@@ -80,7 +80,15 @@
 
 		Route::post('board/information/update', 'DidyouknowInformationController@update')->name('api.didyouknow.information.update');
 
+		Route::post('board/information/restore', 'DidyouknowInformationController@restore')->name('api.didyouknow.information.restore');
 
-		//Route::post('board/information/{id}/edit', 'DidyouknowInformationController@edit')->name('api.didyouknow.information.edit');
+		Route::get('board/information/{id}/delete', 'DidyouknowInformationController@delete')->name('board.didyouknow.information.delete');
+
+		Route::get('board/information/{id}/destroy', 'DidyouknowInformationController@destroy')->name('api.didyouknow.information.destroy');
+
+
+
+		Route::post('board/information/settings', 'DidyouknowSettingsController@update')->name('api.didyouknow.settings.update');
+
 
 	});

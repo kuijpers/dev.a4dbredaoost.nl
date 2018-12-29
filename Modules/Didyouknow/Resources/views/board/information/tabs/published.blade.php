@@ -115,7 +115,7 @@
                                                 title="Verwijder"
                                                 data-toggle="modal"
                                                 data-target="#delete_article"
-                                                data-title="{{$publisher_approve->title}}"
+                                                data-info = "{{$publisher_approve_modal}}"
                                         >
                                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                                         </button>

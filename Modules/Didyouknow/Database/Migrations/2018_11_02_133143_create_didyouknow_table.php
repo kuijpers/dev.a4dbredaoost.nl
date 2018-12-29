@@ -16,7 +16,9 @@ class CreateDidyouknowTable extends Migration
         Schema::create('didyouknow', function (Blueprint $table) {
             $table->increments('id');
 
-			$table->text('question');
+            $table->string('slug')->unique();
+
+			$table->string('question');
 			$table->text('answer');
 
 			$table->boolean('draft')->default(1);
@@ -44,7 +46,9 @@ class CreateDidyouknowTable extends Migration
 		Schema::create('didyouknow_information', function (Blueprint $table) {
 			$table->increments('id');
 
-			$table->text('title');
+			$table->string('slug')->unique();
+
+			$table->string('title');
 			$table->text('body');
 
 			$table->boolean('draft')->default(1);
@@ -68,6 +72,25 @@ class CreateDidyouknowTable extends Migration
 
 			$table->timestamps();
 		});
+
+
+		Schema::create('didyouknow_settings', function (Blueprint $table) {
+			$table->increments('id');
+
+			$table->string('slug')->unique();
+
+			$table->string('name');
+			$table->text('description');
+			$table->boolean('value_bool')->nullable();
+			$table->text('value_text')->nullable();
+
+			$table->softDeletes();
+
+			$table->timestamps();
+
+
+		});
+
     }
 
     /**
@@ -79,5 +102,6 @@ class CreateDidyouknowTable extends Migration
     {
         Schema::dropIfExists('didyouknow');
         Schema::dropIfExists('didyouknow_information');
+        Schema::dropIfExists('didyouknow_settings');
     }
 }

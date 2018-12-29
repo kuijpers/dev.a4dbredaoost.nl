@@ -86,35 +86,7 @@
     <div class="row">
         <div class="col-md-12">
 
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        @lang('didyouknow::board/general.tab_settings').
-                    </h3>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                            @lang('didyouknow::board/general.tab_settings_info_visible') : &nbsp;
-                            <input class="bs-switch" type="checkbox" checked="checked"
-                                   data-size="mini"
-                                   data-on-color="success"
-                                   data-off-color="danger"
-                                   data-on-text="@lang('didyouknow::board/buttons.modal_switch_on')"
-                                   data-off-text="@lang('didyouknow::board/buttons.modal_switch_off')">
-                        </div>
-                        <div class="col-md-4">
-                            @lang('didyouknow::board/general.tab_settings_title_visible') : &nbsp;
-                            <input class="bs-switch" type="checkbox" checked="checked"
-                                   data-size="mini"
-                                   data-on-color="success"
-                                   data-off-color="danger"
-                                   data-on-text="@lang('didyouknow::board/buttons.modal_switch_on')"
-                                   data-off-text="@lang('didyouknow::board/buttons.modal_switch_off')">
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @include('didyouknow::board.segments.information_settings')
 
             <div class="panel panel-info">
                 <div class="panel-heading">

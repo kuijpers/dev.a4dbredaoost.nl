@@ -67,9 +67,15 @@
                                 <td>
                                     <div class="btn-group btn-group-xs" role="group">
                                         @php
-                                            if(Carbon\Carbon::parse($archive->publish_date_end)->format('d-m-Y H:i:s')<= Carbon\Carbon::parse($archive->publish_date_start)->format('d-m-Y H:i:s')){
+
+                                            if($archive->publish_date_start == 0){
+                                                $start_date = __('didyouknow::board/tabs.tab_table_title_published_not_set');
+                                                $end_date   = __('didyouknow::board/tabs.tab_table_title_published_not_set');
+                                            }elseif(Carbon\Carbon::parse($archive->publish_date_end)->format('d-m-Y H:i:s')<= Carbon\Carbon::parse($archive->publish_date_start)->format('d-m-Y H:i:s')){
+                                                $start_date = Carbon\Carbon::parse($archive->publish_date_start)->format('d-m-Y H:i:s');
                                                 $end_date = __('didyouknow::board/tabs.tab_table_title_published_forever');
                                             }else{
+                                                $start_date = Carbon\Carbon::parse($archive->publish_date_start)->format('d-m-Y H:i:s');
                                                 $end_date = Carbon\Carbon::parse($archive->publish_date_end)->format('d-m-Y H:i:s');
                                             }
 
@@ -80,7 +86,7 @@
                                             	'author'    => $archive->getAuthorName($archive->author_group),
                                             	'editor'    => $archive->getEditorName($archive->editor_group),
                                             	'publisher' => $archive->getPublisherName($archive->publisher_group),
-                                            	'start'     => Carbon\Carbon::parse($archive->publish_date_start)->format('d-m-Y H:i:s'),
+                                            	'start'     => $start_date,
                                             	'end'       => $end_date
                                             ];
 
@@ -113,7 +119,7 @@
                                                 title="@lang('didyouknow::board/buttons.tab_tooltip_delete')"
                                                 data-toggle="modal"
                                                 data-target="#destroy_article"
-                                                data-title="{{$archive ->title}}"
+                                                data-info = "{{$archive_modal}}"
                                         >
                                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                                         </button>

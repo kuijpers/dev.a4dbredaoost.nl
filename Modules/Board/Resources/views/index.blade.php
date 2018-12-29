@@ -41,16 +41,47 @@
                 <h5 class="card-header text-center text-white bg-success">
                     Voorzitter
                 </h5>
-                <img class="card-img-top img-thumbnail mx-auto mt-4 d-block" src="{{ asset('modules/board/album/portrait_3.jpg') }}" alt="Card image cap">
+                <img class="card-img-top img-thumbnail mx-auto mt-4 d-block" src="{{ asset('img/no-image.png') }}" alt="Card image cap">
                 <div class="card-body">
                     <p class="card-text">
                     <div class="col-md-12">
                         <h5>
-                            Naam van de persoon
+                            Frans-Willem van Hulst
                         </h5>
-                        <div class="text-muted">
-                            Geboortedatum
-                        </div>
+                    </div>
+                    <div class="col-md-12 mt-3">
+                        Contact gegevens van de persoon.
+                    </div>
+                    </p>
+
+                    <div class="mt-3 pb-3">
+                        <h6> Over mijzelf </h6>
+                        Ik ben Frans-Willem van Hulst.
+                        Sinds 1984 ben ik woonachtig in de wijk Heusdenhout.
+                        Ik ben getrouwd en heb twee kinderen die beide ook al jaren
+                        betrokken zijn bij dit evenement.
+                        Al jarenlang ben ik actief betrokken in de wijk o.a ben
+                        ik voorzitter geweest van de wijkraad en oudercommissie
+                        van K.B.S de Weilust.
+                        Ook heb ik de tieneractiviteit toentertijd opgestart.
+                        Ik vind het fijn om actief en sociaal bezig te zijn in de wijk.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card mt-4">
+                <h5 class="card-header text-center text-white bg-success">
+                    Vice-voorzitter
+                </h5>
+                <img class="card-img-top img-thumbnail mx-auto mt-4 d-block" src="{{ asset('modules/board/album/portrait_1.jpg') }}" alt="Card image cap" style="width: 12rem;">
+                <div class="card-body">
+                    <p class="card-text">
+                    <div class="col-md-12">
+                        <h5>
+                            Roy Mertens
+                        </h5>
                     </div>
                     <div class="col-md-12 mt-3">
                         Contact gegevens van de persoon.
@@ -77,7 +108,7 @@
                 <h5 class="card-header text-center text-white bg-success">
                     Secretaris
                 </h5>
-                <img class="card-img-top img-thumbnail mx-auto mt-4 d-block" src="{{ asset('modules/board/album/portrait_1.jpg') }}" alt="Card image cap" style="width: 12rem;">
+                <img class="card-img-top img-thumbnail mx-auto mt-4 d-block" src="{{ asset('modules/board/album/portrait_4.jpg') }}" alt="Card image cap" style="width: 12rem;">
                 <div class="card-body">
                     <p class="card-text">
                     <div class="col-md-12">
@@ -144,42 +175,6 @@
             </div>
         </div>
 
-        <div class="col-md-4 offset-md-2">
-            <div class="card mt-4">
-                <h5 class="card-header text-center text-white bg-success">
-                    Bestuurslid
-                </h5>
-                <img class="card-img-top img-thumbnail mx-auto mt-4 d-block" src="{{ asset('modules/board/album/portrait_7.jpg') }}" alt="Card image cap" style="width: 12rem;">
-                <div class="card-body">
-                    <p class="card-text">
-                    <div class="col-md-12">
-                        <h5>
-                            Naam van de persoon
-                        </h5>
-                        <div class="text-muted">
-                            Geboortedatum
-                        </div>
-                    </div>
-                    <div class="col-md-12 mt-3">
-                        Contact gegevens van de persoon.
-                    </div>
-                    </p>
-                    <div class="card-header">
-                        <strong>Portefeuille</strong>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
-                    </ul>
-                    <div class="mt-3 pb-3">
-                        <h6> Over mijzelf </h6>
-                        Stukje over de persoon zelf.
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="col-md-4">
             <div class="card mt-4">
                 <h5 class="card-header text-center text-white bg-success">
@@ -190,31 +185,106 @@
                     <p class="card-text">
                     <div class="col-md-12">
                         <h5>
-                            Naam van de persoon
+                            Anke Verhagen
                         </h5>
-                        <div class="text-muted">
-                            Geboortedatum
-                        </div>
                     </div>
                     <div class="col-md-12 mt-3">
-                        Contact gegevens van de persoon.
+                        Contact gegevens van de Anke.
                     </div>
                     </p>
-                    <div class="card-header">
-                        <strong>Portefeuille</strong>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
-                    </ul>
                     <div class="mt-3 pb-3">
                         <h6> Over mijzelf </h6>
-                        Stukje over de persoon zelf.
+                        Mijn naam is Anke Verhagen en ik woon sinds 1993 samen met mijn partner
+                        in de wijk Heusdenhout. Samen hebben wij een zoon en dochter.
+                        Vanaf het eerste moment zijn wij allen actief betrokken bij dit wijkevenement.
+                        De meeste van jullie zullen mij beter herkennen als mascotte van de avondvierdaagse
+                        Breda-Oost. In verschillende creaties ben ik al voorbij komen wandelen.
+                        Naast dit evenement ben ik langere tijd actief geweest als voorzitter
+                        van de oudercommissie op K.B.S de Weilust en was ik actief lid van
+                        verschillende commissies binnen deze school.
+                        Ik vind het mooi om iets te kunnen betekenen voor onze wijk.
+                        Ik hoop hier nog een tijd een bijdrage aan te mogen leveren.
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="col-md-4">
+            <div class="card mt-4">
+                <h5 class="card-header text-center text-white bg-success">
+                    Bestuurslid
+                </h5>
+                <img class="card-img-top img-thumbnail mx-auto mt-4 d-block" src="{{ asset('modules/board/album/portrait_7.jpg') }}" alt="Card image cap" style="width: 12rem;">
+                <div class="card-body">
+                    <p class="card-text">
+                    <div class="col-md-12">
+                        <h5>
+                            Dennis Kuijpers
+                        </h5>
+                        <div class="text-muted">
+                            10-02-1976
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-3">
+                        webmaster.a4dbredaoost@gmail.com
+                    </div>
+                    </p>
+                    <div class="card-header">
+                        <strong>Waar mee bezig?</strong>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Webmaster</li>
+                        <li class="list-group-item">Social Media</li>
+                        <li class="list-group-item">AVG</li>
+                    </ul>
+                    <div class="mt-3 pb-3">
+                        <h6> Over mijzelf </h6>
+                        Zoals u al heeft gezien is mijn naam Dennis Kuijpers.
+                        Ik woon, met heel veel plezier, sinds 2014 in de wijk Heusdenhout.
+                        Samen met mijn vriendin Wendy heb ik 4 kinderen die altijd met veel pelzier deelnemen aan de a4d.
+                        Toen ik te horen kreeg dat er ondersteuning nodig was voor de organisatie heb ik mijzelf aangemeld.
+                        Voor de organisatie zal het meest actieve stuk voor mij zitten in de website.
+                        Mochten er vragen zijn over de website dan hoor ik ze graag.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{--<div class="col-md-4 offset-md-2">--}}
+            {{--<div class="card mt-4">--}}
+                {{--<h5 class="card-header text-center text-white bg-success">--}}
+                    {{--Bestuurslid--}}
+                {{--</h5>--}}
+                {{--<img class="card-img-top img-thumbnail mx-auto mt-4 d-block" src="{{ asset('img/no-image.png') }}" alt="Card image cap" style="width: 12rem;">--}}
+                {{--<div class="card-body">--}}
+                    {{--<p class="card-text">--}}
+                    {{--<div class="col-md-12">--}}
+                        {{--<h5>--}}
+                            {{--Naam van de persoon--}}
+                        {{--</h5>--}}
+                        {{--<div class="text-muted">--}}
+                            {{--Geboortedatum--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-md-12 mt-3">--}}
+                        {{--Contact gegevens van de persoon.--}}
+                    {{--</div>--}}
+                    {{--</p>--}}
+                    {{--<div class="card-header">--}}
+                        {{--<strong>Portefeuille</strong>--}}
+                    {{--</div>--}}
+                    {{--<ul class="list-group list-group-flush">--}}
+                        {{--<li class="list-group-item">Cras justo odio</li>--}}
+                        {{--<li class="list-group-item">Dapibus ac facilisis in</li>--}}
+                        {{--<li class="list-group-item">Vestibulum at eros</li>--}}
+                    {{--</ul>--}}
+                    {{--<div class="mt-3 pb-3">--}}
+                        {{--<h6> Over mijzelf </h6>--}}
+                        {{--Stukje over de persoon zelf.--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
 
     </div>
 

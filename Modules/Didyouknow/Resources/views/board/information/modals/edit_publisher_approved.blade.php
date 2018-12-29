@@ -1,10 +1,3 @@
-<?php
-	/**
-	 * @todo make connection with DB-> Var's are: title , body , editor_approval(checkbox) , publisher_approval(checkbox) , publish_start , publish_end
-     * @todo Keep in mind that the dates will be set to null when this article may not be published anymore.
-     * @todo When it needs an approval from the publisher new dates for start and end needs to be set.
-	 */
-?>
     <div class="modal fade" id="edit_publisher_approved" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -21,6 +14,8 @@
 
                 </div>
 
+                <form id="edit_author_approved" name="edit_author_approved" class="edit_author_approved" method="POST" action="#" >
+
                 <div class="row">
 
                     <div class="col-md-10 col-lg-offset-1">
@@ -35,8 +30,35 @@
 
                 <div class="row">
 
+                    <div id="modal_update_success" class="col-md-8 col-md-offset-2" style="display:none;">
+                        <div id="modal_update_success_alert" class="alert alert-success alert-dismissible" role="alert">
+                            <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <i class="alert-ico fa fa-fw fa-check"></i>
+                            @lang('didyouknow::board/modals.modal_change_alert_success')
+                        </div>
+                    </div>
+
+                    <div id="modal_update_fail" class="col-md-8 col-md-offset-2" style="display:none;">
+                        <div id="modal_update_fail_alert" class="alert alert-danger alert-dismissible" role="alert">
+                            <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <i class="alert-ico fa fa-fw fa-ban"></i>
+                            @lang('didyouknow::board/modals.modal_change_alert_fail')
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+
                     <div class="col-md-10 col-lg-offset-1">
                         <div class="modal-body">
+
+                            <input name="id" type="hidden" class="form-control span6" id="edit_publisher_approved_id">
 
                             <div class="col-md-12 text-primary">
                                 <label for="editor_approved_title">
@@ -124,7 +146,7 @@
                             <div class="col-md-12 text-primary">
 
                                 <div class="col-md-5" >
-                                    <label for="edit_publisher_approved_approve_publish">
+                                    <label for="publish_approved">
                                         @lang('didyouknow::board/modals.modal_change_can_publish')
                                     </label>
                                     <br>
@@ -135,7 +157,7 @@
 
                                     <input class="bs-switch" type="checkbox" checked="checked"
                                            name="publish_approved"
-                                           id="edit_publisher_approved_approve_publish"
+                                           id="publish_approved"
                                            data-size="mini"
                                            data-on-color="success"
                                            data-off-color="danger"
@@ -175,7 +197,7 @@
                             <button type="button" class="btn btn-default" data-dismiss="modal">
                                 @lang('didyouknow::board/buttons.modal_button_cancel')
                             </button>
-                            <button type="submit" class="btn btn-success">
+                            <button id="edit_publisher_approved_submit" type="submit" class="btn btn-success" disabled>
                                 @lang('didyouknow::board/buttons.modal_button_save')
                             </button>
 
@@ -183,7 +205,7 @@
                     </div>
 
                 </div>
-
+                </form>
             </div>
         </div>
     </div>

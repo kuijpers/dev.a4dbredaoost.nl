@@ -21,6 +21,7 @@
 		'tab_table_title_published_from'	=> 'From',
 		'tab_table_title_published_till'	=> 'Till',
 		'tab_table_title_published_forever'	=> 'Forever',
+		'tab_table_title_published_not_set'	=> 'Not set',
 
 		'tab_data_no_concepts'				=> 'There are no concepts in the database for you.',
 		'tab_data_no_data'					=> 'There is no data in the database for you to handle.',

@@ -48,7 +48,7 @@ function add_summernote(body_id,body){
 //
 
 
-/** @todo : make it more flexible by adding variables to the reqquest function **/
+
 
 function show_publish_dates(){
 
@@ -69,7 +69,6 @@ function show_publish_dates(){
 
 }
 
-/** @todo : make it more flexible by adding variables to the reqquest function **/
 
 function show_timepickers_div(){
 
@@ -93,7 +92,6 @@ function show_timepickers_div(){
 
 }
 
-/** @todo : make it more flexible by adding variables to the reqquest function **/
 
 function add_time_pickers(){
 
@@ -103,10 +101,12 @@ function add_time_pickers(){
 		});
 	});
 
-	/** @todo : make it more flexible by adding variables to the reqquest function **/
 	$(function () {
-		$('#approve_from').datetimepicker();
+		$('#approve_from').datetimepicker({
+			locale: 'nl'
+		});
 		$('#approve_till').datetimepicker({
+			locale: 'nl',
 			useCurrent: false //Important! See issue #1075
 		});
 		$("#approve_from").on("dp.change", function (e) {
@@ -118,7 +118,6 @@ function add_time_pickers(){
 	});
 }
 
-/** @todo : make it more flexible by adding variables to the reqquest function **/
 
 function checkbox_set_show_publish_dates(){
 
@@ -152,7 +151,6 @@ function checkbox_set_show_publish_dates(){
 	});
 }
 
-/** @todo : make it more flexible by adding variables to the reqquest function **/
 
 function checkbox_set_show_timepickers_div(){
 

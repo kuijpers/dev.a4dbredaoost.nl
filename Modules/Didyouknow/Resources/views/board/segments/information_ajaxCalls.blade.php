@@ -19,3 +19,8 @@
 
 {{--New--}}
 <script src="{{ Module::asset('didyouknow:js/ajaxCalls/new.js') }}"></script>
+
+
+
+{{--Settings--}}
+<script src="{{ Module::asset('didyouknow:js/ajaxCalls/settings.js') }}"></script>

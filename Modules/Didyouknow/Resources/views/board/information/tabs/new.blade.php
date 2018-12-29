@@ -28,14 +28,14 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="form-group  col-md-10 col-md-offset-1 text-right">
-                <br>
-                <button id="live_preview" type="submit" class="btn btn-warning btn-sm">
-                    @lang('didyouknow::board/buttons.tab_new_button_live_preview')
-                </button>
-            </div>
-        </div>
+        {{--<div class="row">--}}
+            {{--<div class="form-group  col-md-10 col-md-offset-1 text-right">--}}
+                {{--<br>--}}
+                {{--<button id="live_preview" type="submit" class="btn btn-warning btn-sm">--}}
+                    {{--@lang('didyouknow::board/buttons.tab_new_button_live_preview')--}}
+                {{--</button>--}}
+            {{--</div>--}}
+        {{--</div>--}}
 
         <div class="row">
 
@@ -49,19 +49,38 @@
             <div class="form-group  col-md-10 col-md-offset-1">
 
                 <div class="row">
+                    {{--<div class="col-md-3">--}}
+
+                        {{--<label>--}}
+                            {{--<input type="checkbox" id="selectall_approved">--}}
+                            {{--<input class="bs-switch" type="checkbox"--}}
+                                   {{--name="selectall_approved"--}}
+                                   {{--id="selectall_approved"--}}
+                                   {{--data-size="mini"--}}
+                                   {{--data-on-color="success"--}}
+                                   {{--data-off-color="danger"--}}
+                                   {{--data-on-text="@lang('didyouknow::board/buttons.modal_switch_on')"--}}
+                                   {{--data-off-text="@lang('didyouknow::board/buttons.modal_switch_off')"--}}
+                            {{-->--}}
+                            {{--@lang('didyouknow::board/general.checkbox_check_all')--}}
+                        {{--</label>--}}
+
+                    {{--</div>--}}
+
                     <div class="col-md-3">
 
                         <label>
-                            <input type="checkbox" id="selectall_approved">
-                            @lang('didyouknow::board/general.checkbox_check_all')
-                        </label>
+                            {{--<input id="create_new_author_approved" name="approve[]" class="approved" type="checkbox" value="author_approved">--}}
+                            <input class="bs-switch approved" type="checkbox"
+                                   name="create_new_author_approved"
+                                   id="create_new_author_approved"
+                                   data-size="mini"
+                                   data-on-color="success"
+                                   data-off-color="danger"
+                                   data-on-text="@lang('didyouknow::board/buttons.modal_switch_on')"
+                                   data-off-text="@lang('didyouknow::board/buttons.modal_switch_off')"
+                            >
 
-                    </div>
-
-                    <div class="col-md-3">
-
-                        <label>
-                            <input id="author_approved" name="approve[]" class="approved" type="checkbox" value="author_approved">
                             @lang('didyouknow::board/general.checkbox_author_approval')
                         </label>
 
@@ -69,7 +88,16 @@
                     <div class="col-md-3">
 
                         <label>
-                            <input id="editor_approved" name="approve[]" class="approved" type="checkbox" value="editor_approved">
+                            {{--<input id="create_new_editor_approved" name="approve[]" class="approved" type="checkbox" value="editor_approved">--}}
+                            <input class="bs-switch approved" type="checkbox"
+                                   name="create_new_editor_approved"
+                                   id="create_new_editor_approved"
+                                   data-size="mini"
+                                   data-on-color="success"
+                                   data-off-color="danger"
+                                   data-on-text="@lang('didyouknow::board/buttons.modal_switch_on')"
+                                   data-off-text="@lang('didyouknow::board/buttons.modal_switch_off')"
+                            >
                             @lang('didyouknow::board/general.checkbox_editor_approval')
                         </label>
 

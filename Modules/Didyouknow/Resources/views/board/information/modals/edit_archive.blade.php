@@ -1,10 +1,3 @@
-<?php
-	/**
-	 * @todo make connection with DB-> Var's are: title , body , editor_approval(checkbox) , publisher_approval(checkbox) , publish_start , publish_end
-	 * @todo Keep in mind that the dates will be set to null when this article may not be published anymore.
-	 * @todo When it needs an approval from the publisher new dates for start and end needs to be set.
-	 */
-?>
 <div class="modal fade" id="edit_archive" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -37,6 +30,8 @@
 
                 <div class="col-md-10 col-lg-offset-1">
                     <div class="modal-body">
+
+                        <input name="id" type="hidden" class="form-control span6" id="edit_archived_id">
 
                         <div class="col-md-12 text-primary">
                             <label for="editor_approved_title">
@@ -107,13 +102,17 @@
 
                 <div class="col-md-10 col-lg-offset-1">
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-danger pull-left">
-                            @lang('didyouknow::board/buttons.modal_button_destroy')
-                        </button>
+                        {{-- As option this can be shown when user has permission to destroy items --}}
+                        {{--<button type="submit" class="btn btn-danger pull-left">--}}
+                            {{--@lang('didyouknow::board/buttons.modal_button_destroy')--}}
+                        {{--</button>--}}
+                        {{-- End optional part --}}
+
+
                         <button type="button" class="btn btn-default" data-dismiss="modal">
                             @lang('didyouknow::board/buttons.modal_button_cancel')
                         </button>
-                        <button type="submit" class="btn btn-success">
+                        <button type="submit" class="btn btn-success" id="edit_archive_submit" disabled>
                             @lang('didyouknow::board/buttons.modal_button_save')
                         </button>
 

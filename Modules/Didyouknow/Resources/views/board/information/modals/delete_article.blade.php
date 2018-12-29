@@ -1,9 +1,3 @@
-<?php
-  /**
-   * @todo Make form or hyperlink to archive page with id as var.
-   */
-
-?>
 <div class="modal fade" id="delete_article" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
 use Modules\Didyouknow\Entities\Models\Board\Didyouknow;
+use Modules\Didyouknow\Entities\Models\Board\Didyouknow_settings;
+
 use Modules\Didyouknow\Entities\Models\Main\Didyouknow_information;
 
 class DidyouknowDatabaseSeeder extends Seeder
@@ -24,7 +26,8 @@ class DidyouknowDatabaseSeeder extends Seeder
 		$didyouknows = [
 			// In draft with user group
 			[
-				'question' => 'Wist u dat 1',
+				'question' => 'Wist u dat 01',
+				'slug' => str_slug('Wist u dat 01', '-'),
 				'answer' => 'Dit is dan het antwoord 1',
 				'draft' => 1,
 				'author' => 1,
@@ -33,6 +36,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 			// Author approved with volunteer group
 			[
 				'question' => 'Wist u dat 2',
+				'slug' => str_slug('Wist u dat 2', '-'),
 				'answer' => 'Dit is dan het antwoord 2',
 				'draft' => 1,
 				'author' => 1,
@@ -42,6 +46,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 			// Author approved in hands of editor from board
 			[
 				'question' => 'Wist u dat 3',
+				'slug' => str_slug('Wist u dat 3', '-'),
 				'answer' => 'Dit is dan het antwoord 3',
 				'draft' => 1,
 				'author' => 1,
@@ -53,6 +58,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 			// editor approved
 			[
 				'question' => 'Wist u dat 4',
+				'slug' => str_slug('Wist u dat 4', '-'),
 				'answer' => 'Dit is dan het antwoord 4',
 				'draft' => 1,
 				'author' => 1,
@@ -65,6 +71,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 			// In hands of publisher
 			[
 				'question' => 'Wist u dat 5',
+				'slug' => str_slug('Wist u dat 5', '-'),
 				'answer' => 'Dit is dan het antwoord 5',
 				'draft' => 1,
 				'author' => 1,
@@ -79,6 +86,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 			// Fully approved and published now and forever
 			[
 				'question' => 'Wist u dat 6',
+				'slug' => str_slug('Wist u dat 6', '-'),
 				'answer' => 'Dit is dan het antwoord 6',
 				'draft' => 1,
 				'author' => 1,
@@ -96,6 +104,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 			// Fully approved and published in 2 weeks and forever
 			[
 				'question' => 'Wist u dat 7',
+				'slug' => str_slug('Wist u dat 7', '-'),
 				'answer' => 'Dit is dan het antwoord 7',
 				'draft' => 1,
 				'author' => 1,
@@ -113,6 +122,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 			// Fully approved and published now and for 14 days
 			[
 				'question' => 'Wist u dat 8',
+				'slug' => str_slug('Wist u dat 8', '-'),
 				'answer' => 'Dit is dan het antwoord 8',
 				'draft' => 1,
 				'author' => 1,
@@ -130,6 +140,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 			// Fully approved and published 3 weeks ago and ended 1 week ago
 			[
 				'question' => 'Wist u dat 9',
+				'slug' => str_slug('Wist u dat 9', '-'),
 				'answer' => 'Dit is dan het antwoord 9',
 				'draft' => 1,
 				'author' => 1,
@@ -146,8 +157,9 @@ class DidyouknowDatabaseSeeder extends Seeder
 			],
 			// Fully approved and published now and for 2 days but archived (deleted)
 			[
-				'question' => 'Wist u dat 9',
-				'answer' => 'Dit is dan het antwoord 9',
+				'question' => 'Wist u dat 10',
+				'slug' => str_slug('Wist u dat 10', '-'),
+				'answer' => 'Dit is dan het antwoord 10',
 				'draft' => 1,
 				'author' => 1,
 				'author_group' => 'Boardmembers',
@@ -173,6 +185,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 		$didyouknows_information = [
 			[
 				'title' => 'En dit dan? 1',
+				'slug' => str_slug('En dit dan? 1', '-'),
 				'body' => 'Er komen na iedere avondvierdaagse weer wist u datjes bij.',
 				'draft' => '1',
 				'author' => '6',
@@ -193,6 +206,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 
 			[
 				'title' => 'Wist u dit al? 2',
+				'slug' => str_slug('Wist u dit al? 2', '-'),
 				'body' => 'Met het organiseren van een evenement als de avondvierdaagse zijn er veel dingen waar mensen niet bij stil staan.
 	Op deze pagina willen we jullie bekend maken met leuke, grappige, rare maar misschien ook minder leuke weetjes.
 	Mocht je nog bekend zijn met een wist u datje dan horen wij dit graag. Hieronder vindt u een aantal van deze stellingen.',
@@ -215,6 +229,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 
 			[
 				'title' => 'Wist u dit al? 3',
+				'slug' => str_slug('Wist u dit al? 3', '-'),
 				'body' => 'Met het organiseren van een evenement als de avondvierdaagse zijn er veel dingen waar mensen niet bij stil staan.
 	Op deze pagina willen we jullie bekend maken met leuke, grappige, rare maar misschien ook minder leuke weetjes.
 	Mocht je nog bekend zijn met een wist u datje dan horen wij dit graag. Hieronder vindt u een aantal van deze stellingen.',
@@ -237,6 +252,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 
 			[
 				'title' => 'Wist u dit ook al? 4',
+				'slug' => str_slug('Wist u dit ook al? 4', '-'),
 				'body' => 'Met het organiseren van een evenement als de avondvierdaagse zijn er veel dingen waar mensen niet bij stil staan.
 	Op deze pagina willen we jullie bekend maken met leuke, grappige, rare maar misschien ook minder leuke weetjes.
 	Mocht je nog bekend zijn met een wist u datje dan horen wij dit graag. Hieronder vindt u een aantal van deze stellingen.',
@@ -259,6 +275,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 
 			[
 				'title' => 'Wist u dit ook al? 5',
+				'slug' => str_slug('Wist u dit ook al? 5', '-'),
 				'body' => 'Met het organiseren van een evenement als de avondvierdaagse zijn er veel dingen waar mensen niet bij stil staan.
 	Op deze pagina willen we jullie bekend maken met leuke, grappige, rare maar misschien ook minder leuke weetjes.
 	Mocht je nog bekend zijn met een wist u datje dan horen wij dit graag. Hieronder vindt u een aantal van deze stellingen.',
@@ -281,6 +298,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 
 			[
 				'title' => 'Wist u dit ook al? 6',
+				'slug' => str_slug('Wist u dit ook al? 6', '-'),
 				'body' => 'Met het organiseren van een evenement als de avondvierdaagse zijn er veel dingen waar mensen niet bij stil staan.
 	Op deze pagina willen we jullie bekend maken met leuke, grappige, rare maar misschien ook minder leuke weetjes.
 	Mocht je nog bekend zijn met een wist u datje dan horen wij dit graag. Hieronder vindt u een aantal van deze stellingen.',
@@ -303,6 +321,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 
 			[
 				'title' => 'test 1',
+				'slug' => str_slug('test 1', '-'),
 				'body' => '<p>Hier ook een test body.</p> 1',
 				'draft' => '1','author' => '6',
 				'author_group' => 'Boardmember',
@@ -322,6 +341,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 
 			[
 				'title' => 'test 2',
+				'slug' => str_slug('test 2', '-'),
 				'body' => '<p>Hier ook een test body.</p> 2',
 				'draft' => '1',
 				'author' => '6',
@@ -342,6 +362,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 
 			[
 				'title' => 'test zoveel 1',
+				'slug' => str_slug('test zoveel 1\'', '-'),
 				'body' => 'author approval 1',
 				'draft' => '1',
 				'author' => '6',
@@ -362,6 +383,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 
 			[
 				'title' => 'test zoveel 2',
+				'slug' => str_slug('test zoveel 2', '-'),
 				'body' => 'author approval 2',
 				'draft' => '1',
 				'author' => '6',
@@ -381,7 +403,8 @@ class DidyouknowDatabaseSeeder extends Seeder
 			],
 
 			[
-				'title' => 'test',
+				'title' => 'test 3',
+				'slug' => str_slug('test 3', '-'),
 				'body' => '<p>test voor author approved</p>',
 				'draft' => '1',
 				'author' => '6',
@@ -402,6 +425,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 
 			[
 				'title' => 'Author test',
+				'slug' => str_slug('Author test', '-'),
 				'body' => '<p>Dit is weer een author test</p>',
 				'draft' => '1',
 				'author' => '6',
@@ -422,6 +446,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 
 			[
 				'title' => 'Editor test',
+				'slug' => str_slug('Editor test', '-'),
 				'body' => '<p>Dit is een editor test</p>',
 				'draft' => '1',
 				'author' => '6',
@@ -442,6 +467,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 
 			[
 				'title' => 'Dit is speciaal voor AJ',
+				'slug' => str_slug('Dit is speciaal voor AJ', '-'),
 				'body' => '<p>Ik wil graag aan AJ laten zien hoe dit werkt.</p>',
 				'draft' => '1',
 				'author' => '6',
@@ -462,6 +488,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 
 			[
 				'title' => 'Dit is een succes test',
+				'slug' => str_slug('Dit is een succes test', '-'),
 				'body' => '<p>Kijken of hij nu wel wilt.</p>',
 				'draft' => '1',
 				'author' => '6',
@@ -481,27 +508,8 @@ class DidyouknowDatabaseSeeder extends Seeder
 			],
 
 			[
-				'title' => 'Dit is een succes test',
-				'body' => '<p>Kijken of hij nu wel wilt.</p>',
-				'draft' => '1',
-				'author' => '6',
-				'author_group' => 'Boardmember',
-				'author_approve' => '0',
-				'editor' => NULL,
-				'editor_group' => NULL,
-				'editor_approve' => '0',
-				'publisher' => NULL,
-				'publisher_group' => NULL,
-				'publisher_approve' => '0',
-				'publish_date_start' => NULL,
-				'publish_date_end' => NULL,
-				'deleted_at' => NULL,
-				'created_at' => '2018-11-19 09:51:59',
-				'updated_at' => '2018-11-19 09:51:59',
-			],
-
-			[
 				'title' => 'poe eeh',
+				'slug' => str_slug('poe eeh', '-'),
 				'body' => '<p>Nog maar een test</p>',
 				'draft' => '1',
 				'author' => '6',
@@ -521,7 +529,8 @@ class DidyouknowDatabaseSeeder extends Seeder
 			],
 
 			[
-				'title' => 'test',
+				'title' => 'test 4',
+				'slug' => str_slug('test 4', '-'),
 				'body' => '<p>iets</p>',
 				'draft' => '1',
 				'author' => '6',
@@ -541,27 +550,8 @@ class DidyouknowDatabaseSeeder extends Seeder
 			],
 
 			[
-				'title' => 'test',
-				'body' => '<p>iets</p>',
-				'draft' => '1',
-				'author' => '6',
-				'author_group' => 'Boardmember',
-				'author_approve' => '0',
-				'editor' => NULL,
-				'editor_group' => NULL,
-				'editor_approve' => '0',
-				'publisher' => NULL,
-				'publisher_group' => NULL,
-				'publisher_approve' => '0',
-				'publish_date_start' => NULL,
-				'publish_date_end' => NULL,
-				'deleted_at' => NULL,
-				'created_at' => '2018-11-19 09:55:57',
-				'updated_at' => '2018-11-19 09:55:57',
-			],
-
-			[
-				'title' => 'test',
+				'title' => 'test 5',
+				'slug' => str_slug('test 5', '-'),
 				'body' => '<p>test</p>',
 				'draft' => '1',
 				'author' => '6',
@@ -581,47 +571,8 @@ class DidyouknowDatabaseSeeder extends Seeder
 			],
 
 			[
-				'title' => 'test',
-				'body' => '<p>iets</p>',
-				'draft' => '1',
-				'author' => '6',
-				'author_group' => 'Boardmember',
-				'author_approve' => '0',
-				'editor' => NULL,
-				'editor_group' => NULL,
-				'editor_approve' => '0',
-				'publisher' => NULL,
-				'publisher_group' => NULL,
-				'publisher_approve' => '0',
-				'publish_date_start' => NULL,
-				'publish_date_end' => NULL,
-				'deleted_at' => NULL,
-				'created_at' => '2018-11-19 10:17:11',
-				'updated_at' => '2018-11-19 10:17:11',
-			],
-
-			[
-				'title' => 'test',
-				'body' => 'Success test',
-				'draft' => '1',
-				'author' => '6',
-				'author_group' => 'Boardmember',
-				'author_approve' => '0',
-				'editor' => NULL,
-				'editor_group' => NULL,
-				'editor_approve' => '0',
-				'publisher' => NULL,
-				'publisher_group' => NULL,
-				'publisher_approve' => '0',
-				'publish_date_start' => NULL,
-				'publish_date_end' => NULL,
-				'deleted_at' => NULL,
-				'created_at' => '2018-11-19 10:18:13',
-				'updated_at' => '2018-11-19 10:18:13',
-			],
-
-			[
 				'title' => 'Test reload',
+				'slug' => str_slug('Test reload\'', '-'),
 				'body' => '<p>Kijken voor reload</p>',
 				'draft' => '1',
 				'author' => '6',
@@ -642,6 +593,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 
 			[
 				'title' => 'pfff',
+				'slug' => str_slug('pfff', '-'),
 				'body' => '<p>En nog wat</p>',
 				'draft' => '1',
 				'author' => '6',
@@ -662,6 +614,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 
 			[
 				'title' => 'aardig lijstje',
+				'slug' => str_slug('aardig lijstje', '-'),
 				'body' => '<p>tis toch wat</p>',
 				'draft' => '1',
 				'author' => '6',
@@ -682,6 +635,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 
 			[
 				'title' => 'leste',
+				'slug' => str_slug('leste', '-'),
 				'body' => '<p>dun leste</p>',
 				'draft' => '1',
 				'author' => '6',
@@ -702,6 +656,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 
 			[
 				'title' => 'test reset form',
+				'slug' => str_slug('test reset form', '-'),
 				'body' => '<p>Eens kijken wat er gebeurd</p>',
 				'draft' => '1',
 				'author' => '6',
@@ -721,7 +676,8 @@ class DidyouknowDatabaseSeeder extends Seeder
 			],
 
 			[
-				'title' => 'test',
+				'title' => 'test 6',
+				'slug' => str_slug('test 6', '-'),
 				'body' => '<p>Weer een testje</p>',
 				'draft' => '1',
 				'author' => '6',
@@ -742,6 +698,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 
 			[
 				'title' => 'pff test zoveel',
+				'slug' => str_slug('pff test zoveel', '-'),
 				'body' => '<p>eens kijken wat nu</p>',
 				'draft' => '1',
 				'author' => '6',
@@ -761,7 +718,8 @@ class DidyouknowDatabaseSeeder extends Seeder
 			],
 
 			[
-				'title' => 'leste?',
+				'title' => 'leste keer?',
+				'slug' => str_slug(' leste keer?', '-'),
 				'body' => '<p>Eens kijken wat nu</p>',
 				'draft' => '1',
 				'author' => '6',
@@ -782,6 +740,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 
 			[
 				'title' => 'Test',
+				'slug' => str_slug('Test', '-'),
 				'body' => '<p>Hier eens wat</p>',
 				'draft' => '1',
 				'author' => '6',
@@ -801,27 +760,8 @@ class DidyouknowDatabaseSeeder extends Seeder
 			],
 
 			[
-				'title' => 'test',
-				'body' => '<p>Hier een test</p>',
-				'draft' => '1',
-				'author' => '6',
-				'author_group' => 'Boardmember',
-				'author_approve' => '0',
-				'editor' => NULL,
-				'editor_group' => NULL,
-				'editor_approve' => '0',
-				'publisher' => NULL,
-				'publisher_group' => NULL,
-				'publisher_approve' => '0',
-				'publish_date_start' => NULL,
-				'publish_date_end' => NULL,
-				'deleted_at' => NULL,
-				'created_at' => '2018-11-20 13:31:45',
-				'updated_at' => '2018-11-20 13:31:45',
-			],
-
-			[
-				'title' => 'Test',
+				'title' => 'Test 7',
+				'slug' => str_slug('Test 7', '-'),
 				'body' => '<p>Nog een test</p>',
 				'draft' => '1',
 				'author' => '6',
@@ -841,27 +781,8 @@ class DidyouknowDatabaseSeeder extends Seeder
 			],
 
 			[
-				'title' => 'test',
-				'body' => '<p>Test zoveel</p>',
-				'draft' => '1',
-				'author' => '6',
-				'author_group' => 'Boardmember',
-				'author_approve' => '0',
-				'editor' => NULL,
-				'editor_group' => NULL,
-				'editor_approve' => '0',
-				'publisher' => NULL,
-				'publisher_group' => NULL,
-				'publisher_approve' => '0',
-				'publish_date_start' => NULL,
-				'publish_date_end' => NULL,
-				'deleted_at' => NULL,
-				'created_at' => '2018-11-20 13:35:18',
-				'updated_at' => '2018-11-20 13:35:18',
-			],
-
-			[
 				'title' => 'Dit is een HTML test die niet goed zal gaan.',
+				'slug' => str_slug('Dit is een HTML test die niet goed zal gaan.', '-'),
 				'body' => '<p>Hier zou nu geen html moeten komen te staan.</p><p>Ik denk dat dit wel gaat gebeuren.</p><p><b>Hier moet iets aan gedaan worden.<i>&nbsp;Namelijk een oplossing vinden.</i></b></p>',
 				'draft' => '1',
 				'author' => '6',
@@ -882,6 +803,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 
 			[
 				'title' => 'Dit ging best goed zo.',
+				'slug' => str_slug('Dit ging best goed zo.', '-'),
 				'body' => '<p>Auto refresh ging niet helemaal goed.</p><p><sup>Eens</sup>&nbsp;Kijken <b>wat er nu <u><sup>Mee gaat gebeuren</sup></u></b><span style="font-size: 24px;">﻿Ben wel benieuwd.</span></p><ul><li><span style="font-size: 24px;">Hoe gaat dit er bijvoorbeeld uit zien?</span></li><li><span style="font-size: 10px;">﻿Of dit dan dat zal er raar uitzien.</span><span style="font-size: 24px;"><br></span></li></ul>',
 				'draft' => '1',
 				'author' => '6',
@@ -902,6 +824,7 @@ class DidyouknowDatabaseSeeder extends Seeder
 
 			[
 				'title' => 'Javascript test',
+				'slug' => str_slug('Javascript test', '-'),
 				'body' => '<p><span class="hljs-tag" style="border: 0px; box-sizing: inherit; margin: 0px; padding: 0px; font-size: 12px; vertical-align: baseline; background: 0px 0px; color: rgb(139, 96, 237); font-family: &quot;Source Code Pro&quot;, &quot;Fira Code&quot;, menlo, monospace; white-space: pre-wrap;">&lt;<span class="hljs-name" style="border: 0px; box-sizing: inherit; margin: 0px; padding: 0px; font-weight: 700; vertical-align: baseline; background: 0px 0px; font-style: inherit;">script</span>&gt;</span><span class="javascript" style="border: 0px; box-sizing: inherit; margin: 0px; padding: 0px; font-size: 12px; vertical-align: baseline; background: 0px 0px; color: rgb(255, 255, 255); font-family: &quot;Source Code Pro&quot;, &quot;Fira Code&quot;, menlo, monospace; white-space: pre-wrap;"> alert(<span class="hljs-string" style="border: 0px; box-sizing: inherit; margin: 0px; padding: 0px; font-weight: inherit; vertical-align: baseline; background: 0px 0px; font-style: inherit; color: rgb(110, 220, 196);">\'Hello - Gotcha !!\'</span>) </span><span class="hljs-tag" style="border: 0px; box-sizing: inherit; margin: 0px; padding: 0px; font-size: 12px; vertical-align: baseline; background: 0px 0px; color: rgb(139, 96, 237); font-family: &quot;Source Code Pro&quot;, &quot;Fira Code&quot;, menlo, monospace; white-space: pre-wrap;">&lt;/<span class="hljs-name" style="border: 0px; box-sizing: inherit; margin: 0px; padding: 0px; font-weight: 700; vertical-align: baseline; background: 0px 0px; font-style: inherit;">script</span>&gt;</span><br></p>',
 				'draft' => '1',
 				'author' => '6',
@@ -922,6 +845,27 @@ class DidyouknowDatabaseSeeder extends Seeder
 		];
 		foreach ($didyouknows_information as $key => $value) {
 			Didyouknow_information::create($value);
+		}
+
+		$didyouknowsettings = [
+			[
+				'slug' => str_slug('Set title', '-'),
+				'name' => 'set title',
+				'description' => 'Title visible on website yes or no',
+				'value_bool' => 1,
+				'value_text' => '',
+			],
+
+			[
+				'slug' => str_slug('Set body', '-'),
+				'name' => 'set body',
+				'description' => 'Body visible on website yes or no',
+				'value_bool' => 1,
+				'value_text' => '',
+			],
+		];
+		foreach ($didyouknowsettings as $key => $value) {
+			Didyouknow_settings::create($value);
 		}
     }
 }
