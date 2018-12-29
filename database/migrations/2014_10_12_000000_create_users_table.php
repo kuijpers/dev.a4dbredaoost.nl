@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('city')->nullable();
             $table->string('phone')->nullable();
             $table->date('dob')->nullable();
+			$table->string('group')->default('users');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -14,11 +14,43 @@
             <li><a href="#"><span>Sponsors</span></a></li>
             <li><a href="#"><span>Nieuws</span></a></li>
             <li><a href="#"><span>Kalender</span></a></li>
-            <li><a href="#"><span>Wist u dat</span></a></li>
+            <li class="dropdown-submenu ">
+                <a tabindex="-1" href="#">
+                    <span>Wist u dat</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="">
+                        <a tabindex="-1" href="{{ route('board.didyouknow.information.index') }}">
+                            <span>Informatie</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('board.didyouknow.index') }}">
+                            <span>Stellingen</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li>&nbsp;&nbsp;&nbsp;&nbsp;  Contact</li>
             <li class="divider" role="separator"></li>
             <li><a href="#"><span>&nbsp;&nbsp;  Mail ons</span></a></li>
-            <li><a href="#"><span>&nbsp;&nbsp;  Veelgestelde vragen</span></a></li>
+            <li class="dropdown-submenu ">
+                <a tabindex="-1" href="#">
+                    <span>&nbsp;&nbsp;  Veelgestelde vragen</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="">
+                        <a tabindex="-1" href="#">
+                            <span>Informatie</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>Stellingen</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li><a href="#"><span>&nbsp;&nbsp;  Privacy Verklaring</span></a></li>
 
             <li class="divider" role="separator"></li>

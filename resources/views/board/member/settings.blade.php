@@ -63,10 +63,10 @@
                                 </label>
                                 <div class="col-sm-6">
                                     <select id="select_theme" class="selectpicker form-control" name="select_theme">
-                                        <option value="light" @if($settings->boardmembers_theme == 'light') selected @endif >Light</option>
+                                        <option value="light" @if($settings['boardmembers_theme'] == 'light') selected @endif >Light</option>
                                         {{--<option value="light" @if($settings->boardmembers_theme == 'gray') selected @endif >Gray</option>--}}
-                                        <option value="dark" @if($settings->boardmembers_theme == 'dark') selected @endif >Dark</option>
-                                        <option value="lilac" @if($settings->boardmembers_theme == 'lilac') selected @endif >Lilac</option>
+                                        <option value="dark" @if($settings['boardmembers_theme'] == 'dark') selected @endif >Dark</option>
+                                        <option value="lilac" @if($settings['boardmembers_theme'] == 'lilac') selected @endif >Lilac</option>
                                     </select>
                                 </div>
                             </div>

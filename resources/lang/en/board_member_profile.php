@@ -26,6 +26,7 @@ return [
 
 	'your_jobtitle' => 'Your jobtitle in the board is :',
 		'your_jobtitle_president' => 'President',
+		'your_jobtitle_vpresident' => 'Vice-President',
 		'your_jobtitle_secretary' => 'Secretary',
 		'your_jobtitle_treasurer' => 'Treasurer',
 		'your_jobtitle_member' => 'Member',

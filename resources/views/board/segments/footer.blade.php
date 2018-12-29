@@ -3,6 +3,8 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
+<script src="{{asset("/js/bootstrap_support.js")}}"></script>
+
 <script src="{{asset("/board/libs/jquery.scrollbar/jquery.scrollbar.min.js")}}"></script>
 
 <script src="{{asset("/board/libs/ionrangeslider/js/ion.rangeSlider.min.js")}}"></script>
@@ -16,6 +18,10 @@
 <script src="{{asset("/board/libs/inputNumber/js/inputNumber.js")}}"></script>
 
 <script src="{{asset("/board/js/main.js")}}"></script>
+
+<script src="{{asset("/board/js/tooltip.js")}}"></script>
+
+<script src="{{asset("/board/js/alert.js")}}"></script>
 
 <!-- Start Additional JS -->
 @yield('jsbottom')
