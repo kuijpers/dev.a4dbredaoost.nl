@@ -1,4 +1,11 @@
 <div class="sidebar__menu">
+
+    <div class="alert alert-danger">
+        !!! Not yet working !!!
+    </div>
+
+
+
     <div class="sidebar__title">New Messages</div>
     <div class="lm-widget">
         <div class="lm-widget__list">
