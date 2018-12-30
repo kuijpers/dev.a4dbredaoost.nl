@@ -13,6 +13,7 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->insert([
             'name'        	=> 'firstname lastname',
+			'slug' 			=> str_slug('firstname lastname'.time(), '-'),
 			'email'         => 'user@test.nl',
 			'password'      => bcrypt('welkom'),
 			'created_at'	=> date('Y-m-d H:i:s'),
