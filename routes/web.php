@@ -78,6 +78,10 @@ Route::prefix('bestuur')->group(function(){
     Route::get('/lid/instellingen', 'Board\MemberSettingsController@index')->name('board.member.settings');
 
 
+    Route::get('/leden', 'Board\MemberController@index')->name('board.boardmembers.index');
+
+
+
 });
 
 
