@@ -4,31 +4,49 @@
 --}}
 
 {{--Personal Drafts--}}
-<script src="{{ Module::asset('didyouknow:js/modals/personal_drafts.js') }}"></script>
+@if($rpc->CanAccessAs(['webmaster' , 'admin' , 'author']))
+    <script src="{{ Module::asset('didyouknow:js/modals/personal_drafts.js') }}"></script>
+@endif
 
 {{--Author drafts--}}
-<script src="{{ Module::asset('didyouknow:js/modals/author_drafts.js') }}"></script>
+@if($rpc->CanAccessAs(['webmaster' , 'admin' , 'publisher']))
+    <script src="{{ Module::asset('didyouknow:js/modals/author_drafts.js') }}"></script>
+@endif
 
 {{--Editor--}}
-<script src="{{ Module::asset('didyouknow:js/modals/author_approved.js') }}"></script>
+@if($rpc->CanAccessAs(['webmaster' , 'admin' , 'editor']))
+    <script src="{{ Module::asset('didyouknow:js/modals/author_approved.js') }}"></script>
+@endif
 
 {{--Publisher--}}
-<script src="{{ Module::asset('didyouknow:js/modals/editor_approved.js') }}"></script>
+@if($rpc->CanAccessAs(['webmaster' , 'admin' , 'publisher']))
+    <script src="{{ Module::asset('didyouknow:js/modals/editor_approved.js') }}"></script>
+@endif
 
 {{--Published--}}
-<script src="{{ Module::asset('didyouknow:js/modals/publisher_approved.js') }}"></script>
+@if($rpc->CanAccessAs(['webmaster' , 'admin' , 'author' , 'editor' , 'publisher']))
+    <script src="{{ Module::asset('didyouknow:js/modals/publisher_approved.js') }}"></script>
+@endif
 
 {{--Archived--}}
-<script src="{{ Module::asset('didyouknow:js/modals/archived.js') }}"></script>
+@if($rpc->CanAccessAs(['webmaster' , 'admin']))
+    <script src="{{ Module::asset('didyouknow:js/modals/archived.js') }}"></script>
+@endif
 
 {{--Delete item--}}
-<script src="{{ Module::asset('didyouknow:js/modals/delete_article.js') }}"></script>
+@if($rpc->CanAccessAs(['webmaster' , 'admin' , 'author' , 'editor' , 'publisher']))
+    <script src="{{ Module::asset('didyouknow:js/modals/delete_article.js') }}"></script>
+@endif
 
 {{--Destroy after deleted--}}
-<script src="{{ Module::asset('didyouknow:js/modals/destroy.js') }}"></script>
+@if($rpc->CanAccessAs(['webmaster' , 'admin']))
+    <script src="{{ Module::asset('didyouknow:js/modals/destroy.js') }}"></script>
+@endif
 
 {{--New article--}}
-<script src="{{ Module::asset('didyouknow:js/modals/new_article.js') }}"></script>
+@if($rpc->CanAccessAs(['webmaster' , 'admin' , 'author']))
+    <script src="{{ Module::asset('didyouknow:js/modals/new_article.js') }}"></script>
+@endif
 
 
 {{--Helper function--}}
