@@ -5,6 +5,8 @@ namespace Modules\Didyouknow\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 
+use Illuminate\Support\Facades\Gate;
+
 class DidyouknowServiceProvider extends ServiceProvider
 {
     /**
@@ -25,6 +27,9 @@ class DidyouknowServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->registerFactories();
+
+        $this->registerDykPolicies();
+        $this->registerDykiPolicies();
     }
 
     /**
@@ -108,4 +113,117 @@ class DidyouknowServiceProvider extends ServiceProvider
     {
         return [];
     }
+
+
+	public function registerDykPolicies(){
+
+    	// create-dyk-post
+		// edit-dyk-post
+		// edit-own-dyk-post
+		// publish-dyk-post
+		// delete-dyk-post
+		// delete-own-dyk-post
+		// view-deleted-dyk-posts
+		// destroy-dyk-post
+
+		Gate::define('create-dyk-post', function ($user) {
+			return $user->hasAccess(['create-dyk-post']);
+		});
+
+		Gate::define('edit-dyk-post', function ($user) {
+			return $user->hasAccess(['edit-dyk-post']);
+		});
+
+		Gate::define('edit-own-dyk-post', function ($user) {
+			return $user->hasAccess(['edit-own-dyk-post']);
+		});
+
+		Gate::define('publish-dyk-post', function ($user) {
+			return $user->hasAccess(['publish-dyk-post']);
+		});
+
+		Gate::define('delete-dyk-post', function ($user) {
+			return $user->hasAccess(['delete-dyk-post']);
+		});
+
+		Gate::define('delete-own-dyk-post', function ($user) {
+			return $user->hasAccess(['delete-own-dyk-post']);
+		});
+
+		Gate::define('view-deleted-dyk-posts', function ($user) {
+			return $user->hasAccess(['view-deleted-dyk-posts']);
+		});
+
+		Gate::define('destroy-dyk-post', function ($user) {
+			return $user->hasAccess(['destroy-dyk-post']);
+		});
+
+
+//		Gate::define('update-post', function ($user, Post $post) {
+//			return $user->hasAccess(['update-post']) or $user->id == $post->user_id;
+//		});
+
+//		Gate::define('see-all-drafts', function ($user) {
+//			return $user->inRole('editor');
+//		});
+
+	}
+
+	public function registerDykiPolicies(){
+
+    	// create-dyki-post
+		// edit-dyki-post
+		// edit-own-dyki-post
+		// publish-dyki-post
+		// delete-dyki-post
+		// delete-own-dyki-post
+		// view-deleted-dyki-posts
+		// destroy-dyki-post
+		// change-dyki-settings
+
+		Gate::define('create-dyki-post', function ($user) {
+			return $user->hasAccess(['create-dyki-post']);
+		});
+
+		Gate::define('edit-dyki-post', function ($user) {
+			return $user->hasAccess(['edit-dyki-post']);
+		});
+
+		Gate::define('edit-own-dyki-post', function ($user) {
+			return $user->hasAccess(['edit-own-dyki-post']);
+		});
+
+		Gate::define('publish-dyki-post', function ($user) {
+			return $user->hasAccess(['publish-dyki-post']);
+		});
+
+		Gate::define('delete-dyki-post', function ($user) {
+			return $user->hasAccess(['delete-dyki-post']);
+		});
+
+		Gate::define('delete-own-dyki-post', function ($user) {
+			return $user->hasAccess(['delete-own-dyki-post']);
+		});
+
+		Gate::define('view-deleted-dyki-posts', function ($user) {
+			return $user->hasAccess(['view-deleted-dyki-posts']);
+		});
+
+		Gate::define('destroy-dyki-post', function ($user) {
+			return $user->hasAccess(['destroy-dyki-post']);
+		});
+
+		Gate::define('change-dyki-settings', function ($user) {
+			return $user->hasAccess(['change-dyki-settings']);
+		});
+
+
+//		Gate::define('update-post', function ($user, Post $post) {
+//			return $user->hasAccess(['update-post']) or $user->id == $post->user_id;
+//		});
+
+//		Gate::define('see-all-drafts', function ($user) {
+//			return $user->inRole('editor');
+//		});
+	}
 }
