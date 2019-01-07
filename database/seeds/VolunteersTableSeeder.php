@@ -13,6 +13,7 @@ class VolunteersTableSeeder extends Seeder
     {
         DB::table('volunteers')->insert([
             'name'        	=> 'firstname lastname',
+			'slug' 			=> str_slug('firstname lastname'.time(), '-'),
             'email'         => 'volunteer@test.nl',
             'password'      => bcrypt('welkom'),
             'created_at'	=> date('Y-m-d H:i:s'),

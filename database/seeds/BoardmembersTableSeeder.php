@@ -17,24 +17,28 @@ class BoardmembersTableSeeder extends Seeder
     	$boardmember = [
 			[
 				'name' => 'President Organisation',
+				'slug' => str_slug('President Organisation'.time(), '-'),
 				'email' => 'president@a4dbredaoost.ddns.net',
 				'password' => bcrypt('welkom'),
 				'boardmember_title' => 'president',
 			],
 			[
 				'name' => 'Vice-President Organisation',
+				'slug' => str_slug('Vice-President Organisation'.time(), '-'),
 				'email' => 'vice-president@a4dbredaoost.ddns.net',
 				'password' => bcrypt('welkom'),
 				'boardmember_title' => 'vice-president',
 			],
 			[
 				'name' => 'Secretary Organisation',
+				'slug' => str_slug('Secretary Organisation'.time(), '-'),
 				'email' => 'secretary@a4dbredaoost.ddns.net',
 				'password' => bcrypt('welkom'),
 				'boardmember_title' => 'secretary',
 			],
 			[
 				'name' => 'Treasurer Organisation',
+				'slug' => str_slug('Treasurer Organisation'.time(), '-'),
 				'email' => 'treasurer@a4dbredaoost.ddns.net',
 				'secondary_email' => '',
 				'password' => bcrypt('welkom'),
@@ -46,6 +50,7 @@ class BoardmembersTableSeeder extends Seeder
 			],
 			[
 				'name' => 'Member1 Organisation',
+				'slug' => str_slug('Member1 Organisation'.time(), '-'),
 				'email' => 'member1@a4dbredaoost.ddns.net',
 				'secondary_email' => '',
 				'password' => bcrypt('welkom'),
@@ -58,6 +63,7 @@ class BoardmembersTableSeeder extends Seeder
 			],
 			[
 				'name' => 'Dennis Kuijpers',
+				'slug' => str_slug('Dennis Kuijpers'.time(), '-'),
 				'email' => 'member2@a4dbredaoost.ddns.net',
 				'secondary_email' => 'dennis@test.nl',
 				'password' => bcrypt('welkom'),

@@ -8,12 +8,13 @@ use Auth;
 
 class BoardmembersDashboardSettings extends Model
 {
+	protected $guard = 'boardmember';
 
 	protected $fillable = [
-		'boardmembers_id',
-		'boardmembers_theme',
-		'boardmembers_language',
-	];
+							'boardmembers_id',
+							'boardmembers_theme',
+							'boardmembers_language',
+						];
 
 	// Get the settings for the user
 	public static function settings()

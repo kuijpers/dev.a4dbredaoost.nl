@@ -1,6 +1,6 @@
 <?php
-	use Carbon\Carbon;
-	?>
+    $rpc = new App\Http\Controllers\Board\RolesPermissionController;
+?>
 
 @extends('layouts.board.main')
 
@@ -70,8 +70,6 @@
 
 @include('didyouknow::board.segments.information_modals')
 
-
-
     <div class="row">
         <div class="col-md-12 text-right">
             <div class="pull-right">
@@ -82,11 +80,24 @@
             </div>
         </div>
     </div>
+
     <hr>
+
+        @if(!$rpc->CanAccessAs(['webmaster' , 'admin' , 'author' , 'editor' , 'publisher']))
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <i class="alert-ico fa fa-fw fa-ban"></i><strong>Oh snap!&thinsp;</strong>
+                You have no permission to access this page.
+                &nbsp;
+                Contact the webmaster to ask for permission.
+            </div>
+        @endif
+
+    @if($rpc->CanAccessAs(['webmaster' , 'admin' , 'author' , 'editor' , 'publisher']))
     <div class="row">
         <div class="col-md-12">
-
-            @include('didyouknow::board.segments.information_settings')
+            @if($rpc->CanAccessAs(['webmaster' , 'admin']))
+                @include('didyouknow::board.segments.information_settings')
+            @endif
 
             <div class="panel panel-info">
                 <div class="panel-heading">
@@ -98,83 +109,98 @@
                     <ul class="nav nav-tabs" role="tablist">
 
                         {{-- Call for personal drafts --}}
-                        <li class="active" role="presentation">
-                            <a href="#draft" aria-controls="draft" role="tab" data-toggle="tab">
-                                @lang('didyouknow::board/tabs.tab_nav_concept')
-                                @if($personal_drafts->count()==0)
-                                    <span class="label label-default">{{$personal_drafts->count()}}</span>
-                                @else
-                                    <span class="label label-primary">{{$personal_drafts->count()}}</span>
-                                @endif
-                            </a>
-                        </li>
+                        @if($rpc->CanAccessAs(['webmaster' , 'admin' , 'author']))
+                            <li role="presentation">
+                                <a href="#draft" aria-controls="draft" role="tab" data-toggle="tab">
+                                    @lang('didyouknow::board/tabs.tab_nav_concept')
+                                    @if($personal_drafts->count()==0)
+                                        <span class="label label-default">{{$personal_drafts->count()}}</span>
+                                    @else
+                                        <span class="label label-primary">{{$personal_drafts->count()}}</span>
+                                    @endif
+                                </a>
+                            </li>
+                        @endif
 
                         {{-- Call for writings that are still in the hands of the authors --}}
-                        <li role="presentation">
-                            <a href="#author" aria-controls="author" role="tab" data-toggle="tab">
-                                @lang('didyouknow::board/tabs.tab_nav_author')&nbsp;
-                                @if($author_drafts->count()==0)
-                                    <span class="label label-default">{{$author_drafts->count()}}</span>
-                                @else
-                                    <span class="label label-primary">{{$author_drafts->count()}}</span>
-                                @endif
-                            </a>
-                        </li>
+                        @if($rpc->CanAccessAs(['webmaster' , 'admin' , 'publisher']))
+                            <li role="presentation">
+                                <a href="#author" aria-controls="author" role="tab" data-toggle="tab">
+                                    @lang('didyouknow::board/tabs.tab_nav_author')&nbsp;
+                                    @if($author_drafts->count()==0)
+                                        <span class="label label-default">{{$author_drafts->count()}}</span>
+                                    @else
+                                        <span class="label label-primary">{{$author_drafts->count()}}</span>
+                                    @endif
+                                </a>
+                            </li>
+                        @endif
 
+                        {{-- Hier moet de editor komen --}}
                         {{-- Call for writings that are ready to be editted --}}
-                        <li role="presentation">
-                            <a href="#editor" aria-controls="editor" role="tab" data-toggle="tab">
-                                @lang('didyouknow::board/tabs.tab_nav_editor') &nbsp;
-                                @if($author_approved->count()==0)
-                                    <span class="label label-default">{{$author_approved->count()}}</span>
-                                @else
-                                    <span class="label label-primary">{{$author_approved->count()}}</span>
-                                @endif
-                            </a>
-                        </li>
+                        @if($rpc->CanAccessAs(['webmaster' , 'admin' , 'editor']))
+                            <li role="presentation">
+                                <a href="#editor" aria-controls="editor" role="tab" data-toggle="tab">
+                                    @lang('didyouknow::board/tabs.tab_nav_editor') &nbsp;
+                                    @if($author_approved->count()==0)
+                                        <span class="label label-default">{{$author_approved->count()}}</span>
+                                    @else
+                                        <span class="label label-primary">{{$author_approved->count()}}</span>
+                                    @endif
+                                </a>
+                            </li>
+                        @endif
 
                         {{-- Call for writings that will need approval for publishing --}}
-                        <li role="presentation">
-                            <a href="#publisher" aria-controls="redacteur" role="tab" data-toggle="tab">
-                                @lang('didyouknow::board/tabs.tab_nav_publisher')  &nbsp; &nbsp;
-                                @if($editor_approved->count()==0)
-                                    <span class="label label-default">{{$editor_approved->count()}}</span>
-                                @else
-                                    <span class="label label-primary">{{$editor_approved->count()}}</span>
-                                @endif
-                            </a>
-                        </li>
+                        @if($rpc->CanAccessAs(['webmaster' , 'admin' , 'publisher']))
+                            <li role="presentation">
+                                <a href="#publisher" aria-controls="redacteur" role="tab" data-toggle="tab">
+                                    @lang('didyouknow::board/tabs.tab_nav_publisher')  &nbsp; &nbsp;
+                                    @if($editor_approved->count()==0)
+                                        <span class="label label-default">{{$editor_approved->count()}}</span>
+                                    @else
+                                        <span class="label label-primary">{{$editor_approved->count()}}</span>
+                                    @endif
+                                </a>
+                            </li>
+                        @endif
 
                         {{-- These writings are now published on the website --}}
-                        <li role="presentation">
-                            <a href="#published" aria-controls="gepubliceerd" role="tab" data-toggle="tab">
-                                @lang('didyouknow::board/tabs.tab_nav_published')  &nbsp; &nbsp;
-                                @if($publisher_approved->count()==0)
-                                    <span class="label label-default">{{$publisher_approved->count()}}</span>
-                                @else
-                                    <span class="label label-primary">{{$publisher_approved->count()}}</span>
-                                @endif
-                            </a>
-                        </li>
+                        @if($rpc->CanAccessAs(['webmaster' , 'admin' , 'author' , 'editor' , 'publisher']))
+                            <li role="presentation">
+                                <a href="#published" aria-controls="gepubliceerd" role="tab" data-toggle="tab">
+                                    @lang('didyouknow::board/tabs.tab_nav_published')  &nbsp; &nbsp;
+                                    @if($publisher_approved->count()==0)
+                                        <span class="label label-default">{{$publisher_approved->count()}}</span>
+                                    @else
+                                        <span class="label label-primary">{{$publisher_approved->count()}}</span>
+                                    @endif
+                                </a>
+                            </li>
+                        @endif
 
-                        {{-- These are the writings that are archived. A SuperUser is able to remove them completely from DB --}}
-                        <li role="presentation">
-                            <a href="#archive" aria-controls="archief" role="tab" data-toggle="tab">
-                                @lang('didyouknow::board/tabs.tab_nav_archive') &nbsp;
-                                @if($archived->count()==0)
-                                    <span class="label label-default">{{$archived->count()}}</span>
-                                @else
-                                    <span class="label label-primary">{{$archived->count()}}</span>
-                                @endif
-                            </a>
-                        </li>
+                        {{-- These are the writings that are archived. A webmaster is able to remove them completely from DB --}}
+                        @if($rpc->CanAccessAs(['webmaster' , 'admin']))
+                            <li role="presentation">
+                                <a href="#archive" aria-controls="archief" role="tab" data-toggle="tab">
+                                    @lang('didyouknow::board/tabs.tab_nav_archive') &nbsp;
+                                    @if($archived->count()==0)
+                                        <span class="label label-default">{{$archived->count()}}</span>
+                                    @else
+                                        <span class="label label-primary">{{$archived->count()}}</span>
+                                    @endif
+                                </a>
+                            </li>
+                        @endif
 
                         {{-- Add new writings for the website. After save they will automatically be put in draft --}}
-                        <li role="presentation">
-                            <a href="#new" aria-controls="new" role="tab" data-toggle="tab">
-                                @lang('didyouknow::board/tabs.tab_nav_new')  &nbsp; <i class="fa fa-plus"></i>
-                            </a>
-                        </li>
+                        @if($rpc->CanAccessAs(['webmaster' , 'admin' , 'author']))
+                            <li role="presentation">
+                                <a href="#new" aria-controls="new" role="tab" data-toggle="tab">
+                                    @lang('didyouknow::board/tabs.tab_nav_new')  &nbsp; <i class="fa fa-plus"></i>
+                                </a>
+                            </li>
+                        @endif
 
                     </ul>
                     <div class="tab-content">
@@ -186,6 +212,7 @@
             </div>
         </div>
     </div>
+    @endif
 
 
 @endsection

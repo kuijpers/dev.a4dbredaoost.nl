@@ -23,21 +23,21 @@ class DidyouknowInformationController extends Controller
 
     public function index()
     {
-    	$personal_drafts = static::get_personal_draft();
+    	$personal_drafts 		= static::get_personal_draft();
 
-		$author_drafts = static::get_author_draft();
+		$author_drafts 			= static::get_author_draft();
 
-		$author_approved = static::get_author_approved();
+		$author_approved 		= static::get_author_approved();
 
-		$editor_approved = static::get_editor_approved();
+		$editor_approved 		= static::get_editor_approved();
 
-		$publisher_approved = static::get_publisher_approved();
+		$publisher_approved 	= static::get_publisher_approved();
 
-		$archived = static::get_archived();
+		$archived 				= static::get_archived();
 
-		$title_setting = static::get_settings('set title');
+		$title_setting 			= static::get_settings('set title');
 
-		$body_setting = static::get_settings('set body');
+		$body_setting 			= static::get_settings('set body');
 
 
         return view('didyouknow::board.information.index')

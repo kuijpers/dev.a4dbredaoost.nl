@@ -16,6 +16,7 @@ class CreateVolunteersTable extends Migration
         Schema::create('volunteers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+			$table->string('slug')->unique();
             $table->string('email')->unique();
             $table->string('password');
             $table->string('address')->nullable();

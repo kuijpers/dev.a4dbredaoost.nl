@@ -234,7 +234,9 @@
 
                 <ul class="nav nav-menu__second collapse">
                     <li>
-                        <a href="#">Geregistreerd</a>
+
+                        <a href="{{ route('board.boardmembers.index') }}">Overzicht</a>
+
                     </li>
                     <li>
                         <a href="#">Groepen</a>

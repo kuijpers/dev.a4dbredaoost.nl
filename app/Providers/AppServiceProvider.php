@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 
 use Illuminate\Support\Facades\Schema;
 
+use App\Models\BoardmembersDashboardSettings;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -19,8 +21,11 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('board.*', function($view){
 
-        	$view->with('settings', \App\Models\BoardmembersDashboardSettings::settings());
+
+
+        	$view	->with('settings', BoardmembersDashboardSettings::settings());
 		});
+
     }
 
     /**
