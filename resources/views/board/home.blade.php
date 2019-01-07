@@ -19,7 +19,6 @@
 @endsection
 
 @section('content')
-
     <div class="container-fluid half-padding">
         <div class="template template__blank">
             <div class="row">
