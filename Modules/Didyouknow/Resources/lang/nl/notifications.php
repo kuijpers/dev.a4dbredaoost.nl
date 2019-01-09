@@ -3,9 +3,9 @@
 	return [
 
 		'no_permission_to_access' => '<i class="alert-ico fa fa-fw fa-ban"></i><strong>Oh snap!&thinsp;</strong>
-                							You have no permission to access this page.
+                							U heeft geen rechten om deze pagina te bezoeken.
                 &nbsp;
-                							Contact the webmaster to ask for permission.',
+                							Neem contact op met de webmaster om dit aan te passen.',
 
 
 

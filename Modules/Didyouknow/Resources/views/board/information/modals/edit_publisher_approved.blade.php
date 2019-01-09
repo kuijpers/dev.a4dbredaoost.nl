@@ -69,8 +69,9 @@
                             </div>
 
                             <div class="col-md-12 edit_publisher_approved_title">
-                                Hier komt de tekst te staan van de titel en
-                                deze word door JS aangepast en is dus niet zichtbaar op de pagina.
+                                Title
+                                This line of text will not be vissible on the website.
+                                This is where data will be placed using JS.
                                 <hr>
                             </div>
 
@@ -87,8 +88,9 @@
                             </div>
 
                             <div class="col-md-12 edit_publisher_approved_body">
-                                Hier komt de tekst te staan van de titel en
-                                deze word door JS aangepast en is dus niet zichtbaar op de pagina.
+                                Body
+                                This line of text will not be vissible on the website.
+                                This is where data will be placed using JS.
                             </div>
 
                             <div class="col-md-12">
@@ -175,7 +177,9 @@
                                     @lang('didyouknow::board/modals.modal_view_publish_from'):
                                 </div>
                                 <div class="col-md-4 edit_publisher_approved_start">
-                                    Hier komt de start datum van dit artikel te staan
+                                    Start date
+                                    This line of text will not be vissible on the website.
+                                    This is where data will be placed using JS.
                                 </div>
                             </div>
 
@@ -184,7 +188,9 @@
                                     @lang('didyouknow::board/modals.modal_view_publish_till'):
                                 </div>
                                 <div class="col-md-4 edit_publisher_approved_end">
-                                    Hier komt de eind datum van dit artikel te staan
+                                    End date
+                                    This line of text will not be vissible on the website.
+                                    This is where data will be placed using JS.
                                 </div>
                             </div>
 

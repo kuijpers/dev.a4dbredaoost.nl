@@ -38,8 +38,9 @@
                             </div>
 
                             <div class="col-md-12 view_editor_approved_title">
-                                Hier komt de tekst te staan van de titel en
-                                deze word door JS aangepast en is dus niet zichtbaar op de pagina.
+                                Title
+                                This line of text will not be vissible on the website.
+                                This is where data will be placed using JS..
                                 <hr>
                             </div>
 
@@ -50,8 +51,9 @@
                             </div>
 
                             <div class="col-md-12 view_editor_approved_body">
-                                Hier komt de tekst te staan van de info die bij de titel hoort en
-                                deze word door JS aangepast en is dus niet zichtbaar op de pagina.
+                                Body
+                                This line of text will not be vissible on the website.
+                                This is where data will be placed using JS.
                             </div>
 
                             <div class="col-md-12">
@@ -63,8 +65,9 @@
                                     @lang('didyouknow::board/modals.modal_view_approved_author')
                                 </div>
                                 <div class="col-md-4 view_editor_approved_author">
-                                    Hier komt de naam van de auteur te staan en
-                                    deze word door JS aangepast en is dus niet zichtbaar op de pagina.
+                                    Author
+                                    This line of text will not be vissible on the website.
+                                    This is where data will be placed using JS.
                                 </div>
                             </div>
 
@@ -73,8 +76,9 @@
                                     @lang('didyouknow::board/modals.modal_view_approved_editor')
                                 </div>
                                 <div class="col-md-4 view_editor_approved_editor">
-                                    Hier komt de naam van de editor te staan en
-                                    deze word door JS aangepast en is dus niet zichtbaar op de pagina.
+                                    Editor
+                                    This line of text will not be vissible on the website.
+                                    This is where data will be placed using JS.
                                 </div>
                             </div>
 
@@ -83,8 +87,9 @@
                                     @lang('didyouknow::board/modals.modal_view_process_publisher')
                                 </div>
                                 <div class="col-md-4 view_editor_approved_publisher">
-                                    Hier komt de naam van de editor te staan en
-                                    deze word door JS aangepast en is dus niet zichtbaar op de pagina.
+                                    Publisher
+                                    This line of text will not be vissible on the website.
+                                    This is where data will be placed using JS.
                                 </div>
                             </div>
 

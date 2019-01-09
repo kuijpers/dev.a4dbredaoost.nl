@@ -14,10 +14,10 @@
                                 @lang('didyouknow::board/tabs.tab_table_title_who')
                             </th>
                             <th>
-                                Datum aangemaakt
+                                @lang('didyouknow::board/tabs.tab_table_title_creation_date')
                             </th>
                             <th>
-                                Laatste update
+                                @lang('didyouknow::board/tabs.tab_table_title_last_update')
                             </th>
                             <th>
                                 &nbsp;

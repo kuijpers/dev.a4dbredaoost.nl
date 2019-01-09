@@ -84,11 +84,8 @@
     <hr>
 
         @if(!$rpc->CanAccessAs(['webmaster' , 'admin' , 'author' , 'editor' , 'publisher']))
-            <div class="alert alert-danger alert-dismissible" role="alert">
-                <i class="alert-ico fa fa-fw fa-ban"></i><strong>Oh snap!&thinsp;</strong>
-                You have no permission to access this page.
-                &nbsp;
-                Contact the webmaster to ask for permission.
+            <div class="alert alert-danger alert-dismissible text-center" role="alert">
+                @lang('didyouknow::board/notifications.no_permission_to_access')
             </div>
         @endif
 

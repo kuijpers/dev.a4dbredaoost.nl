@@ -52,7 +52,7 @@
 		'modal_change_alert_fail'			=> '<strong>Oh snap!&thinsp;</strong>Change a few things up and try submitting again. ',
 
 		// ARCHIVED
-		'modal_archive_roll_back'			=> 'Do wish to roll back this article ?',
+		'modal_archive_roll_back'			=> 'Do you wish to roll back this article ?',
 
 
 		// DELETE

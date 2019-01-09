@@ -4,7 +4,9 @@
             <div class="modal-header">
                 <h4 class="modal-title">
                     <div id="destroy-title">
-                        Put title here
+                        Title
+                        This line of text will not be vissible on the website.
+                        This is where data will be placed using JS.
                     </div>
                 </h4>
             </div>

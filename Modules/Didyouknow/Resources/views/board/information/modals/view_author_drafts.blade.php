@@ -38,8 +38,9 @@
                             </div>
 
                             <div class="col-md-12 view_author_title">
-                                Hier komt de tekst te staan van de titel en
-                                deze word door JS aangepast en is dus niet zichtbaar op de pagina.
+                                Title
+                                This line of text will not be vissible on the website.
+                                This is where data will be placed using JS.
                                 <hr>
                             </div>
 
@@ -50,8 +51,9 @@
                             </div>
 
                             <div class="col-md-12 view_author_body">
-                                Hier komt de tekst te staan van de info die bij de titel hoort en
-                                deze word door JS aangepast en is dus niet zichtbaar op de pagina.
+                                Body
+                                This line of text will not be vissible on the website.
+                                This is where data will be placed using JS.
                             </div>
 
                             <div class="col-md-12">
