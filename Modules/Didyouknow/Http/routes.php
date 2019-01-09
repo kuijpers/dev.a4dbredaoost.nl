@@ -26,16 +26,16 @@
 	Route::group(['middleware' => 'web', 'prefix' => 'bestuur/weetjes', 'namespace' => 'Modules\Didyouknow\Http\Controllers\Board'], function()
 	{
 
-		Route::get('information/', 'DidyouknowInformationController@index')->name('board.didyouknow.information.index');
+		Route::get('informatie/', 'DidyouknowInformationController@index')->name('board.didyouknow.information.index');
 
-		Route::post('information/', 'DidyouknowInformationController@store')->name('board.didyouknow.information.store');
+		Route::post('informatie/', 'DidyouknowInformationController@store')->name('board.didyouknow.information.store');
 
 
-		Route::get('information/{id}/edit', 'DidyouknowInformationController@edit')->name('board.didyouknow.information.edit');
+		Route::get('informatie/{id}/edit', 'DidyouknowInformationController@edit')->name('board.didyouknow.information.edit');
 
-		Route::get('information/{id}', 'DidyouknowInformationController@show')->name('board.didyouknow.information.show');
+		Route::get('informatie/{id}', 'DidyouknowInformationController@show')->name('board.didyouknow.information.show');
 
-		Route::patch('information/{id}', 'DidyouknowInformationController@update')->name('board.didyouknow.information.update');
+		Route::patch('informatie/{id}', 'DidyouknowInformationController@update')->name('board.didyouknow.information.update');
 
 
 

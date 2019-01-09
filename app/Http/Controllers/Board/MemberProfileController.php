@@ -23,7 +23,13 @@ class MemberProfileController extends Controller
      */
     public function index()
     {
-		return view('board.member.profile');
+		$breadcrumbles = [
+							'Dashboard bestuur' => 'board.home',
+							'Lid' => 'board.member',
+							'Profiel' => 'board.member.profile',
+						];
+
+		return view('board.member.profile')->with(compact('breadcrumbles'));
     }
 
     /**

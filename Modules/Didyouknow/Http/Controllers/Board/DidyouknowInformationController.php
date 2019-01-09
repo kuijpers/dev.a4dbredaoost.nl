@@ -23,6 +23,12 @@ class DidyouknowInformationController extends Controller
 
     public function index()
     {
+		$breadcrumbles = [
+			'Dashboard bestuur' => 'board.home',
+			'Weetjes' => 'board.didyouknow.index',
+			'Informatie' => 'board.didyouknow.information.index',
+		];
+
     	$personal_drafts 		= static::get_personal_draft();
 
 		$author_drafts 			= static::get_author_draft();
@@ -41,7 +47,8 @@ class DidyouknowInformationController extends Controller
 
 
         return view('didyouknow::board.information.index')
-			->with(compact('personal_drafts',
+			->with(compact('breadcrumbles',
+							'personal_drafts',
 							'author_drafts',
 							'author_approved',
 							'editor_approved',

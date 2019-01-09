@@ -18,11 +18,16 @@ class MemberController extends Controller
 
     public function index(){
 
+		$breadcrumbles = [
+			'Dashboard bestuur' => 'board.home',
+			'Leden' => 'board.boardmembers.index',
+		];
+
 		$boardmembers =  static::board();
 
 		$workgroup =  static::workgroup();
 
-		return view('board.boardmembers.overview')->with(compact('boardmembers', 'workgroup'));
+		return view('board.boardmembers.overview')->with(compact('boardmembers', 'workgroup' , 'breadcrumbles'));
 
 	}
 

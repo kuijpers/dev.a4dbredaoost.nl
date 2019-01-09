@@ -28,7 +28,13 @@ class MemberSettingsController extends Controller
      */
     public function index()
     {
-		return view('board.member.settings');
+		$breadcrumbles = [
+							'Dashboard bestuur' => 'board.home',
+							'Lid' => 'board.member',
+							'Instellingen' => 'board.member.settings',
+						];
+
+		return view('board.member.settings')->with(compact('breadcrumbles'));
 
     }
 
