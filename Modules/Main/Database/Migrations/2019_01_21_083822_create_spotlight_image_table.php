@@ -24,9 +24,16 @@ class CreateSpotlightImageTable extends Migration
 
 			$table->text('content');
 
+			$table->string('photographer');
+
+			$table->unsignedInteger('spotlight_id');
+
 			$table->softDeletes();
 
             $table->timestamps();
+
+
+			$table->foreign('spotlight_id')->references('id')->on('spotlight')->onDelete('cascade');
         });
     }
 
