@@ -13,11 +13,22 @@ class CreateDidyoukowSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('didyoukow_settings', function (Blueprint $table) {
-            $table->increments('id');
+		Schema::create('didyouknow_settings', function (Blueprint $table) {
+			$table->increments('id');
 
-            $table->timestamps();
-        });
+			$table->string('slug')->unique();
+
+			$table->string('name');
+			$table->text('description');
+			$table->boolean('value_bool')->nullable();
+			$table->text('value_text')->nullable();
+
+			$table->softDeletes();
+
+			$table->timestamps();
+
+
+		});
     }
 
     /**
