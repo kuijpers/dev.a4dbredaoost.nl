@@ -1,5 +1,7 @@
 <?php
 
+//	Because of the length the organisation is shortened to org.
+
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -16,7 +18,23 @@ class CreateTheOrganisationImageTable extends Migration
         Schema::create('the_organisation_image', function (Blueprint $table) {
             $table->increments('id');
 
+			$table->string('name');
+
+			$table->string('slug')->unique();
+
+			$table->string('description');
+
+			$table->text('content');
+
+			$table->string('photographer');
+
+			$table->unsignedInteger('the_organisation_id');
+
+			$table->softDeletes();
+
             $table->timestamps();
+
+			$table->foreign('the_organisation_id')->references('id')->on('the_organisation')->onDelete('cascade');
         });
     }
 
