@@ -1,0 +1,16 @@
+{
+    "name": "Cookie",
+    "alias": "cookie",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Cookie\\Providers\\CookieServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}
