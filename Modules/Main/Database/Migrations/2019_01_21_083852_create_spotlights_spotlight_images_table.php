@@ -16,7 +16,16 @@ class CreateSpotlightsSpotlightImagesTable extends Migration
         Schema::create('spotlights_spotlight_images', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->timestamps();
+			$table->unsignedInteger('spotlight_id');
+			$table->unsignedInteger('spotlight_image_id');
+
+			$table->softDeletes();
+
+			$table->timestamps();
+
+			$table->unique(['spotlight_id','spotlight_image_id']);
+			$table->foreign('spotlight_id')->references('id')->on('spotlight')->onDelete('cascade');
+			$table->foreign('spotlight_image_id')->references('id')->on('spotlight_image')->onDelete('cascade');
         });
     }
 

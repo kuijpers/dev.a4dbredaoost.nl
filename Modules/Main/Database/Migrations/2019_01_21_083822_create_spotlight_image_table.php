@@ -16,6 +16,16 @@ class CreateSpotlightImageTable extends Migration
         Schema::create('spotlight_image', function (Blueprint $table) {
             $table->increments('id');
 
+			$table->string('name');
+
+			$table->string('slug')->unique();
+
+			$table->string('description');
+
+			$table->text('content');
+
+			$table->softDeletes();
+
             $table->timestamps();
         });
     }
