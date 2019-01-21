@@ -1,0 +1,16 @@
+{
+    "name": "Conditions",
+    "alias": "conditions",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Conditions\\Providers\\ConditionsServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}
