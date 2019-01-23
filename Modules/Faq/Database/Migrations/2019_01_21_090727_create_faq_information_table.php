@@ -16,7 +16,36 @@ class CreateFaqInformationTable extends Migration
         Schema::create('faq_information', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->timestamps();
+			$table->string('title');
+
+			$table->string('slug')->unique();
+
+			$table->string('description');
+
+			$table->text('content');
+
+			$table->integer('web_order')->unique();
+
+			$table->boolean('draft')->default(1);
+
+			$table->string('author');
+			$table->string('author_group');
+			$table->boolean('author_approve')->default(0);
+
+			$table->string('editor')->nullable();
+			$table->string('editor_group')->nullable();
+			$table->boolean('editor_approve')->default(0);
+
+			$table->string('publisher')->nullable();
+			$table->string('publisher_group')->nullable();
+			$table->boolean('publisher_approve')->default(0);
+
+			$table->datetime('publish_date_start')->nullable();
+			$table->datetime('publish_date_end')->nullable();
+
+			$table->softDeletes();
+
+			$table->timestamps();
         });
     }
 

@@ -16,7 +16,16 @@ class CreateFaqsFaqCategoriesTable extends Migration
         Schema::create('faqs_faq_categories', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->timestamps();
+			$table->unsignedInteger('faq_id');
+
+			$table->unsignedInteger('faq_categorie_id');
+
+			$table->softDeletes();
+
+			$table->timestamps();
+
+			$table->foreign('faq_id')->references('id')->on('faq')->onDelete('cascade');
+			$table->foreign('faq_categorie_id')->references('id')->on('faq_categorie')->onDelete('cascade');
         });
     }
 

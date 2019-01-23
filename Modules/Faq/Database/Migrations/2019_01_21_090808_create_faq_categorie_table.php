@@ -16,7 +16,13 @@ class CreateFaqCategorieTable extends Migration
         Schema::create('faq_categorie', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->timestamps();
+			$table->string('name');
+
+			$table->string('slug')->unique();
+
+			$table->softDeletes();
+
+			$table->timestamps();
         });
     }
 
