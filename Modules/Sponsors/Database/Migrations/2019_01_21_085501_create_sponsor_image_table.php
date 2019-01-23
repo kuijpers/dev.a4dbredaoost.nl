@@ -16,7 +16,23 @@ class CreateSponsorImageTable extends Migration
         Schema::create('sponsor_image', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->timestamps();
+			$table->string('name');
+
+			$table->string('slug')->unique();
+
+			$table->string('description');
+
+			$table->text('content');
+
+			$table->string('photographer');
+
+			$table->unsignedInteger('sponsor_id');
+
+			$table->softDeletes();
+
+			$table->timestamps();
+
+			$table->foreign('sponsor_id')->references('id')->on('sponsor')->onDelete('cascade');
         });
     }
 

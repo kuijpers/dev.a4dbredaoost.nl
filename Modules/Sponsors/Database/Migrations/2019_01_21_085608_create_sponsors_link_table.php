@@ -16,7 +16,16 @@ class CreateSponsorsLinkTable extends Migration
         Schema::create('sponsors_link', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->timestamps();
+			$table->unsignedInteger('sponsor_id');
+
+			$table->string('link');
+
+			$table->softDeletes();
+
+			$table->timestamps();
+
+
+			$table->foreign('sponsor_id')->references('id')->on('sponsor')->onDelete('cascade');
         });
     }
 

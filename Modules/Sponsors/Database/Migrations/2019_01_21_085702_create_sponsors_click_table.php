@@ -16,7 +16,18 @@ class CreateSponsorsClickTable extends Migration
         Schema::create('sponsors_click', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->timestamps();
+			$table->unsignedInteger('sponsor_id');
+
+			$table->string('ip');
+
+			$table->datetime('click_datetime');
+
+			$table->softDeletes();
+
+			$table->timestamps();
+
+
+			$table->foreign('sponsor_id')->references('id')->on('sponsor')->onDelete('cascade');
         });
     }
 
