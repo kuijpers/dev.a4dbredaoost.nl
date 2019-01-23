@@ -16,7 +16,15 @@ class CreateTimelinesWalkingDistancesTable extends Migration
         Schema::create('timelines_walking_distances', function (Blueprint $table) {
             $table->increments('id');
 
+			$table->unsignedInteger('timeline_id');
+			$table->unsignedInteger('walking_distance_id');
+
+			$table->softDeletes();
+
             $table->timestamps();
+
+			$table->foreign('timeline_id')->references('id')->on('timeline')->onDelete('cascade');
+			$table->foreign('walking_distance_id')->references('id')->on('walking_distance')->onDelete('cascade');
         });
     }
 

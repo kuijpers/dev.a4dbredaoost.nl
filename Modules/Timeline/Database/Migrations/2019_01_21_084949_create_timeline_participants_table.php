@@ -16,7 +16,17 @@ class CreateTimelineParticipantsTable extends Migration
         Schema::create('timeline_participants', function (Blueprint $table) {
             $table->increments('id');
 
+			$table->unsignedInteger('timeline_id');
+			$table->unsignedInteger('walking_distance_id');
+
+			$table->integer('participants');
+
+			$table->softDeletes();
+
             $table->timestamps();
+
+			$table->foreign('timeline_id')->references('id')->on('timeline')->onDelete('cascade');
+			$table->foreign('walking_distance_id')->references('id')->on('walking_distance')->onDelete('cascade');
         });
     }
 

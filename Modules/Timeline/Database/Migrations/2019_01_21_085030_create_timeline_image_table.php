@@ -16,7 +16,20 @@ class CreateTimelineImageTable extends Migration
         Schema::create('timeline_image', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->timestamps();
+			$table->string('name');
+			$table->string('slug');
+			$table->string('content');
+
+			$table->string('photographer');
+
+
+            $table->unsignedInteger('timeline_id');
+
+			$table->softDeletes();
+
+			$table->timestamps();
+
+			$table->foreign('timeline_id')->references('id')->on('timeline')->onDelete('cascade');
         });
     }
 

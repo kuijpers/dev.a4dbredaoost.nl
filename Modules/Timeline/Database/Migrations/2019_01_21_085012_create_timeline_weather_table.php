@@ -16,7 +16,17 @@ class CreateTimelineWeatherTable extends Migration
         Schema::create('timeline_weather', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->timestamps();
+			$table->unsignedInteger('timeline_id');
+
+			$table->integer('temperature');
+
+			$table->text('condition');
+
+			$table->softDeletes();
+
+			$table->timestamps();
+
+			$table->foreign('timeline_id')->references('id')->on('timeline')->onDelete('cascade');
         });
     }
 

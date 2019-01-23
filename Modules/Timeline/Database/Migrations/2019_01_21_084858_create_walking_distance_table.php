@@ -16,6 +16,11 @@ class CreateWalkingDistanceTable extends Migration
         Schema::create('walking_distance', function (Blueprint $table) {
             $table->increments('id');
 
+			$table->integer('distance');
+			$table->string('distance_type');
+
+			$table->softDeletes();
+
             $table->timestamps();
         });
     }
