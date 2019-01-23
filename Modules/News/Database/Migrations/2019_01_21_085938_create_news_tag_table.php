@@ -16,6 +16,12 @@ class CreateNewsTagTable extends Migration
         Schema::create('news_tag', function (Blueprint $table) {
             $table->increments('id');
 
+			$table->string('name');
+
+			$table->string('slug')->unique();
+
+			$table->softDeletes();
+
             $table->timestamps();
         });
     }

@@ -16,6 +16,19 @@ class CreateContactSettingsTable extends Migration
         Schema::create('contact_settings', function (Blueprint $table) {
             $table->increments('id');
 
+			$table->string('description');
+
+			$table->string('contactform_email')->nullable();
+
+			$table->unsignedInteger('boardmembers_id')->nullable();
+
+			$table->string('map_latitude')->nullable();
+			$table->string('map_longitude')->nullable();
+			$table->integer('zoom')->nullable();
+
+			$table->boolean('active')->default(1);
+
+
             $table->timestamps();
         });
     }

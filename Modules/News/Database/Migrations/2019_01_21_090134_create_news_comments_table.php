@@ -16,7 +16,24 @@ class CreateNewsCommentsTable extends Migration
         Schema::create('news_comments', function (Blueprint $table) {
             $table->increments('id');
 
+			$table->integer('comments_id');
+
+			$table->unsignedInteger('news_id');
+
+			$table->text('comment');
+
+			$table->string('author');
+			$table->string('author_group');
+
+			$table->string('publisher')->nullable();
+			$table->string('publisher_group')->nullable();
+			$table->boolean('publisher_approve')->default(0);
+
+			$table->softDeletes();
+
             $table->timestamps();
+
+			$table->foreign('news_id')->references('id')->on('news')->onDelete('cascade');
         });
     }
 

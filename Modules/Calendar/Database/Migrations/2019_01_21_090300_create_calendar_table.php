@@ -16,7 +16,34 @@ class CreateCalendarTable extends Migration
         Schema::create('calendar', function (Blueprint $table) {
             $table->increments('id');
 
+			$table->string('title');
+
+			$table->string('slug')->unique();
+
+			$table->string('description');
+
+			$table->text('content');
+
+			$table->boolean('all_day')->default(1);
+
+			$table->datetime('start');
+
+			$table->datetime('end')->nullable();
+
+			$table->integer('group');
+
+			$table->unsignedInteger('calendar_group_id');
+
+			$table->string('color');
+
+			$table->string('publisher')->nullable();
+			$table->string('publisher_group')->nullable();
+			$table->boolean('publisher_approve')->default(0);
+
+			$table->softDeletes();
+
             $table->timestamps();
+
         });
     }
 

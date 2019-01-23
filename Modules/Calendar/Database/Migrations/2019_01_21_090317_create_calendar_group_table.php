@@ -16,6 +16,12 @@ class CreateCalendarGroupTable extends Migration
         Schema::create('calendar_group', function (Blueprint $table) {
             $table->increments('id');
 
+			$table->string('name');
+
+			$table->string('slug')->unique();
+
+			$table->softDeletes();
+
             $table->timestamps();
         });
     }

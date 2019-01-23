@@ -16,7 +16,23 @@ class CreateNewsImageTable extends Migration
         Schema::create('news_image', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->timestamps();
+			$table->string('name');
+
+			$table->string('slug')->unique();
+
+			$table->string('description');
+
+			$table->text('content');
+
+			$table->string('photographer');
+
+			$table->unsignedInteger('news_id');
+
+			$table->softDeletes();
+
+			$table->timestamps();
+
+			$table->foreign('news_id')->references('id')->on('news')->onDelete('cascade');
         });
     }
 

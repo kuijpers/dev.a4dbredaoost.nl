@@ -16,7 +16,16 @@ class CreateNewsNewsCategoriesTable extends Migration
         Schema::create('news_news_categories', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->timestamps();
+			$table->unsignedInteger('news_id');
+
+			$table->unsignedInteger('news_categorie_id');
+
+			$table->softDeletes();
+
+			$table->timestamps();
+
+			$table->foreign('news_id')->references('id')->on('news')->onDelete('cascade');
+			$table->foreign('news_categorie_id')->references('id')->on('news_categorie')->onDelete('cascade');
         });
     }
 
