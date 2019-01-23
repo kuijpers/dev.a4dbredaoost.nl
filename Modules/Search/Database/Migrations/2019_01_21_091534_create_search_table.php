@@ -16,7 +16,15 @@ class CreateSearchTable extends Migration
         Schema::create('search', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->timestamps();
+			$table->string('search_criteria');
+
+			$table->integer('count');
+
+			$table->boolean('black_listed')->default(0);
+
+			$table->softDeletes();
+
+			$table->timestamps();
         });
     }
 
