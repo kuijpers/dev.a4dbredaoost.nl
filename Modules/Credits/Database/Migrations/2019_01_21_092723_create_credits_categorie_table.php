@@ -16,7 +16,13 @@ class CreateCreditsCategorieTable extends Migration
         Schema::create('credits_categorie', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->timestamps();
+			$table->string('name');
+
+			$table->string('slug')->unique();
+
+			$table->softDeletes();
+
+			$table->timestamps();
         });
     }
 

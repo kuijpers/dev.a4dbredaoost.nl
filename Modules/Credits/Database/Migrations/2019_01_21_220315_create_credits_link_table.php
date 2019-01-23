@@ -16,7 +16,16 @@ class CreateCreditsLinkTable extends Migration
         Schema::create('credits_link', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->timestamps();
+			$table->unsignedInteger('credits_id');
+
+			$table->string('link');
+
+			$table->softDeletes();
+
+			$table->timestamps();
+
+
+			$table->foreign('credits_id')->references('id')->on('credits')->onDelete('cascade');
         });
     }
 
