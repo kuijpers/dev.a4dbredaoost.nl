@@ -24,7 +24,7 @@ class CreateTySponsorsTable extends Migration
 
 			$table->text('content');
 
-			$table->integer('web_order')->unique();
+			$table->integer('web_order')->unique()->nullable();
 
 			$table->boolean('draft')->default(1);
 
