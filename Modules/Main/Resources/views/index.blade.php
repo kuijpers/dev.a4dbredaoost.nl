@@ -21,8 +21,7 @@
 
 @section('content')
 
-{{--{{$didyouknow->question}}--}}
-{{--{{$didyouknow->answer}}--}}
+    {{--{{$main_event}}--}}
 
     {{-- Content here--}}
     @include('main::includes.jumbotron')
