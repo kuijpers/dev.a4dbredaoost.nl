@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CalendarGroup extends Model
 {
-//	use SoftDeletes;
+	use SoftDeletes;
 
     protected $fillable = ['name','slug'];
 
