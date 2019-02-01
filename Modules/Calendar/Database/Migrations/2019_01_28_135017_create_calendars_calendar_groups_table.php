@@ -13,8 +13,7 @@ class CreateCalendarsCalendarGroupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('calendars_calendar_groups', function (Blueprint $table) {
-			Schema::create('news_news_tags', function (Blueprint $table) {
+        Schema::create('calendar_calendar_group', function (Blueprint $table) {
 				$table->increments('id');
 
 				$table->unsignedInteger('calendar_id');
@@ -27,7 +26,6 @@ class CreateCalendarsCalendarGroupsTable extends Migration
 
 				$table->foreign('calendar_id')->references('id')->on('calendar')->onDelete('cascade');
 				$table->foreign('calendar_group_id')->references('id')->on('calendar_group')->onDelete('cascade');
-			});
         });
     }
 
@@ -38,6 +36,6 @@ class CreateCalendarsCalendarGroupsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('calendars_calendar_groups');
+        Schema::dropIfExists('calendar_calendar_group');
     }
 }

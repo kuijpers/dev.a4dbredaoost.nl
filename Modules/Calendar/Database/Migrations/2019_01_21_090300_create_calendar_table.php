@@ -30,11 +30,13 @@ class CreateCalendarTable extends Migration
 
 			$table->datetime('end')->nullable();
 
-			$table->integer('group');
+			$table->string('color')->nullable();
 
-			$table->unsignedInteger('calendar_group_id');
+			$table->string('author')->nullable();
+			$table->string('author_group')->nullable();
+			$table->boolean('author_approve')->default(0);
 
-			$table->string('color');
+			$table->boolean('show_main')->default(1);
 
 			$table->string('publisher')->nullable();
 			$table->string('publisher_group')->nullable();
