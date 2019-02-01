@@ -51,14 +51,14 @@
                         <div class="card-header bg-success" id="heading{{$didyouknow->id}}">
                             <h5 class="mb-0">
                                 <button class="btn btn-link text-white collapsed" type="button" data-toggle="collapse" data-target="#collapse{{$didyouknow->id}}" aria-expanded="true" aria-controls="collapse{{$didyouknow->id}}">
-                                    {{$didyouknow->question}}
+                                    {!! $didyouknow->question !!}
                                 </button>
                             </h5>
                         </div>
 
                         <div id="collapse{{$didyouknow->id}}" class="collapse" aria-labelledby="heading{{$didyouknow->id}}" data-parent="#Didyouknow">
                             <div class="card-body">
-                                {{$didyouknow->answer}}
+                                {!! $didyouknow->answer !!}
                             </div>
                         </div>
                     </div>
