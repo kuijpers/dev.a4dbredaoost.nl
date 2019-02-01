@@ -20,5 +20,6 @@
 
 		// Errors
 		'message_no_data' 					=> 'No data found.',
+		'message_no_calendar_data' 			=> 'No upcoming events found.',
 
 	];
