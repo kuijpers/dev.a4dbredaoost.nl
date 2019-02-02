@@ -17,6 +17,12 @@
     border-color: #9aefad !important;
 }
 
+.badge-success{
+    background-color: #6acf05 !important;
+    /*background-color: #50f230 !important;*/
+    border-color: #9aefad !important;
+}
+
 .btn-light{
     color: #6acf05 !important;
     /*color: #50f230 !important;*/
