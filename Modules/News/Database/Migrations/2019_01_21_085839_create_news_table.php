@@ -24,7 +24,9 @@ class CreateNewsTable extends Migration
 
 			$table->text('content');
 
-			$table->integer('web_order')->unique();
+			$table->integer('web_order')->unique()->nullable();
+
+			$table->integer('news_categorie_id')->unsigned();
 
 			$table->boolean('draft')->default(1);
 
@@ -35,6 +37,8 @@ class CreateNewsTable extends Migration
 			$table->string('editor')->nullable();
 			$table->string('editor_group')->nullable();
 			$table->boolean('editor_approve')->default(0);
+
+			$table->boolean('show_main')->default(1);
 
 			$table->string('publisher')->nullable();
 			$table->string('publisher_group')->nullable();

@@ -26,7 +26,7 @@ class CreateNewsImageTable extends Migration
 
 			$table->string('photographer');
 
-			$table->unsignedInteger('news_id');
+			$table->integer('news_id')->unsigned();
 
 			$table->softDeletes();
 
