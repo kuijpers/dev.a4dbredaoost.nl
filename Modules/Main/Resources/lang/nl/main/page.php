@@ -21,5 +21,6 @@
 		// Errors
 		'message_no_data' 					=> 'Geen gegevens gevonden.',
 		'message_no_calendar_data' 			=> 'Geen aankomende evenementen gevonden.',
+		'message_no_news_data' 				=> 'Geen nieuws artikelen gevonden.',
 
 	];
