@@ -13,6 +13,7 @@ use Modules\Didyouknow\Entities\Models\Main\Didyouknow;
 use Modules\Main\Entities\Models\Main\TyParticipants;
 use Modules\Main\Entities\Models\Main\TySponsors;
 use Modules\Main\Entities\Models\Main\TyVolunteers;
+use Modules\News\Entities\Models\Main\News;
 
 class MainController extends Controller
 {
@@ -22,6 +23,8 @@ class MainController extends Controller
      */
     public function index()
     {
+    	$main_latestnews		= static::get_latest_news();
+
     	$main_event				= static::get_whats_going_to_happen();
 
     	$main_didyouknow		= static::get_did_you_know();
@@ -33,7 +36,8 @@ class MainController extends Controller
 		$ty_sponsors 			= static::get_ty_sponsors();
 
         return view('main::index')
-			->with(compact( 'main_event',
+			->with(compact( 'main_latestnews',
+							'main_event',
 							'main_didyouknow',
 							'ty_volunteers',
 							'ty_participants',
@@ -51,9 +55,11 @@ class MainController extends Controller
 
 // Announcements section
 	public function get_latest_news(){
-
+		return News::show_single_main();
 	}
 
+
+// Calender section
 	public function get_whats_going_to_happen(){
 
     	$event = Calendar::orderBy('start', 'asc')
