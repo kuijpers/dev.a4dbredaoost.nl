@@ -119,6 +119,20 @@
                                         Package om tijdlijnen mee weer te geven.
                                     </td>
                                 </tr>
+                                <tr>
+                                    <th scope="row">Star rating plugin van Alexander Reece</th>
+                                    <td><a href="https://github.com/vulcandigital/jquery-starrating">Website</a></td>
+                                    <td>
+                                        Package om het rating systeem werkend te krijgen.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Lightbox BS plugin van Ashley White</th>
+                                    <td><a href="http://ashleydw.github.io/lightbox/">Website</a></td>
+                                    <td>
+                                        Image lightbox.
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </p>
