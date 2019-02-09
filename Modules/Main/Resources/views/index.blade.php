@@ -21,7 +21,7 @@
 
 @section('content')
 
-    {{--{{$main_event}}--}}
+    {{--{{$main_latestnews}}--}}
 
     {{-- Content here--}}
     @include('main::includes.jumbotron')

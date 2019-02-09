@@ -6,18 +6,25 @@
             <div class="card">
                 <h4 class="card-header bg-success text-white">@lang('main::main/page.title_latest_news')</h4>
                 <div class="card-body">
-                    <h5 class="card-title text-success">Nieuwe mensen in de organisatie.</h5>
-                    <p class="text-muted text-success"><small>17-10-2018</small></p>
-                    <p class="card-text text-a4dbo">
-                        Wat gaat er nu gebeuren met de vernieuwing.
-                        <br>
-                        Sinds kort zitten er aan aantal nieuwe mensen in het bestuur van de organisatie.
-                        <br>
-                        Wat gaat dit betekenen voor de toekomst van de avondvierdaagse in Breda-oost?
+                    @isset($main_latestnews)
+                    <h5 class="card-title text-success">{{$main_latestnews->title}}</h5>
+                    <p class="text-muted text-success">
+                        <small>
+                            {{Carbon\Carbon::parse($main_latestnews->publish_date_start)->format('d-m-Y H:i:s')}}
+                        </small>
                     </p>
+                    <p class="card-text text-a4dbo">
+                        {!! str_limit($main_latestnews->content, 500) !!}
+                    </p>
+
+                    @else
+                        <h5 class="card-title text-success">
+                            @lang('main::main/page.message_no_news_data')
+                        </h5>
+                    @endisset
                 </div>
                 <div class="card-footer bg-white border-0">
-                    <a href="#" class="btn btn-success">@lang('main::main/page.button_news_message')</a>
+                    <a href="{{$url = route('main.news.post', ['slug' => $main_latestnews->slug])}}" class="btn btn-success">@lang('main::main/page.button_news_message')</a>
                 </div>
             </div>
 
