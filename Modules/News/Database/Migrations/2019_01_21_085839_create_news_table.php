@@ -40,6 +40,11 @@ class CreateNewsTable extends Migration
 
 			$table->boolean('show_main')->default(1);
 
+			$table->boolean('comments')->default(1);
+			$table->boolean('comments_show')->default(1);
+
+			$table->boolean('rating')->default(1);
+
 			$table->string('publisher')->nullable();
 			$table->string('publisher_group')->nullable();
 			$table->boolean('publisher_approve')->default(0);

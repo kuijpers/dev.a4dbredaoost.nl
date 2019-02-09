@@ -11,4 +11,9 @@ class NewsImage extends Model
     protected $fillable = [];
 
 	protected $table = 'news_image';
+
+	public function item(){
+		return $this->hasOne(News::class);
+	}
+
 }

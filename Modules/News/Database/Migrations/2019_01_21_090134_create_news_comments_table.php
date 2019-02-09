@@ -18,15 +18,15 @@ class CreateNewsCommentsTable extends Migration
 
 			$table->integer('comments_id');
 
-			$table->unsignedInteger('news_id');
+			$table->unsignedInteger('news_id')->nullable();
 
 			$table->text('comment');
 
 			$table->string('author');
-			$table->string('author_group');
+			$table->string('author_group')->default('User');
 
 			$table->string('publisher')->nullable();
-			$table->string('publisher_group')->nullable();
+			$table->string('publisher_group')->default('Boardmember');
 			$table->boolean('publisher_approve')->default(0);
 
 			$table->softDeletes();

@@ -11,4 +11,8 @@ class NewsComments extends Model
     protected $fillable = [];
 
 	protected $table = 'news_comments';
+
+	public function item(){
+		return $this->hasOne(News::class);
+	}
 }
