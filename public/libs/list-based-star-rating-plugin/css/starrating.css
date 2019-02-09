@@ -1,0 +1,15 @@
+#starRating ul {
+  list-style: none;
+  padding: 0;
+}
+
+#starRating li {
+  display: inline-block;
+  font-size: 20px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+#starRating li.active, #starRating li.hover { color: #6acf05; }
+
+#starRating ul.hover li.active:not(.hover) { color: yellow }

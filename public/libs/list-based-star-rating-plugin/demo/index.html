@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jQuery StarRating: Star Rating Plugin Demo</title>
+<!--<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<style>
+.container { margin:150px auto; max-width:728px;}
+
+h1 { font-family:'Roboto Condensed'; color:#000000; margin-bottom:100px;}
+</style>
+<link rel="stylesheet" href="../css/starrating.css">
+</head>
+
+<body>
+<div id="jquery-script-menu">
+
+<div class="container">
+<h1>jQuery StarRating: Star Rating Plugin Demo</h1>
+<ul id="starRating" data-stars="7">
+</ul>
+</h1>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script> 
+<script src="../js/jquery.starrating.js"></script> 
+<script>
+(function( $ ) {
+    $('#starRating').starRating({
+	stars: 10,
+    current: 3,
+		 callback: function (value) {
+			 alert('You Just Clicked: '+value);
+            }})
+}(jQuery))
+</script>
+</body>
+</html>
