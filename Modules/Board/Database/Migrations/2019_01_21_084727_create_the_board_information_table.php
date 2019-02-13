@@ -16,13 +16,13 @@ class CreateTheBoardInformationTable extends Migration
         Schema::create('the_board_information', function (Blueprint $table) {
             $table->increments('id');
 
-			$table->string('title');
-
 			$table->string('slug')->unique();
+
+			$table->string('title');
 
 			$table->string('description');
 
-			$table->text('content');
+			$table->text('body');
 
 			$table->integer('web_order')->unique();
 

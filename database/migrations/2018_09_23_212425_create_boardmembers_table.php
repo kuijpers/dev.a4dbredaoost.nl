@@ -27,10 +27,26 @@ class CreateBoardmembersTable extends Migration
             $table->string('phone')->nullable();
             $table->string('boardmember_title')->default('member');
             $table->string('group')->default('board');
+
             $table->date('dob')->nullable();
 			$table->string('profile_img')->nullable();
+
+			$table->text('about_me')->nullable(); // IN SEEDER AANVULLEN!!!!!!!!!!!!
+
+			$table->string('show_email')->default(1);
+			$table->string('show_sec_email')->default(1);
+			$table->string('show_address')->default(1);
+			$table->string('show_phone')->default(1);
+			$table->string('show_wallet')->default(1);
+			$table->string('show_dob')->default(1);
+			$table->string('show_img')->default(1);
+			$table->string('show_about_me')->default(1);
+
             $table->rememberToken();
-            $table->timestamps();
+
+			$table->softDeletes();
+
+			$table->timestamps();
         });
     }
 
