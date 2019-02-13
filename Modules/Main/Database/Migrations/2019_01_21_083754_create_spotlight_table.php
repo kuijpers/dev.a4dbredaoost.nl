@@ -13,7 +13,7 @@ class CreateSpotlightTable extends Migration
      */
     public function up()
     {
-        Schema::create('spotlight', function (Blueprint $table) {
+        Schema::create('spotlights', function (Blueprint $table) {
 			$table->increments('id');
 
 			$table->string('title');
@@ -24,7 +24,7 @@ class CreateSpotlightTable extends Migration
 
 			$table->text('content');
 
-			$table->integer('web_order')->unique();
+			$table->integer('web_order')->unique()->nullable();
 
 			$table->boolean('draft')->default(1);
 
@@ -56,6 +56,6 @@ class CreateSpotlightTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('spotlight');
+        Schema::dropIfExists('spotlights');
     }
 }

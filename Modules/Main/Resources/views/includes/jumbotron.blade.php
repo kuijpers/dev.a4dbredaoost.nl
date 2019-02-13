@@ -6,23 +6,16 @@
                 @lang('main::main/page.title_spotlight')
                 <i class="fas fa-sun fa-spin text-warning"></i>
             </h1>
-            <h3 class="text-a4dbo">Willekeurige sponsor, vrijwilliger, deelnemer of bestuurslid</h3>
+            <h3 class="text-a4dbo">{{$spotlight->title}}</h3>
             <p class="text-a4dbo">
-                Hier kan een random of vooraf bepaalde sponsor, vrijwilliger, deelnemer of bestuurslid in het zonnetje worden gezet.
-                <br>
-
-                <br>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Et non ex maxima parte de tota iudicabis? Itaque ab his ordiamur.
-                A mene tu? Duo Reges: constructio interrete.
-                Bonum incolumis acies: misera caecitas. Non igitur bene.
-                Et ais, si una littera commota sit, fore tota ut labet disciplina.
-                Utilitatis causa amicitia est quaesita.
-                Quid ergo hoc loco intellegit honestum?
-                Dic in quovis conventu te omnia facere, ne doleas.
+                {!! str_limit($main_latestnews->content, 600) !!}
             </p>
             <p>
-                <a class="btn btn-success" href="#" role="button">@lang('main::main/page.button_more_info') &raquo;</a>
+                <a class="btn btn-success" href="{{$url = route('main.spotlight.index', ['slug' => $spotlight->slug])}}" role="button">@lang('main::main/page.button_more_info') &raquo;</a>
+
+                {{--<a href="{{$url = route('main.news.post', ['slug' => $spotlight->slug])}}" class="btn btn-success">--}}
+                    {{--@lang('news::main/lang.index_button_read_more') &rarr;--}}
+                {{--</a>--}}
             </p>
             </p>
         </div>

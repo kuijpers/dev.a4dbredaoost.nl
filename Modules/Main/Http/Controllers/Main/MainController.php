@@ -10,6 +10,7 @@ use Illuminate\Routing\Controller;
 use Modules\Calendar\Entities\Models\Main\Calendar;
 use Modules\Calendar\Entities\Models\Main\CalendarGroup;
 use Modules\Didyouknow\Entities\Models\Main\Didyouknow;
+use Modules\Main\Entities\Models\Main\Spotlight;
 use Modules\Main\Entities\Models\Main\TyParticipants;
 use Modules\Main\Entities\Models\Main\TySponsors;
 use Modules\Main\Entities\Models\Main\TyVolunteers;
@@ -23,6 +24,8 @@ class MainController extends Controller
      */
     public function index()
     {
+    	$spotlight				= static::get_spotlight();
+
     	$main_latestnews		= static::get_latest_news();
 
     	$main_event				= static::get_whats_going_to_happen();
@@ -35,8 +38,9 @@ class MainController extends Controller
 
 		$ty_sponsors 			= static::get_ty_sponsors();
 
-        return view('main::index')
-			->with(compact( 'main_latestnews',
+        return view('main::Main.index')
+			->with(compact( 'spotlight',
+							'main_latestnews',
 							'main_event',
 							'main_didyouknow',
 							'ty_volunteers',
@@ -45,10 +49,34 @@ class MainController extends Controller
 			));
     }
 
+	public function spotlight_index($slug){
+
+    	$spotlight		= $this->get_current_spotlight($slug);
+
+		return view('main::Main.Spotlight.index')
+			->with(compact( 'spotlight'
+			));
+
+	}
 
 
 // Spotlight section
 	public function get_spotlight(){
+		$spotlight = Spotlight::where('draft', '=', 1)
+			->where('author_approve', '=', 1)
+			->where('editor_approve', '=', 1)
+			->where('publisher_approve', '=', 1)
+			->whereDate('publish_date_start', '<=', Carbon::now('Europe/Amsterdam'))
+			->first();
+
+		return $spotlight;
+	}
+
+	public function get_current_spotlight($slug){
+
+		$spotlight = Spotlight::where('slug', '=', $slug)->first();
+
+		return $spotlight;
 
 	}
 
