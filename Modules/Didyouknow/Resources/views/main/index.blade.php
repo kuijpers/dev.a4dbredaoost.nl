@@ -1,7 +1,7 @@
 @extends('layouts.main.main')
 
 @section('title')
-    Wist u dat?
+    @lang('didyouknow::main/lang.index_web_title')
 @endsection
 
 @section('css')
@@ -23,7 +23,7 @@
     {{-- Content here--}}
     <div class="section-a row">
         <div class="col-md-8 offset-md-2 border-bottom">
-            <h1>Wist u dat?</h1>
+            <h1>@lang('didyouknow::main/lang.index_page_title')</h1>
         </div>
         @if(!empty($didyouknow_information))
 
@@ -34,9 +34,7 @@
             </div>
             @endforeach
         @else
-
-            No data available !!!!
-
+            @lang('didyouknow::main/lang.error_no_data')
         @endif
 
         <div class="col-md-8 offset-md-2 my-5">
@@ -66,9 +64,7 @@
                     @endforeach
                 </div>
                 @else
-
-                    No data available !!!!!
-
+                    @lang('didyouknow::main/lang.error_no_data')
                 @endif
 
         </div>
