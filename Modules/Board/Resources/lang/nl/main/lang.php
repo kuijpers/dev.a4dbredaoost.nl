@@ -3,34 +3,34 @@
 	return array(
 
 		// Index page
-		'index_web_title' 					=> 'The board',
+		'index_web_title' 					=> 'Het bestuur',
 
-		'index_page_title' 					=> 'The board',
+		'index_page_title' 					=> 'Het bestuur',
 
 
 		// President include page
-		'president' 						=> 'President',
+		'president' 						=> 'Voorzitter',
 
 		// Vice-president include page
-		'vice-president' 					=> 'Vice-President',
+		'vice-president' 					=> 'Vice-Voorzitter',
 
 		// Secretary include page
-		'secretary'							=> 'Secretary',
+		'secretary'							=> 'Secretaris',
 
 		// Treasurer include page
-		'treasurer'							=> 'Treasurer',
+		'treasurer'							=> 'Penningmeester',
 
 		// Members include page
-		'boardmember' 						=> 'Boardmember',
+		'boardmember' 						=> 'Bestuurslid',
 
 
 
 		// Other
-		'about_me' 							=> 'About me',
+		'about_me' 							=> 'Over mij',
 
 
 		// Errors
-		'error_no_image'					=> 'No image available',
+		'error_no_image'					=> 'Geen afbeelding beschikbaar',
 
 
 	);
