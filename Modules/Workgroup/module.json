@@ -1,0 +1,16 @@
+{
+    "name": "Workgroup",
+    "alias": "workgroup",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Workgroup\\Providers\\WorkgroupServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}
