@@ -45,7 +45,7 @@
 
                         {{--{{  dd($news_item->images()->first()->name) }}--}}
                         {{--{{  $news_item->images()->first()->name }}--}}
-
+                    @isset($news_item->images()->first()->name)
                     <figure>
                         <img class="card-img-top" src="{{ asset('modules/news/album/'.$news_item->images()->first()->name ) }}" alt="Card image cap" style="width:100%">
                         <figcaption style="padding: 10px 0 10px 10px;">
@@ -57,6 +57,7 @@
                             </i>
                         </figcaption>
                     </figure>
+                    @endisset
 
 
                     <div class="card-body">

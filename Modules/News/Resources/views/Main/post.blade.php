@@ -85,6 +85,7 @@
                 <hr>
 
                     <!-- Preview Image -->
+                @isset($news_item->images()->first()->name)
                     <figure>
                         <img class="img-fluid rounded" src="{{ asset('modules/news/album/'.$news_item->images()->first()->name ) }}" alt="{{ $news_item->images()->first()->description }}" style="width:100%">
                         <figcaption style="padding: 10px 0 10px 10px;">
@@ -96,14 +97,14 @@
                             </i>
                         </figcaption>
                     </figure>
-
                 <hr>
+                @endisset
 
                     <!-- Post Content -->
                     {!! substr($news_item->content, 0, (strlen($news_item->content)/5)) !!}
-
-                    @include('news::includes.post_carousel')
-
+                    @isset($news_item->images()->first()->name)
+                        @include('news::includes.post_carousel')
+                    @endisset
                     {!! substr($news_item->content, (strlen($news_item->content)/5)) !!}
                 <hr>
 
