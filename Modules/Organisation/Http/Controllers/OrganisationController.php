@@ -2,9 +2,12 @@
 
 namespace Modules\Organisation\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Organisation\Entities\Models\Main\TheOrganisation;
+use Modules\Organisation\Entities\Models\Main\TheOrganisationImage;
 
 class OrganisationController extends Controller
 {
@@ -14,59 +17,25 @@ class OrganisationController extends Controller
      */
     public function index()
     {
-        return view('organisation::index');
+        $items	= $this->get_items();
+
+    	return view('organisation::Main.index')
+			->with(compact( 'items'
+			));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Response
-     */
-    public function create()
-    {
-        return view('organisation::create');
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param  Request $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-    }
+	public function get_items(){
 
-    /**
-     * Show the specified resource.
-     * @return Response
-     */
-    public function show()
-    {
-        return view('organisation::show');
-    }
+		$items = TheOrganisation::where('draft', '=', 1)
+					->where('author_approve', '=', 1)
+					->where('editor_approve', '=', 1)
+					->where('publisher_approve', '=', 1)
+					->whereDate('publish_date_start', '<=', Carbon::now('Europe/Amsterdam'))
+					->orderBy('web_order', 'asc')
+					->get();
 
-    /**
-     * Show the form for editing the specified resource.
-     * @return Response
-     */
-    public function edit()
-    {
-        return view('organisation::edit');
-    }
+    	return $items;
+	}
 
-    /**
-     * Update the specified resource in storage.
-     * @param  Request $request
-     * @return Response
-     */
-    public function update(Request $request)
-    {
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @return Response
-     */
-    public function destroy()
-    {
-    }
 }

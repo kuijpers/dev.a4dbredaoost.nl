@@ -28,13 +28,13 @@ class CreateTheOrganisationImageTable extends Migration
 
 			$table->string('photographer');
 
-			$table->unsignedInteger('the_organisation_id');
+			$table->unsignedInteger('the_organisations_id');
 
 			$table->softDeletes();
 
             $table->timestamps();
 
-			$table->foreign('the_organisation_id')->references('id')->on('the_organisation')->onDelete('cascade');
+			$table->foreign('the_organisations_id')->references('id')->on('the_organisations')->onDelete('cascade');
         });
     }
 

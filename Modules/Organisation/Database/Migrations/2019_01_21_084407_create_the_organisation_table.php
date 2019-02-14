@@ -13,7 +13,7 @@ class CreateTheOrganisationTable extends Migration
      */
     public function up()
     {
-        Schema::create('the_organisation', function (Blueprint $table) {
+        Schema::create('the_organisations', function (Blueprint $table) {
             $table->increments('id');
 
 			$table->string('title');
@@ -24,7 +24,9 @@ class CreateTheOrganisationTable extends Migration
 
 			$table->text('content');
 
-			$table->integer('web_order')->unique();
+			$table->integer('web_order')->unique()->nullable();
+
+			$table->boolean('show_title')->default(1);
 
 			$table->boolean('draft')->default(1);
 
