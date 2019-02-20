@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSponsorsLinkTable extends Migration
+class CreateSponsorsSettingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,19 @@ class CreateSponsorsLinkTable extends Migration
      */
     public function up()
     {
-        Schema::create('sponsors_link', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('sponsors_settings', function (Blueprint $table) {
+			$table->increments('id');
 
 			$table->string('slug')->unique();
 
-			$table->unsignedInteger('sponsor_id');
-
-			$table->string('link');
+			$table->string('name');
+			$table->text('description');
+			$table->boolean('value_bool')->nullable();
+			$table->text('value_text')->nullable();
 
 			$table->softDeletes();
 
 			$table->timestamps();
-
-
-			$table->foreign('sponsor_id')->references('id')->on('sponsor')->onDelete('cascade');
         });
     }
 
@@ -38,6 +36,6 @@ class CreateSponsorsLinkTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sponsors_link');
+        Schema::dropIfExists('sponsors_settings');
     }
 }

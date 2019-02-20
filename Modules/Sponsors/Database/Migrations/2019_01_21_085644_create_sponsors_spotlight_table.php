@@ -29,6 +29,10 @@ class CreateSponsorsSpotlightTable extends Migration
 			$table->datetime('publish_date_start')->nullable();
 			$table->datetime('publish_date_end')->nullable();
 
+			$table->boolean('payment_received')->default(0);
+
+			$table->softDeletes();
+
             $table->timestamps();
 
 			$table->foreign('sponsor_id')->references('id')->on('sponsor')->onDelete('cascade');

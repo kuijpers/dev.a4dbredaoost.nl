@@ -22,9 +22,9 @@ class CreateSponsorTable extends Migration
 
 			$table->string('description');
 
-			$table->text('content');
+			$table->text('body');
 
-			$table->integer('web_order')->unique();
+			$table->integer('web_order')->default(0);
 
 			$table->boolean('draft')->default(1);
 
@@ -42,6 +42,9 @@ class CreateSponsorTable extends Migration
 
 			$table->datetime('publish_date_start')->nullable();
 			$table->datetime('publish_date_end')->nullable();
+
+			$table->integer('sponsor_packages_id')->nullable();
+			$table->boolean('payment_received')->default(0);
 
 			$table->softDeletes();
 

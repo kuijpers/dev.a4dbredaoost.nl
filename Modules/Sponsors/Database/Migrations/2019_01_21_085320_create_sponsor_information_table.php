@@ -22,7 +22,7 @@ class CreateSponsorInformationTable extends Migration
 
 			$table->string('description');
 
-			$table->text('content');
+			$table->text('body');
 
 			$table->integer('web_order')->unique();
 

@@ -5,11 +5,11 @@ namespace Modules\Sponsors\Entities\Models\Main;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class SponsorImage extends Model
+class SponsorPackages extends Model
 {
 	use SoftDeletes;
 
 	protected $fillable = [];
 
-	protected $table = 'sponsor_image';
+	protected $table = 'sponsor_packages';
 }
