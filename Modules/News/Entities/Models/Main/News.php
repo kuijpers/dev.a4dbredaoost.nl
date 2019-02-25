@@ -16,7 +16,7 @@ class News extends Model
 
 
 	public function categorie(){
-		return $this->hasOne(NewsCategorie::class);
+		return $this->hasOne(NewsCategorie::class, 'id', 'news_categorie_id');
 	}
 
 	public function comment(){
@@ -28,7 +28,7 @@ class News extends Model
 	}
 
 	public function tags(){
-		return $this->belongsTo(NewsTag::class);
+		return $this->belongsToMany(NewsTag::class, 'news_news_tags', 'news_id', 'news_tag_id');
 	}
 
 

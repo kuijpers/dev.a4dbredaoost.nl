@@ -2,6 +2,10 @@
 
 	return array(
 
+
+		// All pages
+		'category'							=>	'Categorie',
+
 		// Index page
 		'index_web_title' 					=> 'Avond vierdaagse nieuws !',
 
@@ -25,6 +29,16 @@
 		'post_photo_courtesy' 				=> 'Foto is eigendom van: ',
 
 		'post_posted_on' 					=> 'Geplaatst op',
+
+		// Category page
+		'categorie_page_title' 				=> 'Nieuws categorie ',
+
+		'categorie_no_items' 				=> 'Er staan geen artikelen in deze categorie.',
+
+		// Author page
+		'author_page_title' 				=> 'Nieuws auteur ',
+
+		'author_no_items' 					=> 'Er zijn geen artikelen voor deze auteur.',
 
 
 // Widgets

@@ -5,7 +5,7 @@
             <div class="col-lg-12">
 
                 @foreach($news_tags as $news_tag)
-                    <a href="#{{$news_tag->slug}}" class="badge badge-pill badge-success">{{$news_tag->name}}</a>
+                    <a href="{{$url = route('main.news.tag', ['slug' => $news_tag->slug])}}" class="badge badge-pill badge-success">{{$news_tag->name}}</a>
                 @endforeach
             </div>
         </div>

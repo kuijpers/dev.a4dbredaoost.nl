@@ -2,6 +2,10 @@
 
 	return array(
 
+
+		// All pages
+		'category'							=>	'Categorie',
+
 		// Index page
 		'index_web_title' 					=> '4 night hiking news !',
 
@@ -21,6 +25,16 @@
 		'post_photo_courtesy' 				=> 'Photo is courtesy of:',
 
 		'post_posted_on' 					=> 'Posted on',
+
+		// Category page
+		'categorie_page_title' 				=> 'News category ',
+
+		'categorie_no_items' 				=> 'No items in this category.',
+
+		// Author page
+		'author_page_title' 				=> 'News author ',
+
+		'author_no_items' 					=> 'This author has no articles.',
 
 
 // Widgets

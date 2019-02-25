@@ -14,7 +14,8 @@ class NewsTag extends Model
 
 
 	public function items(){
-		return $this->belongsTo(News::class);
+		return $this->belongsToMany(News::class, 'news_news_tags', 'news_tag_id', 'news_id');
 	}
+
 
 }

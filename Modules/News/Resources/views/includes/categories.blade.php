@@ -4,10 +4,17 @@
         <div class="row">
 
             @foreach($news_categories as $news_categorie)
-
+                @if(\Modules\News\Entities\Models\Main\NewsCategorie::count_cat_items($news_categorie->id))
                 <div class="col-lg-6">
-                    <a href="#{{$news_categorie->slug}}" class="text-success">{{$news_categorie->name}}</a>
+                        <a href="{{$url = route('main.news.categorie', ['slug' => $news_categorie->slug])}}" class="text-success">
+                            {{$news_categorie->name}}
+                        </a>
+                        <span class="badge badge-success float-right">
+                                {{\Modules\News\Entities\Models\Main\NewsCategorie::count_cat_items($news_categorie->id)}}
+                        </span>
+
                 </div>
+                @endif
 
             @endforeach
 

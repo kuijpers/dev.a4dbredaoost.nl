@@ -24,7 +24,7 @@
 @section('content')
 
     {{--{{dd($news_settings)}}--}}
-    {{--{{$news_settings}}--}}
+    {{--{{$news_categories}}--}}
 
     {{-- Content here--}}
 
@@ -62,6 +62,21 @@
 
                     <div class="card-body">
                         <h2 class="card-title">{{$news_item->title}}</h2>
+                        <h6 class="text-muted">
+                            @lang('news::main/lang.category'):
+                            <span class="text-muted text-success">
+                                <a href="{{$url = route('main.news.categorie', ['slug' => $news_item->categorie()->first()->slug])}}" class="text-success">
+                                    {{$news_item->categorie()->first()->name}}
+                                </a>
+                            </span>
+                        </h6>
+                        <p>
+
+                            @foreach($news_item->tags()->get() as $news_tag)
+                                <a href="{{$url = route('main.news.tag', ['slug' => $news_tag->slug])}}" class="badge badge-pill badge-success">{{$news_tag->name}}</a>
+                            @endforeach
+
+                        </p>
                         <p class="card-text">
 
                             {!! str_limit($news_item->content, 600) !!}
@@ -75,9 +90,11 @@
                         @lang('news::main/lang.index_posted_on')
                         {{Carbon\Carbon::parse($news_item->publish_date_start)->format('l d F Y H:i:s')}}
                         @lang('news::main/lang.index_made_by')
-                        <a href="{{$news_item->author_group}}/{{$news_item->getAuthorSlug($news_item->author_group)}}" class="text-success">
+
+                        <a href="{{route('main.news.author', [$news_item->getAuthorSlug($news_item->author_group)])}}" class="text-success">
                             {{$news_item->getAuthorName($news_item->author_group)}}
                         </a>
+
                     </div>
                 </div>
                 @endforeach

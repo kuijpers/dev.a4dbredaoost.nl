@@ -67,20 +67,36 @@
 
                 <!-- Title -->
                 <h1 class="mt-4">{{$news_item->title}}</h1>
-
                 <!-- Author -->
                 <p class="lead">
                     @lang('news::main/lang.post_made_by')
                     {{--<a href="#" class="text-success">Start Bootstrap</a>--}}
-                    <a href="{{$news_item->author_group}}/{{$news_item->getAuthorSlug($news_item->author_group)}}" class="text-success">
+                    <a href="{{route('main.news.author', [$news_item->getAuthorSlug($news_item->author_group)])}}" class="text-success">
                         {{$news_item->getAuthorName($news_item->author_group)}}
                     </a>
                 </p>
 
-                <hr>
-
                 <!-- Date/Time -->
                 <p>@lang('news::main/lang.post_posted_on') {{Carbon\Carbon::parse($news_item->publish_date_start)->format('l d F Y H:i:s')}}</p>
+
+
+                <hr>
+                <h6 class="text-muted">
+                    @lang('news::main/lang.category'):
+                    <span class="text-muted text-success">
+                        <a href="{{$url = route('main.news.categorie', ['slug' => $news_item->categorie()->first()->slug])}}" class="text-success">
+                            {{$news_item->categorie()->first()->name}}
+                        </a>
+                    </span>
+                </h6>
+                <p>
+
+                    @foreach($news_item->tags()->get() as $news_tag)
+                        <a href="{{$url = route('main.news.tag', ['slug' => $news_tag->slug])}}" class="badge badge-pill badge-success">{{$news_tag->name}}</a>
+                    @endforeach
+
+                    {{--{{$news_item->tags()->get()}}--}}
+                </p>
 
                 <hr>
 
