@@ -38,6 +38,13 @@ class Volunteer extends Authenticatable
 							'password',
 							'remember_token',
 						];
+
+	protected $table = 'volunteers';
+
+
+
+
+
     // Send notification to reset password
     public function sendPasswordResetNotification($token)
     {

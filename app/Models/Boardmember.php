@@ -43,6 +43,9 @@ class Boardmember extends Authenticatable
         					'remember_token',
     					];
 
+	protected $table = 'boardmembers';
+
+
     // Send notification to reset password
     public function sendPasswordResetNotification($token)
     {
