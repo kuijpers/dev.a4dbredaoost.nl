@@ -1,0 +1,16 @@
+{
+    "name": "SocialMedia",
+    "alias": "socialmedia",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\SocialMedia\\Providers\\SocialMediaServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}
