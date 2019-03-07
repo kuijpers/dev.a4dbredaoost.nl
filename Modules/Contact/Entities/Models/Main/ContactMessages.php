@@ -5,14 +5,11 @@ namespace Modules\Contact\Entities\Models\Main;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ContactSettings extends Model
+class ContactMessages extends Model
 {
 	use SoftDeletes;
 
 	protected $fillable = [];
 
-	protected $table = 'contact_settings';
-
-
-
+	protected $table = 'contact_messages';
 }
