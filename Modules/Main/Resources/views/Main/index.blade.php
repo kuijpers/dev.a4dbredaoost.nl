@@ -29,7 +29,7 @@
     @include('main::includes.announcements')
 
 
-    @include('layouts.main.components.social_media_component')
+    @include('socialmedia::includes.main.social_media_component')
 
     @include('main::includes.thankyou')
 

@@ -56,7 +56,7 @@
 
 @section('content')
 
-    {{--{{$text}}--}}
+    {{--{{$social_media_items}}--}}
 
     @if (session('success'))
         <div class="alert alert-success tosti">
@@ -86,8 +86,7 @@
 
     </div>
 
-    @component('layouts.main.components.social_media_component')
-    @endcomponent
+    @include('socialmedia::includes.main.social_media_component')
 
     <div class="section-c row p-5">
 

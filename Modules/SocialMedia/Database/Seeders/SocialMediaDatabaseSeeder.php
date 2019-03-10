@@ -16,6 +16,6 @@ class SocialMediaDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call("OthersTableSeeder");
+		$this->call(SocialMediaMainSeederTableSeeder::class);
     }
 }

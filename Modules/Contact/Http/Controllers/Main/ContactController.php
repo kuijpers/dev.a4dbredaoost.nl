@@ -13,6 +13,7 @@ use Modules\Contact\Emails\ContactformRequestMailer;
 use Modules\Contact\Emails\ContactformRespondMailer;
 use Modules\Contact\Entities\Models\Main\ContactCategorie;
 use Modules\Contact\Entities\Models\Main\ContactMessages;
+use Modules\SocialMedia\Entities\Models\Main\SocialMedia;
 
 class ContactController extends Controller
 {
