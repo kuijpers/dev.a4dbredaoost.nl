@@ -24,7 +24,11 @@ class CreateFaqTable extends Migration
 
 			$table->text('content');
 
-			$table->integer('web_order')->unique();
+			$table->integer('web_order');
+
+			$table->integer('faq_categorie_id')->unsigned();
+			$table->foreign('faq_categorie_id')->references('id')->on('faq_categorie')->onDelete('cascade');
+
 
 			$table->boolean('draft')->default(1);
 

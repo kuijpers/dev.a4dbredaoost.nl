@@ -16,6 +16,8 @@ class FaqDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call("OthersTableSeeder");
+		$this->call(FaqInformationTableSeeder::class);
+		$this->call(FaqCategorieTableSeeder::class);
+		$this->call(FaqTableSeeder::class);
     }
 }

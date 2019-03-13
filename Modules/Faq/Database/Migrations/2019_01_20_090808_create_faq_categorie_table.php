@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFaqsFaqCategoriesTable extends Migration
+class CreateFaqCategorieTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,21 @@ class CreateFaqsFaqCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('faqs_faq_categories', function (Blueprint $table) {
+        Schema::create('faq_categorie', function (Blueprint $table) {
             $table->increments('id');
 
-			$table->unsignedInteger('faq_id');
+			$table->string('name');
 
-			$table->unsignedInteger('faq_categorie_id');
+			$table->string('slug')->unique();
+
+			$table->string('web_order')->nullable()->unique();
+
+			// active
+			$table->boolean('publisher_approve')->default(0);
 
 			$table->softDeletes();
 
 			$table->timestamps();
-
-			$table->foreign('faq_id')->references('id')->on('faq')->onDelete('cascade');
-			$table->foreign('faq_categorie_id')->references('id')->on('faq_categorie')->onDelete('cascade');
         });
     }
 
@@ -36,6 +38,6 @@ class CreateFaqsFaqCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('faqs_faq_categories');
+        Schema::dropIfExists('faq_categorie');
     }
 }
