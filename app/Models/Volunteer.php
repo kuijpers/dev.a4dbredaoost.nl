@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Notifications\VolunteerResetPasswordNotification;
@@ -9,6 +10,8 @@ use App\Notifications\VolunteerResetPasswordNotification;
 class Volunteer extends Authenticatable
 {
     use Notifiable;
+
+	use SoftDeletes;
 
     protected $guard = 'volunteer';
 

@@ -5,10 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 use Auth;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class BoardmembersDashboardSettings extends Model
 {
+
+	use SoftDeletes;
+
 	protected $guard = 'boardmember';
+
+	protected $table = 'boardmembers_dashboard_settings';
 
 	protected $fillable = [
 							'boardmembers_id',
