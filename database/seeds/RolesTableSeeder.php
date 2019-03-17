@@ -13,7 +13,7 @@ class RolesTableSeeder extends Seeder
     public function run()
     {
 		$roles = [
-
+//			id = 1
 			[
 				'name' 			=> 'Webmaster',
 				'slug' 			=> str_slug('webmaster', '-'),
@@ -59,7 +59,7 @@ class RolesTableSeeder extends Seeder
 									'change-dyki-setting' 		=> true,
 								],
 			],
-
+//			id = 2
 			[
 				'name' 			=> 'Admin',
 				'slug' 			=> str_slug('admin', '-'),
@@ -99,7 +99,7 @@ class RolesTableSeeder extends Seeder
 									'change-dyki-setting' 		=> true,
 				],
 			],
-
+//			id = 3
 			[
 				'name' 			=> 'Author',
 				'slug' 			=> str_slug('author', '-'),
@@ -117,7 +117,7 @@ class RolesTableSeeder extends Seeder
 									'delete-own-dyki-post' 		=> true,
 								],
 			],
-
+//			id = 4
 			[
 				'name' 			=> 'Editor',
 				'slug' 			=> str_slug('editor', '-'),
@@ -132,7 +132,7 @@ class RolesTableSeeder extends Seeder
 									'delete-dyki-post' 			=> true,
 								],
 			],
-
+//			id = 5
 			[
 				'name' 			=> 'Publisher',
 				'slug' 			=> str_slug('publisher', '-'),
@@ -149,7 +149,7 @@ class RolesTableSeeder extends Seeder
 			],
 
 
-
+//			id = 6
 			[
 				'name' 			=> 'President',
 				'slug' 			=> str_slug('president', '-'),
@@ -159,7 +159,7 @@ class RolesTableSeeder extends Seeder
 									'delete-volunteers'			=> true,
 									],
 			],
-
+//			id = 7
 			[
 				'name' 			=> 'Vice President',
 				'slug' 			=> str_slug('vice president', '-'),
@@ -169,7 +169,7 @@ class RolesTableSeeder extends Seeder
 									'delete-volunteers'			=> true,
 									],
 			],
-
+//			id = 8
 			[
 				'name' 			=> 'Secretary',
 				'slug' 			=> str_slug('secretary', '-'),
@@ -177,8 +177,8 @@ class RolesTableSeeder extends Seeder
 									'create-volunteers'			=> true,
 									'ban-volunteers'			=> true,
 									'delete-volunteers'			=> true,],
-									],
-
+			],
+//			id = 9
 			[
 				'name' 			=> 'Treasurer',
 				'slug' 			=> str_slug('treasurer', '-'),
@@ -188,7 +188,7 @@ class RolesTableSeeder extends Seeder
 									'delete-volunteers'			=> true,
 									],
 			],
-
+//			id = 10
 			[
 				'name' 			=> 'Member',
 				'slug' 			=> str_slug('member', '-'),

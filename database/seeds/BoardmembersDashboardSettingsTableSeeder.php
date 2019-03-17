@@ -39,6 +39,21 @@ class BoardmembersDashboardSettingsTableSeeder extends Seeder
 				'boardmembers_theme' => 'lilac',
 				'boardmembers_language' => 'nl',
 			],
+			[
+				'boardmembers_id' => 6,
+				'boardmembers_theme' => 'light',
+				'boardmembers_language' => 'nl',
+			],
+			[
+				'boardmembers_id' => 7,
+				'boardmembers_theme' => 'light',
+				'boardmembers_language' => 'nl',
+			],
+			[
+				'boardmembers_id' => 8,
+				'boardmembers_theme' => 'light',
+				'boardmembers_language' => 'nl',
+			],
 
 		];
 		foreach ($settings as $key => $value) {
