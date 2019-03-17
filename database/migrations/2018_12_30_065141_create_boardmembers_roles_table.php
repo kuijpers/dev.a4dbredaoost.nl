@@ -14,12 +14,16 @@ class CreateBoardmembersRolesTable extends Migration
     public function up()
     {
 		Schema::create('boardmembers_roles', function (Blueprint $table) {
-			$table->unsignedInteger('boardmember_id');
+			$table->unsignedInteger('boardmembers_id');
 			$table->unsignedInteger('role_id');
+
+			$table->softDeletes();
+
 			$table->timestamps();
 
-			$table->unique(['boardmember_id','role_id']);
-			$table->foreign('boardmember_id')->references('id')->on('boardmembers')->onDelete('cascade');
+			$table->unique(['boardmembers_id','role_id']);
+
+			$table->foreign('boardmembers_id')->references('id')->on('boardmembers')->onDelete('cascade');
 			$table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
 		});
     }
@@ -31,6 +35,6 @@ class CreateBoardmembersRolesTable extends Migration
      */
     public function down()
     {
-		Schema::dropIfExists('boardmembers_roles');
+//		Schema::dropIfExists('boardmembers_roles');
     }
 }

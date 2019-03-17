@@ -15,10 +15,15 @@ class CreateBoardmembersDashboardSettingsTable extends Migration
     {
         Schema::create('boardmembers_dashboard_settings', function (Blueprint $table) {
             $table->increments('id');
-			$table->integer('boardmembers_id');
+			$table->unsignedInteger('boardmembers_id');
 			$table->string('boardmembers_theme')->default('light');
 			$table->string('boardmembers_language')->default('nl');
-            $table->timestamps();
+
+			$table->softDeletes();
+
+			$table->timestamps();
+
+			$table->foreign('boardmembers_id')->references('id')->on('boardmembers')->onDelete('cascade');
         });
     }
 

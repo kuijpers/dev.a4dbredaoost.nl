@@ -31,7 +31,7 @@ class CreateBoardmembersTable extends Migration
             $table->date('dob')->nullable();
 			$table->string('profile_img')->nullable();
 
-			$table->text('about_me')->nullable(); // IN SEEDER AANVULLEN!!!!!!!!!!!!
+			$table->text('about_me')->nullable();
 
 			$table->string('show_email')->default(1);
 			$table->string('show_sec_email')->default(1);
