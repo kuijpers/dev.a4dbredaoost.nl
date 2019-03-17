@@ -26,6 +26,9 @@ class CreateVolunteersTable extends Migration
             $table->date('dob')->nullable();
 			$table->string('group')->default('Volunteer');
             $table->rememberToken();
+
+            $table->softDeletes();
+
             $table->timestamps();
         });
     }

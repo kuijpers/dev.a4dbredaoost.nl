@@ -19,6 +19,9 @@ class CreateRolesTable extends Migration
 			$table->string('slug')->unique();
 			$table->jsonb('permissions')->default('{}'); // jsonb deletes duplicates
 			$table->text('description')->nullable();
+
+			$table->softDeletes();
+
 			$table->timestamps();
 		});
     }
