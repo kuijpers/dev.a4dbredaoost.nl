@@ -23,8 +23,8 @@
 
 @section('content')
 
-    {{--{{dd($news_settings)}}--}}
-    {{--{{$news_categories}}--}}
+    {{--{{dd($news_items)}}--}}
+    {{$news_items}}
 
     {{-- Content here--}}
 
@@ -40,6 +40,7 @@
                 </h1>
                 <hr>
                 @foreach($news_items as $news_item)
+
                 <!-- Blog Post -->
                 <div class="card mb-4">
 
@@ -97,6 +98,8 @@
 
                     </div>
                 </div>
+
+
                 @endforeach
 
 

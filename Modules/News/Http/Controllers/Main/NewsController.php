@@ -25,7 +25,6 @@ class NewsController extends Controller
 		$news_tags 					= static::get_tags();
 
 
-
         return view('news::Main.index')
 			->with(compact( 'news_categories',
 							'news_tags',
