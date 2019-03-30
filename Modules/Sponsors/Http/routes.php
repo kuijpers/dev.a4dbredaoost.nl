@@ -1,8 +1,94 @@
 <?php
 
-Route::group(['middleware' => 'web', 'prefix' => 'sponsors', 'namespace' => 'Modules\Sponsors\Http\Controllers\Main'], function()
-{
-    Route::get('/', 'SponsorsController@index')->name('main.sponsors.index');
+	#####################################
+	#									#
+	#			Main website			#
+	#									#
+	#####################################
 
-    Route::get('/ga-naar/{slug}', 'SponsorsController@click')->name('main.sponsors.click');
-});
+
+	Route::group(['middleware' => 'web', 'prefix' => 'sponsors', 'namespace' => 'Modules\Sponsors\Http\Controllers\Main'], function()
+	{
+		Route::get('/', 'SponsorsController@index')->name('main.sponsors.index');
+
+		Route::get('/ga-naar/{slug}', 'SponsorsController@click')->name('main.sponsors.click');
+	});
+
+
+
+	#####################################
+	#									#
+	#			Board website			#
+	#									#
+	#####################################
+
+
+	Route::group(['middleware' => 'web', 'prefix' => 'bestuur/sponsors', 'namespace' => 'Modules\Sponsors\Http\Controllers\Board'], function()
+	{
+
+		Route::get('informatie/', 'SponsorsInformationController@index')->name('board.sponsors.information.index');
+
+		Route::post('informatie/', 'SponsorsInformationController@store')->name('board.sponsors.information.store');
+
+
+		Route::get('informatie/{id}/edit', 'SponsorsInformationController@edit')->name('board.sponsors.information.edit');
+
+		Route::get('informatie/{id}', 'SponsorsInformationController@show')->name('board.sponsors.information.show');
+
+		Route::patch('informatie/{id}', 'SponsorsInformationController@update')->name('board.sponsors.information.update');
+
+
+
+
+		Route::get('/', 'SponsorsController@index')->name('board.sponsors.index');
+
+
+		Route::get('/create', 'SponsorsController@create')->name('board.sponsors.create');
+
+		Route::post('/', 'SponsorsController@store')->name('board.sponsors.store');
+
+
+		Route::get('/{id}/edit', 'SponsorsController@edit')->name('board.sponsors.edit');
+
+		Route::get('/{id}', 'SponsorsController@show')->name('board.sponsors.show');
+
+		Route::patch('/{id}', 'SponsorsController@update')->name('board.sponsors.update');
+
+
+		Route::delete('/{id}', 'SponsorsController@delete')->name('board.sponsors.delete');
+
+
+		Route::delete('/{id}', 'SponsorsController@destroy')->name('board.sponsors.destroy');
+
+
+
+	});
+
+
+	#####################################
+	#									#
+	#				API					#
+	#									#
+	#####################################
+
+
+
+	Route::group(['middleware' => 'web', 'prefix' => 'api/board/sponsors/', 'namespace' => 'Modules\Sponsors\Http\Controllers\Board'], function()
+	{
+
+		Route::post('information/create', 'SponsorsInformationController@store')->name('api.sponsors.information.store');
+
+		Route::post('information/update', 'SponsorsInformationController@update')->name('api.sponsors.information.update');
+
+		Route::post('information/restore', 'SponsorsInformationController@restore')->name('api.sponsors.information.restore');
+
+		Route::get('information/{id}/delete', 'SponsorsInformationController@delete')->name('board.sponsors.information.delete');
+
+		Route::get('information/{id}/destroy', 'SponsorsInformationController@destroy')->name('api.sponsors.information.destroy');
+
+
+
+		Route::post('information/settings', 'SponsorsSettingsController@update')->name('api.sponsors.settings.update');
+
+
+	});
