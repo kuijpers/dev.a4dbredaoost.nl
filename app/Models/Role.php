@@ -37,7 +37,7 @@ class Role extends Model
 
 	public function boardmembers()
 	{
-		return $this->belongsToMany(Boardmember::class, 'boardmembers_roles');
+		return $this->belongsToMany(Boardmember::class, 'boardmembers_roles', 'role_id', 'boardmembers_id');
 	}
 
 	public function hasAccess(array $permissions)

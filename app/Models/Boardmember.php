@@ -15,6 +15,8 @@ class Boardmember extends Authenticatable
 
     protected $guard = 'boardmember';
 
+    protected $table = 'boardmembers';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -46,8 +48,6 @@ class Boardmember extends Authenticatable
         					'remember_token',
     					];
 
-	protected $table = 'boardmembers';
-
 
     // Send notification to reset password
     public function sendPasswordResetNotification($token)
@@ -58,7 +58,7 @@ class Boardmember extends Authenticatable
 
 	public function roles()
 	{
-		return $this->belongsToMany(Role::class, 'boardmembers_roles');
+		return $this->belongsToMany(Role::class, 'boardmembers_roles', 'boardmembers_id', 'role_id');
 	}
 
 	/**
