@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Board;
 
+use App\Models\Boardmember;
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -33,8 +34,11 @@ class MemberSettingsController extends Controller
 							'Lid' => 'board.member',
 							'Instellingen' => 'board.member.settings',
 						];
+		$user			= Auth::user();
 
-		return view('board.member.settings')->with(compact('breadcrumbles'));
+		return view('board.member.settings')->with(compact('breadcrumbles',
+															'user'
+													));
 
     }
 
@@ -157,6 +161,32 @@ class MemberSettingsController extends Controller
 			->update(['boardmembers_language' => $language]);
 
 		return TRUE;
+
+	}
+
+	/**
+	 *
+	 *	Update what will and will not be shown as contact information on the website
+	 *
+	 */
+
+	public function update_contact_show_web_settings(Request $request){
+
+		// First let's validate the request
+
+		$this->validate($request, [
+			'column'			=> 'required',
+			'value' 			=> 'required|boolean',
+		]);
+
+		// If valid
+		Boardmember::where('id', Auth::user()->id)
+			->update([$request->column => $request->value]);
+
+		$response = array(
+			'status' => 'success',
+		);
+		return response()->json($response);
 
 	}
 

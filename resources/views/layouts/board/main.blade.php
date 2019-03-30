@@ -3,11 +3,11 @@
 <!-- Start including header -->
 @include('board.segments.header')
 <!-- End including header-->
-
+@include('board.components.session-alert')
 
 <body class="framed main-scrollable">
 
-@include('components.session-alert')
+
 
 <div class="wrapper">
     <nav class="navbar navbar-static-top header-navbar">
