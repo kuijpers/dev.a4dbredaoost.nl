@@ -73,22 +73,22 @@
 
 
 
-	Route::group(['middleware' => 'web', 'prefix' => 'api', 'namespace' => 'Modules\Didyouknow\Http\Controllers\Board'], function()
+	Route::group(['middleware' => 'web', 'prefix' => 'api/board/dyk/', 'namespace' => 'Modules\Didyouknow\Http\Controllers\Board'], function()
 	{
 
-		Route::post('board/dyk/information/create', 'DidyouknowInformationController@store')->name('api.didyouknow.information.store');
+		Route::post('information/create', 'DidyouknowInformationController@store')->name('api.didyouknow.information.store');
 
-		Route::post('board/dyk/information/update', 'DidyouknowInformationController@update')->name('api.didyouknow.information.update');
+		Route::post('information/update', 'DidyouknowInformationController@update')->name('api.didyouknow.information.update');
 
-		Route::post('board/dyk/information/restore', 'DidyouknowInformationController@restore')->name('api.didyouknow.information.restore');
+		Route::post('information/restore', 'DidyouknowInformationController@restore')->name('api.didyouknow.information.restore');
 
-		Route::get('board/dyk/information/{id}/delete', 'DidyouknowInformationController@delete')->name('board.didyouknow.information.delete');
+		Route::get('information/{id}/delete', 'DidyouknowInformationController@delete')->name('board.didyouknow.information.delete');
 
-		Route::get('board/dyk/information/{id}/destroy', 'DidyouknowInformationController@destroy')->name('api.didyouknow.information.destroy');
+		Route::get('information/{id}/destroy', 'DidyouknowInformationController@destroy')->name('api.didyouknow.information.destroy');
 
 
 
-		Route::post('board/dyk/information/settings', 'DidyouknowSettingsController@update')->name('api.didyouknow.settings.update');
+		Route::post('information/settings', 'DidyouknowSettingsController@update')->name('api.didyouknow.settings.update');
 
 
 	});
