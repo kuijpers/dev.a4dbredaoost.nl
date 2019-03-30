@@ -58,13 +58,13 @@
 
                 <ul class="nav nav-menu__second collapse">
                     <li>
-                        <a href="#">Settings</a>
+                        <a href="{{ route('board.sponsors.settings.index') }}">Settings</a>
                     </li>
                     <li>
-                        <a href="{{ route('board.didyouknow.information.index') }}">Informatie</a>
+                        <a href="{{ route('board.sponsors.information.index') }}">Informatie</a>
                     </li>
                     <li>
-                        <a href="#">Stellingen</a>
+                        <a href="{{ route('board.sponsors.index') }}">Sponsors</a>
                     </li>
                 </ul>
             </li>
