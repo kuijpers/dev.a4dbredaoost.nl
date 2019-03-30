@@ -14,6 +14,7 @@ class SponsorsSettingsController extends Controller
      */
     public function index()
     {
+		return 'Sponsorsettings index page';
         return view('sponsors::index');
     }
 
@@ -23,7 +24,8 @@ class SponsorsSettingsController extends Controller
      */
     public function create()
     {
-        return view('sponsors::create');
+		return 'Sponsorsettings create page';
+//        return view('sponsors::create');
     }
 
     /**
@@ -33,6 +35,7 @@ class SponsorsSettingsController extends Controller
      */
     public function store(Request $request)
     {
+		return 'Sponsorsettings store page';
     }
 
     /**
@@ -41,7 +44,8 @@ class SponsorsSettingsController extends Controller
      */
     public function show()
     {
-        return view('sponsors::show');
+		return 'Sponsorsettings show page';
+//        return view('sponsors::show');
     }
 
     /**
@@ -50,7 +54,8 @@ class SponsorsSettingsController extends Controller
      */
     public function edit()
     {
-        return view('sponsors::edit');
+		return 'Sponsorsettings edit page';
+//        return view('sponsors::edit');
     }
 
     /**
@@ -60,6 +65,7 @@ class SponsorsSettingsController extends Controller
      */
     public function update(Request $request)
     {
+		return 'Sponsorsettings update page';
     }
 
     /**
@@ -68,5 +74,6 @@ class SponsorsSettingsController extends Controller
      */
     public function destroy()
     {
+		return 'Sponsorsettings destroy page';
     }
 }
