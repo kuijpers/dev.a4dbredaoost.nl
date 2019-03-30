@@ -36,6 +36,10 @@ return [
 
 	'button_update_your_profile' => 'Update your profile.',
 
+	'button_update_your_password' => 'Update your password.',
+
+	'button_update_your_avatar' => 'Update your avatar.',
+
 
 	// Workgroups
 
