@@ -26,6 +26,7 @@
 	Route::group(['middleware' => 'web', 'prefix' => 'bestuur/sponsors', 'namespace' => 'Modules\Sponsors\Http\Controllers\Board'], function()
 	{
 
+		// INFORMATION SECTION
 		Route::get('informatie/', 'SponsorsInformationController@index')->name('board.sponsors.information.index');
 
 		Route::post('informatie/', 'SponsorsInformationController@store')->name('board.sponsors.information.store');
@@ -38,8 +39,11 @@
 		Route::patch('informatie/{id}', 'SponsorsInformationController@update')->name('board.sponsors.information.update');
 
 
+		// SETTINGS SECTION
+		Route::get('settings/', 'SponsorsSettingsController@index')->name('board.sponsors.settings.index');
 
 
+		// MAIN SECTION
 		Route::get('/', 'SponsorsController@index')->name('board.sponsors.index');
 
 
