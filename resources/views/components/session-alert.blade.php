@@ -19,7 +19,7 @@
     </div>
 @endif
 
-@if(Session::has('danger-message'))
+@if(\Session::has('danger-message'))
     <div class="alert alert-danger alert-dismissible fade show tosti" role="alert">
         <i class="fas fa-times-circle"></i>
         <em> {!! session('danger-message') !!}</em>

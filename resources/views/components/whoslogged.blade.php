@@ -21,6 +21,7 @@
 @if(Auth::guard('boardmember')->check())
     <p class="text-success">
         You are Logged in as a <strong>BOARDMEMBER</strong>.
+        {{Auth::guard('boardmember')->user()->name}}
     </p>
 @else
     <p class="text-danger">

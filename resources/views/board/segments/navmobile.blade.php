@@ -6,6 +6,7 @@
     <div class="header-navbar-mobile__title"><span>@yield('title')</span></div>
     <div class="header-navbar-mobile__settings dropdown"><a class="btn dropdown-toggle" href="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle-o"></i></a>
         <ul class="dropdown-menu dropdown-menu-right">
+            <div class="sidebar__utitle">{{ Auth::user()->name }}</div>
             <li>
                 <a href="{{ route('board.member.profile') }}">
                     <i class="fa fa-user-circle-o"></i>
@@ -19,11 +20,11 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('board.logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                <a href="{{ route('board.logout') }}"onclick="event.preventDefault();document.getElementById('logout-form-mobile').submit();">
                     <i class="fa fa-power-off"></i>
                     &nbsp; {{ __('nav_overall.board_member_logout_nav') }}
                 </a>
-                <form id="logout-form" action="{{ route('board.logout') }}" method="POST" style="display: none;">
+                <form id="logout-form-mobile" action="{{ route('board.logout') }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
                 </form>
             </li>
