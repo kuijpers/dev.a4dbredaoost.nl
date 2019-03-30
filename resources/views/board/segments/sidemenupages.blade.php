@@ -41,15 +41,35 @@
 
         </ul>
 
-        <li><a href="#">
-                <div class="nav-menu__ico">
-                    <i class="fa fa-fw fa-handshake-o"></i>
-                </div>
-                <div class="nav-menu__text">
-                    <span>Sponsors</span>
-                </div>
-            </a>
-        </li>
+
+        <ul class="nav nav-menu">
+            <li>
+                <a href="#">
+                    <div class="nav-menu__ico">
+                        <i class="fa fa-fw fa-handshake-o"></i>
+                    </div>
+                    <div class="nav-menu__text">
+                        <span>Sponsors</span>
+                    </div>
+                    <div class="nav-menu__right">
+                        <i class="fa fa-fw fa-angle-right arrow"></i>
+                    </div>
+                </a>
+
+                <ul class="nav nav-menu__second collapse">
+                    <li>
+                        <a href="#">Settings</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('board.didyouknow.information.index') }}">Informatie</a>
+                    </li>
+                    <li>
+                        <a href="#">Stellingen</a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
 
         <li><a href="#">
                 <div class="nav-menu__ico">
