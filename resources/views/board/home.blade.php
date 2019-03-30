@@ -2,7 +2,7 @@
 
 @section('title')
 
-    Dashboard
+    Dashboard bestuur
 
 @endsection
 
@@ -15,6 +15,7 @@
 @endsection
 
 @section('jsbottom')
+
 
 @endsection
 
