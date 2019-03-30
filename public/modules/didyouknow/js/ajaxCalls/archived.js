@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 		e.preventDefault();
 
-		var url						=	"/api/board/information/restore";
+		var url						=	"/api/board/dyk/information/restore";
 
 		var id_field				=	$('#edit_archived_id');
 

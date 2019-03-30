@@ -34,7 +34,7 @@ $(document).ready(function() {
 
 		$.ajax({
 			type:"POST",
-			url:"/api/board/information/create",
+			url:"/api/board/dyk/information/create",
 			data: {_token: CSRF_TOKEN,
 				title:title,
 				body:body,

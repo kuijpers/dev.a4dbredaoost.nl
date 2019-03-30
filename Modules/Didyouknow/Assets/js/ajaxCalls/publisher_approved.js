@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 		var edit_type				=	'edit_publisher_approved';
 
-		var url						=	"/api/board/information/update";
+		var url						=	"/api/board/dyk/information/update";
 
 		var id_field				=	$('#edit_publisher_approved_id');
 

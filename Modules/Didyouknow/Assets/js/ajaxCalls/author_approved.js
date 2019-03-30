@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 		var edit_type		=	'edit_author_approved';
 
-		var url				=	"/api/board/information/update";
+		var url				=	"/api/board/dyk/information/update";
 
 		var id_field		=	$('#edit_author_approved_id');
 

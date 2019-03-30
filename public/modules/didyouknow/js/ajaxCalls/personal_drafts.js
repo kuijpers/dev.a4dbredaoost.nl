@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 		var edit_type		=	'edit_personal_drafts';
 
-		var url				=	"/api/board/information/update";
+		var url				=	"/api/board/dyk/information/update";
 
 		var id_field		=	$('#edit_personal_drafts_id');
 

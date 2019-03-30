@@ -10,7 +10,7 @@ $('#destroy_article').on('show.bs.modal', function(e) {
 
 	var title		=	info['title'];
 
-	var href		= '/api/board/information/'+ id + '/destroy';
+	var href		= '/api/board/dyk/information/'+ id + '/destroy';
 
 	console.log(href);
 

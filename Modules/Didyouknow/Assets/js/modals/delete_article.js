@@ -14,7 +14,7 @@ $('#delete_article').on('show.bs.modal', function(e) {
 
 	//var href		= window.location.protocol+ '://' + window.location.hostname + '/bestuur/weetjes/information/'+ id + '/delete';
 
-	var href		= '/api/board/information/'+ id + '/delete';
+	var href		= '/api/board/dyk/information/'+ id + '/delete';
 
 	console.log(href);
 

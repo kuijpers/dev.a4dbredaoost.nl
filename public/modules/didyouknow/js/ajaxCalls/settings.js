@@ -82,7 +82,7 @@ $(document).ready(function() {
 
 	//	 Make AJAX call
 
-		var url						=	"/api/board/information/settings";
+		var url						=	"/api/board/dyk/information/settings";
 
 		var CSRF_TOKEN 			= 	$('meta[name="csrf-token"]').attr('content');
 
