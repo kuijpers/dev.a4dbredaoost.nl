@@ -7,7 +7,7 @@
         @if($board_president->show_img)
             <img class="card-img-top img-thumbnail mx-auto mt-4 d-block"
                  src="
-                @if($board_president->profile_img){{ asset('modules/board/img/'.$board_president->profile_img) }}" alt="{{ $board_president->name }}">
+                @if($board_president->profile_img){{ asset('storage/'.$board_president->profile_img) }}" alt="{{ $board_president->name }}">
                 @else{{ asset('img/no-image.png') }}" alt="@lang('board::main/lang.error_no_image')">
                 @endif
         @else
