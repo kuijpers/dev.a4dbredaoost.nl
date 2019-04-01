@@ -3,8 +3,15 @@
 namespace Modules\Sponsors\Entities\Models\Board;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SponsorLink extends Model
 {
-    protected $fillable = [];
+	use SoftDeletes;
+
+	protected $dates = ['deleted_at'];
+
+	protected $fillable = [];
+
+	protected $table = 'sponsor_link';
 }
