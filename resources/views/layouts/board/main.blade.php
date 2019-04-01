@@ -8,7 +8,6 @@
 <body class="framed main-scrollable">
 
 
-
 <div class="wrapper">
     <nav class="navbar navbar-static-top header-navbar">
         <!-- Start include Mobile Navigation -->

@@ -5,17 +5,32 @@ namespace Modules\Sponsors\Http\Controllers\Board;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class SponsorsSettingsController extends Controller
 {
-    /**
+	public function __construct()
+	{
+		$this->middleware('auth:boardmember');
+	}
+
+	/**
      * Display a listing of the resource.
      * @return Response
      */
     public function index()
     {
-		return 'Sponsorsettings index page';
-        return view('sponsors::index');
+		$breadcrumbles = [
+			'Dashboard bestuur' => 'board.home',
+			'Sponsors' => 'board.sponsors.index',
+			'Settings'=>'',
+		];
+
+		$user 			= Auth::user();
+
+		return view('sponsors::Board.settings.index')
+			->with(compact('breadcrumbles',
+				'user'));
     }
 
     /**

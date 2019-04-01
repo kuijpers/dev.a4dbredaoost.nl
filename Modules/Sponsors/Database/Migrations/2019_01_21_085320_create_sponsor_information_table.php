@@ -24,7 +24,7 @@ class CreateSponsorInformationTable extends Migration
 
 			$table->text('body');
 
-			$table->integer('web_order')->unique();
+			$table->integer('web_order')->unique()->nullable();
 
 			$table->boolean('draft')->default(1);
 
