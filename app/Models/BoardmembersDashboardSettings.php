@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Auth;
+
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Auth;
 
 class BoardmembersDashboardSettings extends Model
 {
