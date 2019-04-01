@@ -59,14 +59,6 @@ class DidyouknowInformationController extends Controller
 				));
     }
 
-	/**
-	 * Show the form for creating a new resource.
-	 * @return Response
-	 */
-	public function create()
-	{
-		return view('didyouknow::board.information.create');
-	}
 
 	/**
 	 * Store a newly created resource in storage.
@@ -125,22 +117,7 @@ class DidyouknowInformationController extends Controller
 
 	}
 
-	/**
-	 * Show the specified resource.
-	 * @return Response
-	 */
-	public function show()
-	{
-		return view('didyouknow::board.information.show');
-	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 * @return Response
-	 */
-	public function edit()
-	{
-	}
 
 	/**
 	 * Update the specified resource in storage.

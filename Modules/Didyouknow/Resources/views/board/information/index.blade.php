@@ -1,6 +1,6 @@
 <?php
-    $rpc = new App\Http\Controllers\Board\RolesPermissionController;
-?>
+//    $rpc = new App\Http\Controllers\Board\RolesPermissionController;
+//?>
 
 @extends('layouts.board.main')
 
@@ -53,13 +53,25 @@
 
     <hr>
 
-        @if(!$rpc->CanAccessAs(['webmaster' , 'admin' , 'author' , 'editor' , 'publisher']))
+        @if(!$rpc->CanAccessAs([
+                                'webmaster' ,
+                                'admin' ,
+                                'author' ,
+                                'editor' ,
+                                'publisher'
+                                ]))
             <div class="alert alert-danger alert-dismissible text-center" role="alert">
                 @lang('didyouknow::board/notifications.no_permission_to_access')
             </div>
         @endif
 
-    @if($rpc->CanAccessAs(['webmaster' , 'admin' , 'author' , 'editor' , 'publisher']))
+    @if($rpc->CanAccessAs([
+                            'webmaster' ,
+                            'admin' ,
+                            'author' ,
+                            'editor' ,
+                            'publisher'
+                            ]))
     <div class="row">
         <div class="col-md-12">
             @if($rpc->CanAccessAs(['webmaster' , 'admin']))
@@ -73,6 +85,7 @@
                     </h3>
                 </div>
                 <div class="panel-body">
+
                     <ul class="nav nav-tabs" role="tablist">
 
                         {{-- Call for personal drafts --}}
@@ -175,8 +188,11 @@
                         @include('didyouknow::board.segments.information_tabs')
 
                     </div>
+
                 </div>
             </div>
+
+
         </div>
     </div>
     @endif

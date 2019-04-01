@@ -27,9 +27,14 @@ class DidyouknowController extends Controller
 			->where('author_approve', '=', 1)
 			->where('editor_approve', '=', 1)
 			->where('publisher_approve', '=', 1)
-			->where('publish_date_start', '<=', Carbon::now())
-			//->whereRaw('publish_date_start >= publish_date_end')
-			->where('publish_date_start', '>=', 'publish_date_end')
+//			->where('publish_date_start', '<=', Carbon::now())
+//			->orWhere('publish_date_start', '>', 'publish_date_end')
+//			->orWhere('publish_date_end', '>=', Carbon::now())
+			->whereRaw('`publish_date_start` <= NOW()
+						AND 
+						`publish_date_end` >= NOW()
+						OR
+						`publish_date_end` < `publish_date_start`')
 			->get();
 
     	// Statements

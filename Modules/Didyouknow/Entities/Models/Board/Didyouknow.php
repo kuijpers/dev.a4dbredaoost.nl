@@ -3,10 +3,15 @@
 namespace Modules\Didyouknow\Entities\Models\Board;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Didyouknow extends Model
 {
-    protected $fillable = [
+	use SoftDeletes;
+
+	protected $dates = ['deleted_at'];
+
+	protected $fillable = [
 		'question',
 		'answer',
 		'draft',
