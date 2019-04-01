@@ -1,8 +1,13 @@
 <div class="sidebar__menu">
     <div class="sidebar__utitle">Web Paginas</div>
     <ul class="nav nav-menu">
-
-        <li><a href="#">
+        {{-- HOME NAV --}}
+        @if($rpc->CanAccessAs([
+                                'webmaster' ,
+                                //'member' ,
+                                ]))
+        <li>
+            <a href="#">
                 <div class="nav-menu__ico">
                     <i class="fa fa-fw fa-home"></i>
                 </div>
@@ -11,7 +16,14 @@
                 </div>
             </a>
         </li>
+        @endif
+        {{-- END HOME NAV --}}
 
+        {{-- WHO ARE WE NAV --}}
+        @if($rpc->CanAccessAs([
+                                'webmaster' ,
+                                //'member' ,
+                                ]))
         <ul class="nav nav-menu">
             <li>
                 <a href="#">
@@ -27,21 +39,43 @@
                 </a>
 
                 <ul class="nav nav-menu__second collapse">
+                    @if($rpc->CanAccessAs([
+                                            'webmaster' ,
+                                            //'member' ,
+                                            ]))
                     <li>
                         <a href="#">De organisatie</a>
                     </li>
+                    @endif
+
+                    @if($rpc->CanAccessAs([
+                                            'webmaster' ,
+                                            //'member' ,
+                                            ]))
                     <li>
                         <a href="#">Het bestuur</a>
                     </li>
+                    @endif
+
+                    @if($rpc->CanAccessAs([
+                                'webmaster' ,
+                                //'member' ,
+                                ]))
                     <li>
                         <a href="#">Tijdlijn</a>
                     </li>
+                    @endif
                 </ul>
             </li>
-
         </ul>
+        @endif
+        {{-- END WHO ARE WE NAV --}}
 
-
+        {{--  SPONSORS NAV --}}
+        @if($rpc->CanAccessAs([
+                                'webmaster' ,
+                                'member' ,
+                                ]))
         <ul class="nav nav-menu">
             <li>
                 <a href="#">
@@ -57,21 +91,45 @@
                 </a>
 
                 <ul class="nav nav-menu__second collapse">
-                    <li>
-                        <a href="{{ route('board.sponsors.settings.index') }}">Settings</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('board.sponsors.information.index') }}">Informatie</a>
-                    </li>
+                    @if($rpc->CanAccessAs([
+                                            'webmaster' ,
+                                            //'member' ,
+                                            ]))
                     <li>
                         <a href="{{ route('board.sponsors.index') }}">Sponsors</a>
                     </li>
+                    @endif
+
+                    @if($rpc->CanAccessAs([
+                                            'webmaster' ,
+                                            'member' ,
+                                            ]))
+                    <li>
+                        <a href="{{ route('board.sponsors.information.index') }}">Informatie</a>
+                    </li>
+                    @endif
+
+                    @if($rpc->CanAccessAs([
+                                            'webmaster' ,
+                                            //'member' ,
+                                            ]))
+                    <li>
+                        <a href="{{ route('board.sponsors.settings.index') }}">Settings</a>
+                    </li>
+                    @endif
                 </ul>
             </li>
-
         </ul>
+        @endif
+        {{-- END SPONSOR NAV --}}
 
-        <li><a href="#">
+        {{-- NEWS NAV --}}
+        @if($rpc->CanAccessAs([
+                                'webmaster' ,
+                                //'member' ,
+                                ]))
+        <li>
+            <a href="#">
                 <div class="nav-menu__ico">
                     <i class="fa fa-fw fa-newspaper-o"></i>
                 </div>
@@ -80,8 +138,17 @@
                 </div>
             </a>
         </li>
+        @endif
+        {{-- END NEWS NAV --}}
 
-        <li><a href="#">
+
+        {{-- CALENDAR NAV --}}
+        @if($rpc->CanAccessAs([
+                                'webmaster' ,
+                                //'member' ,
+                                ]))
+        <li>
+            <a href="#">
                 <div class="nav-menu__ico">
                     <i class="fa fa-fw fa-calendar"></i>
                 </div>
@@ -90,7 +157,15 @@
                 </div>
             </a>
         </li>
+        @endif
+        {{-- END CALENDAR NAV --}}
 
+
+        {{-- DID YOU KNOW NAV--}}
+        @if($rpc->CanAccessAs([
+                                'webmaster' ,
+                                //'member' ,
+                                ]))
         <ul class="nav nav-menu">
             <li>
                 <a href="#">
@@ -106,20 +181,43 @@
                 </a>
 
                 <ul class="nav nav-menu__second collapse">
+                    @if($rpc->CanAccessAs([
+                                            'webmaster' ,
+                                            //'member' ,
+                                            ]))
                     <li>
-                        <a href="#">Settings</a>
+                        <a href="#">Wist u datjes</a>
                     </li>
+                    @endif
+
+                    @if($rpc->CanAccessAs([
+                                        'webmaster' ,
+                                        //'member' ,
+                                        ]))
                     <li>
                         <a href="{{ route('board.didyouknow.information.index') }}">Informatie</a>
                     </li>
+                    @endif
+
+                    @if($rpc->CanAccessAs([
+                                            'webmaster' ,
+                                            //'member' ,
+                                            ]))
                     <li>
-                        <a href="#">Stellingen</a>
+                        <a href="#">Settings</a>
                     </li>
+                    @endif
                 </ul>
             </li>
-
         </ul>
+        @endif
+        {{-- END DID YOU KNOW NAV--}}
 
+        {{-- CONTACT NAV --}}
+        @if($rpc->CanAccessAs([
+                                'webmaster' ,
+                                //'member' ,
+                                ]))
         <ul class="nav nav-menu">
             <li>
                 <a href="#">
@@ -135,12 +233,30 @@
                 </a>
 
                 <ul class="nav nav-menu__second collapse">
+                    @if($rpc->CanAccessAs([
+                                'webmaster' ,
+                                //'member' ,
+                                ]))
                     <li>
                         <a href="#">Mail ons</a>
                     </li>
+                    @endif
+
+                    @if($rpc->CanAccessAs([
+                                'webmaster' ,
+                                //'member' ,
+                                ]))
                     <li>
                         <a href="#">Contact details</a>
                     </li>
+                    @endif
+
+
+                    {{-- FAQ SECTION--}}
+                    @if($rpc->CanAccessAs([
+                            'webmaster' ,
+                            //'member' ,
+                            ]))
                     <li>
                         <a href="#">
                             <div class="nav-menu__ico">
@@ -154,23 +270,50 @@
                             </div>
                         </a>
                         <ul class="nav nav-menu__second collapse">
+                            @if($rpc->CanAccessAs([
+                                                    'webmaster' ,
+                                                    //'member' ,
+                                                    ]))
                             <li>
                                 <a href="#">Informatie</a>
                             </li>
+                            @endif
+
+                            @if($rpc->CanAccessAs([
+                                                    'webmaster' ,
+                                                    //'member' ,
+                                                    ]))
                             <li>
                                 <a href="#">Stellingen</a>
                             </li>
+                            @endif
+
+                            @if($rpc->CanAccessAs([
+                                                    'webmaster' ,
+                                                    //'member' ,
+                                                    ]))
                             <li>
                                 <a href="#">Settings</a>
                             </li>
+                            @endif
                         </ul>
                     </li>
+                    @endif
+                    {{-- END FAQ SECTION--}}
+
+                    @if($rpc->CanAccessAs([
+                                            'webmaster' ,
+                                            //'member' ,
+                                            ]))
                     <li>
                         <a href="#">Privacy verklaring</a>
                     </li>
+                    @endif
                 </ul>
             </li>
         </ul>
+        @endif
+        {{-- END CONTACT NAV --}}
 
     </ul>
 
