@@ -24,7 +24,10 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         view()->composer('board.*', function($view){
-			$view	->with('settings', BoardmembersDashboardSettings::settings());
+
+        	$settings = BoardmembersDashboardSettings::settings();
+
+        	$view	->with(compact('settings'));
 		});
 
         view()->composer('socialmedia::includes.main.social_media_component', function($view){
@@ -39,6 +42,13 @@ class AppServiceProvider extends ServiceProvider
         			$curr_year = Carbon::now()->year;
 
 			$view->with(compact('secretary', 'organisation', 'founded', 'curr_year'));
+		});
+
+		view()->composer('*', function($view){
+
+			$rpc = new \App\Http\Controllers\Board\RolesPermissionController;
+
+			$view	->with(compact('rpc'));
 		});
 
     }
