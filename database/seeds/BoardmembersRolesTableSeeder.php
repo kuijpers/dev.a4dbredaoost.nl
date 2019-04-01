@@ -22,16 +22,32 @@ use Illuminate\Database\Seeder;
         							'role_id' 			=> 6,
 								],
         						[
+        							'boardmembers_id' 	=> 1,
+        							'role_id' 			=> 10,
+								],
+        						[
         							'boardmembers_id' 	=> 2,
         							'role_id' 			=> 7,
+								],
+        						[
+        							'boardmembers_id' 	=> 2,
+        							'role_id' 			=> 10,
 								],
         						[
         							'boardmembers_id' 	=> 3,
         							'role_id' 			=> 8,
 								],
         						[
+        							'boardmembers_id' 	=> 3,
+        							'role_id' 			=> 10,
+								],
+        						[
         							'boardmembers_id' 	=> 4,
         							'role_id' 			=> 9,
+								],
+        						[
+        							'boardmembers_id' 	=> 4,
+        							'role_id' 			=> 10,
 								],
         						[
         							'boardmembers_id' 	=> 5,
