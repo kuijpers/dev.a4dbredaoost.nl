@@ -7,8 +7,10 @@
 		'tab_nav_author' 					=> 'Auteur',
 		'tab_nav_editor' 					=> 'Editor',
 		'tab_nav_publisher' 				=> 'Redacteur',
+		'tab_nav_treasurer' 				=> 'Penningmeester',
 		'tab_nav_published' 				=> 'Gepubliceerd',
 		'tab_nav_archive' 					=> 'Archief',
+		'tab_nav_garbage' 					=> 'Prullenbak',
 		'tab_nav_new' 						=> 'Nieuw',
 
 		// TABLES

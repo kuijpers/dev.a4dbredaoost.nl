@@ -47,7 +47,7 @@
 		Route::get('/', 'SponsorsController@index')->name('board.sponsors.index');
 
 
-		Route::get('/create', 'SponsorsController@create')->name('board.sponsors.create');
+		Route::post('/create', 'SponsorsController@create')->name('board.sponsors.create');
 
 		Route::post('/', 'SponsorsController@store')->name('board.sponsors.store');
 

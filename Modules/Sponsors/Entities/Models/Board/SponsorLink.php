@@ -13,5 +13,5 @@ class SponsorLink extends Model
 
 	protected $fillable = [];
 
-	protected $table = 'sponsor_link';
+	protected $table = 'sponsors_link';
 }

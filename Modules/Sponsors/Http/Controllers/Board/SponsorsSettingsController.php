@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Modules\Sponsors\Entities\Models\Board\SponsorPackages;
 
 class SponsorsSettingsController extends Controller
 {
@@ -28,9 +29,13 @@ class SponsorsSettingsController extends Controller
 
 		$user 			= Auth::user();
 
+		$packages		= static::get_packages();
+
 		return view('sponsors::Board.settings.index')
 			->with(compact('breadcrumbles',
-				'user'));
+							'user',
+							'packages'
+							));
     }
 
     /**
@@ -91,4 +96,10 @@ class SponsorsSettingsController extends Controller
     {
 		return 'Sponsorsettings destroy page';
     }
+
+
+	public function get_packages(){
+
+    	return SponsorPackages::get();
+	}
 }

@@ -2,10 +2,12 @@
 
 	return [
 
-		'page_title' 					=> 'Bestuur - Sponsor - Informatie',
+		'page_title' 					=> 'Bestuur - Sponsor',
+		'page_id'						=> 'sponsor_',
 
 
 		'tab_title'						=> 'DE "SPONSORS" INFORMATIE SECTIE.',
+		'tab_title_sponsors'			=> 'DE "SPONSORS" SECTIE.',
 		'tab_settings'					=> 'Instellingen',
 		'tab_settings_title_visible'	=> 'Wilt u de titel zichtbaar hebben ? ',
 		'tab_settings_info_visible'		=> 'Wilt u de informatie op de web pagina ? ',

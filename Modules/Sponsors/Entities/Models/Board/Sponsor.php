@@ -14,4 +14,17 @@ class Sponsor extends Model
 	protected $fillable = [];
 
     protected $table = 'sponsor';
+
+
+    public function sponsor_image(){
+    	return $this->hasOne(SponsorImage::class, 'sponsor_id')->first();
+	}
+
+	public function sponsor_link(){
+    	return $this->hasOne(SponsorLink::class, 'sponsor_id')->first();
+	}
+
+
+
+
 }

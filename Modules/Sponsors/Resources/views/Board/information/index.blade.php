@@ -22,6 +22,8 @@
 
     <script src="{{ Module::asset('sponsors:js/selectall_approved.js') }}"></script>
 
+    <script src="{{ asset("modules/sponsors/libs/dkw-activetab/js/activetab.js") }}"></script>
+
     @include('sponsors::Board.includes.information_modals_js')
 
     @include('sponsors::Board.includes.information_ajaxCalls')
@@ -31,6 +33,11 @@
 @endsection
 
 @section('content')
+
+    {{--{{$user}}--}}
+
+    {{-- Required for use with dkw-activetab libarary --}}
+    <div id="dkw-activetab" class="@lang('sponsors::board/general.page_id')information" style="display: none;"></div>
 
     {{--Including all modals--}}
 
