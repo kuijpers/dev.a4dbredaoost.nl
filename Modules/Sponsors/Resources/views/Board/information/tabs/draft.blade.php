@@ -41,7 +41,7 @@
                                             $personal_draft_list=[
                                             	'id'        => $personal_draft->id,
                                             	'title'     => $personal_draft->title,
-                                            	'body'      => $personal_draft->body,
+                                            	'body'      => htmlspecialchars_decode($personal_draft->body),
                                             ];
 
                                             $personal_draft_modal = json_encode($personal_draft_list);

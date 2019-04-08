@@ -78,7 +78,7 @@
                                             $publisher_approve_list=[
                                             	'id'        => $publisher_approve->id,
                                             	'title'     => $publisher_approve->title,
-                                            	'body'      => $publisher_approve->body,
+                                            	'body'      => htmlspecialchars_decode($publisher_approve->body),
                                             	'author'    => $publisher_approve->getAuthorName($publisher_approve->author_group),
                                             	'editor'    => $publisher_approve->getEditorName($publisher_approve->editor_group),
                                             	'publisher' => $publisher_approve->getPublisherName($publisher_approve->publisher_group),

@@ -49,7 +49,7 @@
                                             $author_draft_list=[
                                             	'id'        => $author_draft->id,
                                             	'title'     => $author_draft->title,
-                                            	'body'      => $author_draft->body,
+                                            	'body'      => htmlspecialchars_decode($author_draft->body),
                                             ];
 
                                         $author_draft_modal = json_encode($author_draft_list);

@@ -55,7 +55,7 @@
                                             $author_approve_list=[
                                             	'id'        => $author_approve->id,
                                             	'title'     => $author_approve->title,
-                                            	'body'      => $author_approve->body,
+                                            	'body'      => htmlspecialchars_decode($author_approve->body),
                                             	'author'    => $author_approve->getAuthorName($author_approve->author_group),
                                             	'editor'    => $author_approve->getEditorName($author_approve->editor_group),
                                             ];

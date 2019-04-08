@@ -57,7 +57,7 @@
                                             $editor_approve_list=[
                                             	'id'        => $editor_approve->id,
                                             	'title'     => $editor_approve->title,
-                                            	'body'      => $editor_approve->body,
+                                            	'body'      => htmlspecialchars_decode($editor_approve->body),
                                             	'author'    => $editor_approve->getAuthorName($editor_approve->author_group),
                                             	'editor'    => $editor_approve->getEditorName($editor_approve->editor_group),
                                             	'publisher' => $editor_approve->getPublisherName($editor_approve->publisher_group),

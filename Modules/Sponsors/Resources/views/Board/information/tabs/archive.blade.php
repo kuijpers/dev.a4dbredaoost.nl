@@ -82,7 +82,7 @@
                                             $archive_list=[
                                             	'id'        => $archive->id,
                                             	'title'     => $archive->title,
-                                            	'body'      => $archive->body,
+                                            	'body'      => htmlspecialchars_decode($archive->body),
                                             	'author'    => $archive->getAuthorName($archive->author_group),
                                             	'editor'    => $archive->getEditorName($archive->editor_group),
                                             	'publisher' => $archive->getPublisherName($archive->publisher_group),
