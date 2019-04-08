@@ -23,9 +23,10 @@
 
 {{--Modal JS scripts--}}
 
-    {{--<script src="{{asset("/modules/didyouknow/js/selectall_approved.js")}}"></script>--}}
 
     <script src="{{ Module::asset('didyouknow:js/selectall_approved.js') }}"></script>
+
+    <script src="{{ Module::asset('didyouknow:libs/dkw-activetab/js/activetab.js') }}"></script>
 
     @include('didyouknow::board.segments.information_modals_js')
 
@@ -35,6 +36,11 @@
 @endsection
 
 @section('content')
+
+    {{--{{$user}}--}}
+
+    {{-- Required for use with dkw-activetab libarary --}}
+    <div id="dkw-activetab" class="@lang('didyouknow::board/general.page_id')information" style="display: none;"></div>
 
 {{--Including all modals--}}
 

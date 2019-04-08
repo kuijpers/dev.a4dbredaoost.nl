@@ -3,6 +3,7 @@
 	return [
 
 		'page_title' 					=> 'Bestuur - Wist u dat - informatie',
+		'page_id' 						=> 'didyouknow_',
 
 
 		'tab_title'						=> 'DE "WIST U DAT" INFORMATIE SECTIE.',

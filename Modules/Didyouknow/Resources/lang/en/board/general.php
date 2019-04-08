@@ -3,6 +3,7 @@
 	return [
 
 		'page_title' 					=> 'Board - Did you know - information',
+		'page_id' 						=> 'didyouknow_',
 
 
 		'tab_title'						=> 'THE "DID YOU KNOW" INFORMATION SECTION.',
