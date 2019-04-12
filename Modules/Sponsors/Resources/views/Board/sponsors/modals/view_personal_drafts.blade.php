@@ -58,7 +58,7 @@
 
                                 <div class="col-md-12 text-primary">
                                     <h5>
-                                        De volgende link wordt gebruikt voor deze sponsor
+                                        @lang('sponsors::board/modals.modal_view_information_link')
                                     </h5>
                                 </div>
 
@@ -70,7 +70,7 @@
 
                                 <div class="col-md-12 text-primary">
                                     <h5>
-                                        Het logo van deze sponsor
+                                        @lang('sponsors::board/modals.modal_view_information_logo')
                                     </h5>
                                 </div>
 

@@ -3,14 +3,16 @@
 	return [
 
 		// VIEW
-		'modal_view_title' 					=> 'Dit arikel staat open.',
+		'modal_view_title' 					=> 'Dit artikel staat open.',
 		'modal_view_title_editor'			=> 'Dit artikel is goedgekeurd door de auteur.',
 		'modal_view_title_publisher'		=> 'Dit artikel is goedgekeurd door de editor.',
 		'modal_view_title_published'		=> 'Dit artikel is gepubliceerd.',
 		'modal_view_title_archived'			=> 'Dit artikel is gearchiveerd.',
-		'modal_view_announcement' 			=> 'Hieronder vindt u de informatie met bijbehorende titel.',
-		'modal_view_information_title' 		=> 'De titel van dit artikel.',
-		'modal_view_information_body' 		=> 'De volgende tekst hoort bij deze titel.',
+		'modal_view_announcement' 			=> 'Hieronder vindt u de informatie over de geselecteerde sponsor.',
+		'modal_view_information_title' 		=> 'De naam van de sponsor.',
+		'modal_view_information_body' 		=> 'De volgende tekst hoort bij deze sponsor.',
+		'modal_view_information_link' 		=> 'De volgende link wordt gebruikt voor deze sponsor.',
+		'modal_view_information_logo' 		=> 'Het logo van deze sponsor.',
 
 		'modal_view_approved_author' 		=> 'Goedgekeurd door de auteur',
 		'modal_view_approved_editor' 		=> 'Goedgekeurd door de editor',
