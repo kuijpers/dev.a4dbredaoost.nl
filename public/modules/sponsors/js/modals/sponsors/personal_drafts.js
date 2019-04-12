@@ -2,7 +2,7 @@
 
 $('#view_personal_drafts').on('show.bs.modal', function(e) {
 
-	console.log($(e.relatedTarget).data('info'));
+	// console.log($(e.relatedTarget).data('info'));
 
 	var info 			= $(e.relatedTarget).data('info');
 
@@ -10,12 +10,33 @@ $('#view_personal_drafts').on('show.bs.modal', function(e) {
 
 	var body		=	info['body'];
 
+	var logo		= 	info['image_name'];
 
-	// console.log(info, title, body);
+	var link		= 	info['link'];
 
+
+	// console.log(info);
+	// console.log(title);
+	// console.log(body);
+	// console.log(logo);
+	console.log(link);
+
+
+	// Change the HTML for the selected sponsor name
 	$(this).find('.view_personal_title').text(title);
 
+	// Change the text for the selected sponsor
 	$(this).find('.view_personal_body').html(body);
+
+	// Change the logo for the selected sponsor
+	var newSrc = $("#logo_sponsor").attr("src").replace("img/no-image.png", 'storage/'+logo);
+	$("#logo_sponsor").attr("src", newSrc);
+
+	// Change the link for the selected sponsor
+	$(this).find('#link_sponsor').text(link);
+
+	var newLink = $("#link_sponsor").attr("href").replace("weblink", link);
+	$("#link_sponsor").attr("href", newLink);
 
 });
 

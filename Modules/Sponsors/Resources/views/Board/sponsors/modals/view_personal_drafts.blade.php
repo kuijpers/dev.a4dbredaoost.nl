@@ -56,6 +56,28 @@
                                     This is where data will be placed using JS.
                                 </div>
 
+                                <div class="col-md-12 text-primary">
+                                    <h5>
+                                        De volgende link wordt gebruikt voor deze sponsor
+                                    </h5>
+                                </div>
+
+                                <div class="col-md-12 view_personal_link">
+                                    <a href="weblink" target="_blank" id="link_sponsor">
+                                        weblink
+                                    </a>
+                                </div>
+
+                                <div class="col-md-12 text-primary">
+                                    <h5>
+                                        Het logo van deze sponsor
+                                    </h5>
+                                </div>
+
+                                <div class="col-md-12 view_personal_image margin-top-md text-center">
+                                    <img src=" {{asset('img/no-image.png')}} " id="logo_sponsor" class="img-thumbnail" style="max-width:300px;">
+                                </div>
+
                                 <div class="col-md-12">
                                     <hr>
                                 </div>
