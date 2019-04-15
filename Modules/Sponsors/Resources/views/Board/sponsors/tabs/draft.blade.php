@@ -75,7 +75,7 @@
                                                 data-target="#edit_personal_drafts"
                                                 data-info = "{{$personal_draft_modal}}"
                                         >
-                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
                                         </button>
 
                                          {{--Delete/archive the data thru Modal--}}

@@ -82,7 +82,7 @@
                                                 {{--data-target="#edit_author_approved"--}}
                                                 {{--data-info = "{{$author_approve_modal}}"--}}
                                         {{-->--}}
-                                            {{--<i class="fa fa-eye" aria-hidden="true"></i>--}}
+                                            {{--<i class="fa fa-pencil" aria-hidden="true"></i>--}}
                                         {{--</button>--}}
                                         {{-- Delete/archive the data thru Modal--}}
                                         {{--<button type="button" class="btn btn-danger"--}}
