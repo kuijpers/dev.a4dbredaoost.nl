@@ -56,15 +56,93 @@ class SponsorsController extends Controller
 							));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Response
-     */
+
     public function create(Request $request)
     {
 		// Validate all request fields
 
-		Validator::make($request->all(), [
+		static::create_validation($request);
+
+		// Put data in DB table sponsors and receive sponsor id in return
+
+		$sponsor_id	=	static::add_to_sponsor_table($request);
+
+		// Put data in DB table sponsors_link
+
+		static::add_to_sponsor_link_table($request, $sponsor_id);
+
+		// Put data in DB and upload file to folder set in storage_path
+
+		static::add_to_sponsor_image_table($request, $sponsor_id);
+
+		// return success message
+
+		return redirect()->route('board.sponsors.index')->with('success-message', 'New sponsor added!');
+
+    }
+
+    public function author_edit(Request $request)
+    {
+		//		return $request->all();
+
+		// Validate all request fields
+		static::author_edit_validation($request);
+
+	// Update tables in DB
+
+		// Sponsor table
+		// $request->id
+		// $request->title !
+		// $request->sponsor_package !
+		// $request->body !
+		// $request->author_approval
+
+		static::author_update_sponsor_table($request);
+
+		// Sponsor_link table
+		// $request->sponsor_link
+
+		static::author_update_sponsor_link_table($request);
+
+		// Sponsor_image
+		// $request->sponsor_logo
+
+		if(!is_null($request->sponsor_logo)){
+
+			static::author_update_sponsor_image_table($request);
+
+		}
+
+		// return success message
+
+		return redirect()->route('board.sponsors.index')->with('success-message', 'Sponsor updated!');
+    }
+
+
+	// Get functions
+
+	public function get_packages(){
+
+    	return SponsorPackages::get();
+	}
+
+	public function get_personal_draft(){
+
+    	$personal_drafts = Sponsor::where('draft', '=', 1)
+									->where('author_approve', '=', 0)
+									->where('editor_approve', '=', 0)
+									->where('publisher_approve', '=', 0)
+									->get();
+
+    	return $personal_drafts;
+	}
+
+
+	// Private create functions
+
+	private function create_validation($request){
+
+    	Validator::make($request->all(), [
 			'title' 						=> 'required|max:255',
 			'sponsor_package' 				=> 'required|integer',
 			'sponsor_link' 					=> 'required|active_url',
@@ -76,7 +154,9 @@ class SponsorsController extends Controller
 			'create_new_editor_approved' 	=> 'sometimes|accepted',
 		])->validate();
 
-		// Put data in DB table sponsors
+	}
+
+	private function add_to_sponsor_table($request){
 
 		$new_sponsor	=	new Sponsor;
 
@@ -109,32 +189,30 @@ class SponsorsController extends Controller
 
 		// - create_new_author_approved (if it is set to on )
 		if($request->author_approved == 'on')
-		{
-
-		$new_sponsor->create_new_author_approved 	= $request->author_approve;
-
-			// - create_new_editor_approved (if it is set to on )
-			if($request->create_new_editor_approved == 'on')
 			{
 
-			// editor
-			$new_sponsor->editor 					= Auth::user()->id;
-			// editor_group
-			$new_sponsor->editor_group 				= Auth::user()->group;
-			// editor_approve
-			$new_sponsor->editor_approve 			= $request->editor_approve;
+				$new_sponsor->create_new_author_approved 	= $request->author_approve;
+
+				// - create_new_editor_approved (if it is set to on )
+				if($request->create_new_editor_approved == 'on')
+					{
+
+						// editor
+						$new_sponsor->editor 					= Auth::user()->id;
+						// editor_group
+						$new_sponsor->editor_group 				= Auth::user()->group;
+						// editor_approve
+						$new_sponsor->editor_approve 			= $request->editor_approve;
+
+					}
 
 			}
-
-		}
 		$new_sponsor->save();
 
-		$sponsor_id 								= $new_sponsor->id;
+		return $new_sponsor->id;
+	}
 
-		// Put data in DB table sponsors_link
-			// - slug
-			// - sponsor_link
-			// - sponsor_id
+	private function add_to_sponsor_link_table($request, $sponsor_id){
 
 		$sponsor_link = new SponsorLink;
 
@@ -148,9 +226,9 @@ class SponsorsController extends Controller
 		$sponsor_link->link							= $request->sponsor_link;
 
 		$sponsor_link->save();
+	}
 
-		// Put data in DB and upload file to folder set in storage_path
-
+	private function add_to_sponsor_image_table($request, $sponsor_id){
 
 		// Upload logo
 
@@ -178,51 +256,26 @@ class SponsorsController extends Controller
 
 		$sponsor_image->save();
 
-		// return success message
-
-		return redirect()->route('board.sponsors.index')->with('success-message', 'New sponsor added!');
-
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     * @param  Request $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-		return 'Sponsor store page';
-    }
+	}
 
 
-    /**
-     * Show the form for editing the specified resource.
-     * @return Response
-     */
-    public function edit(Request $request)
-    {
-		// Validate all request fields
-		static::edit_validation($request);
 
-		// Update data
-		return static::update($request);
-    }
+	// Private edit/update functions
 
-    /**
-     * Update the specified resource in storage.
-     * @param  Request $request
-     * @return Response
-     */
-    public function update($request)
-    {
-//		return $request->all();
+	private function author_edit_validation($request){
 
-	// Sponsor table
-			// $request->id
-			// $request->title !
-			// $request->sponsor_package !
-			// $request->body !
-			// $request->author_approval
+		Validator::make($request->all(), [
+			'id' 							=> 'required',
+			'title' 						=> 'required|max:255',
+			'body' 							=> 'required',
+			'sponsor_package' 				=> 'required|integer',
+			'sponsor_link' 					=> 'required|active_url',
+			'sponsor_logo' 					=> 'nullable|image|mimes:jpg,jpeg,bmp,png',
+			'create_new_author_approved' 	=> 'sometimes|accepted',
+		])->validate();
+	}
+
+	private function author_update_sponsor_table($request){
 
 		$sponsor = Sponsor::where('id', '=', $request->id)->first();
 
@@ -247,8 +300,11 @@ class SponsorsController extends Controller
 
 		$sponsor->save();
 
+	}
 
-	// Sponsor_link table
+	private function author_update_sponsor_link_table($request){
+
+		// Sponsor_link table
 		// $request->sponsor_link
 
 		$sponsor_link	=	SponsorLink::where('sponsor_id', '=', $request->id)->first();
@@ -261,83 +317,39 @@ class SponsorsController extends Controller
 
 		$sponsor_link->save();
 
-	// Sponsor_image
-		// $request->sponsor_logo
-
-		if(!is_null($request->sponsor_logo)){
-
-			$sponsor_image	=	SponsorImage::where('sponsor_id', '=', $request->id)->first();
-
-			// Get current logo and remove it from folder
-			Storage::delete($sponsor_image->name);
-
-			// Add new logo to folder
-			$logo = $request->sponsor_logo->store($this->storage_path);
-
-			// Update DB with the information coming from upload to folder
-
-			// name
-			$sponsor_image->name						= $logo;
-
-			// slug
-			$sponsor_image->slug						= str_slug($logo, '-');
-
-			// description
-			$sponsor_image->description					= 'Logo for '.$request->title;
-
-			// content (same as description)
-			$sponsor_image->content						= 'Logo for '.$request->title;
-
-			// photographer (name of sponsor)
-			$sponsor_image->photographer				= $request->title;
-
-			$sponsor_image->save();
-
-
-		}
-
-		// return success message
-
-
-		return redirect()->route('board.sponsors.index')->with('success-message', 'Sponsor updated!');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @return Response
-     */
-    public function destroy()
-    {
-		return 'Sponsor destroy page';
-    }
-
-	public function get_packages(){
-
-    	return SponsorPackages::get();
 	}
 
-	public function get_personal_draft(){
+	private function author_update_sponsor_image_table($request){
 
-    	$personal_drafts = Sponsor::where('draft', '=', 1)
-									->where('author_approve', '=', 0)
-									->where('editor_approve', '=', 0)
-									->where('publisher_approve', '=', 0)
-									->get();
+		$sponsor_image	=	SponsorImage::where('sponsor_id', '=', $request->id)->first();
 
-    	return $personal_drafts;
+		// Get current logo and remove it from folder
+		Storage::delete($sponsor_image->name);
+
+		// Add new logo to folder
+		$logo = $request->sponsor_logo->store($this->storage_path);
+
+		// Update DB with the information coming from upload to folder
+
+		// name
+		$sponsor_image->name						= $logo;
+
+		// slug
+		$sponsor_image->slug						= str_slug($logo, '-');
+
+		// description
+		$sponsor_image->description					= 'Logo for '.$request->title;
+
+		// content (same as description)
+		$sponsor_image->content						= 'Logo for '.$request->title;
+
+		// photographer (name of sponsor)
+		$sponsor_image->photographer				= $request->title;
+
+		$sponsor_image->save();
+
 	}
 
-	private function edit_validation($request){
 
-		Validator::make($request->all(), [
-			'id' 							=> 'required',
-			'title' 						=> 'required|max:255',
-			'body' 							=> 'required',
-			'sponsor_package' 				=> 'required|integer',
-			'sponsor_link' 					=> 'required|active_url',
-			'sponsor_logo' 					=> 'nullable|image|mimes:jpg,jpeg,bmp,png',
-			'create_new_author_approved' 	=> 'sometimes|accepted',
-		])->validate();
-	}
 
 }
