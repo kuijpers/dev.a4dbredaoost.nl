@@ -52,7 +52,7 @@
 		Route::post('/', 'SponsorsController@store')->name('board.sponsors.store');
 
 
-		Route::post('/edit', 'SponsorsController@edit')->name('board.sponsors.edit');
+		Route::post('/author-edit', 'SponsorsController@author_edit')->name('board.sponsors.author.edit');
 
 		Route::get('/{id}', 'SponsorsController@show')->name('board.sponsors.show');
 
