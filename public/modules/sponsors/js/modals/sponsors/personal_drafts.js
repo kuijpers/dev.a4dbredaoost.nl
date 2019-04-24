@@ -4,7 +4,7 @@ $('#view_personal_drafts').on('show.bs.modal', function(e) {
 
 	// console.log($(e.relatedTarget).data('info'));
 
-	var info 			= $(e.relatedTarget).data('info');
+	var info 		= $(e.relatedTarget).data('info');
 
 	var title		=	info['title'];
 
@@ -19,7 +19,7 @@ $('#view_personal_drafts').on('show.bs.modal', function(e) {
 	// console.log(title);
 	// console.log(body);
 	// console.log(logo);
-	console.log(link);
+	// console.log(link);
 
 
 	// Change the HTML for the selected sponsor name
@@ -40,6 +40,16 @@ $('#view_personal_drafts').on('show.bs.modal', function(e) {
 
 });
 
+$('#view_personal_drafts').on('hidden.bs.modal', function () {
+
+	location.reload();
+
+	// $('#logo_sponsor').load('#logo_sponsor', function() {
+	// 	/// can add another function here
+	// });
+});
+
+
 $('#edit_personal_drafts').on('show.bs.modal', function(e) {
 
 
@@ -59,7 +69,21 @@ $('#edit_personal_drafts').on('show.bs.modal', function(e) {
 
 	var body_id		=	'#edit_personal_drafts_body';
 
-	// console.log(title);
+	var package		=	info['package'];
+
+	var package_id	=	$("#edit_personal_package")
+
+	var web_link	=	info['link'];
+
+	var web_link_id	=	$("#edit_personal_drafts_link");
+
+	var logo		=	'storage/'+info['image_name'];
+
+	var logo_id		= 	$(".logo_sponsor");
+
+	var no_image	=	'img/no-image.png';
+
+	// console.log(logo);
 
 	article_id.val(article);
 
@@ -67,8 +91,29 @@ $('#edit_personal_drafts').on('show.bs.modal', function(e) {
 
 	add_summernote(body_id,body);
 
+	web_link_id.val(web_link);
+
+	package_id.val(package);
+
+	var newSrc = logo_id.attr('src').replace(no_image, logo);
+	logo_id.attr('src', newSrc);
+
+	console.log(logo_id.attr('src', newSrc));
+
 });
 
 $('#edit_personal_drafts').on('hidden.bs.modal', function () {
 	location.reload();
+});
+
+$(document).ready( function() {
+
+	$('#edit_personal_drafts').on('fileselect', function(event, numFiles, label) {
+
+		// console.log(numFiles);
+		// console.log(label);
+
+		$("#edit_personal_drafts_logo").val(label);
+	});
+
 });

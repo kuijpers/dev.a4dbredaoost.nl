@@ -29,8 +29,8 @@
                     <strong>Link naar de web pagina</strong>
                 </label>
                 <div class="input-group">
-                    <div class="input-group-addon">&nbsp; http(s):// &nbsp;</div>
-                    <input type="text" name="sponsor_link" class="form-control" id="sponsor_link" placeholder="Website link">
+                    {{--<div class="input-group-addon">&nbsp; http(s):// &nbsp;</div>--}}
+                    <input type="text" name="sponsor_link" class="form-control" id="sponsor_link" placeholder="http(s):// Website link">
                 </div>
                 {{--<input id="title" name="title" type="text" class="form-control" placeholder="Sponsornaam komt hier.........">--}}
             </div>
@@ -46,7 +46,7 @@
                         Select Logo <input type="file" name="sponsor_logo"  style="display: none;">
                     </span>
                     </label>
-                    <input type="text" class="form-control input-file" readonly placeholder="Upload logo...." >
+                    <input id="new_draft_logo" type="text" class="form-control input-file" readonly placeholder="Upload logo...." >
 
                 </div>
             </div>

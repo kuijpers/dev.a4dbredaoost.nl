@@ -10,6 +10,7 @@
 		'modal_view_title_archived'			=> 'Dit artikel is gearchiveerd.',
 		'modal_view_announcement' 			=> 'Hieronder vindt u de informatie over de geselecteerde sponsor.',
 		'modal_view_information_title' 		=> 'De naam van de sponsor.',
+		'modal_view_information_package'	=> 'Het sponsor pakkket voor deze sponsor.',
 		'modal_view_information_body' 		=> 'De volgende tekst hoort bij deze sponsor.',
 		'modal_view_information_link' 		=> 'De volgende link wordt gebruikt voor deze sponsor.',
 		'modal_view_information_logo' 		=> 'Het logo van deze sponsor.',

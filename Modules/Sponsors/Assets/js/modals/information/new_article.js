@@ -28,14 +28,3 @@ $('#new_article').summernote({
 
 	lineHeight: 1
 });
-
-$(document).ready( function() {
-	$('#new_sponsor_form').on('fileselect', function(event, numFiles, label) {
-
-		// console.log(numFiles);
-		// console.log(label);
-
-		$("#new_draft_logo").val(label);
-	});
-
-});

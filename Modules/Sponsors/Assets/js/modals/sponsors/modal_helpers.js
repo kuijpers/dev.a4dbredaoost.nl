@@ -2,7 +2,7 @@
 
 function add_summernote(body_id,body){
 
-	console.log(body_id,'->',body);
+	// console.log(body_id,'->',body);
 
 	$(document).ready(function() {
 		// Clear out summernote field
@@ -36,7 +36,8 @@ function add_summernote(body_id,body){
 			]
 		});
 
-		console.log(body_id,'->',body);
+		// console.log(body_id,'->',body);
+
 		// console.log($('.summernote'));
 
 		$(body_id).summernote('lineHeight', 1);

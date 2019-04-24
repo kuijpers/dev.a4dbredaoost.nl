@@ -18,9 +18,17 @@ use Modules\Sponsors\Entities\Models\Board\SponsorImage;
 
 class SponsorsController extends Controller
 {
+
+	private $storage_path;
+
+
 	public function __construct()
 	{
 		$this->middleware('auth:boardmember');
+
+		// Set storage path
+
+		$this->storage_path = 'modules/sponsors/img/logos';
 	}
 
 	/**
@@ -141,15 +149,12 @@ class SponsorsController extends Controller
 
 		$sponsor_link->save();
 
-		// Put data in DB and upload file to folder (modules/sponsors/img/logos)
+		// Put data in DB and upload file to folder set in storage_path
 
-		// Set path
-
-		$storage_path								= 'modules/sponsors/img/logos';
 
 		// Upload logo
 
-		$logo = $request->sponsor_logo->store($storage_path);
+		$logo = $request->sponsor_logo->store($this->storage_path);
 
 		$sponsor_image	=	new SponsorImage;
 
@@ -189,24 +194,18 @@ class SponsorsController extends Controller
 		return 'Sponsor store page';
     }
 
-    /**
-     * Show the specified resource.
-     * @return Response
-     */
-    public function show()
-    {
-		return 'Sponsor show page';
-//        return view('sponsors::show');
-    }
 
     /**
      * Show the form for editing the specified resource.
      * @return Response
      */
-    public function edit()
+    public function edit(Request $request)
     {
-		return 'Sponsor edit page';
-//        return view('sponsors::edit');
+		// Validate all request fields
+		static::edit_validation($request);
+
+		// Update data
+		return static::update($request);
     }
 
     /**
@@ -214,9 +213,93 @@ class SponsorsController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function update(Request $request)
+    public function update($request)
     {
-		return 'Sponsor update page';
+//		return $request->all();
+
+	// Sponsor table
+			// $request->id
+			// $request->title !
+			// $request->sponsor_package !
+			// $request->body !
+			// $request->author_approval
+
+		$sponsor = Sponsor::where('id', '=', $request->id)->first();
+
+		// - title
+		$sponsor->title							= 	$request->title;
+
+		// slug
+		$sponsor->slug 							= 	str_slug($request->title, '-');
+
+		// Description
+		$sponsor->description					=	$request->title;
+
+		// - sponsor_package => sponsor_package_id
+		$sponsor->sponsor_packages_id 			= 	$request->sponsor_package;
+
+		// - body
+		$sponsor->body							=	$request->body;
+
+		if($request->author_approval){
+			$sponsor->author_approve			=	1;
+		}
+
+		$sponsor->save();
+
+
+	// Sponsor_link table
+		// $request->sponsor_link
+
+		$sponsor_link	=	SponsorLink::where('sponsor_id', '=', $request->id)->first();
+
+		// slug
+		$sponsor_link->slug							= str_slug($request->sponsor_link, '-');
+
+		// link
+		$sponsor_link->link							= $request->sponsor_link;
+
+		$sponsor_link->save();
+
+	// Sponsor_image
+		// $request->sponsor_logo
+
+		if(!is_null($request->sponsor_logo)){
+
+			$sponsor_image	=	SponsorImage::where('sponsor_id', '=', $request->id)->first();
+
+			// Get current logo and remove it from folder
+			Storage::delete($sponsor_image->name);
+
+			// Add new logo to folder
+			$logo = $request->sponsor_logo->store($this->storage_path);
+
+			// Update DB with the information coming from upload to folder
+
+			// name
+			$sponsor_image->name						= $logo;
+
+			// slug
+			$sponsor_image->slug						= str_slug($logo, '-');
+
+			// description
+			$sponsor_image->description					= 'Logo for '.$request->title;
+
+			// content (same as description)
+			$sponsor_image->content						= 'Logo for '.$request->title;
+
+			// photographer (name of sponsor)
+			$sponsor_image->photographer				= $request->title;
+
+			$sponsor_image->save();
+
+
+		}
+
+		// return success message
+
+
+		return redirect()->route('board.sponsors.index')->with('success-message', 'Sponsor updated!');
     }
 
     /**
@@ -241,9 +324,20 @@ class SponsorsController extends Controller
 									->where('publisher_approve', '=', 0)
 									->get();
 
-
-
     	return $personal_drafts;
+	}
+
+	private function edit_validation($request){
+
+		Validator::make($request->all(), [
+			'id' 							=> 'required',
+			'title' 						=> 'required|max:255',
+			'body' 							=> 'required',
+			'sponsor_package' 				=> 'required|integer',
+			'sponsor_link' 					=> 'required|active_url',
+			'sponsor_logo' 					=> 'nullable|image|mimes:jpg,jpeg,bmp,png',
+			'create_new_author_approved' 	=> 'sometimes|accepted',
+		])->validate();
 	}
 
 }

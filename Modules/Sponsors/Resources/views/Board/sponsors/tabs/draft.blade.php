@@ -23,7 +23,7 @@
                         </thead>
                         <tbody>
                         @foreach($personal_drafts as $personal_draft)
-
+{{--{{dd($personal_draft)}}--}}
                             <tr>
                                 <td>
                                     {{$personal_draft->title}}
@@ -43,6 +43,8 @@
                                             	'title'         => $personal_draft->title,
 
                                             	'body'          => htmlspecialchars_decode($personal_draft->body),
+
+                                            	'package'       => $personal_draft->sponsor_packages_id,
 
                                             	'payment'       => $personal_draft->payment_received,
                                             	'image_name'    => $personal_draft->sponsor_image()->name,
