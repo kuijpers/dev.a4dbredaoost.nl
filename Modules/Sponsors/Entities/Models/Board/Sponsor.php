@@ -16,6 +16,7 @@ class Sponsor extends Model
     protected $table = 'sponsor';
 
 
+
     public function sponsor_image(){
     	return $this->hasOne(SponsorImage::class, 'sponsor_id')->first();
 	}
@@ -24,6 +25,44 @@ class Sponsor extends Model
     	return $this->hasOne(SponsorLink::class, 'sponsor_id')->first();
 	}
 
+	public function getAuthorName($group)
+	{
+
+		if (!empty($group)){
+
+			$model = '\App\Models\\' . $group;
+
+			return $model::where('id', $this->author)->first()->name;
+		}
+		else{
+			return '';
+		}
+
+	}
+
+	public function getEditorName($group)
+	{
+		if (!empty($group)){
+			$model = '\App\Models\\' . $group;
+
+			return $model::where('id', $this->editor)->first()->name;
+		}
+		else{
+			return '';
+		}
+	}
+
+	public function getPublisherName($group)
+	{
+		if (!empty($group)){
+			$model = '\App\Models\\' . $group;
+
+			return $model::where('id', $this->publisher)->first()->name;
+		}
+		else{
+			return '';
+		}
+	}
 
 
 }

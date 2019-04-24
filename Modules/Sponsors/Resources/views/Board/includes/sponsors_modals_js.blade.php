@@ -9,38 +9,38 @@
 @endif
 
 {{--Author drafts--}}
-{{--@if($rpc->CanAccessAs(['webmaster' , 'admin' , 'publisher']))--}}
-    {{--<script src="{{ Module::asset('sponsors:js/modals/author_drafts.js') }}"></script>--}}
-{{--@endif--}}
+@if($rpc->CanAccessAs(['webmaster' , 'admin' , 'publisher']))
+    <script src="{{ Module::asset('sponsors:js/modals/sponsors/author_drafts.js') }}"></script>
+@endif
 
 {{--Editor--}}
 {{--@if($rpc->CanAccessAs(['webmaster' , 'admin' , 'editor']))--}}
-    {{--<script src="{{ Module::asset('sponsors:js/modals/author_approved.js') }}"></script>--}}
+    {{--<script src="{{ Module::asset('sponsors:js/modals/sponsors/author_approved.js') }}"></script>--}}
 {{--@endif--}}
 
 {{--Publisher--}}
 {{--@if($rpc->CanAccessAs(['webmaster' , 'admin' , 'publisher']))--}}
-    {{--<script src="{{ Module::asset('sponsors:js/modals/editor_approved.js') }}"></script>--}}
+    {{--<script src="{{ Module::asset('sponsors:js/modals/sponsors/editor_approved.js') }}"></script>--}}
 {{--@endif--}}
 
 {{--Published--}}
 {{--@if($rpc->CanAccessAs(['webmaster' , 'admin' , 'author' , 'editor' , 'publisher']))--}}
-    {{--<script src="{{ Module::asset('sponsors:js/modals/publisher_approved.js') }}"></script>--}}
+    {{--<script src="{{ Module::asset('sponsors:js/modals/sponsors/publisher_approved.js') }}"></script>--}}
 {{--@endif--}}
 
 {{--Archived--}}
 {{--@if($rpc->CanAccessAs(['webmaster' , 'admin']))--}}
-    {{--<script src="{{ Module::asset('sponsors:js/modals/archived.js') }}"></script>--}}
+    {{--<script src="{{ Module::asset('sponsors:js/modals/sponsors/archived.js') }}"></script>--}}
 {{--@endif--}}
 
 {{--Delete item--}}
 {{--@if($rpc->CanAccessAs(['webmaster' , 'admin' , 'author' , 'editor' , 'publisher']))--}}
-    {{--<script src="{{ Module::asset('sponsors:js/modals/delete_article.js') }}"></script>--}}
+    {{--<script src="{{ Module::asset('sponsors:js/modals/sponsors/delete_article.js') }}"></script>--}}
 {{--@endif--}}
 
 {{--Destroy after deleted--}}
 {{--@if($rpc->CanAccessAs(['webmaster' , 'admin']))--}}
-    {{--<script src="{{ Module::asset('sponsors:js/modals/destroy.js') }}"></script>--}}
+    {{--<script src="{{ Module::asset('sponsors:js/modals/sponsors/destroy.js') }}"></script>--}}
 {{--@endif--}}
 
 {{--New article--}}

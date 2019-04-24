@@ -130,16 +130,16 @@
                                 <li role="presentation">
                                     <a href="#author" aria-controls="author" role="tab" data-toggle="tab">
                                         @lang('sponsors::board/tabs.tab_nav_author')&nbsp;
-                                        {{--@if($author_drafts->count()==0)--}}
+                                        @if($author_drafts->count()==0)
                                             <span class="label label-default">
-                                                {{--{{$author_drafts->count()}}--}}
-                                            2
+                                                {{$author_drafts->count()}}
+                                            {{--2--}}
                                             </span>
-                                        {{--@else--}}
-                                            {{--<span class="label label-primary">--}}
-                                                {{--{{$author_drafts->count()}}--}}
-                                            {{--</span>--}}
-                                        {{--@endif--}}
+                                        @else
+                                            <span class="label label-primary">
+                                                {{$author_drafts->count()}}
+                                            </span>
+                                        @endif
                                     </a>
                                 </li>
                             @endif

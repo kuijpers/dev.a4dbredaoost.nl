@@ -48,11 +48,14 @@ class SponsorsController extends Controller
 
 		$personal_drafts	= static::get_personal_draft();
 
+		$author_drafts		= static::get_author_drafts();
+
 		return view('sponsors::Board.sponsors.index')
 			->with(compact('breadcrumbles',
 							'user',
 							'packages',
-							'personal_drafts'
+							'personal_drafts',
+							'author_drafts'
 							));
     }
 
@@ -132,10 +135,26 @@ class SponsorsController extends Controller
 									->where('author_approve', '=', 0)
 									->where('editor_approve', '=', 0)
 									->where('publisher_approve', '=', 0)
+									->where('author', '=', Auth::user()->id)
+									->where('author_group', '=', Auth::user()->group)
 									->get();
 
     	return $personal_drafts;
+
 	}
+
+	private function get_author_drafts(){
+
+		$author_drafts = Sponsor::where('draft', '=', 1)
+								->where('author_approve', '=', 0)
+								->where('editor_approve', '=', 0)
+								->where('publisher_approve', '=', 0)
+								->get();
+
+		return $author_drafts;
+
+	}
+
 
 
 	// Private create functions

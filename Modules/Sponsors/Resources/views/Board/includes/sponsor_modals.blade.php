@@ -6,7 +6,7 @@
 
 {{--Author drafts--}}
 @if($rpc->CanAccessAs(['webmaster' , 'admin' , 'publisher']))
-    {{--@include('sponsors::Board.sponsors.modals.view_author_drafts')--}}
+    @include('sponsors::Board.sponsors.modals.view_author_drafts')
 @endif
 
 {{--Editor--}}
