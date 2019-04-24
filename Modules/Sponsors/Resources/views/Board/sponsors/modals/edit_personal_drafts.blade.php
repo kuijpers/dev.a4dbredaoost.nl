@@ -53,7 +53,7 @@
                 <form id="edit_personal_drafts_form"
                       name="edit_personal_drafts_form"
                       class="edit_personal_drafts"
-                      method="post" action="{{route('board.sponsors.edit')}}"
+                      method="post" action="{{route('board.sponsors.author.edit')}}"
                       enctype="multipart/form-data">
 
                     {{csrf_field()}}
