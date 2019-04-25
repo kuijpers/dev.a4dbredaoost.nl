@@ -124,7 +124,7 @@
                                 </div>
 
                                 <div class="col-md-12 edit_personal_image margin-top-md text-center">
-                                    <img id="logo_sponsor" src=" {{asset('img/no-image.png')}} " class="img-thumbnail logo_sponsor" style="max-width:300px;">
+                                    <img id="edit_personal_drafts_show_logo" src=" {{asset('img/no-image.png')}} " class="img-thumbnail logo_sponsor" style="max-width:300px;">
                                 </div>
 
                                 <div class="form-group  col-md-10 col-md-offset-1 margin-top-md">

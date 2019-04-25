@@ -32,10 +32,12 @@ $('#new_article').summernote({
 $(document).ready( function() {
 	$('#new_sponsor_form').on('fileselect', function(event, numFiles, label) {
 
+		var logo_id		=	"#new_draft_logo";
+
 		// console.log(numFiles);
 		// console.log(label);
 
-		$("#new_draft_logo").val(label);
+		$(logo_id).val(label);
 	});
 
 });

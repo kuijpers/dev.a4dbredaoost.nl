@@ -63,7 +63,7 @@
                             </div>
 
                             <div class="col-md-12 view_author_link">
-                                <a href="weblink" target="_blank" id="link_sponsor">
+                                <a href="weblink" target="_blank" id="view_author_link_sponsor">
                                     weblink
                                 </a>
                             </div>
@@ -75,7 +75,7 @@
                             </div>
 
                             <div class="col-md-12 view_author_image margin-top-md text-center">
-                                <img src=" {{asset('img/no-image.png')}} " id="author_logo_sponsor" class="img-thumbnail" style="max-width:300px;">
+                                <img src=" {{asset('img/no-image.png')}} " id="view_author_logo_sponsor" class="img-thumbnail" style="max-width:300px;">
                             </div>
 
                             <div class="col-md-12">
