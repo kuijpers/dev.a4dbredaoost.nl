@@ -1,8 +1,3 @@
-<?php
-	/**
-	 * @todo make connection with DB-> Var's are: title , body , editor_approval(checkbox) , publisher_approval(checkbox)
-	 */
-?>
     <div class="modal fade" id="edit_author_approved" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -19,7 +14,6 @@
 
                 </div>
 
-                <form id="edit_author_approved" name="edit_author_approved" class="edit_author_approved" method="POST" action="#" >
                     <div class="row">
 
                         <div class="col-md-10 col-lg-offset-1">
@@ -56,9 +50,18 @@
 
                     </div>
 
+                <form id="edit_author_approved_form"
+                      name="edit_author_approved"
+                      class="edit_author_approved"
+                      method="post"
+                      action="{{route('board.sponsors.editor.edit')}}"
+                      enctype="multipart/form-data" >
+
+                    {{csrf_field()}}
+
                     <div class="row">
 
-                        <div class="col-md-12">
+                        <div class="col-md-10 col-lg-offset-1">
 
                             <div class="modal-body">
 
@@ -74,6 +77,22 @@
 
                                 <div class="col-md-12 author_approved_title">
                                     <input name="title" type="text" class="form-control span6" id="edit_author_approved_title">
+                                </div>
+
+                                <div class="col-md-12 text-primary">
+                                    <label for="edit_author_approved_package">
+                                        <h5>
+                                            @lang('sponsors::board/modals.modal_view_information_package')
+                                        </h5>
+                                    </label>
+                                </div>
+
+                                <div class="col-md-6 edit_author_approved_package">
+                                    <select class="selectpicker form-control" name="sponsor_package" id="edit_author_approved_package">
+                                        @foreach($packages as $package)
+                                            <option value="{{$package->id}}">{{$package->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 <div class="col-md-12">
@@ -94,6 +113,37 @@
 
                                 </div>
 
+                                <div class="col-md-12 form-group">
+                                    <label for="edit_author_approved_link" class="col-sm-2 control-label text-primary margin-top-md">
+                                        <h5>
+                                            Web site link:
+                                        </h5>
+                                    </label>
+                                    <div class="col-sm-8  margin-top-md">
+                                        <input type="text" name="sponsor_link" class="form-control" id="edit_author_approved_link" placeholder="http(s):// Website link">
+                                    </div>
+                                    {{--<input name="link" type="text" class="form-control span6" id="edit_author_approved_link">--}}
+                                </div>
+
+                                <div class="col-md-12 edit_author_image margin-top-md text-center">
+                                    <img id="edit_author_approved_show_logo" src=" {{asset('img/no-image.png')}} " class="img-thumbnail logo_sponsor" style="max-width:300px;">
+                                </div>
+
+                                <div class="form-group  col-md-10 col-md-offset-1 margin-top-md">
+                                    <div class="input-group">
+
+                                        {{--<input type="file" name="sponsor_logo">--}}
+
+                                        <label class="input-group-btn">
+                                        <span class="btn btn-default">
+                                            Select new Logo <input type="file" name="sponsor_logo"  style="display: none;">
+                                        </span>
+                                        </label>
+                                        <input name="sponsor_logo" id="edit_author_approved_logo" type="text" class="form-control input-file" readonly placeholder="Upload logo...." >
+
+                                    </div>
+                                </div>
+
                                 <div class="col-md-12">
                                     <hr>
                                 </div>
@@ -108,7 +158,7 @@
 
                                     <div class="col-md-4">
                                         <input class="bs-switch" type="checkbox" checked="checked" disabled
-                                               name="author_approved"
+                                               name="author_approval"
                                                id="author_approved"
                                                data-size="mini"
                                                data-on-color="success"
@@ -132,13 +182,14 @@
 
                                     <div class="col-md-4">
                                         <input class="bs-switch" type="checkbox"
-                                               name="editor_approved"
+                                               name="editor_approval"
                                                id="editor_approved"
                                                data-size="mini"
                                                data-on-color="success"
                                                data-off-color="danger"
                                                data-on-text="@lang('didyouknow::board/buttons.modal_switch_on')"
                                                data-off-text="@lang('didyouknow::board/buttons.modal_switch_off')"
+                                               value=1
                                         >
                                         <br>
                                         <br>

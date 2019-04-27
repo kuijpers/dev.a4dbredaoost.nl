@@ -53,7 +53,8 @@
                 <form id="edit_personal_drafts_form"
                       name="edit_personal_drafts_form"
                       class="edit_personal_drafts"
-                      method="post" action="{{route('board.sponsors.author.edit')}}"
+                      method="post"
+                      action="{{route('board.sponsors.author.edit')}}"
                       enctype="multipart/form-data">
 
                     {{csrf_field()}}
@@ -85,8 +86,8 @@
                                     </label>
                                 </div>
 
-                                <div class="col-md-12 edit_personal_package">
-                                    <select name="sponsor_package" id="edit_personal_package">
+                                <div class="col-md-6 edit_personal_package">
+                                    <select class="selectpicker form-control" name="sponsor_package" id="edit_personal_package">
                                         @foreach($packages as $package)
                                             <option value="{{$package->id}}">{{$package->name}}</option>
                                         @endforeach

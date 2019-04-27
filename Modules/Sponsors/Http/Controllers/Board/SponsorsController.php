@@ -50,12 +50,15 @@ class SponsorsController extends Controller
 
 		$author_drafts		= static::get_author_drafts();
 
+		$author_approved	= static::get_author_approved();
+
 		return view('sponsors::Board.sponsors.index')
 			->with(compact('breadcrumbles',
 							'user',
 							'packages',
 							'personal_drafts',
-							'author_drafts'
+							'author_drafts',
+							'author_approved'
 							));
     }
 
@@ -105,14 +108,14 @@ class SponsorsController extends Controller
 		// Sponsor_link table
 		// $request->sponsor_link
 
-		static::author_update_sponsor_link_table($request);
+		static::general_update_sponsor_link_table($request);
 
 		// Sponsor_image
 		// $request->sponsor_logo
 
 		if(!is_null($request->sponsor_logo)){
 
-			static::author_update_sponsor_image_table($request);
+			static::general_update_sponsor_image_table($request);
 
 		}
 
@@ -120,6 +123,44 @@ class SponsorsController extends Controller
 
 		return redirect()->route('board.sponsors.index')->with('success-message', 'Sponsor updated!');
     }
+
+	public function editor_edit(Request $request){
+
+    	// Validate all request fields
+		static::editor_edit_validation($request);
+
+	// Update tables in DB
+
+		// Sponsor table
+		// $request->id
+		// $request->title !
+		// $request->sponsor_package !
+		// $request->body !
+		// $request->editor_approval
+		// Auth::user()->id;
+		// Auth::user()->group;
+
+		static::editor_update_sponsor_table($request);
+
+		// Sponsor_link table
+		// $request->sponsor_link
+
+		static::general_update_sponsor_link_table($request);
+
+		// Sponsor_image
+		// $request->sponsor_logo
+
+		if(!is_null($request->sponsor_logo)){
+
+			static::general_update_sponsor_image_table($request);
+
+		}
+
+		// return success message
+
+		return redirect()->route('board.sponsors.index')->with('success-message', 'Sponsor updated!');
+
+	}
 
 
 	// Get functions
@@ -155,6 +196,16 @@ class SponsorsController extends Controller
 
 	}
 
+	private function get_author_approved(){
+
+		$author_approved = Sponsor::where('draft', '=', 1)
+									->where('author_approve', '=', 1)
+									->where('editor_approve', '=', 0)
+									->where('publisher_approve', '=', 0)
+									->get();
+
+		return $author_approved;
+	}
 
 
 	// Private create functions
@@ -168,7 +219,7 @@ class SponsorsController extends Controller
 			'body' 							=> 'required',
 			'publish_date_start' 			=> 'required',
 			'publish_date_end' 				=> 'required|date|after:publish_date_start',
-			'sponsor_logo' 					=> 'required|image|mimes:jpg,jpeg,bmp,png',
+			'sponsor_logo' 					=> 'nullable|image|mimes:jpg,jpeg,bmp,png',
 			'create_new_author_approved' 	=> 'sometimes|accepted',
 			'create_new_editor_approved' 	=> 'sometimes|accepted',
 		])->validate();
@@ -279,7 +330,7 @@ class SponsorsController extends Controller
 
 
 
-	// Private edit/update functions
+	// Private edit/update functions for author
 
 	private function author_edit_validation($request){
 
@@ -321,7 +372,60 @@ class SponsorsController extends Controller
 
 	}
 
-	private function author_update_sponsor_link_table($request){
+
+	// Private edit/update functions for editor
+
+	private function editor_edit_validation($request){
+
+		Validator::make($request->all(), [
+			'id' 							=> 'required',
+			'title' 						=> 'required|max:255',
+			'body' 							=> 'required',
+			'sponsor_package' 				=> 'required|integer',
+			'sponsor_link' 					=> 'required|active_url',
+			'sponsor_logo' 					=> 'nullable|image|mimes:jpg,jpeg,bmp,png',
+			'create_new_author_approved' 	=> 'sometimes|accepted',
+			'create_new_editor_approved' 	=> 'sometimes|accepted',
+		])->validate();
+	}
+
+	private function editor_update_sponsor_table($request){
+
+		$sponsor = Sponsor::where('id', '=', $request->id)->first();
+
+		// - title
+		$sponsor->title							= 	$request->title;
+
+		// slug
+		$sponsor->slug 							= 	str_slug($request->title, '-');
+
+		// Description
+		$sponsor->description					=	$request->title;
+
+		// - sponsor_package => sponsor_package_id
+		$sponsor->sponsor_packages_id 			= 	$request->sponsor_package;
+
+		// - body
+		$sponsor->body							=	$request->body;
+
+		// - editor
+		$sponsor->editor						=	Auth::user()->id;
+
+		// - author group
+		$sponsor->editor_group					=	Auth::user()->group;
+
+		if($request->editor_approval){
+			$sponsor->editor_approve			=	1;
+		}
+
+		$sponsor->save();
+
+	}
+
+
+	// Private edit/update functions General
+
+	private function general_update_sponsor_link_table($request){
 
 		// Sponsor_link table
 		// $request->sponsor_link
@@ -338,7 +442,7 @@ class SponsorsController extends Controller
 
 	}
 
-	private function author_update_sponsor_image_table($request){
+	private function general_update_sponsor_image_table($request){
 
 		$sponsor_image	=	SponsorImage::where('sponsor_id', '=', $request->id)->first();
 
@@ -368,7 +472,5 @@ class SponsorsController extends Controller
 		$sponsor_image->save();
 
 	}
-
-
 
 }

@@ -114,7 +114,6 @@
                                         @if($personal_drafts->count()==0)
                                             <span class="label label-default">
                                                 {{$personal_drafts->count()}}
-                                            {{--3--}}
                                             </span>
                                         @else
                                             <span class="label label-primary">
@@ -133,7 +132,6 @@
                                         @if($author_drafts->count()==0)
                                             <span class="label label-default">
                                                 {{$author_drafts->count()}}
-                                            {{--2--}}
                                             </span>
                                         @else
                                             <span class="label label-primary">
@@ -150,16 +148,15 @@
                                 <li role="presentation">
                                     <a href="#editor" aria-controls="editor" role="tab" data-toggle="tab">
                                         @lang('sponsors::board/tabs.tab_nav_editor') &nbsp;
-                                        {{--@if($author_approved->count()==0)--}}
+                                        @if($author_approved->count()==0)
                                             <span class="label label-default">
-                                                {{--{{$author_approved->count()}}--}}
-                                            3
+                                                {{$author_approved->count()}}
                                             </span>
-                                        {{--@else--}}
-                                            {{--<span class="label label-primary">--}}
-                                                {{--{{$author_approved->count()}}--}}
-                                            {{--</span>--}}
-                                        {{--@endif--}}
+                                        @else
+                                            <span class="label label-primary">
+                                                {{$author_approved->count()}}
+                                            </span>
+                                        @endif
                                     </a>
                                 </li>
                             @endif

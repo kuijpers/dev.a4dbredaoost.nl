@@ -56,6 +56,28 @@
                                 This is where data will be placed using JS.
                             </div>
 
+                            <div class="col-md-12 text-primary">
+                                <h5>
+                                    @lang('sponsors::board/modals.modal_view_information_link')
+                                </h5>
+                            </div>
+
+                            <div class="col-md-12 view_author_link">
+                                <a href="weblink" target="_blank" id="view_author_approved_link_sponsor">
+                                    weblink
+                                </a>
+                            </div>
+
+                            <div class="col-md-12 text-primary">
+                                <h5>
+                                    @lang('sponsors::board/modals.modal_view_information_logo')
+                                </h5>
+                            </div>
+
+                            <div class="col-md-12 view_author_image margin-top-md text-center">
+                                <img src=" {{asset('img/no-image.png')}} " id="view_author_approved_logo_sponsor" class="img-thumbnail" style="max-width:300px;">
+                            </div>
+
                             <div class="col-md-12">
                                 <hr>
                             </div>

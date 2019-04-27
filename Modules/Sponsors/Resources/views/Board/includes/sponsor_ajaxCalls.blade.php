@@ -6,7 +6,7 @@
 <script src="{{ Module::asset('sponsors:js/ajaxCalls/sponsors/personal_drafts.js') }}"></script>
 
 {{--Editor--}}
-{{--<script src="{{ Module::asset('sponsors:js/ajaxCalls/sponsors/author_approved.js') }}"></script>--}}
+<script src="{{ Module::asset('sponsors:js/ajaxCalls/sponsors/author_approved.js') }}"></script>
 
 {{--Publisher--}}
 {{--<script src="{{ Module::asset('sponsors:js/ajaxCalls/sponsors/editor_approved.js') }}"></script>--}}

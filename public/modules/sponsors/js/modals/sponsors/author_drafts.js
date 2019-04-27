@@ -13,11 +13,11 @@ $('#view_author_drafts').on('show.bs.modal', function(e) {
 	var body_id		=	'.view_author_body';
 
 	var logo		= 	'storage/'+info['image_name'];
-	var logo_id		=	"#author_logo_sponsor";
+	var logo_id		=	"#view_author_logo_sponsor";
 	var logo_fixed	=	"img/no-image.png";
 
 	var link		= 	info['link'];
-	var link_id		=	"#link_sponsor";
+	var link_id		=	"#view_author_link_sponsor";
 	var link_fixed	=	"weblink";
 
 

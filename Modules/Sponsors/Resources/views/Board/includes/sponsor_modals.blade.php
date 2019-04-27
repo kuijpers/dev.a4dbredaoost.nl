@@ -11,8 +11,8 @@
 
 {{--Editor--}}
 @if($rpc->CanAccessAs(['webmaster' , 'admin' , 'editor']))
-    {{--@include('sponsors::Board.sponsors.modals.view_author_approved')--}}
-    {{--@include('sponsors::Board.sponsors.modals.edit_author_approved')--}}
+    @include('sponsors::Board.sponsors.modals.view_author_approved')
+    @include('sponsors::Board.sponsors.modals.edit_author_approved')
 @endif
 
 {{--Publisher--}}

@@ -15,7 +15,7 @@
 
 {{--Editor--}}
 {{--@if($rpc->CanAccessAs(['webmaster' , 'admin' , 'editor']))--}}
-    {{--<script src="{{ Module::asset('sponsors:js/modals/sponsors/author_approved.js') }}"></script>--}}
+    <script src="{{ Module::asset('sponsors:js/modals/sponsors/author_approved.js') }}"></script>
 {{--@endif--}}
 
 {{--Publisher--}}

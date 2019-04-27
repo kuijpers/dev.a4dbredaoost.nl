@@ -54,10 +54,7 @@
 
 		Route::post('/author-edit', 'SponsorsController@author_edit')->name('board.sponsors.author.edit');
 
-		Route::get('/{id}', 'SponsorsController@show')->name('board.sponsors.show');
-
-		Route::patch('/{id}', 'SponsorsController@update')->name('board.sponsors.update');
-
+		Route::post('/editor-edit', 'SponsorsController@editor_edit')->name('board.sponsors.editor.edit');
 
 		Route::delete('/{id}', 'SponsorsController@delete')->name('board.sponsors.delete');
 
