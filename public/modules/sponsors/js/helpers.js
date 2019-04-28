@@ -12,4 +12,11 @@ $(function () {
 	$("#end_date").on("dp.change", function (e) {
 		$('#start_date').data("DateTimePicker").maxDate(e.date);
 	});
+
+
+	$('#payment_received_at').datetimepicker({
+		locale: 'nl',
+		defaultDate: moment()
+	});
+
 });

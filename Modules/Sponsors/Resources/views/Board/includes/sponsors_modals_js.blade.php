@@ -14,9 +14,14 @@
 @endif
 
 {{--Editor--}}
-{{--@if($rpc->CanAccessAs(['webmaster' , 'admin' , 'editor']))--}}
+@if($rpc->CanAccessAs(['webmaster' , 'admin' , 'editor']))
     <script src="{{ Module::asset('sponsors:js/modals/sponsors/author_approved.js') }}"></script>
-{{--@endif--}}
+@endif
+
+{{--Treasurer--}}
+@if($rpc->CanAccessAs(['webmaster' , 'admin' , 'editor' , 'treasurer']))
+    <script src="{{ Module::asset('sponsors:js/modals/sponsors/treasurer_unpaid.js') }}"></script>
+@endif
 
 {{--Publisher--}}
 {{--@if($rpc->CanAccessAs(['webmaster' , 'admin' , 'publisher']))--}}

@@ -15,6 +15,12 @@
     @include('sponsors::Board.sponsors.modals.edit_author_approved')
 @endif
 
+{{--Treasurer--}}
+@if($rpc->CanAccessAs(['webmaster' , 'admin' , 'publisher' , 'treasurer']))
+    @include('sponsors::Board.sponsors.modals.view_treasurer_unpaid')
+    @include('sponsors::Board.sponsors.modals.edit_treasurer_unpaid')
+@endif
+
 {{--Publisher--}}
 @if($rpc->CanAccessAs(['webmaster' , 'admin' , 'publisher']))
     {{--@include('sponsors::Board.sponsors.modals.view_editor_approved')--}}

@@ -56,6 +56,8 @@
 
 		Route::post('/editor-edit', 'SponsorsController@editor_edit')->name('board.sponsors.editor.edit');
 
+		Route::post('/treasurer-edit', 'SponsorsController@treasurer_edit')->name('board.sponsors.treasurer.edit');
+
 		Route::delete('/{id}', 'SponsorsController@delete')->name('board.sponsors.delete');
 
 

@@ -69,7 +69,8 @@
                                 'admin' ,
                                 'author' ,
                                 'editor' ,
-                                'publisher'
+                                'publisher',
+                                'treasurer'
                                 ]))
         <div class="alert alert-danger alert-dismissible text-center" role="alert">
             @lang('sponsors::board/notifications.no_permission_to_access')
@@ -84,7 +85,8 @@
                         'admin' ,
                         'author' ,
                         'editor' ,
-                        'publisher'
+                        'publisher',
+                        'treasurer'
                         ]))
         <div class="row">
 
@@ -166,16 +168,15 @@
                                 <li role="presentation">
                                     <a href="#treasurer" aria-controls="penningmeester" role="tab" data-toggle="tab">
                                         @lang('sponsors::board/tabs.tab_nav_treasurer')  &nbsp; &nbsp;
-                                        {{--@if($editor_approved->count()==0)--}}
+                                        @if($unpaid_invoices->count()==0)
                                             <span class="label label-default">
-                                                {{--{{$editor_approved->count()}}--}}
-                                                5
+                                                {{$unpaid_invoices->count()}}
                                             </span>
-                                        {{--@else--}}
-                                            {{--<span class="label label-primary">--}}
-                                                {{--{{$editor_approved->count()}}--}}
-                                            {{--</span>--}}
-                                        {{--@endif--}}
+                                        @else
+                                            <span class="label label-primary">
+                                                {{$unpaid_invoices->count()}}
+                                            </span>
+                                        @endif
                                     </a>
                                 </li>
                             @endif

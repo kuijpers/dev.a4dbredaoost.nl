@@ -52,13 +52,16 @@ class SponsorsController extends Controller
 
 		$author_approved	= static::get_author_approved();
 
+		$unpaid_invoices	= static::get_unpaid();
+
 		return view('sponsors::Board.sponsors.index')
 			->with(compact('breadcrumbles',
 							'user',
 							'packages',
 							'personal_drafts',
 							'author_drafts',
-							'author_approved'
+							'author_approved',
+							'unpaid_invoices'
 							));
     }
 
@@ -162,6 +165,31 @@ class SponsorsController extends Controller
 
 	}
 
+	public function treasurer_edit(Request $request){
+
+//    	return $request->all();
+
+    	// Validate all request input
+			// $request->payment_received;
+			// $request->payment_received_at
+
+		static::treasurer_edit_validation($request);
+
+		// Add data to database
+			// $request->payment_received;
+			// $request->payment_received_at
+
+		if($request->payment_received){
+				static::treasurer_edit_sponsor_table($request);
+			}
+		else{
+				return redirect()->route('board.sponsors.index')->with('danger-message', 'Sponsor is not updated!');
+			}
+		// return success message
+
+		return redirect()->route('board.sponsors.index')->with('success-message', 'Sponsor updated!');
+	}
+
 
 	// Get functions
 
@@ -206,6 +234,16 @@ class SponsorsController extends Controller
 
 		return $author_approved;
 	}
+
+	private function get_unpaid(){
+
+    	$unpaid = Sponsor::where('payment_received', '=', 0)->get();
+
+    	return $unpaid;
+
+	}
+
+	
 
 
 	// Private create functions
@@ -329,7 +367,6 @@ class SponsorsController extends Controller
 	}
 
 
-
 	// Private edit/update functions for author
 
 	private function author_edit_validation($request){
@@ -422,6 +459,31 @@ class SponsorsController extends Controller
 
 	}
 
+	// Private edit/update functions for treasurer
+
+	private function treasurer_edit_validation($request){
+
+		Validator::make($request->all(), [
+			'payment_received' 				=> 'sometimes|accepted',
+			'payment_received_at'		 	=> 'required_if:payment_received,==,1|date_format:d-m-Y H:i',
+		])->validate();
+
+	}
+
+	private function treasurer_edit_sponsor_table($request){
+
+		// $request->payment_received;
+		// $request->payment_received_at
+
+		$sponsor = Sponsor::where('id', '=', $request->id)->first();
+
+		$sponsor->payment_received		=	$request->payment_received;
+
+		$sponsor->payment_received_at	=	Carbon::parse($request->payment_received_at)->format('Y-m-d H:i');
+
+		$sponsor->save();
+
+	}
 
 	// Private edit/update functions General
 

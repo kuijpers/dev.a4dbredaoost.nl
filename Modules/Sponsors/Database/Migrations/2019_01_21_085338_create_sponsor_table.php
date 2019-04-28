@@ -44,7 +44,9 @@ class CreateSponsorTable extends Migration
 			$table->datetime('publish_date_end')->nullable();
 
 			$table->integer('sponsor_packages_id')->nullable();
+
 			$table->boolean('payment_received')->default(0);
+			$table->dateTime('payment_received_at')->nullable();
 
 			$table->softDeletes();
 

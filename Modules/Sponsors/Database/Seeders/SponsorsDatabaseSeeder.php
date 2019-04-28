@@ -248,6 +248,8 @@ class SponsorsDatabaseSeeder extends Seeder
 				'publish_date_end' 		=> Carbon::yesterday(),
 
 				'payment_received' 		=> 1,
+				'payment_received_at'	=> Carbon::now(),
+
 				'sponsor_packages_id' 	=> 1,
 
 				'created_at' 			=> Carbon::now(),
@@ -281,6 +283,8 @@ class SponsorsDatabaseSeeder extends Seeder
 				'publish_date_end' 		=> Carbon::yesterday(),
 
 				'payment_received' 		=> 1,
+				'payment_received_at'	=> Carbon::now(),
+
 				'sponsor_packages_id' 	=> 5,
 
 				'created_at' 			=> Carbon::now(),
@@ -317,6 +321,8 @@ class SponsorsDatabaseSeeder extends Seeder
 				'publish_date_end' 		=> Carbon::yesterday(),
 
 				'payment_received' 		=> 1,
+				'payment_received_at'	=> Carbon::now(),
+
 				'sponsor_packages_id' 	=> 4,
 
 				'created_at' 			=> Carbon::now(),
@@ -348,6 +354,8 @@ class SponsorsDatabaseSeeder extends Seeder
 				'publish_date_end' 		=> Carbon::yesterday(),
 
 				'payment_received' 		=> 1,
+				'payment_received_at'	=> Carbon::now(),
+
 				'sponsor_packages_id' 	=> 3,
 
 				'created_at' 			=> Carbon::now(),
@@ -377,6 +385,8 @@ class SponsorsDatabaseSeeder extends Seeder
 				'publish_date_end' 		=> Carbon::yesterday(),
 
 				'payment_received' 		=> 1,
+				'payment_received_at'	=> Carbon::now(),
+
 				'sponsor_packages_id' 	=> 5,
 
 				'created_at' 			=> Carbon::now(),
@@ -406,6 +416,8 @@ class SponsorsDatabaseSeeder extends Seeder
 				'publish_date_end' 		=> Carbon::yesterday(),
 
 				'payment_received' 		=> 1,
+				'payment_received_at'	=> Carbon::now(),
+
 				'sponsor_packages_id' 	=> 6,
 
 				'created_at' 			=> Carbon::now(),
@@ -439,6 +451,8 @@ class SponsorsDatabaseSeeder extends Seeder
 				'publish_date_end' 		=> Carbon::yesterday(),
 
 				'payment_received' 		=> 1,
+				'payment_received_at'	=> Carbon::now(),
+
 				'sponsor_packages_id' 	=> 4,
 
 				'created_at' 			=> Carbon::now(),
@@ -468,6 +482,8 @@ class SponsorsDatabaseSeeder extends Seeder
 				'publish_date_end' 		=> Carbon::yesterday(),
 
 				'payment_received' 		=> 1,
+				'payment_received_at'	=> Carbon::now(),
+
 				'sponsor_packages_id' 	=> 6,
 
 				'created_at' 			=> Carbon::now(),
@@ -509,6 +525,8 @@ class SponsorsDatabaseSeeder extends Seeder
 				'publish_date_end' 		=> Carbon::yesterday(),
 
 				'payment_received' 		=> 1,
+				'payment_received_at'	=> Carbon::now(),
+
 				'sponsor_packages_id' 	=> 4,
 
 				'created_at' 			=> Carbon::now(),
@@ -541,6 +559,8 @@ class SponsorsDatabaseSeeder extends Seeder
 				'publish_date_end' 		=> Carbon::yesterday(),
 
 				'payment_received' 		=> 1,
+				'payment_received_at'	=> Carbon::now(),
+
 				'sponsor_packages_id' 	=> 2,
 
 				'created_at' 			=> Carbon::now(),
@@ -572,6 +592,8 @@ class SponsorsDatabaseSeeder extends Seeder
 				'publish_date_end' 		=> Carbon::yesterday(),
 
 				'payment_received' 		=> 1,
+				'payment_received_at'	=> Carbon::now(),
+
 				'sponsor_packages_id' 	=> 4,
 
 				'created_at' 			=> Carbon::now(),
@@ -601,6 +623,8 @@ class SponsorsDatabaseSeeder extends Seeder
 				'publish_date_end' 		=> Carbon::yesterday(),
 
 				'payment_received' 		=> 1,
+				'payment_received_at'	=> Carbon::now(),
+
 				'sponsor_packages_id' 	=> 7,
 
 				'created_at' 			=> Carbon::now(),
@@ -632,6 +656,8 @@ class SponsorsDatabaseSeeder extends Seeder
 				'publish_date_end' 		=> Carbon::yesterday(),
 
 				'payment_received' 		=> 1,
+				'payment_received_at'	=> Carbon::now(),
+
 				'sponsor_packages_id' 	=> 2,
 
 				'created_at' 			=> Carbon::now(),
@@ -668,6 +694,8 @@ class SponsorsDatabaseSeeder extends Seeder
 				'publish_date_end' 		=> Carbon::yesterday(),
 
 				'payment_received' 		=> 1,
+				'payment_received_at'	=> Carbon::now(),
+
 				'sponsor_packages_id' 	=> 4,
 
 				'created_at' 			=> Carbon::now(),
@@ -697,6 +725,8 @@ class SponsorsDatabaseSeeder extends Seeder
 				'publish_date_end' 		=> Carbon::yesterday(),
 
 				'payment_received' 		=> 1,
+				'payment_received_at'	=> Carbon::now(),
+
 				'sponsor_packages_id' 	=> 6,
 
 				'created_at' 			=> Carbon::now(),
@@ -732,6 +762,8 @@ class SponsorsDatabaseSeeder extends Seeder
 				'publish_date_end' 		=> Carbon::yesterday(),
 
 				'payment_received' 		=> 1,
+				'payment_received_at'	=> Carbon::now(),
+
 				'sponsor_packages_id' 	=> 2,
 
 				'created_at' 			=> Carbon::now(),
@@ -761,6 +793,8 @@ class SponsorsDatabaseSeeder extends Seeder
 				'publish_date_end' 		=> Carbon::yesterday(),
 
 				'payment_received' 		=> 1,
+				'payment_received_at'	=> Carbon::now(),
+
 				'sponsor_packages_id' 	=> 7,
 
 				'created_at' 			=> Carbon::now(),
