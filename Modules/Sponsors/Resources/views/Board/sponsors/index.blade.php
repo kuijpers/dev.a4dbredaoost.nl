@@ -186,16 +186,15 @@
                                 <li role="presentation">
                                     <a href="#publisher" aria-controls="redacteur" role="tab" data-toggle="tab">
                                         @lang('sponsors::board/tabs.tab_nav_publisher')  &nbsp; &nbsp;
-                                        {{--@if($editor_approved->count()==0)--}}
+                                        @if($editor_approved->count()==0)
                                             <span class="label label-default">
-                                                {{--{{$editor_approved->count()}}--}}
-                                                5
+                                                {{$editor_approved->count()}}
                                             </span>
-                                        {{--@else--}}
-                                            {{--<span class="label label-primary">--}}
-                                                {{--{{$editor_approved->count()}}--}}
-                                            {{--</span>--}}
-                                        {{--@endif--}}
+                                        @else
+                                            <span class="label label-primary">
+                                                {{$editor_approved->count()}}
+                                            </span>
+                                        @endif
                                     </a>
                                 </li>
                             @endif

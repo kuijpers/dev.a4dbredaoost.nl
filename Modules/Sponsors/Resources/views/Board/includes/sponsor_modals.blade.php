@@ -23,8 +23,8 @@
 
 {{--Publisher--}}
 @if($rpc->CanAccessAs(['webmaster' , 'admin' , 'publisher']))
-    {{--@include('sponsors::Board.sponsors.modals.view_editor_approved')--}}
-    {{--@include('sponsors::Board.sponsors.modals.edit_editor_approved')--}}
+    @include('sponsors::Board.sponsors.modals.view_editor_approved')
+    @include('sponsors::Board.sponsors.modals.edit_editor_approved')
 @endif
 
 {{--Published--}}

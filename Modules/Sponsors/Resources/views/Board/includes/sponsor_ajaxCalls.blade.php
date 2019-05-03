@@ -9,7 +9,7 @@
 <script src="{{ Module::asset('sponsors:js/ajaxCalls/sponsors/author_approved.js') }}"></script>
 
 {{--Publisher--}}
-{{--<script src="{{ Module::asset('sponsors:js/ajaxCalls/sponsors/editor_approved.js') }}"></script>--}}
+<script src="{{ Module::asset('sponsors:js/ajaxCalls/sponsors/editor_approved.js') }}"></script>
 
 {{--Published--}}
 {{--<script src="{{ Module::asset('sponsors:js/ajaxCalls/sponsors/publisher_approved.js') }}"></script>--}}

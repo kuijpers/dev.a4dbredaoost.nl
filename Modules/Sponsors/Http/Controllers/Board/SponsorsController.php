@@ -54,6 +54,8 @@ class SponsorsController extends Controller
 
 		$unpaid_invoices	= static::get_unpaid();
 
+		$editor_approved	= static::get_editor_approved();
+
 		return view('sponsors::Board.sponsors.index')
 			->with(compact('breadcrumbles',
 							'user',
@@ -61,10 +63,10 @@ class SponsorsController extends Controller
 							'personal_drafts',
 							'author_drafts',
 							'author_approved',
-							'unpaid_invoices'
+							'unpaid_invoices',
+							'editor_approved'
 							));
     }
-
 
     public function create(Request $request)
     {
@@ -243,7 +245,17 @@ class SponsorsController extends Controller
 
 	}
 
-	
+	private function get_editor_approved(){
+
+		$editor_approved = Sponsor::where('draft', '=', 1)
+			->where('author_approve', '=', 1)
+			->where('editor_approve', '=', 1)
+			->where('publisher_approve', '=', 0)
+			->get();
+
+		return $editor_approved;
+
+	}
 
 
 	// Private create functions
@@ -272,7 +284,7 @@ class SponsorsController extends Controller
 		$new_sponsor->title							= $request->title;
 
 		// slug
-		$new_sponsor->slug 							= str_slug($request->title, '-');
+		$new_sponsor->slug 							= str_slug($request->title.Carbon::now()->timestamp, '-');
 
 		// Description
 		$new_sponsor->description					=	$request->title;
@@ -325,7 +337,7 @@ class SponsorsController extends Controller
 		$sponsor_link = new SponsorLink;
 
 		// slug
-		$sponsor_link->slug							= str_slug($request->sponsor_link, '-');
+		$sponsor_link->slug							= str_slug($request->sponsor_link.Carbon::now()->timestamp, '-');
 
 		// sponsor_id
 		$sponsor_link->sponsor_id					= $sponsor_id;
@@ -348,7 +360,7 @@ class SponsorsController extends Controller
 		$sponsor_image->name						= $logo;
 
 		// slug
-		$sponsor_image->slug						= str_slug($logo, '-');
+		$sponsor_image->slug						= str_slug($logo.Carbon::now()->timestamp, '-');
 
 		// description
 		$sponsor_image->description					= 'Logo for '.$request->title;
@@ -390,7 +402,7 @@ class SponsorsController extends Controller
 		$sponsor->title							= 	$request->title;
 
 		// slug
-		$sponsor->slug 							= 	str_slug($request->title, '-');
+		$sponsor->slug 							= 	str_slug($request->title.Carbon::now()->timestamp, '-');
 
 		// Description
 		$sponsor->description					=	$request->title;
@@ -434,7 +446,7 @@ class SponsorsController extends Controller
 		$sponsor->title							= 	$request->title;
 
 		// slug
-		$sponsor->slug 							= 	str_slug($request->title, '-');
+		$sponsor->slug 							= 	str_slug($request->title.Carbon::now()->timestamp, '-');
 
 		// Description
 		$sponsor->description					=	$request->title;
@@ -495,7 +507,7 @@ class SponsorsController extends Controller
 		$sponsor_link	=	SponsorLink::where('sponsor_id', '=', $request->id)->first();
 
 		// slug
-		$sponsor_link->slug							= str_slug($request->sponsor_link, '-');
+		$sponsor_link->slug							= str_slug($request->sponsor_link.Carbon::now()->timestamp, '-');
 
 		// link
 		$sponsor_link->link							= $request->sponsor_link;
@@ -520,7 +532,7 @@ class SponsorsController extends Controller
 		$sponsor_image->name						= $logo;
 
 		// slug
-		$sponsor_image->slug						= str_slug($logo, '-');
+		$sponsor_image->slug						= str_slug($logo.Carbon::now()->timestamp, '-');
 
 		// description
 		$sponsor_image->description					= 'Logo for '.$request->title;
