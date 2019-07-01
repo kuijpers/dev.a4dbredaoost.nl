@@ -45,6 +45,7 @@
 
     {{--{{$drafts}}--}}
 
+
     {{-- Required for use with dkw-activetab libarary --}}
     <div id="dkw-activetab" class="@lang('sponsors::board/general.page_id')main" style="display: none;"></div>
 
@@ -204,16 +205,15 @@
                                 <li role="presentation">
                                     <a href="#published" aria-controls="gepubliceerd" role="tab" data-toggle="tab">
                                         @lang('sponsors::board/tabs.tab_nav_published')  &nbsp; &nbsp;
-                                        {{--@if($publisher_approved->count()==0)--}}
+                                        @if($publisher_approved->count()==0)
                                             <span class="label label-default">
-                                                {{--{{$publisher_approved->count()}}--}}
-                                                6
-                                            {{--</span>--}}
-                                        {{--@else--}}
-                                            {{--<span class="label label-primary">--}}
-                                                {{--{{$publisher_approved->count()}}--}}
-                                            {{--</span>--}}
-                                        {{--@endif--}}
+                                                {{$publisher_approved->count()}}
+                                            </span>
+                                        @else
+                                            <span class="label label-primary">
+                                                {{$publisher_approved->count()}}
+                                            </span>
+                                        @endif
                                     </a>
                                 </li>
                             @endif
@@ -223,16 +223,15 @@
                                 <li role="presentation">
                                     <a href="#archive" aria-controls="archief" role="tab" data-toggle="tab">
                                         @lang('sponsors::board/tabs.tab_nav_archive') &nbsp;
-                                        {{--@if($archived->count()==0)--}}
+                                        @if($archived->count()==0)
                                             <span class="label label-default">
-                                                {{--{{$archived->count()}}--}}
-                                                1
+                                                {{$archived->count()}}
                                             </span>
-                                        {{--@else--}}
-                                            {{--<span class="label label-primary">--}}
-                                                {{--{{$archived->count()}}--}}
-                                            {{--</span>--}}
-                                        {{--@endif--}}
+                                        @else
+                                            <span class="label label-primary">
+                                                {{$archived->count()}}
+                                            </span>
+                                        @endif
                                     </a>
                                 </li>
                             @endif
@@ -242,16 +241,15 @@
                                 <li role="presentation">
                                     <a href="#garbage" aria-controls="garbage" role="tab" data-toggle="tab">
                                         @lang('sponsors::board/tabs.tab_nav_garbage') &nbsp;
-                                        {{--@if($archived->count()==0)--}}
+                                        @if($trashed->count()==0)
                                             <span class="label label-default">
-                                                {{--{{$archived->count()}}--}}
-                                                1
+                                                {{$trashed->count()}}
                                             </span>
-                                        {{--@else--}}
-                                            {{--<span class="label label-primary">--}}
-                                                {{--{{$archived->count()}}--}}
-                                            {{--</span>--}}
-                                        {{--@endif--}}
+                                        @else
+                                            <span class="label label-danger">
+                                                {{$trashed->count()}}
+                                            </span>
+                                        @endif
                                     </a>
                                 </li>
                             @endif

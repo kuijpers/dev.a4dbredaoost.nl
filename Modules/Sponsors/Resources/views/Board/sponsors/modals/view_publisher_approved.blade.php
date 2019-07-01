@@ -7,7 +7,7 @@
                     <div class="col-md-10 col-lg-offset-1">
                         <div class="modal-header">
                             <h4 class="modal-title text-danger">
-                                @lang('didyouknow::board/modals.modal_view_title_published')
+                                @lang('sponsors::board/modals.modal_view_title_published')
                             </h4>
                         </div>
                     </div>
@@ -19,7 +19,7 @@
                     <div class="col-md-10 col-lg-offset-1">
                         <div class="modal-title-message">
                             <h5 class="text-primary">
-                                @lang('didyouknow::board/modals.modal_view_announcement')
+                                @lang('sponsors::board/modals.modal_view_announcement')
                             </h5>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
 
                             <div class="col-md-12 text-primary">
                                 <h5>
-                                    @lang('didyouknow::board/modals.modal_view_information_title')
+                                    @lang('sponsors::board/modals.modal_view_information_title')
                                 </h5>
                             </div>
 
@@ -46,7 +46,7 @@
 
                             <div class="col-md-12 text-primary">
                                 <h5>
-                                    @lang('didyouknow::board/modals.modal_view_information_body')
+                                    @lang('sponsors::board/modals.modal_view_information_body')
                                 </h5>
                             </div>
 
@@ -56,16 +56,18 @@
                                 This is where data will be placed using JS.
                             </div>
 
+                            <div id="view_publisher_link">
                             <div class="col-md-12 text-primary">
                                 <h5>
                                     @lang('sponsors::board/modals.modal_view_information_link')
                                 </h5>
                             </div>
 
-                            <div class="col-md-12 view_treasurer_unpaid_link">
-                                <a href="weblink" target="_blank" id="view_treasurer_unpaid_link_sponsor">
+                            <div class="col-md-12 view_publisher_approved_link" id="view_publisher_approved_link">
+                                <a href="weblink" target="_blank" id="view_publisher_approved_link_sponsor">
                                     weblink
                                 </a>
+                            </div>
                             </div>
 
                             <div class="col-md-12 text-primary">
@@ -74,26 +76,44 @@
                                 </h5>
                             </div>
 
-                            <div class="col-md-12 view_treasurer_unpaid_image margin-top-md text-center">
-                                <img src=" {{asset('img/no-image.png')}} " id="view_treasurer_unpaid_logo_sponsor" class="img-thumbnail" style="max-width:300px;">
+                            <div class="col-md-12 view_publisher_approved_image margin-top-md text-center">
+                                <img src=" {{asset('img/no-image.png')}} " id="view_publisher_approved_logo_sponsor" class="img-thumbnail" style="max-width:300px;">
                             </div>
 
                             <div class="col-md-12">
                                 <hr>
 
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div id="view_publisher_approved_unpaid_id" class="col-md-6" style="display: none">
+                                        {{--Display div--}}
                                         <label>
                                             Betaling ontvangen :
-                                            <input class="bs-switch approved" type="checkbox"
-                                                   name="view_treasurer_unpaid_paid"
-                                                   id="view_treasurer_unpaid_paid"
+                                            <input class="bs-switch payment_received" type="checkbox"
+                                                   name="payment_received"
+                                                   id="view_editor_approved_unpaid"
                                                    data-size="mini"
                                                    data-on-color="success"
                                                    data-off-color="danger"
                                                    data-on-text="Ja"
                                                    data-off-text="Nee"
                                                    disabled
+                                            >
+                                        </label>
+                                    </div>
+                                    {{-- Do not show div--}}
+                                    <div id="view_publisher_approved_paid_id" class="col-md-6" style="display: none">
+                                        <label>
+                                            Betaling ontvangen :
+                                            <input class="bs-switch payment_received" type="checkbox"
+                                                   name="payment_received"
+                                                   id="view_editor_approved_paid"
+                                                   data-size="mini"
+                                                   data-on-color="success"
+                                                   data-off-color="danger"
+                                                   data-on-text="Ja"
+                                                   data-off-text="Nee"
+                                                   disabled
+                                                   checked
                                             >
                                         </label>
                                     </div>
@@ -107,7 +127,7 @@
 
                             <div class="col-md-12">
                                 <div class="col-md-4 text-primary">
-                                    @lang('didyouknow::board/modals.modal_view_approved_author')
+                                    @lang('sponsors::board/modals.modal_view_approved_author')
                                 </div>
                                 <div class="col-md-4 view_publisher_approved_author">
                                     Author
@@ -119,7 +139,7 @@
 
                             <div class="col-md-12">
                                 <div class="col-md-4 text-primary">
-                                    @lang('didyouknow::board/modals.modal_view_approved_editor')
+                                    @lang('sponsors::board/modals.modal_view_approved_editor')
                                 </div>
                                 <div class="col-md-4 view_publisher_approved_editor">
                                     Editor
@@ -130,7 +150,7 @@
 
                             <div class="col-md-12">
                                 <div class="col-md-4 text-primary">
-                                    @lang('didyouknow::board/modals.modal_view_approved_publisher')
+                                    @lang('sponsors::board/modals.modal_view_approved_publisher')
                                 </div>
                                 <div class="col-md-4 view_publisher_approved_publisher">
                                     Publisher
@@ -145,9 +165,9 @@
 
                             <div class="col-md-12">
                                 <div class="col-md-4 text-primary">
-                                    @lang('didyouknow::board/modals.modal_view_publish_from'):
+                                    @lang('sponsors::board/modals.modal_view_publish_from'):
                                 </div>
-                                <div class="col-md-4 view_publisher_approved_start">
+                                <div class="col-md-4 show_publish_start_date" id="show_publish_start_date">
                                     Start Date
                                     This line of text will not be vissible on the website.
                                     This is where data will be placed using JS.
@@ -156,9 +176,9 @@
 
                             <div class="col-md-12">
                                 <div class="col-md-4 text-primary">
-                                    @lang('didyouknow::board/modals.modal_view_publish_till'):
+                                    @lang('sponsors::board/modals.modal_view_publish_till'):
                                 </div>
-                                <div class="col-md-4 view_publisher_approved_end">
+                                <div class="col-md-4 show_publish_end_date" id="show_publish_end_date">
                                     End date
                                     This line of text will not be vissible on the website.
                                     This is where data will be placed using JS.
@@ -171,7 +191,7 @@
                     <div class="col-md-10 col-lg-offset-1">
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">
-                                @lang('didyouknow::board/buttons.modal_button_close')
+                                @lang('sponsors::board/buttons.modal_button_close')
                             </button>
                         </div>
                     </div>

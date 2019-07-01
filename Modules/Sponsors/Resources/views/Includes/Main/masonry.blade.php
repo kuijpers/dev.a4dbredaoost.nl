@@ -17,7 +17,8 @@
             @if($sponsor->with_package()->image_field)
                 @if($sponsor->with_package()->linked_image)
                     <a href="{{route('main.sponsors.click', $sponsor->with_link()->slug)}}" target="_blank">
-                        <img class="card-img-top img-thumbnail" src="{{ asset('modules/sponsors/img').'/'.$sponsor->with_image()->name }}" alt="{{$sponsor->description}}" >
+                        {{--<img class="card-img-top img-thumbnail" src="{{ asset('modules/sponsors/img').'/'.$sponsor->with_image()->name }}" alt="{{$sponsor->description}}" >--}}
+                        <img class="card-img-top img-thumbnail" src="{{ asset('storage/'.$sponsor->with_image()->name) }}" alt="{{$sponsor->description}}" >
                     </a>
                 @else
                     <img class="card-img-top img-thumbnail" src="{{ asset('modules/sponsors/img/httpwwwweilustnl1539476413.jpg') }}" alt="{{$sponsor->description}}" >

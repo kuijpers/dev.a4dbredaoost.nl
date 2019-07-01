@@ -29,24 +29,24 @@
 {{--@endif--}}
 
 {{--Published--}}
-{{--@if($rpc->CanAccessAs(['webmaster' , 'admin' , 'author' , 'editor' , 'publisher']))--}}
-    {{--<script src="{{ Module::asset('sponsors:js/modals/sponsors/publisher_approved.js') }}"></script>--}}
-{{--@endif--}}
+@if($rpc->CanAccessAs(['webmaster' , 'admin' , 'author' , 'editor' , 'publisher']))
+    <script src="{{ Module::asset('sponsors:js/modals/sponsors/publisher_approved.js') }}"></script>
+@endif
 
 {{--Archived--}}
-{{--@if($rpc->CanAccessAs(['webmaster' , 'admin']))--}}
-    {{--<script src="{{ Module::asset('sponsors:js/modals/sponsors/archived.js') }}"></script>--}}
-{{--@endif--}}
+@if($rpc->CanAccessAs(['webmaster' , 'admin']))
+    <script src="{{ Module::asset('sponsors:js/modals/sponsors/archived.js') }}"></script>
+@endif
 
 {{--Delete item--}}
-{{--@if($rpc->CanAccessAs(['webmaster' , 'admin' , 'author' , 'editor' , 'publisher']))--}}
-    {{--<script src="{{ Module::asset('sponsors:js/modals/sponsors/delete_article.js') }}"></script>--}}
-{{--@endif--}}
+@if($rpc->CanAccessAs(['webmaster' , 'admin' , 'author' , 'editor' , 'publisher']))
+    <script src="{{ Module::asset('sponsors:js/modals/sponsors/delete_article.js') }}"></script>
+@endif
 
 {{--Destroy after deleted--}}
-{{--@if($rpc->CanAccessAs(['webmaster' , 'admin']))--}}
-    {{--<script src="{{ Module::asset('sponsors:js/modals/sponsors/destroy.js') }}"></script>--}}
-{{--@endif--}}
+@if($rpc->CanAccessAs(['webmaster' , 'admin']))
+    <script src="{{ Module::asset('sponsors:js/modals/sponsors/destroy.js') }}"></script>
+@endif
 
 {{--New article--}}
 @if($rpc->CanAccessAs(['webmaster' , 'admin' , 'author']))

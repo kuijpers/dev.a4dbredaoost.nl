@@ -9,9 +9,9 @@
             <div class="modal-body">
                 <div class="alert alert-danger" role="alert">
                     <h4><i class="alert-ico fa fa-fw fa-ban"></i>
-                        <strong>@lang('didyouknow::board/modals.modal_edit_title')&thinsp;</strong>
+                        <strong>@lang('sponsors::board/modals.modal_edit_title')&thinsp;</strong>
                     </h4>
-                    @lang('didyouknow::board/modals.modal_edit_body')
+                    @lang('sponsors::board/modals.modal_edit_body')
                 </div>
                 <hr>
                 <div class="modal-content">
@@ -27,10 +27,10 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">
-                    @lang('didyouknow::board/buttons.modal_button_cancel')
+                    @lang('sponsors::board/buttons.modal_button_cancel')
                 </button>
                 <a href="#" class="btn btn-danger btn-ok">
-                    @lang('didyouknow::board/buttons.modal_button_delete')
+                    @lang('sponsors::board/buttons.modal_button_delete')
                 </a>
             </div>
         </div>

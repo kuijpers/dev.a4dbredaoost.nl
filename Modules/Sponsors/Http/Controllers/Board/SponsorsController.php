@@ -21,6 +21,10 @@ class SponsorsController extends Controller
 
 	private $storage_path;
 
+	protected $dates = ['publish_date_start',
+						'publish_date_end',
+						];
+
 
 	public function __construct()
 	{
@@ -31,10 +35,7 @@ class SponsorsController extends Controller
 		$this->storage_path = 'modules/sponsors/img/logos';
 	}
 
-	/**
-     * Display a listing of the resource.
-     * @return Response
-     */
+
     public function index()
     {
 		$breadcrumbles 		= [
@@ -56,6 +57,12 @@ class SponsorsController extends Controller
 
 		$editor_approved	= static::get_editor_approved();
 
+		$publisher_approved	= static::get_publisher_approved();
+
+		$archived			= static::get_archived();
+
+		$trashed			= static::get_trashed();
+
 		return view('sponsors::Board.sponsors.index')
 			->with(compact('breadcrumbles',
 							'user',
@@ -64,7 +71,10 @@ class SponsorsController extends Controller
 							'author_drafts',
 							'author_approved',
 							'unpaid_invoices',
-							'editor_approved'
+							'editor_approved',
+							'publisher_approved',
+							'archived',
+							'trashed'
 							));
     }
 
@@ -192,6 +202,81 @@ class SponsorsController extends Controller
 		return redirect()->route('board.sponsors.index')->with('success-message', 'Sponsor updated!');
 	}
 
+	public function publisher_edit(Request $request)
+	{
+
+//		return $request->all();
+
+		// Folowing data comes from $request
+		//	-	id
+		//	-	title
+		//	-	body
+		//	-	sponsor_link
+		//	-	sponsor_logo
+		//	-	approve_to_publish
+		//	-	update_publish_period
+		//	-	update_publish_period_start
+		//	-	update_publish_period_end
+
+
+		// Validate all requests
+
+			static::publisher_edit_validation($request);
+
+		// Update sponsor table
+
+			static::publisher_edit_sponsor_table($request);
+
+		// Update sponsor_link table
+
+			static::general_update_sponsor_link_table($request);
+
+		// Update sponsor_image table
+
+		if(!is_null($request->sponsor_logo)){
+
+			static::general_update_sponsor_image_table($request);
+
+		}
+
+		// Return success message
+
+			return redirect()->route('board.sponsors.index')->with('success-message', 'Sponsor updated!');
+
+	}
+
+	public function published_edit(Request $request){
+
+		$sponsor = Sponsor::where('id', '=', $request->id)->first();
+
+		$sponsor->publisher_approve				= 0;
+
+		$sponsor->save();
+
+//		static::published_edit_sponsor_table($request);
+
+		// Return success message
+
+		return redirect()->route('board.sponsors.index')->with('success-message', 'Sponsor updated!');
+
+	}
+
+	public function delete_article($id){
+
+
+		static::delete($id);
+
+		return redirect()->route('board.sponsors.index')->with('success-message', 'Sponsor in trash!');
+
+	}
+
+	public function destroy_article($id){
+
+		static::destroy($id);
+
+		return redirect()->route('board.sponsors.index')->with('success-message', 'Sponsor destroyed!');
+
+	}
 
 	// Get functions
 
@@ -257,6 +342,35 @@ class SponsorsController extends Controller
 
 	}
 
+	private function get_publisher_approved(){
+
+		$publisher_approved = Sponsor::where('draft', '=', 1)
+			->where('author_approve', '=', 1)
+			->where('editor_approve', '=', 1)
+			->where('publisher_approve', '=', 1)
+			->where('publish_date_end', '>', Carbon::now())
+			->get();
+
+		return $publisher_approved;
+
+	}
+
+	private function get_archived(){
+
+		$archived = Sponsor::where('publish_date_end', '<', Carbon::now())
+			->get();
+
+		return $archived;
+
+	}
+
+	private function get_trashed(){
+
+		$trashed = Sponsor::onlyTrashed()->get();
+
+		return $trashed;
+
+	}
 
 	// Private create functions
 
@@ -433,8 +547,9 @@ class SponsorsController extends Controller
 			'sponsor_package' 				=> 'required|integer',
 			'sponsor_link' 					=> 'required|active_url',
 			'sponsor_logo' 					=> 'nullable|image|mimes:jpg,jpeg,bmp,png',
-			'create_new_author_approved' 	=> 'sometimes|accepted',
-			'create_new_editor_approved' 	=> 'sometimes|accepted',
+			'update_publish_period' 		=> 'sometimes|accepted',
+			'update_publish_period_start' 	=> 'required_if:update_publish_period,==,1|date_format:d-m-Y H:m:i',
+			'update_publish_period_end' 	=> 'required_if:update_publish_period,==,1|date_format:d-m-Y H:m:i',
 		])->validate();
 	}
 
@@ -494,6 +609,93 @@ class SponsorsController extends Controller
 		$sponsor->payment_received_at	=	Carbon::parse($request->payment_received_at)->format('Y-m-d H:i');
 
 		$sponsor->save();
+
+	}
+
+	// Private edit/update functions for publisher
+
+	private function publisher_edit_validation($request){
+
+		// @todo validate 2 updates when period has to be updated
+
+		Validator::make($request->all(), [
+			'id' 							=> 'required',
+			'title' 						=> 'required|max:255',
+			'body' 							=> 'required',
+			'sponsor_link' 					=> 'required|active_url',
+			'sponsor_logo' 					=> 'nullable|image|mimes:jpg,jpeg,bmp,png',
+			'update_publish_period' 		=> 'sometimes|accepted',
+//			'update_publish_period_start' 	=> 'sometimes|date_format:d-m-Y H:m:i',
+//			'update_publish_period_end' 	=> 'sometimes|date_format:d-m-Y H:m:i',
+		])->validate();
+	}
+
+	private function publisher_edit_sponsor_table($request){
+
+		$sponsor = Sponsor::where('id', '=', $request->id)->first();
+
+		// - title
+		$sponsor->title							= 	$request->title;
+
+		// slug
+		$sponsor->slug 							= 	str_slug($request->title.Carbon::now()->timestamp, '-');
+
+		// Description
+		$sponsor->description					=	$request->title;
+
+		// - body
+		$sponsor->body							=	$request->body;
+
+		// - editor
+		$sponsor->publisher						=	Auth::user()->id;
+
+		// - author group
+		$sponsor->publisher_group					=	Auth::user()->group;
+
+		if($request->approve_to_publish){
+
+			$sponsor->publisher_approve				= 1;
+
+			if($request->update_publish_period){
+
+				$sponsor->publish_date_start			=	$request->update_publish_period_start;
+				$sponsor->publish_date_start			=	Carbon::parse($request->update_publish_period_start)->format('Y-m-d H:i');
+
+				$sponsor->publish_date_end				=	$request->update_publish_period_end;
+				$sponsor->publish_date_end				=	Carbon::parse($request->update_publish_period_end)->format('Y-m-d H:i');
+			}
+		}
+
+		$sponsor->save();
+
+
+	}
+
+	// Private edit/update functions for published
+
+	private function published_edit_sponsor_table($request){
+
+		$sponsor = Sponsor::where('id', '=', $request->id)->first();
+
+		$sponsor->publisher_approve				= 0;
+
+		$sponsor->save();
+
+	}
+
+	// Private delete/destroy functions for all
+
+	private function delete($id)
+	{
+
+		Sponsor::find($id)->delete();
+
+	}
+
+	private function destroy($id)
+	{
+
+		Sponsor::withTrashed()->where('id','=', $id)->forcedelete();
 
 	}
 

@@ -14,7 +14,8 @@
 
                 <div class="col-md-6 col-sm-12">
                     <a href="{{route('main.sponsors.click', $sponsor_spotlight->with_link()->slug)}}" target="_blank">
-                        <img class="card-img-top img-thumbnail" src="{{ asset('modules/sponsors/img').'/'.$sponsor_spotlight->with_image()->name }}" alt="{{$sponsor_spotlight->description}}" >
+                        {{--<img class="card-img-top img-thumbnail" src="{{ asset('modules/sponsors/img').'/'.$sponsor_spotlight->with_image()->name }}" alt="{{$sponsor_spotlight->description}}" >--}}
+                        <img class="card-img-top img-thumbnail" src="{{ asset('storage/'.$sponsor_spotlight->with_image()->name) }}" alt="{{$sponsor_spotlight->description}}" >
                     </a>
                 </div>
 

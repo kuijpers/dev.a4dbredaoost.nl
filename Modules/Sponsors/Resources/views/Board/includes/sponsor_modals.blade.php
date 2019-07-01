@@ -29,22 +29,22 @@
 
 {{--Published--}}
 @if($rpc->CanAccessAs(['webmaster' , 'admin' , 'author' , 'editor' , 'publisher']))
-    {{--@include('sponsors::Board.sponsors.modals.view_publisher_approved')--}}
-    {{--@include('sponsors::Board.sponsors.modals.edit_publisher_approved')--}}
+    @include('sponsors::Board.sponsors.modals.view_publisher_approved')
+    @include('sponsors::Board.sponsors.modals.edit_publisher_approved')
 @endif
 
 {{--Archived--}}
 @if($rpc->CanAccessAs(['webmaster' , 'admin']))
-    {{--@include('sponsors::Board.sponsors.modals.view_archive')--}}
-    {{--@include('sponsors::Board.sponsors.modals.edit_archive')--}}
+    @include('sponsors::Board.sponsors.modals.view_archive')
+    @include('sponsors::Board.sponsors.modals.edit_archive')
 @endif
 
 {{--Delete item--}}
 @if($rpc->CanAccessAs(['webmaster' , 'admin' , 'author' , 'editor' , 'publisher']))
-    {{--@include('sponsors::Board.sponsors.modals.delete_article')--}}
+    @include('sponsors::Board.sponsors.modals.delete_article')
 @endif
 
 {{--Destroy after deleted--}}
 @if($rpc->CanAccessAs(['webmaster' , 'admin']))
-    {{--@include('sponsors::Board.sponsors.modals.destroy_article')--}}
+    @include('sponsors::Board.sponsors.modals.destroy_article')
 @endif

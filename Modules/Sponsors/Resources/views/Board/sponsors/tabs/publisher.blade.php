@@ -28,7 +28,7 @@
                         </thead>
                         <tbody>
                         @foreach($editor_approved as $editor_approve)
-
+                                {{--{{$editor_approve}}--}}
                             <tr>
                                 <td>
                                     {{$editor_approve->title}}
@@ -56,6 +56,17 @@
                                 <td>
                                     <div class="btn-group btn-group-xs" role="group">
                                         @php
+                                            if(!empty($editor_approve->sponsor_image()->name)){
+                                                $image = $editor_approve->sponsor_image()->name;
+                                            }else{
+                                                $image = '';
+                                            }
+                                            if(!empty($editor_approve->sponsor_link()->name)){
+                                                $link = $editor_approve->sponsor_link()->name;
+                                            }else{
+                                                $link = '';
+                                            }
+
                                             $editor_approve_list=[
                                             	'id'                    => $editor_approve->id,
                                             	'title'                 => $editor_approve->title,
@@ -72,6 +83,16 @@
                                             	'author'                => $editor_approve->getAuthorName($editor_approve->author_group),
                                             	'editor'                => $editor_approve->getEditorName($editor_approve->editor_group),
                                             	'publisher'             => $editor_approve->getPublisherName($editor_approve->publisher_group),
+
+                                            	//'publish_date_start'    => $editor_approve->publish_date_start->format('d-m-Y H:m:i'),
+
+                                            	'publish_date_start'    => Carbon\Carbon::parse($editor_approve->publish_date_start)->format('d-m-Y H:m:i'),
+
+
+                                            	//'publish_date_end'      => $editor_approve->publish_date_end->format('d-m-Y H:m:i'),
+
+                                            	'publish_date_end'    => Carbon\Carbon::parse($editor_approve->publish_date_end)->format('d-m-Y H:m:i'),
+
                                             ];
 
                                         $editor_approve_modal = json_encode($editor_approve_list, JSON_PRETTY_PRINT);
