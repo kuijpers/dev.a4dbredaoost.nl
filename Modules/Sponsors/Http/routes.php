@@ -58,12 +58,9 @@
 
 		Route::post('/treasurer-edit', 'SponsorsController@treasurer_edit')->name('board.sponsors.treasurer.edit');
 
-		Route::delete('/{id}', 'SponsorsController@delete')->name('board.sponsors.delete');
+		Route::post('/publisher-edit', 'SponsorsController@publisher_edit')->name('board.sponsors.publisher.edit');
 
-
-		Route::delete('/{id}', 'SponsorsController@destroy')->name('board.sponsors.destroy');
-
-
+		Route::post('/published-edit', 'SponsorsController@published_edit')->name('board.sponsors.published.edit');
 
 	});
 
@@ -78,6 +75,7 @@
 
 	Route::group(['middleware' => 'web', 'prefix' => 'api/board/sponsors/', 'namespace' => 'Modules\Sponsors\Http\Controllers\Board'], function()
 	{
+		// Information section
 
 		Route::post('information/create', 'SponsorsInformationController@store')->name('api.sponsors.information.store');
 
@@ -90,8 +88,15 @@
 		Route::get('information/{id}/destroy', 'SponsorsInformationController@destroy')->name('api.sponsors.information.destroy');
 
 
-
 		Route::post('information/settings', 'SponsorsSettingsController@update')->name('api.sponsors.settings.update');
+
+
+		// Sponsor section
+
+		Route::get('sponsor/{id}/delete', 'SponsorsController@delete_article')->name('board.sponsors.sponsor.delete');
+
+		Route::get('sponsor/{id}/destroy', 'SponsorsController@destroy_article')->name('api.sponsors.sponsor.destroy');
+
 
 
 	});
