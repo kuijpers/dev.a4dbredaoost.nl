@@ -107,7 +107,16 @@
 
                     <div class="panel-body">
 
+                        {{-- Call for prospects --}}
                         <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation">
+                                <a href="#prospect" aria-controls="prospect" role="tab" data-toggle="tab">
+                                    @lang('sponsors::board/tabs.tab_nav_prospect')
+                                    <span class="label label-success">
+                                        23
+                                    </span>
+                                </a>
+                            </li>
 
                             {{-- Call for personal drafts --}}
                             @if($rpc->CanAccessAs(['webmaster' , 'admin' , 'author']))

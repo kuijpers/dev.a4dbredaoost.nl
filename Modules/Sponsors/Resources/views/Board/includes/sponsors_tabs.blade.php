@@ -1,4 +1,9 @@
 
+{{-- Prospects --}}
+{{--@if($rpc->CanAccessAs(['webmaster' , 'admin' , 'author']))--}}
+    @include('sponsors::Board.sponsors.tabs.prospect')
+{{--@endif--}}
+
 {{-- Personal drafts--}}
 @if($rpc->CanAccessAs(['webmaster' , 'admin' , 'author']))
     @include('sponsors::Board.sponsors.tabs.draft')

@@ -3,6 +3,7 @@
 	return [
 
 		// NAVIGATION
+		'tab_nav_prospect' 					=> 'Prospect',
 		'tab_nav_concept' 					=> 'Concept',
 		'tab_nav_author' 					=> 'Auteur',
 		'tab_nav_editor' 					=> 'Editor',
